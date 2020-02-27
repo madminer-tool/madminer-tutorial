@@ -37,7 +37,7 @@ mkdir ~/madminer_shared
 Enter an interactive session in the MadMiner docker container.
 The first time you execute this it will need to pull the container, which will take about a minute.
 ```bash
-docker run -p 8888:8888 -v ~/madminer_shared:/madminer/shared -it madminertool/docker-madminer-physics /bin/bash
+docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/docker-madminer-all /bin/bash
 ```
 
 Now you have a prompt inside the container. See what's there and then go into the `shared` directory
@@ -50,6 +50,13 @@ echo 'hello world' >> test.txt
 ```
 
 Now you might want to check that on your computer you see `~/madminer_shared/test.txt`
+
+<!--
+Upgrade MadMiner with pip
+```bash
+pip install --upgrade madminer
+```
+-->
 
 Get the MadMiner repository with tutorial notebooks
 ```bash
@@ -78,21 +85,7 @@ will want to copy the text after the token (in your terminal, this is just an ex
 
 Now you should be able to connect to the Jupyter notebook server inside the container using your normal browser. Click this link (open in a new tab): [localhost:8888](localhost:8888). You should see a Jupyter terminal and it will ask for a login token. Paste the token (in this example, `123copywhatyouseeherexyz`) and login.
 
-Now you shouuld be all set and see something like this.
+Now you should be all set and see something like this.
 
 ![](/madminer-tutorial/images/notebook.png)
-
-## The rest of the tutorials should run as is with these exceptions
-
-In part `2a_parton_level` in Cell 3, you need to change
-
-```bash
-mg_dir = '/Users/johannbrehmer/work/projects/madminer/MG5_aMC_v2_6_5’
-```
-to
-```bash
-mg_dir = '/home/software/MG5_aMC_v2_6_2'
-```
-
-which is where madgraph is located in this container.
 

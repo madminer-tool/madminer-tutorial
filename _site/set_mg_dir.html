@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>Set MadGraph Directory</title>
-  <meta name="description" content="        Set MadGraph Directory    Set the MadGraph Directoryt The tutorials should run as is with one exception: you need to set the location of MadGraph in ...">
+  <meta name="description" content="        Set MadGraph Directory    Set the MadGraph Directory In part 2a_parton_level and/or 2b_delphes_level_analysis in Cell 3, the location of MadGraph is ...">
 
   <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/set_mg_dir.html">
   <link rel="alternate" type="application/rss+xml" title="MadMiner Tutorial" href="https://cranmer.github.io/madminer-tutorial/feed.xml">
@@ -14,7 +14,7 @@
   <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/set_mg_dir.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="Set MadGraph Directory" />
-<meta property="og:description" content="        Set MadGraph Directory    Set the MadGraph Directoryt The tutorials should run as is with one exception: you need to set the location of MadGraph in ..." />
+<meta property="og:description" content="        Set MadGraph Directory    Set the MadGraph Directory In part 2a_parton_level and/or 2b_delphes_level_analysis in Cell 3, the location of MadGraph is ..." />
 <meta property="og:image"       content="https://iris-hep.org/assets/logos/madminer-square.png" />
 
 <meta name="twitter:card" content="summary">
@@ -26,9 +26,9 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/set_mg_dir.html",
   "headline": "Set MadGraph Directory",
-  "datePublished": "2020-02-27T12:31:56-05:00",
-  "dateModified": "2020-02-27T12:31:56-05:00",
-  "description": "        Set MadGraph Directory    Set the MadGraph Directoryt The tutorials should run as is with one exception: you need to set the location of MadGraph in ...",
+  "datePublished": "2020-02-27T15:40:19-05:00",
+  "dateModified": "2020-02-27T15:40:19-05:00",
+  "description": "        Set MadGraph Directory    Set the MadGraph Directory In part 2a_parton_level and/or 2b_delphes_level_analysis in Cell 3, the location of MadGraph is ...",
   "author": {
     "@type": "Person",
     "name": "Kyle Cranmer,"
@@ -961,14 +961,14 @@ initFunction(initPrint)
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Set-the-MadGraph-Directoryt">Set the MadGraph Directoryt<a class="anchor-link" href="#Set-the-MadGraph-Directoryt"> </a></h1><p>The tutorials should run as is with one exception: you need to set the location of MadGraph in the container.</p>
-<p>In part <code>2a_parton_level</code> and/or <code>2b_delphes_level_analysis</code> in Cell 3, you need to change</p>
+<h1 id="Set-the-MadGraph-Directory">Set the MadGraph Directory<a class="anchor-link" href="#Set-the-MadGraph-Directory"> </a></h1><p>In part <code>2a_parton_level</code> and/or <code>2b_delphes_level_analysis</code> in Cell 3, the location of MadGraph is set.
+In this webpage it is listed as</p>
 
 <pre><code>mg_dir = '/Users/johannbrehmer/work/projects/madminer/MG5_aMC_v2_6_5’</code></pre>
-<p>to</p>
-<div class="highlight"><pre><span></span><span class="nv">mg_dir</span> <span class="o">=</span> <span class="s1">&#39;mg_dir = &#39;</span>/home/software/MG5_aMC_v2_6_2<span class="err">&#39;</span>
-</pre></div>
-<p>which is where MadGraph is located in this container.</p>
+<p>In the GitHub repository it has been updated to be be consistent with the docker container:</p>
+
+<pre><code>mg_dir = 'mg_dir = '/home/software/MG5_aMC_v2_6_2'</code></pre>
+<p>If you install everything yourself, then you would need to change this.</p>
 
 </div>
 </div>

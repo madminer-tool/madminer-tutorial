@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/preliminaries.html",
   "headline": "Preliminaries",
-  "datePublished": "2020-02-27T12:31:56-05:00",
-  "dateModified": "2020-02-27T12:31:56-05:00",
+  "datePublished": "2020-02-27T15:40:19-05:00",
+  "dateModified": "2020-02-27T15:40:19-05:00",
   "description": "        Preliminaries    Preliminaries The tutorial has several software dependenciesMadGraph (including Fortran)pythiaDelphes (optional)pytorchJupyterscipy ...",
   "author": {
     "@type": "Person",
@@ -982,7 +982,7 @@ Irina Espejo has built Docker containers with everything installed already and p
 <p>(You can put it somewhere else if you want, but I'll assume it's there)</p>
 <h2 id="Get-tutorial-&amp;-start-Jupyter-in-container">Get tutorial &amp; start Jupyter in container<a class="anchor-link" href="#Get-tutorial-&amp;-start-Jupyter-in-container"> </a></h2><p>Enter an interactive session in the MadMiner docker container.
 The first time you execute this it will need to pull the container, which will take about a minute.</p>
-<div class="highlight"><pre><span></span>docker run -p <span class="m">8888</span>:8888 -v ~/madminer_shared:/madminer/shared -it madminertool/docker-madminer-physics /bin/bash
+<div class="highlight"><pre><span></span>docker run -p <span class="m">8888</span>:8888 -v ~/madminer_shared:/home/shared -it madminertool/docker-madminer-all /bin/bash
 </pre></div>
 <p>Now you have a prompt inside the container. See what's there and then go into the <code>shared</code> directory</p>
 <div class="highlight"><pre><span></span><span class="nb">pwd</span>
@@ -991,6 +991,13 @@ ls
 <span class="nb">echo</span> <span class="s1">&#39;hello world&#39;</span> &gt;&gt; test.txt
 </pre></div>
 <p>Now you might want to check that on your computer you see <code>~/madminer_shared/test.txt</code></p>
+<!--
+Upgrade MadMiner with pip
+```bash
+pip install --upgrade madminer
+```
+-->
+
 <p>Get the MadMiner repository with tutorial notebooks</p>
 <div class="highlight"><pre><span></span>git clone https://github.com/diana-hep/madminer.git
 </pre></div>
@@ -1008,15 +1015,8 @@ ls
 </pre></div>
 <p>will want to copy the text after the token (in your terminal, this is just an example). In this case you would copy the <code>123copywhatyouseeherexyz</code></p>
 <p>Now you should be able to connect to the Jupyter notebook server inside the container using your normal browser. Click this link (open in a new tab): <a href="localhost:8888">localhost:8888</a>. You should see a Jupyter terminal and it will ask for a login token. Paste the token (in this example, <code>123copywhatyouseeherexyz</code>) and login.</p>
-<p>Now you shouuld be all set and see something like this.</p>
+<p>Now you should be all set and see something like this.</p>
 <p><img src="/madminer-tutorial/images/notebook.png" alt=""></p>
-<h2 id="The-rest-of-the-tutorials-should-run-as-is-with-these-exceptions">The rest of the tutorials should run as is with these exceptions<a class="anchor-link" href="#The-rest-of-the-tutorials-should-run-as-is-with-these-exceptions"> </a></h2><p>In part <code>2a_parton_level</code> in Cell 3, you need to change</p>
-<div class="highlight"><pre><span></span><span class="nv">mg_dir</span> <span class="o">=</span> <span class="err">&#39;</span>/Users/johannbrehmer/work/projects/madminer/MG5_aMC_v2_6_5’
-</pre></div>
-<p>to</p>
-<div class="highlight"><pre><span></span><span class="nv">mg_dir</span> <span class="o">=</span> <span class="s1">&#39;/home/software/MG5_aMC_v2_6_2&#39;</span>
-</pre></div>
-<p>which is where madgraph is located in this container.</p>
 
 </div>
 </div>
