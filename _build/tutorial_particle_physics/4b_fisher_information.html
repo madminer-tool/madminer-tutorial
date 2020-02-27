@@ -1,0 +1,541 @@
+---
+redirect_from:
+  - "/tutorial-particle-physics/4b-fisher-information"
+interact_link: content/tutorial_particle_physics/4b_fisher_information.ipynb
+kernel_name: python2
+kernel_path: content/tutorial_particle_physics
+has_widgets: false
+title: |-
+  Fisher Information
+pagenum: 13
+prev_page:
+  url: /tutorial_particle_physics/4a_limits.html
+next_page:
+  url: /tutorial_particle_physics/4c_information_geometry.html
+suffix: .ipynb
+search: fisher information sally calculates d thetaref model also calculate theta madminer tutorial part b calculating observables fisherinformation provide class histograms level using plot particle physics johann brehmer felix kling irina espejo kyle cranmer preparations estimators not just define optimal expected process makes convenient provides different functions rateinformation total rates histoinformation histoinformationd fullinformation full detector estimator truthinformation truth here approach comparison histogram same alices distances convenience function contours constant distance iij j
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Fisher Information</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="MadMiner-particle-physics-tutorial">MadMiner particle physics tutorial<a class="anchor-link" href="#MadMiner-particle-physics-tutorial"> </a></h1><h1 id="Part-4b:-The-Fisher-information">Part 4b: The Fisher information<a class="anchor-link" href="#Part-4b:-The-Fisher-information"> </a></h1><p>Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer 2018-2019</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="0.-Preparations">0. Preparations<a class="anchor-link" href="#0.-Preparations"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">six</span>
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">from</span> <span class="nn">madminer.fisherinformation</span> <span class="kn">import</span> <span class="n">FisherInformation</span>
+<span class="kn">from</span> <span class="nn">madminer.plotting</span> <span class="kn">import</span> <span class="n">plot_fisher_information_contours_2d</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># MadMiner output</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)-5.5s</span><span class="s1"> </span><span class="si">%(name)-20.20s</span><span class="s1"> </span><span class="si">%(levelname)-7.7s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">datefmt</span><span class="o">=</span><span class="s1">&#39;%H:%M&#39;</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+<span class="p">)</span>
+
+<span class="c1"># Output of all other modules (e.g. matplotlib)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">loggerDict</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">&quot;madminer&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-Calculating-the-Fisher-information-from-a-SALLY-model">1. Calculating the Fisher information from a SALLY model<a class="anchor-link" href="#1.-Calculating-the-Fisher-information-from-a-SALLY-model"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use SALLY estimators (see part 3b of this tutorial) not just to define optimal observables, but also to calculate the (expected) Fisher information in a process. In <code>madminer.fisherinformation</code> we provide the <code>FisherInformation</code> class that makes this more convenient.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fisher</span> <span class="o">=</span> <span class="n">FisherInformation</span><span class="p">(</span><span class="s1">&#39;data/lhe_data_shuffled.h5&#39;</span><span class="p">)</span>
+<span class="c1"># fisher = FisherInformation(&#39;data/delphes_data_shuffled.h5&#39;)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>23:10 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
+23:10 madminer.analysis    INFO    Found 2 parameters
+23:10 madminer.analysis    INFO    Did not find nuisance parameters
+23:10 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
+23:10 madminer.analysis    INFO    Found 3 observables
+23:10 madminer.analysis    INFO    Found 539913 events
+23:10 madminer.analysis    INFO      499913 signal events sampled from benchmark sm
+23:10 madminer.analysis    INFO      10000 signal events sampled from benchmark w
+23:10 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
+23:10 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
+23:10 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
+23:10 madminer.analysis    INFO    Found morphing setup with 6 components
+23:10 madminer.analysis    INFO    Did not find nuisance morphing setup
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This class provides different functions:</p>
+<ul>
+<li><code>rate_information()</code> calculates the Fisher information in total rates,</li>
+<li><code>histo_information()</code> calculates the Fisher information in 1D histograms,</li>
+<li><code>histo_information_2d()</code> calculates the Fisher information in 2D histograms,</li>
+<li><code>full_information()</code> calculates the full detector-level Fisher information using a SALLY estimator, and</li>
+<li><code>truth_information()</code> calculates the truth-level Fisher information.</li>
+</ul>
+<p>Here we use the SALLY approach:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_sally</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">full_information</span><span class="p">(</span>
+    <span class="n">theta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+    <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/sally&#39;</span><span class="p">,</span>
+    <span class="n">luminosity</span><span class="o">=</span><span class="mf">300.</span><span class="o">*</span><span class="mf">1000.</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Fisher information after 300 ifb:</span><span class="se">\n</span><span class="s1">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info_sally</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>23:10 madminer.ml          INFO    Loading model from models/sally
+23:10 madminer.fisherinfor INFO    Found 2 parameters in Score Estimator model, matching 2 physical parameters in MadMiner file
+23:10 madminer.fisherinfor INFO    Evaluating rate Fisher information
+23:11 madminer.fisherinfor INFO    Evaluating kinematic Fisher information on batch 1 / 2
+23:11 madminer.ml          INFO    Loading evaluation data
+23:11 madminer.ml          INFO    Starting score evaluation
+23:11 madminer.ml          INFO    Calculating Fisher information
+23:11 madminer.fisherinfor INFO    Evaluating kinematic Fisher information on batch 2 / 2
+23:11 madminer.ml          INFO    Loading evaluation data
+23:11 madminer.ml          INFO    Starting score evaluation
+23:11 madminer.ml          INFO    Calculating Fisher information
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Fisher information after 300 ifb:
+[[171.87438526  -1.08162341]
+ [ -1.08162341 109.88667781]]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For comparison, we can calculate the Fisher information in the histogram of observables:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_histo_1d</span><span class="p">,</span> <span class="n">cov_histo_1d</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">histo_information</span><span class="p">(</span>
+    <span class="n">theta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+    <span class="n">luminosity</span><span class="o">=</span><span class="mf">300.</span><span class="o">*</span><span class="mf">1000.</span><span class="p">,</span>
+    <span class="n">observable</span><span class="o">=</span><span class="s2">&quot;pt_j1&quot;</span><span class="p">,</span>
+    <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mf">30.</span><span class="p">,</span><span class="mf">100.</span><span class="p">,</span><span class="mf">200.</span><span class="p">,</span><span class="mf">400.</span><span class="p">],</span>
+    <span class="n">histrange</span><span class="o">=</span><span class="p">[</span><span class="mf">30.</span><span class="p">,</span><span class="mf">400.</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Histogram Fisher information after 300 ifb:</span><span class="se">\n</span><span class="s1">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info_histo_1d</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>23:12 madminer.fisherinfor INFO    Bins with largest statistical uncertainties on rates:
+23:12 madminer.fisherinfor INFO      Bin 1: (0.01679 +/- 0.00060) fb (4 %)
+23:12 madminer.fisherinfor INFO      Bin 5: (0.00622 +/- 0.00011) fb (2 %)
+23:12 madminer.fisherinfor INFO      Bin 4: (0.07247 +/- 0.00040) fb (1 %)
+23:12 madminer.fisherinfor INFO      Bin 2: (0.60419 +/- 0.00264) fb (0 %)
+23:12 madminer.fisherinfor INFO      Bin 3: (0.34005 +/- 0.00117) fb (0 %)
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Histogram Fisher information after 300 ifb:
+[[ 1.20370338e+02 -5.77619073e-01]
+ [-5.77619073e-01  4.95972924e-03]]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can do the same thing in 2D:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_histo_2d</span><span class="p">,</span> <span class="n">cov_histo_2d</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">histo_information_2d</span><span class="p">(</span>
+    <span class="n">theta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+    <span class="n">luminosity</span><span class="o">=</span><span class="mf">300.</span><span class="o">*</span><span class="mf">1000.</span><span class="p">,</span>
+    <span class="n">observable1</span><span class="o">=</span><span class="s2">&quot;pt_j1&quot;</span><span class="p">,</span>
+    <span class="n">bins1</span><span class="o">=</span><span class="p">[</span><span class="mf">30.</span><span class="p">,</span><span class="mf">100.</span><span class="p">,</span><span class="mf">200.</span><span class="p">,</span><span class="mf">400.</span><span class="p">],</span>
+    <span class="n">histrange1</span><span class="o">=</span><span class="p">[</span><span class="mf">30.</span><span class="p">,</span><span class="mf">400.</span><span class="p">],</span>
+    <span class="n">observable2</span><span class="o">=</span><span class="s2">&quot;delta_phi_jj&quot;</span><span class="p">,</span>
+    <span class="n">bins2</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">histrange2</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">6.2</span><span class="p">],</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Histogram Fisher information after 300 ifb:</span><span class="se">\n</span><span class="s1">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info_histo_2d</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>23:13 madminer.fisherinfor INFO    Bins with largest statistical uncertainties on rates:
+23:13 madminer.fisherinfor INFO      Bin (1, 3): (0.00413 +/- 0.00049) fb (12 %)
+23:13 madminer.fisherinfor INFO      Bin (1, 2): (0.00315 +/- 0.00023) fb (7 %)
+23:13 madminer.fisherinfor INFO      Bin (5, 2): (0.00089 +/- 0.00004) fb (5 %)
+23:13 madminer.fisherinfor INFO      Bin (5, 4): (0.00102 +/- 0.00004) fb (4 %)
+23:13 madminer.fisherinfor INFO      Bin (5, 3): (0.00123 +/- 0.00005) fb (4 %)
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Histogram Fisher information after 300 ifb:
+[[132.0915244    1.71938164]
+ [  1.71938164  89.00978151]]
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/felixkling/Documents/GitHub/madminer/madminer/fisherinformation.py:1184: RuntimeWarning: divide by zero encountered in true_divide
+  inv_sigma = sanitize_array(1.0 / sigma)  # Shape (n_events,)
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-Calculating-the-Fisher-information-from-a-SALLY-model">2. Calculating the Fisher information from a SALLY model<a class="anchor-link" href="#2.-Calculating-the-Fisher-information-from-a-SALLY-model"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can also calculate the Fisher Information using an ALICES model</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_alices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">full_information</span><span class="p">(</span>
+    <span class="n">theta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+    <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/alices&#39;</span><span class="p">,</span>
+    <span class="n">luminosity</span><span class="o">=</span><span class="mf">300.</span><span class="o">*</span><span class="mf">1000.</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Fisher information using ALICES after 300 ifb:</span><span class="se">\n</span><span class="s1">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info_alices</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>23:13 madminer.ml          INFO    Loading model from models/alices
+23:13 madminer.fisherinfor INFO    Found 2 parameters in Parameterized Ratio Estimator model, matching 2 physical parameters in MadMiner file
+23:14 madminer.fisherinfor INFO    Evaluating rate Fisher information
+23:14 madminer.fisherinfor INFO    Evaluating kinematic Fisher information on batch 1 / 2
+23:14 madminer.ml          INFO    Loading evaluation data
+23:14 madminer.ml          INFO    Loading evaluation data
+23:14 madminer.ml          INFO    Starting ratio evaluation
+23:14 madminer.ml          INFO    Evaluation done
+23:14 madminer.ml          INFO    Calculating Fisher information
+23:14 madminer.fisherinfor INFO    Evaluating kinematic Fisher information on batch 2 / 2
+23:14 madminer.ml          INFO    Loading evaluation data
+23:14 madminer.ml          INFO    Loading evaluation data
+23:14 madminer.ml          INFO    Starting ratio evaluation
+23:14 madminer.ml          INFO    Evaluation done
+23:14 madminer.ml          INFO    Calculating Fisher information
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>Fisher information using ALICES after 300 ifb:
+[[122.3049051   -3.46912463]
+ [ -3.46912463  92.31383615]]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-Plot-Fisher-distances">3. Plot Fisher distances<a class="anchor-link" href="#3.-Plot-Fisher-distances"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We also provide a convenience function to plot contours of constant Fisher distance <code>d^2(theta, theta_ref) = I_ij(theta_ref) * (theta-theta_ref)_i * (theta-theta_ref)_j</code>:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">plot_fisher_information_contours_2d</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">info_sally</span><span class="p">,</span> <span class="n">info_histo_1d</span><span class="p">,</span> <span class="n">info_histo_2d</span><span class="p">,</span><span class="n">info_alices</span><span class="p">],</span>
+    <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">cov_histo_1d</span><span class="p">,</span> <span class="n">cov_histo_2d</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span>
+    <span class="n">inline_labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SALLY&quot;</span><span class="p">,</span> <span class="s2">&quot;1d&quot;</span><span class="p">,</span> <span class="s2">&quot;2d&quot;</span><span class="p">,</span><span class="s2">&quot;ALICES&quot;</span><span class="p">],</span>
+    <span class="nb">xrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.3</span><span class="p">),</span>
+    <span class="n">yrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/tutorial_particle_physics/4b_fisher_information_18_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

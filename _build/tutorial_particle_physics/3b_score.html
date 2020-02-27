@@ -1,0 +1,573 @@
+---
+redirect_from:
+  - "/tutorial-particle-physics/3b-score"
+interact_link: content/tutorial_particle_physics/3b_score.ipynb
+kernel_name: python2
+kernel_path: content/tutorial_particle_physics
+has_widgets: false
+title: |-
+  Score
+pagenum: 9
+prev_page:
+  url: /tutorial_particle_physics/3a_likelihood_ratio.html
+next_page:
+  url: /tutorial_particle_physics/3c_likelihood.html
+suffix: .ipynb
+search: score tutorial part sampling likelihood data machine learning neural network used estimated madminer estimator train estimate run samples point information sampleaugmenter theta events ratio b training instead before test augmented class our estimators parameter distribution p selected joint local only version observables estimation called related constraining effective field theories arxiv org abs evaluate lets particle physics johann brehmer felix kling irina espejo kyle cranmer finally ratios assume just load different filename later preparations sure youve executing notebook unweighted need simulations not quite ready take care remaining book keeping steps unweights e given vector picks x such follows xtheta event file
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Score</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="MadMiner-particle-physics-tutorial">MadMiner particle physics tutorial<a class="anchor-link" href="#MadMiner-particle-physics-tutorial"> </a></h1><h1 id="Part-3b:-Training-a-score-estimator">Part 3b: Training a score estimator<a class="anchor-link" href="#Part-3b:-Training-a-score-estimator"> </a></h1><p>Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer 2018-2019</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In part 3a of this tutorial we will finally train a neural network to estimate likelihood ratios. We assume that you have run part 1 and 2a of this tutorial. If, instead of 2a, you have run part 2b, you just have to load a different filename later.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Preparations">Preparations<a class="anchor-link" href="#Preparations"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Make sure you've run the first tutorial before executing this notebook!</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">from</span> <span class="nn">madminer.sampling</span> <span class="kn">import</span> <span class="n">SampleAugmenter</span>
+<span class="kn">from</span> <span class="nn">madminer</span> <span class="kn">import</span> <span class="n">sampling</span>
+<span class="kn">from</span> <span class="nn">madminer.ml</span> <span class="kn">import</span> <span class="n">ScoreEstimator</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># MadMiner output</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)-5.5s</span><span class="s1"> </span><span class="si">%(name)-20.20s</span><span class="s1"> </span><span class="si">%(levelname)-7.7s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">datefmt</span><span class="o">=</span><span class="s1">&#39;%H:%M&#39;</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+<span class="p">)</span>
+
+<span class="c1"># Output of all other modules (e.g. matplotlib)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">loggerDict</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">&quot;madminer&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-Make-(unweighted)-training-and-test-samples-with-augmented-data">1. Make (unweighted) training and test samples with augmented data<a class="anchor-link" href="#1.-Make-(unweighted)-training-and-test-samples-with-augmented-data"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>At this point, we have all the information we need from the simulations. But the data is not quite ready to be used for machine learning. The <code>madminer.sampling</code> class <code>SampleAugmenter</code> will take care of the remaining book-keeping steps before we can train our estimators:</p>
+<p>First, it unweights the samples, i.e. for a given parameter vector <code>theta</code> (or a distribution <code>p(theta)</code>) it picks events <code>x</code> such that their distribution follows <code>p(x|theta)</code>. The selected samples will all come from the event file we have so far, but their frequency is changed -- some events will appear multiple times, some will disappear.</p>
+<p>Second, <code>SampleAugmenter</code> calculates all the augmented data ("gold") that is the key to our new inference methods. Depending on the specific technique, these are the joint likelihood ratio and / or the joint score. It saves all these pieces of information for the selected events in a set of numpy files that can easily be used in any machine learning framework.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">sampler</span> <span class="o">=</span> <span class="n">SampleAugmenter</span><span class="p">(</span><span class="s1">&#39;data/lhe_data_shuffled.h5&#39;</span><span class="p">)</span>
+<span class="c1"># sampler = SampleAugmenter(&#39;data/delphes_data_shuffled.h5&#39;)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>20:23 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
+20:23 madminer.analysis    INFO    Found 2 parameters
+20:23 madminer.analysis    INFO    Did not find nuisance parameters
+20:23 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
+20:23 madminer.analysis    INFO    Found 3 observables
+20:23 madminer.analysis    INFO    Found 539913 events
+20:23 madminer.analysis    INFO      499913 signal events sampled from benchmark sm
+20:23 madminer.analysis    INFO      10000 signal events sampled from benchmark w
+20:23 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
+20:23 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
+20:23 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
+20:23 madminer.analysis    INFO    Found morphing setup with 6 components
+20:23 madminer.analysis    INFO    Did not find nuisance morphing setup
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The relevant <code>SampleAugmenter</code> function for local score estimators is <code>extract_samples_train_local()</code>. As in part 3a of the tutorial, for the argument <code>theta</code> you can use the helper functions <code>sampling.benchmark()</code>, <code>sampling.benchmarks()</code>, <code>sampling.morphing_point()</code>, <code>sampling.morphing_points()</code>, and <code>sampling.random_morphing_points()</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">t_xz</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">sample_train_local</span><span class="p">(</span>
+    <span class="n">theta</span><span class="o">=</span><span class="n">sampling</span><span class="o">.</span><span class="n">benchmark</span><span class="p">(</span><span class="s1">&#39;sm&#39;</span><span class="p">),</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">500000</span><span class="p">,</span>
+    <span class="n">folder</span><span class="o">=</span><span class="s1">&#39;./data/samples&#39;</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;train_score&#39;</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>20:23 madminer.sampling    INFO    Extracting training sample for local score regression. Sampling and score evaluation according to sm
+20:23 madminer.sampling    INFO    Starting sampling serially
+20:23 madminer.sampling    INFO    Sampling from parameter point 1 / 1
+20:23 madminer.sampling    INFO    Effective number of samples: mean 300067.99999999994, with individual thetas ranging from 300067.9999999998 to 300067.9999999998
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can use the same data as in part 3a, so you only have to execute this if you haven't gone through tutorial 3a:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">sample_test</span><span class="p">(</span>
+    <span class="n">theta</span><span class="o">=</span><span class="n">sampling</span><span class="o">.</span><span class="n">benchmark</span><span class="p">(</span><span class="s1">&#39;sm&#39;</span><span class="p">),</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+    <span class="n">folder</span><span class="o">=</span><span class="s1">&#39;./data/samples&#39;</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;test&#39;</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>20:23 madminer.sampling    INFO    Extracting evaluation sample. Sampling according to sm
+20:23 madminer.sampling    INFO    Starting sampling serially
+20:23 madminer.sampling    INFO    Sampling from parameter point 1 / 1
+20:23 madminer.sampling    INFO    Effective number of samples: mean 99945.99999999999, with individual thetas ranging from 99945.99999999996 to 99945.99999999996
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-Train-score-estimator">2. Train score estimator<a class="anchor-link" href="#2.-Train-score-estimator"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>It's now time to build a neural network. Only this time, instead of the likelihood ratio itself, we will estimate the gradient of the log likelihood with respect to the theory parameters -- the score. To be precise, the output of the neural network is an estimate of the score at some reference parameter point, for instance the Standard Model. A neural network that estimates this "local" score can be used to calculate the Fisher information at that point. The estimated score can also be used as a machine learning version of Optimal Observables, and likelihoods can be estimated based on density estimation in the estimated score space. This method for likelihood ratio estimation is called SALLY, and there is a closely related version called SALLINO. Both are explained in <a href="https://arxiv.org/abs/1805.00013">"Constraining Effective Field Theories With Machine Learning"</a> and <a href="https://arxiv.org/abs/1805.00020">"A Guide to Constraining Effective Field Theories With Machine Learning"</a>.</p>
+<p>The central object for this is the <code>madminer.ml.ScoreEstimator</code> class:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">estimator</span> <span class="o">=</span> <span class="n">ScoreEstimator</span><span class="p">(</span><span class="n">n_hidden</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">30</span><span class="p">))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">estimator</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;sally&#39;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;data/samples/x_train_score.npy&#39;</span><span class="p">,</span>
+    <span class="n">t_xz</span><span class="o">=</span><span class="s1">&#39;data/samples/t_xz_train_score.npy&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">estimator</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;models/sally&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>20:23 madminer.ml          INFO    Starting training
+20:23 madminer.ml          INFO      Batch size:             128
+20:23 madminer.ml          INFO      Optimizer:              amsgrad
+20:23 madminer.ml          INFO      Epochs:                 50
+20:23 madminer.ml          INFO      Learning rate:          0.001 initially, decaying to 0.0001
+20:23 madminer.ml          INFO      Validation split:       0.25
+20:23 madminer.ml          INFO      Early stopping:         True
+20:23 madminer.ml          INFO      Scale inputs:           True
+20:23 madminer.ml          INFO      Shuffle labels          False
+20:23 madminer.ml          INFO      Samples:                all
+20:23 madminer.ml          INFO    Loading training data
+20:23 madminer.utils.vario INFO      Loading data/samples/x_train_score.npy into RAM
+20:23 madminer.utils.vario INFO      Loading data/samples/t_xz_train_score.npy into RAM
+20:23 madminer.ml          INFO    Found 500000 samples with 2 parameters and 3 observables
+20:23 madminer.ml          INFO    Setting up input rescaling
+20:23 madminer.ml          INFO    Creating model
+20:23 madminer.ml          INFO    Training model
+20:23 madminer.utils.ml.tr INFO    Training on CPU with single precision
+20:23 madminer.utils.ml.tr INFO      Epoch   3: train loss  0.19029 (mse_score:  0.190)
+20:23 madminer.utils.ml.tr INFO                 val. loss   0.20702 (mse_score:  0.207)
+20:24 madminer.utils.ml.tr INFO      Epoch   6: train loss  0.18637 (mse_score:  0.186)
+20:24 madminer.utils.ml.tr INFO                 val. loss   0.20334 (mse_score:  0.203)
+20:25 madminer.utils.ml.tr INFO      Epoch   9: train loss  0.18468 (mse_score:  0.185)
+20:25 madminer.utils.ml.tr INFO                 val. loss   0.19906 (mse_score:  0.199)
+20:25 madminer.utils.ml.tr INFO      Epoch  12: train loss  0.18354 (mse_score:  0.184)
+20:25 madminer.utils.ml.tr INFO                 val. loss   0.19785 (mse_score:  0.198)
+20:26 madminer.utils.ml.tr INFO      Epoch  15: train loss  0.18248 (mse_score:  0.182)
+20:26 madminer.utils.ml.tr INFO                 val. loss   0.19682 (mse_score:  0.197)
+20:27 madminer.utils.ml.tr INFO      Epoch  18: train loss  0.18196 (mse_score:  0.182)
+20:27 madminer.utils.ml.tr INFO                 val. loss   0.19714 (mse_score:  0.197)
+20:27 madminer.utils.ml.tr INFO      Epoch  21: train loss  0.18131 (mse_score:  0.181)
+20:27 madminer.utils.ml.tr INFO                 val. loss   0.19759 (mse_score:  0.198)
+20:28 madminer.utils.ml.tr INFO      Epoch  24: train loss  0.18092 (mse_score:  0.181)
+20:28 madminer.utils.ml.tr INFO                 val. loss   0.19569 (mse_score:  0.196)
+20:29 madminer.utils.ml.tr INFO      Epoch  27: train loss  0.18056 (mse_score:  0.181)
+20:29 madminer.utils.ml.tr INFO                 val. loss   0.19527 (mse_score:  0.195)
+20:30 madminer.utils.ml.tr INFO      Epoch  30: train loss  0.18017 (mse_score:  0.180)
+20:30 madminer.utils.ml.tr INFO                 val. loss   0.19607 (mse_score:  0.196)
+20:30 madminer.utils.ml.tr INFO      Epoch  33: train loss  0.17988 (mse_score:  0.180)
+20:30 madminer.utils.ml.tr INFO                 val. loss   0.19461 (mse_score:  0.195)
+20:31 madminer.utils.ml.tr INFO      Epoch  36: train loss  0.17971 (mse_score:  0.180)
+20:31 madminer.utils.ml.tr INFO                 val. loss   0.19450 (mse_score:  0.194)
+20:32 madminer.utils.ml.tr INFO      Epoch  39: train loss  0.17953 (mse_score:  0.180)
+20:32 madminer.utils.ml.tr INFO                 val. loss   0.19477 (mse_score:  0.195)
+20:32 madminer.utils.ml.tr INFO      Epoch  42: train loss  0.17930 (mse_score:  0.179)
+20:32 madminer.utils.ml.tr INFO                 val. loss   0.19415 (mse_score:  0.194)
+20:33 madminer.utils.ml.tr INFO      Epoch  45: train loss  0.17926 (mse_score:  0.179)
+20:33 madminer.utils.ml.tr INFO                 val. loss   0.19477 (mse_score:  0.195)
+20:34 madminer.utils.ml.tr INFO      Epoch  48: train loss  0.17908 (mse_score:  0.179)
+20:34 madminer.utils.ml.tr INFO                 val. loss   0.19428 (mse_score:  0.194)
+20:34 madminer.utils.ml.tr INFO    Early stopping after epoch 46, with loss  0.19398 compared to final loss  0.19416
+20:34 madminer.utils.ml.tr INFO    Training time spend on:
+20:34 madminer.utils.ml.tr INFO                      initialize model:   0.00h
+20:34 madminer.utils.ml.tr INFO                                   ALL:   0.19h
+20:34 madminer.utils.ml.tr INFO                            check data:   0.00h
+20:34 madminer.utils.ml.tr INFO                          make dataset:   0.00h
+20:34 madminer.utils.ml.tr INFO                       make dataloader:   0.00h
+20:34 madminer.utils.ml.tr INFO                       setup optimizer:   0.00h
+20:34 madminer.utils.ml.tr INFO                   initialize training:   0.00h
+20:34 madminer.utils.ml.tr INFO                                set lr:   0.00h
+20:34 madminer.utils.ml.tr INFO                   load training batch:   0.06h
+20:34 madminer.utils.ml.tr INFO                        fwd: move data:   0.00h
+20:34 madminer.utils.ml.tr INFO                   fwd: check for nans:   0.04h
+20:34 madminer.utils.ml.tr INFO                    fwd: model.forward:   0.02h
+20:34 madminer.utils.ml.tr INFO                 fwd: calculate losses:   0.01h
+20:34 madminer.utils.ml.tr INFO                 training forward pass:   0.06h
+20:34 madminer.utils.ml.tr INFO                   training sum losses:   0.00h
+20:34 madminer.utils.ml.tr INFO                        opt: zero grad:   0.00h
+20:34 madminer.utils.ml.tr INFO                         opt: backward:   0.02h
+20:34 madminer.utils.ml.tr INFO                   opt: clip grad norm:   0.00h
+20:34 madminer.utils.ml.tr INFO                             opt: step:   0.01h
+20:34 madminer.utils.ml.tr INFO                        optimizer step:   0.03h
+20:34 madminer.utils.ml.tr INFO                 load validation batch:   0.02h
+20:34 madminer.utils.ml.tr INFO               validation forward pass:   0.02h
+20:34 madminer.utils.ml.tr INFO                 validation sum losses:   0.00h
+20:34 madminer.utils.ml.tr INFO                        early stopping:   0.00h
+20:34 madminer.utils.ml.tr INFO                          report epoch:   0.00h
+20:34 madminer.ml          INFO    Saving model to models/sally
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-Evaluate-score-estimator">3. Evaluate score estimator<a class="anchor-link" href="#3.-Evaluate-score-estimator"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's evaluate the SM score on the test data</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">estimator</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;models/sally&#39;</span><span class="p">)</span>
+
+<span class="n">t_hat</span> <span class="o">=</span> <span class="n">estimator</span><span class="o">.</span><span class="n">evaluate_score</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;data/samples/x_test.npy&#39;</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>20:34 madminer.ml          INFO    Loading model from models/sally
+20:34 madminer.utils.vario INFO      Loading data/samples/x_test.npy into RAM
+20:34 madminer.ml          INFO    Starting score evaluation
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's have a look at the estimated score and how it is related to the observables:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;data/samples/x_test.npy&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+
+    <span class="n">sc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> <span class="n">x</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">t_hat</span><span class="p">[:,</span><span class="n">i</span><span class="p">],</span> <span class="n">s</span><span class="o">=</span><span class="mf">25.</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=-</span><span class="mf">1.</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\hat{t}_&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="sa">r</span><span class="s1">&#39;(x | \theta_{ref})$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$p_{T,j1}$ [GeV]&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\Delta \phi_{jj}$&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span><span class="mf">300.</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">3.15</span><span class="p">,</span><span class="mf">3.15</span><span class="p">)</span>
+    
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/tutorial_particle_physics/3b_score_21_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

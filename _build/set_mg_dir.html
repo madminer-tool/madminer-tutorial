@@ -1,0 +1,43 @@
+---
+redirect_from:
+  - "/set-mg-dir"
+title: |-
+  Set MadGraph Directory
+pagenum: 4
+prev_page:
+  url: /parton_or_delphes.html
+next_page:
+  url: /tutorial_particle_physics/2a_parton_level_analysis.html
+suffix: .md
+search: madgraph mgdir set need container mgamcv directoryt tutorials should run exception location part apartonlevel bdelpheslevelanalysis cell change users johannbrehmer work projects madminer shell home software where located
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Set MadGraph Directory</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Set-the-MadGraph-Directoryt">Set the MadGraph Directoryt<a class="anchor-link" href="#Set-the-MadGraph-Directoryt"> </a></h1><p>The tutorials should run as is with one exception: you need to set the location of MadGraph in the container.</p>
+<p>In part <code>2a_parton_level</code> and/or <code>2b_delphes_level_analysis</code> in Cell 3, you need to change</p>
+
+<pre><code>mg_dir = '/Users/johannbrehmer/work/projects/madminer/MG5_aMC_v2_6_5’</code></pre>
+<p>to</p>
+<div class="highlight"><pre><span></span><span class="nv">mg_dir</span> <span class="o">=</span> <span class="s1">&#39;mg_dir = &#39;</span>/home/software/MG5_aMC_v2_6_2<span class="err">&#39;</span>
+</pre></div>
+<p>which is where MadGraph is located in this container.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

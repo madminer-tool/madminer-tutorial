@@ -1,0 +1,1110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Search the site</title>
+  <meta name="description" content="        ">
+
+  <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/search">
+  <link rel="alternate" type="application/rss+xml" title="MadMiner Tutorial" href="https://cranmer.github.io/madminer-tutorial/feed.xml">
+
+  <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/search" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Search the site" />
+<meta property="og:description" content="        " />
+<meta property="og:image"       content="https://iris-hep.org/assets/logos/madminer-square.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/search",
+  "headline": "Search the site",
+  "datePublished": "2020-02-27T10:10:39-05:00",
+  "dateModified": "2020-02-27T10:10:39-05:00",
+  "description": "        ",
+  "author": {
+    "@type": "Person",
+    "name": "Kyle Cranmer,"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cranmer.github.io/madminer-tutorial",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cranmer.github.io/madminer-tutorial",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/madminer-tutorial/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/madminer-tutorial/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/madminer-tutorial/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/madminer-tutorial/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/madminer-tutorial';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/madminer-tutorial/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+<!-- Display Thebelab button in each code cell -->
+<script>
+/**
+ * Set up thebelab button for code blocks
+ */
+
+const thebelabCellButton = id =>
+  `<a id="thebelab-cell-button-${id}" class="btn thebebtn o-tooltip--left" data-tooltip="Interactive Mode">
+    <img src="/madminer-tutorial/assets/images/edit-button.svg" alt="Start thebelab interactive mode">
+  </a>`
+
+
+const addThebelabButtonToCodeCells =  () => {
+
+  const codeCells = document.querySelectorAll('div.input_area > div.highlight:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.getElementById("thebelab-cell-button-" + id) == null) {
+      codeCell.insertAdjacentHTML('afterend', thebelabCellButton(id));
+    }
+  })
+}
+
+initFunction(addThebelabButtonToCodeCells);
+</script>
+
+
+<script src="https://unpkg.com/thebelab@latest/lib/index.js" async></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+
+                // Clean up the language to make it work w/ CodeMirror and add it to the cell
+                dataLanguage = ""
+                dataLanguage = detectLanguage(dataLanguage);
+                codeCell.setAttribute('data-language', dataLanguage)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyAndThebeButtons = document.querySelectorAll('.copybtn, .thebebtn')
+            copyAndThebeButtons.forEach((button, index) => {
+                button.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+
+            // Find any cells with an initialization tag and ask ThebeLab to run them when ready
+            var thebeInitCells = document.querySelectorAll('div.tag_thebelab-init');
+            thebeInitCells.forEach((cell) => {
+                console.log("Initializing ThebeLab with cell: " + cell.id);
+                cell.querySelector('.thebelab-run-button').click();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButtons = document.querySelectorAll('[id^=thebelab], [id$=thebelab]')
+        thebelabButtons.forEach((thebelabButton,index) => {
+            if (thebelabButton === null) {
+                setTimeout(initThebelab, 250)
+                return
+            };
+            thebelabButton.addEventListener('click', addThebelabToCodeCells);
+        });
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+
+// Helper function to munge the language name
+var detectLanguage = (language) => {
+    if (language.indexOf('python') > -1) {
+        language = "python";
+    }
+    return language;
+}
+</script>
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/madminer-tutorial/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/madminer-tutorial/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/madminer-tutorial/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/madminer-tutorial/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/madminer-tutorial/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/madminer-tutorial/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/madminer-tutorial/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "Made with Jupyter Book"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "YOUR-ORG/YOUR-REPO",
+    ref: "gh-pages",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: "python"
+    },
+    kernelOptions: {
+    kernelName: "python3",
+    path: ""
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://github.com/johannbrehmer/madminer"><img src="https://iris-hep.org/assets/logos/madminer-square.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">MadMiner Tutorial</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/intro">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/intro.html"
+        >
+          
+          Introduction
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">MadMiner Tutorial</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/preliminaries">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/preliminaries.html"
+        >
+          
+          Preliminaries
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/tutorial_particle_physics/1_setup">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/tutorial_particle_physics/1_setup.html"
+        >
+          
+          Define process to study
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/parton_or_delphes">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/parton_or_delphes.html"
+        >
+          
+          Create training data
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/set_mg_dir">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/set_mg_dir.html"
+              >
+                
+                Set MadGraph Directory
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/2a_parton_level_analysis">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/2a_parton_level_analysis.html"
+              >
+                
+                Parton Level
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/2b_delphes_level_analysis">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/2b_delphes_level_analysis.html"
+              >
+                
+                With Delphes
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/choose_surrogate">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/choose_surrogate.html"
+        >
+          
+          Train model
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/3a_likelihood_ratio">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/3a_likelihood_ratio.html"
+              >
+                
+                Likelihood Ratio
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/3b_score">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/3b_score.html"
+              >
+                
+                Score
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/3c_likelihood">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/3c_likelihood.html"
+              >
+                
+                Likelihood
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/statistics">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/statistics.html"
+        >
+          
+          Statistical Analysis
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/4a_limits">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/4a_limits.html"
+              >
+                
+                Limits on EFT parameters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/4b_fisher_information">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/4b_fisher_information.html"
+              >
+                
+                Fisher Information
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/4c_information_geometry">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/4c_information_geometry.html"
+              >
+                
+                Information Geometry
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/tutorial_particle_physics/A1_systematic_uncertainties">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
+        >
+          
+          Appendix
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/A1_systematic_uncertainties">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
+              >
+                
+                Appendix
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/A2_ensemble_methods">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/A2_ensemble_methods.html"
+              >
+                
+                Ensemble methods
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/A3_reweighting_existing_samples">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/A3_reweighting_existing_samples.html"
+              >
+                
+                Reweighting existing samples
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><img src="/madminer-tutorial/assets/images/download-solid.svg" alt="Download" /></button>
+    <div class="download-buttons">
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/madminer-tutorial/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/madminer-tutorial/search.html" class="topbar-right-button" id="search-button">
+    <img src="/madminer-tutorial/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+              <div class="search-content__inner-wrap">
+    <input type="text" id="lunr_search" class="search-input" tabindex="-1" placeholder="'Enter your search term...''" />
+    <div id="results" class="results"></div>
+</div>
+
+<script>
+    // Add the lunr store since we will now search it
+    var store = [{
+        "title": "Train model",
+        
+        "excerpt": "approximate likelihood training neural network ratio intro madminer choose adventure stage stream statistical analysis papers mentioned tutorial html describe techniques detail three options section score optimal observables high dimensional histogram where machine learning happens uses pytorch",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/choose_surrogate.html",
+        "teaser":null},{
+        "title": "Introduction",
+        
+        "excerpt": "madminer org not inference tutorial hard likelihood observables arxiv abs particle usually process information does machine learning gold hep developed physics simulations detector simulators high dimensional free approach constraining effective field theories mining augmented data neural package simulation theory tool documentation readthedocs github com diana johann brehmer felix kling irina espejo kyle cranmer built using jupyter book jupyterbook intro iris assets logos png introduction processes modelled complex monte carlo parton shower interactions typically admit tractable function given potentially set possible calculate probability model parameters physicisists tackle problem hand picking few good summary statistics filling histograms conventional discards often scale well",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/intro.html",
+        "teaser":null},{
+        "title": "Create training data",
+        
+        "excerpt": "simulation events delphes full choose adventure stage generating simulated includes detector either parton level simple smearing faster fast realistic madminer technique also work geant too heavy experiment specific package tool example provides template experimental context",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/parton_or_delphes.html",
+        "teaser":null},{
+        "title": "Preliminaries",
+        
+        "excerpt": "docker jupyter madminer container bash tutorial com should token www madminertool browser server inside example notebook open copy copywhatyouseeherexyz mgdir software madgraph take normal connect data science work desktop get start need run git something file home paste terminal localhost login mgamcv preliminaries several dependencies including fortran pythia delphes optional pytorch scipy installing avoid irina espejo built containers everything installed already pushed dockerhub under hub u still our computers described running dockerized dataquest io blog process fairly painless also mac windows follow steps below install download products enter interactive session execute pull minute p physics bin prompt repository notebooks clone",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/preliminaries.html",
+        "teaser":null},{
+        "title": "Set MadGraph Directory",
+        
+        "excerpt": "madgraph mgdir set need container mgamcv directoryt tutorials should run exception location part apartonlevel bdelpheslevelanalysis cell change users johannbrehmer work projects madminer shell home software where located",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/set_mg_dir.html",
+        "teaser":null},{
+        "title": "Statistical Analysis",
+        
+        "excerpt": "data likelihood results information choose adventure stage trained model approximate ratio score ready statistical analysis might either want analyze real observed simulated expected limits eft parameters fisher geometry",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/statistics.html",
+        "teaser":null},{
+        "title": "Define process to study",
+        
+        "excerpt": "parameter morphing madminer points b space squared part well madgraph instance basis tutorial setup please define not matrix only morphingmaxpower theta parameters benchmarks weights benchmark run six analysis constraining effective field theories machine learning arxiv org abs logging level process step used contributes element values function value maxoverallpower particle physics through set typically try explain theory methods here while guide python output want into affect cards specify important definition also maximal power between dimension range optimization paramcard given option should evaluated interpolation cross addparameter defined keyword contributions proportional uncertainty johann brehmer felix kling irina espejo kyle cranmer welcome consists numbered",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/1_setup.html",
+        "teaser":null},{
+        "title": "Parton Level",
+        
+        "excerpt": "events observables run madminer madgraph event samples generate benchmark python keyword file weights here different true lhe smearing addition part space card files used e only add same parton level notebook running load step runmultiple points output should just large combine set any generation not processes isbackground detector functions function sample generated define jet transverse cuts where ordering required particle tutorial well extract before lets our setup next latter allows phase either case provide parameters log important option sampling reweighting parameter good us let start break after through does checks later backgrounds also reduce background note directly prepare might analysis",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/2a_parton_level_analysis.html",
+        "teaser":null},{
+        "title": "With Delphes",
+        
+        "excerpt": "events run delphes observables madminer madgraph benchmark event keyword generate different python weights here true add samples file part notebook pythia step card files e same addition through load setup runmultiple space points output option used should just large combine only set any generation not also isbackground delphesreader above function sample generated cuts where ordering required particle tutorial level well before mg lets our next latter phase either case provide parameters log important sampling reweighting good defined during let start break after running lhe checks later backgrounds processes reduce background note might detector addsample information expression addobservable transverse momentum order",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/2b_delphes_level_analysis.html",
+        "teaser":null},{
+        "title": "Likelihood Ratio",
+        
+        "excerpt": "likelihood theta ratio train parameter estimator samples tutorial part events x only madminer neural network point not machine learning our any well function points plot space cross arxiv org abs training run test data information used class sampleaugmenter given event inference score functions techniques here sample statistical might weights lets also estimates free load different augmented need quite sampling estimators e distribution p selected second gold methods joint saves defines scandal rascal parameterized both evaluation method benchmark defined alices hypothesis sm note fluctuations section observable loss parameterizedratioestimator evaluate model described constraining effective field theories log particle physics johann brehmer felix",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/3a_likelihood_ratio.html",
+        "teaser":null},{
+        "title": "Score",
+        
+        "excerpt": "score tutorial part sampling likelihood data machine learning neural network used estimated madminer estimator train estimate run samples point information sampleaugmenter theta events ratio b training instead before test augmented class our estimators parameter distribution p selected joint local only version observables estimation called related constraining effective field theories arxiv org abs evaluate lets particle physics johann brehmer felix kling irina espejo kyle cranmer finally ratios assume just load different filename later preparations sure youve executing notebook unweighted need simulations not quite ready take care remaining book keeping steps unweights e given vector picks x such follows xtheta event file",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/3b_score.html",
+        "teaser":null},{
+        "title": "Likelihood",
+        
+        "excerpt": "likelihood theta train estimator tutorial part samples events x madminer neural function ratio well training run test data point not class sampleaugmenter our given functions only techniques scandal sample points network c its load different augmented information need quite used machine learning sampling estimators e parameter distribution p selected event second gold inference methods joint saves any defines parameterized evaluation method benchmark hypothesis sm note estimates evaluate free log particle physics johann brehmer felix kling irina espejo kyle cranmer third itself rather assume instead b just filename later preparations unweighted simulations ready take care remaining book keeping steps before unweights",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/3c_likelihood.html",
+        "teaser":null},{
+        "title": "Limits on EFT parameters",
+        
+        "excerpt": "limits based expected calculate lets madminer p values us rate tutorial results not likelihood asymptoticlimits parameter grid histograms estimators estimator part limit trained parameters preparations ratio asymptotic class data histogram let information since dont backgrounds systematics mode only estimated alices score signal plot save particle physics setting johann brehmer felix kling irina espejo kyle cranmer networks step b our theory end care plots log least under assumptions directly related makes easy provids high level functions observedlimits observed events expectedlimits file define evaluate luminosity inverse pb talking baseline simple jet pt right lot option function even calculates binning automatically add functionality",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/4a_limits.html",
+        "teaser":null},{
+        "title": "Fisher Information",
+        
+        "excerpt": "fisher information sally calculates d thetaref model also calculate theta madminer tutorial part b calculating observables fisherinformation provide class histograms level using plot particle physics johann brehmer felix kling irina espejo kyle cranmer preparations estimators not just define optimal expected process makes convenient provides different functions rateinformation total rates histoinformation histoinformationd fullinformation full detector estimator truthinformation truth here approach comparison histogram same alices distances convenience function contours constant distance iij j",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/4b_fisher_information.html",
+        "teaser":null},{
+        "title": "Information Geometry",
+        
+        "excerpt": "theta information d frac distance geometry using ds function plot results equation partial fisher ij geodesic values lets example local quad parameter space constant into text thetaj path jk obtain geodesics grid tutorial therefore metric calculate distances between points defined where calculated global our begin s thetai end gammai thetak im big mj point contours initialize class distancecontours interpolated expected p process create linear compare obtained log madminer particle physics part c johann brehmer felix kling irina espejo kyle cranmer preparations simple unserstand happens note symmetric positive definite rank tensor seen riemanian used previously b considered tangent hence flat simply",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/4c_information_geometry.html",
+        "teaser":null},{
+        "title": "Appendix",
+        
+        "excerpt": "madminer parameters uncertainties effect nuisance systematic parameter physics madgraph information systematics its scale tutorial here logging output calculated our fisher adding well file please files delphes want just load setup save function keyword event weights pdf variations signal normalization background run lhe lets training sally terms five particle appendix johann brehmer felix kling irina espejo kyle cranmer explain add workflow note treatment changed substantially v including changes specification dont older versions preparations before execute notebook sure running installations pythia enter path mg root directory uses python module provide additional debugging choose much switching level following lines debug warning benchmarks part",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html",
+        "teaser":null},{
+        "title": "Ensemble methods",
+        
+        "excerpt": "ensemble score fisher information mean mode madminer estimators uncertainty take calculate covariance provides prediction measure ensembleforge estimation estimator event precise error bands particle physics tutorial appendix methods johann brehmer felix kling irina espejo kyle cranmer under construction instead using single neural network estimate likelihood ratio such us reliable well class ml automates process currently only supports sally training object very similar functions mlforge particular train simultaneously trainall save files evaluation evaluate similarly individual networks lets stick different ways average advantage direct based scores expected since estimates nonlinearity info calculation amplifies any calculating approach computationally not feasible default uses here just",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/A2_ensemble_methods.html",
+        "teaser":null},{
+        "title": "Reweighting existing samples",
+        
+        "excerpt": "madminer benchmark add event sample already events setup weights logging benchmarks tutorial reweighting generated lets uses output following assume particle physics appendix existing mc samples johann brehmer felix kling irina espejo kyle cranmer bunch either simulated different stand alone madgraph missing files preparations python module provide additional information debugging choose much want switching level lines debug warning original well start main forgot really care before starting generation try corresponding after generating according settings please adapt necessary load new doesnt change morphing always e ones defined file prepare heres crucial step reweightbenchmarks list reweighted should not include contains",
+        "categories": [],
+        "tags": [],
+        "url": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/A3_reweighting_existing_samples.html",
+        "teaser":null},]
+</script>
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://github.com/diana-hep/madminer">The MadMiner Team</a></p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>

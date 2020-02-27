@@ -1,0 +1,208 @@
+---
+redirect_from:
+  - "/tutorial-particle-physics/a2-ensemble-methods"
+interact_link: content/tutorial_particle_physics/A2_ensemble_methods.ipynb
+kernel_name: python2
+kernel_path: content/tutorial_particle_physics
+has_widgets: false
+title: |-
+  Ensemble methods
+pagenum: 17
+prev_page:
+  url: /tutorial_particle_physics/A1_systematic_uncertainties.html
+next_page:
+  url: /tutorial_particle_physics/A3_reweighting_existing_samples.html
+suffix: .ipynb
+search: ensemble score fisher information mean mode madminer estimators uncertainty take calculate covariance provides prediction measure ensembleforge estimation estimator event precise error bands particle physics tutorial appendix methods johann brehmer felix kling irina espejo kyle cranmer under construction instead using single neural network estimate likelihood ratio such us reliable well class ml automates process currently only supports sally training object very similar functions mlforge particular train simultaneously trainall save files evaluation evaluate similarly individual networks lets stick different ways average advantage direct based scores expected since estimates nonlinearity info calculation amplifies any calculating approach computationally not feasible default uses here just
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Ensemble methods</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="MadMiner-particle-physics-tutorial">MadMiner particle physics tutorial<a class="anchor-link" href="#MadMiner-particle-physics-tutorial"> </a></h1><h1 id="Appendix-2:-Ensemble-methods">Appendix 2: Ensemble methods<a class="anchor-link" href="#Appendix-2:-Ensemble-methods"> </a></h1><p>Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer 2018-2019</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="(UNDER-CONSTRUCTION)">(UNDER CONSTRUCTION)<a class="anchor-link" href="#(UNDER-CONSTRUCTION)"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Instead of using a single neural network to estimate the likelihood ratio, score, or Fisher information, we can use an ensemble of such estimators. That provides us with a more reliable mean prediction as well as a measure of the uncertainty. The class <code>madminer.ml.EnsembleForge</code> automates this process. Currently, it only supports SALLY estimators:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">estimators</span> <span class="o">=</span> <span class="p">[</span><span class="n">ScoreEstimator</span><span class="p">(</span><span class="n">n_hidden</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,))</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">)]</span>
+
+<span class="n">ensemble</span> <span class="o">=</span> <span class="n">Ensemble</span><span class="p">(</span><span class="n">estimators</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Training">Training<a class="anchor-link" href="#Training"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The <code>EnsembleForge</code> object has very similar functions as <code>MLForge</code>. In particular, we can train all estimators simultaneously with <code>train_all()</code> and save the ensemble to files:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">ensemble</span><span class="o">.</span><span class="n">train_all</span><span class="p">(</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;sally&#39;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;data/samples/x_train.npy&#39;</span><span class="p">,</span>
+    <span class="n">t_xz</span><span class="o">=</span><span class="s1">&#39;data/samples/t_xz_train.npy&#39;</span><span class="p">,</span>
+    <span class="n">n_epochs</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">ensemble</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;models/sally_ensemble&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Evaluation">Evaluation<a class="anchor-link" href="#Evaluation"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We can evaluate the ensemble similarly to the individual networks. Let's stick to the estimation of the Fisher information. There are two different ways to take the ensemble average:</p>
+<ul>
+<li><code>mode='information'</code>: We can calculate the Fisher information for each estimator in the ensemble, and then take the mean and the covariance over the ensemble. This has the advantage that it provides a direct measure of the uncertainty of the prediction.</li>
+<li><code>mode='score'</code>: We can calculate the score for each event and estimator, take the ensemble mean for the score of each event, and then calculate the Fisher information based on the mean scores. This is expected to be more precise (since the score estimates will be more precise, and the nonlinearity in the Fisher info calculation amplifies any error in the score estimation). But calculating the covariance in this approach is computationally not feasible, so there will be no error bands.</li>
+</ul>
+<p>By default, MadMiner uses the 'score' mode. Here we will use the 'information' mode just to show the nice uncertainty bands we get.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fisher</span> <span class="o">=</span> <span class="n">FisherInformation</span><span class="p">(</span><span class="s1">&#39;data/madminer_example_shuffled.h5&#39;</span><span class="p">)</span>
+
+<span class="n">fisher_information_mean</span><span class="p">,</span> <span class="n">fisher_information_covariance</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">calculate_fisher_information_full_detector</span><span class="p">(</span>
+    <span class="n">theta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+    <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/sally_ensemble&#39;</span><span class="p">,</span>
+    <span class="n">luminosity</span><span class="o">=</span><span class="mf">3000000.</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;information&#39;</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The covariance can be propagated to the Fisher distance contour plot easily:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">plot_fisher_information_contours_2d</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">fisher_information_mean</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">fisher_information_covariance</span><span class="p">],</span>
+    <span class="nb">xrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">yrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    

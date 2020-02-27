@@ -1,0 +1,2802 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+
+  <title>Appendix</title>
+  <meta name="description" content="        Appendix    MadMiner particle physics tutorial Appendix 1: Adding systematic uncertainties Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranme...">
+
+  <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html">
+  <link rel="alternate" type="application/rss+xml" title="MadMiner Tutorial" href="https://cranmer.github.io/madminer-tutorial/feed.xml">
+
+  <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html" />
+<meta property="og:type"        content="article" />
+<meta property="og:title"       content="Appendix" />
+<meta property="og:description" content="        Appendix    MadMiner particle physics tutorial Appendix 1: Adding systematic uncertainties Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranme..." />
+<meta property="og:image"       content="https://iris-hep.org/assets/logos/madminer-square.png" />
+
+<meta name="twitter:card" content="summary">
+
+
+  <script type="application/ld+json">
+  {
+  "@context": "http://schema.org",
+  "@type": "NewsArticle",
+  "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html",
+  "headline": "Appendix",
+  "datePublished": "2020-02-27T10:10:39-05:00",
+  "dateModified": "2020-02-27T10:10:39-05:00",
+  "description": "        Appendix    MadMiner particle physics tutorial Appendix 1: Adding systematic uncertainties Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranme...",
+  "author": {
+    "@type": "Person",
+    "name": "Kyle Cranmer,"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Data 100 at UC Berkeley",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cranmer.github.io/madminer-tutorial",
+      "width": 60,
+      "height": 60
+    }
+  },
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://cranmer.github.io/madminer-tutorial",
+    "height": 60,
+    "width": 60
+  }
+}
+
+  </script>
+  <link rel="stylesheet" href="/madminer-tutorial/assets/css/styles.css">
+
+  <!-- <link rel="manifest" href="/manifest.json"> -->
+  <!-- <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#efae0a"> -->
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+  <meta name="theme-color" content="#233947">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" type="image/x-icon" href="/madminer-tutorial/images/logo/favicon.ico">
+
+  <!-- MathJax Config -->
+  <!-- Allow inline math using $ and automatically break long math lines -->
+<!-- (mostly) copied from nbconvert configuration -->
+<!-- https://github.com/jupyter/nbconvert/blob/master/nbconvert/templates/html/mathjax.tpl -->
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true,
+        processEnvironments: true
+    },
+    // Center justify equations in code and markdown cells. Elsewhere
+    // we use CSS to left justify single line equations in code cells.
+    displayAlign: 'center',
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}},
+        linebreaks: { automatic: true },
+    },
+    
+});
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS_HTML' async></script>
+
+
+  <!-- DOM updating function -->
+  <script src="/madminer-tutorial/assets/js/page/dom-update.js"></script>
+
+  <!-- Selectors for elements on the page -->
+  <script src="/madminer-tutorial/assets/js/page/documentSelectors.js"></script>
+
+  <!-- Define some javascript variables that will be useful in other javascript -->
+  <script>
+    const site_basename = '/madminer-tutorial';
+  </script>
+
+  <!-- Add AnchorJS to let headers be linked -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.2.0/anchor.min.js" async></script>
+  <script src="/madminer-tutorial/assets/js/page/anchors.js" async></script>
+
+  <!-- Include Turbolinks to make page loads fast -->
+  <!-- https://github.com/turbolinks/turbolinks -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/turbolinks/5.2.0/turbolinks.js" async></script>
+  <meta name="turbolinks-cache-control" content="no-cache">
+
+  <!-- Load nbinteract for widgets -->
+  
+
+  <!-- Load Thebelab for interactive widgets -->
+  <!-- Include Thebelab for interactive code if it's enabled -->
+
+
+<!-- Display Thebelab button in each code cell -->
+<script>
+/**
+ * Set up thebelab button for code blocks
+ */
+
+const thebelabCellButton = id =>
+  `<a id="thebelab-cell-button-${id}" class="btn thebebtn o-tooltip--left" data-tooltip="Interactive Mode">
+    <img src="/madminer-tutorial/assets/images/edit-button.svg" alt="Start thebelab interactive mode">
+  </a>`
+
+
+const addThebelabButtonToCodeCells =  () => {
+
+  const codeCells = document.querySelectorAll('div.input_area > div.highlight:not(.output) pre')
+  codeCells.forEach((codeCell, index) => {
+    const id = codeCellId(index)
+    codeCell.setAttribute('id', id)
+    if (document.getElementById("thebelab-cell-button-" + id) == null) {
+      codeCell.insertAdjacentHTML('afterend', thebelabCellButton(id));
+    }
+  })
+}
+
+initFunction(addThebelabButtonToCodeCells);
+</script>
+
+
+<script src="https://unpkg.com/thebelab@latest/lib/index.js" async></script>
+<script>
+    /**
+     * Add attributes to Thebelab blocks
+     */
+
+    const initThebelab = () => {
+        const addThebelabToCodeCells = () => {
+            console.log("Adding thebelab to code cells...");
+            // If Thebelab hasn't loaded, wait a bit and try again. This
+            // happens because we load ClipboardJS asynchronously.
+            if (window.thebelab === undefined) {
+                setTimeout(addThebelabToCodeCells, 250)
+            return
+            }
+
+            // If we already detect a Thebelab cell, don't re-run
+            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
+                return;
+            }
+
+            // Find all code cells, replace with Thebelab interactive code cells
+            const codeCells = document.querySelectorAll('.input_area pre')
+            codeCells.forEach((codeCell, index) => {
+                const id = codeCellId(index)
+
+                // Clean up the language to make it work w/ CodeMirror and add it to the cell
+                dataLanguage = ""
+                dataLanguage = detectLanguage(dataLanguage);
+                codeCell.setAttribute('data-language', dataLanguage)
+                codeCell.setAttribute('data-executable', 'true')
+
+                // If the code cell is hidden, show it
+                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
+                if (inputCheckbox !== null) {
+                    setCodeCellVisibility(inputCheckbox, 'visible');
+                }
+            });
+
+            // Remove the event listener from the page so keyboard press doesn't
+            // Change page
+            document.removeEventListener('keydown', initPageNav)
+            keyboardListener = false;
+
+            // Init thebelab
+            thebelab.bootstrap();
+
+            // Remove copy buttons since they won't work anymore
+            const copyAndThebeButtons = document.querySelectorAll('.copybtn, .thebebtn')
+            copyAndThebeButtons.forEach((button, index) => {
+                button.remove();
+            });
+
+            // Remove outputs since they'll be stale
+            const outputs = document.querySelectorAll('.output *, .output')
+            outputs.forEach((output, index) => {
+                output.remove();
+            });
+
+            // Find any cells with an initialization tag and ask ThebeLab to run them when ready
+            var thebeInitCells = document.querySelectorAll('div.tag_thebelab-init');
+            thebeInitCells.forEach((cell) => {
+                console.log("Initializing ThebeLab with cell: " + cell.id);
+                cell.querySelector('.thebelab-run-button').click();
+            });
+        }
+
+        // Add event listener for the function to modify code cells
+        const thebelabButtons = document.querySelectorAll('[id^=thebelab], [id$=thebelab]')
+        thebelabButtons.forEach((thebelabButton,index) => {
+            if (thebelabButton === null) {
+                setTimeout(initThebelab, 250)
+                return
+            };
+            thebelabButton.addEventListener('click', addThebelabToCodeCells);
+        });
+    }
+
+    // Initialize Thebelab
+    initFunction(initThebelab);
+
+// Helper function to munge the language name
+var detectLanguage = (language) => {
+    if (language.indexOf('python') > -1) {
+        language = "python";
+    }
+    return language;
+}
+</script>
+
+
+
+  <!-- Load the auto-generating TOC (non-async otherwise the TOC won't load w/ turbolinks) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tocbot/4.8.1/tocbot.min.js" async></script>
+  <script src="/madminer-tutorial/assets/js/page/tocbot.js"></script>
+
+  <!-- Google analytics -->
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id="></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '');
+</script>
+
+
+
+  <!-- Clipboard copy button -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" async></script>
+
+  <!-- Load custom website scripts -->
+  <script src="/madminer-tutorial/assets/js/scripts.js" async></script>
+
+  <!-- Load custom user CSS and JS  -->
+  <script src="/madminer-tutorial/assets/custom/custom.js" async></script>
+  <link rel="stylesheet" href="/madminer-tutorial/assets/custom/custom.css">
+
+  <!-- Update interact links w/ REST param, is defined in includes so we can use templates -->
+  
+
+  <!-- Lunr search code - will only be executed on the /search page -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.3.6/lunr.min.js" async></script>
+  <script>var initQuery = function() {
+  // See if we have a search box
+  var searchInput = document.querySelector('input#lunr_search');
+  if (searchInput === null) {
+    return;
+  }
+
+  // Function to parse our lunr cache
+  var idx = lunr(function () {
+    this.field('title')
+    this.field('excerpt')
+    this.field('categories')
+    this.field('tags')
+    this.ref('id')
+
+    this.pipeline.remove(lunr.trimmer)
+
+    for (var item in store) {
+      this.add({
+        title: store[item].title,
+        excerpt: store[item].excerpt,
+        categories: store[item].categories,
+        tags: store[item].tags,
+        id: item
+      })
+    }
+  });
+
+  // Run search upon keyup
+  searchInput.addEventListener('keyup', function () {
+    var resultdiv = document.querySelector('#results');
+    var query = document.querySelector("input#lunr_search").value.toLowerCase();
+    var result =
+      idx.query(function (q) {
+        query.split(lunr.tokenizer.separator).forEach(function (term) {
+          q.term(term, { boost: 100 })
+          if(query.lastIndexOf(" ") != query.length-1){
+            q.term(term, {  usePipeline: false, wildcard: lunr.Query.wildcard.TRAILING, boost: 10 })
+          }
+          if (term != ""){
+            q.term(term, {  usePipeline: false, editDistance: 1, boost: 1 })
+          }
+        })
+      });
+
+      // Empty the results div
+      while (resultdiv.firstChild) {
+        resultdiv.removeChild(resultdiv.firstChild);
+      }
+
+    resultdiv.insertAdjacentHTML('afterbegin', '<p class="results__found">'+result.length+' Result(s) found</p>');
+    for (var item in result) {
+      var ref = result[item].ref;
+      if(store[ref].teaser){
+        var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<div class="archive__item-teaser">'+
+                '<img src="'+store[ref].teaser+'" alt="">'+
+              '</div>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      else{
+    	  var searchitem =
+          '<div class="list__item">'+
+            '<article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">'+
+              '<h2 class="archive__item-title" itemprop="headline">'+
+                '<a href="'+store[ref].url+'" rel="permalink">'+store[ref].title+'</a>'+
+              '</h2>'+
+              '<p class="archive__item-excerpt" itemprop="description">'+store[ref].excerpt.split(" ").splice(0,20).join(" ")+'...</p>'+
+            '</article>'+
+          '</div>';
+      }
+      resultdiv.insertAdjacentHTML('beforeend', searchitem);
+    }
+  });
+};
+
+initFunction(initQuery);
+</script>
+
+  <!-- Load JS that depends on site variables -->
+  <script src="/madminer-tutorial/assets/js/page/copy-button.js" async></script>
+
+  <!-- Hide cell code -->
+  <script src="/madminer-tutorial/assets/js/page/hide-cell.js" async></script>
+
+  <!-- Printing the screen -->
+  <!-- Include nbinteract for interactive widgets -->
+<script src="https://printjs-4de6.kxcdn.com/print.min.js" async></script>
+<script>
+printContent = () => {
+    // MathJax displays a second version of any math for assistive devices etc.
+    // This prevents double-rendering in the PDF output.
+    var ignoreAssistList = [];
+    assistives = document.querySelectorAll('.MathJax_Display span.MJX_Assistive_MathML').forEach((element, index) => {
+        var thisId = 'MathJax-assistive-' + index.toString();
+        element.setAttribute('id', thisId);
+        ignoreAssistList.push(thisId)
+    });
+
+    // Print the actual content object
+    printJS({
+        printable: 'textbook_content',
+        type: 'html',
+        css: "/madminer-tutorial/assets/css/styles.css",
+        style: "#textbook_content {padding-top: 40px};",
+        scanStyles: false,
+        targetStyles: ["*"],
+        ignoreElements: ignoreAssistList,
+        documentTitle: "Made with Jupyter Book"
+    })
+};
+
+initPrint = () => {
+    document.querySelector('#interact-button-print').addEventListener('click', printContent)
+}
+
+initFunction(initPrint)
+</script>
+
+</head>
+
+  <body>
+    <!-- Include the ThebeLab config so it gets reloaded on each page -->
+    <script type="text/x-thebe-config">{
+    requestKernel: true,
+    binderOptions: {
+    repo: "YOUR-ORG/YOUR-REPO",
+    ref: "gh-pages",
+    },
+    codeMirrorConfig: {
+    theme: "abcdef",
+    mode: "python"
+    },
+    kernelOptions: {
+    kernelName: "python2",
+    path: "content/tutorial_particle_physics"
+    }
+}
+</script>
+
+    <!-- .js-show-sidebar shows sidebar by default -->
+    <div id="js-textbook" class="c-textbook js-show-sidebar">
+      
+
+
+
+<nav id="js-sidebar" class="c-textbook__sidebar">
+  <a href="https://github.com/johannbrehmer/madminer"><img src="https://iris-hep.org/assets/logos/madminer-square.png" class="textbook_logo" id="sidebar-logo" alt="textbook logo" data-turbolinks-permanent/></a>
+  <h2 class="c-sidebar__title">MadMiner Tutorial</h2>
+  <ul class="c-sidebar__chapters">
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/intro">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/intro.html"
+        >
+          
+          Introduction
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+        <li class="c-sidebar__divider"></li>
+        
+      
+      
+        <li><h2 class="c-sidebar__title">MadMiner Tutorial</li>
+        
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/preliminaries">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/preliminaries.html"
+        >
+          
+          Preliminaries
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/tutorial_particle_physics/1_setup">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/tutorial_particle_physics/1_setup.html"
+        >
+          
+          Define process to study
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/parton_or_delphes">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/parton_or_delphes.html"
+        >
+          
+          Create training data
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/set_mg_dir">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/set_mg_dir.html"
+              >
+                
+                Set MadGraph Directory
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/2a_parton_level_analysis">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/2a_parton_level_analysis.html"
+              >
+                
+                Parton Level
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/2b_delphes_level_analysis">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/2b_delphes_level_analysis.html"
+              >
+                
+                With Delphes
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/choose_surrogate">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/choose_surrogate.html"
+        >
+          
+          Train model
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/3a_likelihood_ratio">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/3a_likelihood_ratio.html"
+              >
+                
+                Likelihood Ratio
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/3b_score">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/3b_score.html"
+              >
+                
+                Score
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/3c_likelihood">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/3c_likelihood.html"
+              >
+                
+                Likelihood
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/statistics">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/statistics.html"
+        >
+          
+          Statistical Analysis
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/4a_limits">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/4a_limits.html"
+              >
+                
+                Limits on EFT parameters
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/4b_fisher_information">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/4b_fisher_information.html"
+              >
+                
+                Fisher Information
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/4c_information_geometry">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/4c_information_geometry.html"
+              >
+                
+                Information Geometry
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/tutorial_particle_physics/A1_systematic_uncertainties">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
+        >
+          
+          Appendix
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+        
+
+        
+
+        <ul class="c-sidebar__sections">
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/A1_systematic_uncertainties">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
+              >
+                
+                Appendix
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/A2_ensemble_methods">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/A2_ensemble_methods.html"
+              >
+                
+                Ensemble methods
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/tutorial_particle_physics/A3_reweighting_existing_samples">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/tutorial_particle_physics/A3_reweighting_existing_samples.html"
+              >
+                
+                Reweighting existing samples
+              </a>
+            </li>
+            
+            
+          
+        </ul>
+      
+
+      
+    
+  </ul>
+  <p class="sidebar_footer">Powered by <a href="https://jupyterbook.org">Jupyter Book</a></p>
+</nav>
+
+      
+      <div class="c-topbar" id="top-navbar">
+  <!-- We show the sidebar by default so we use .is-active -->
+  <div class="c-topbar__buttons">
+    <button
+      id="js-sidebar-toggle"
+      class="hamburger hamburger--arrowalt is-active"
+    >
+      <span class="hamburger-box">
+        <span class="hamburger-inner"></span>
+      </span>
+    </button>
+    <div class="buttons">
+<div class="download-buttons-dropdown">
+    <button id="dropdown-button-trigger" class="interact-button"><img src="/madminer-tutorial/assets/images/download-solid.svg" alt="Download" /></button>
+    <div class="download-buttons">
+        <a href="/madminer-tutorial/content/tutorial_particle_physics/A1_systematic_uncertainties.ipynb" download>
+        <button id="interact-button-download" class="interact-button">.ipynb</button>
+        </a>
+        
+        <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
+    </div>
+</div>
+
+
+  <button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+  
+  
+  
+
+
+</div>
+
+  </div>
+  <!-- Empty sidebar placeholder that we'll auto-fill with javascript -->
+  <aside class="sidebar__right">
+    <header><h4 class="nav__title"><img src="/madminer-tutorial/assets/images/list-solid.svg" alt="Search" />   On this page</h4></header>
+    <nav class="onthispage">
+    </nav>
+  </aside>
+  <a href="/madminer-tutorial/search.html" class="topbar-right-button" id="search-button">
+    <img src="/madminer-tutorial/assets/images/search-solid.svg" alt="Search" />
+  </a>
+</div>
+
+      <main class="c-textbook__page" tabindex="-1">
+            <div class="c-textbook__content" id="textbook_content">
+                  <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">Appendix</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="MadMiner-particle-physics-tutorial">MadMiner particle physics tutorial<a class="anchor-link" href="#MadMiner-particle-physics-tutorial"> </a></h1><h1 id="Appendix-1:-Adding-systematic-uncertainties">Appendix 1: Adding systematic uncertainties<a class="anchor-link" href="#Appendix-1:-Adding-systematic-uncertainties"> </a></h1><p>Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer 2018-2019</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>In this tutorial we'll explain how to add systematic uncertainties to the MadMiner workflow. Note that the treatment of systematic uncertainties changed substantially with <code>MadMiner v0.6</code>, including changes to the MadMiner file specification. Please don't use files from older MadMiner versions with systematic uncertainties.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Preparations">Preparations<a class="anchor-link" href="#Preparations"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Before you execute this notebook, make sure you have running installations of MadGraph, Pythia, and Delphes.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">from</span> <span class="nn">madminer.core</span> <span class="kn">import</span> <span class="n">MadMiner</span>
+<span class="kn">from</span> <span class="nn">madminer.lhe</span> <span class="kn">import</span> <span class="n">LHEReader</span>
+<span class="kn">from</span> <span class="nn">madminer.sampling</span> <span class="kn">import</span> <span class="n">SampleAugmenter</span>
+<span class="kn">from</span> <span class="nn">madminer</span> <span class="kn">import</span> <span class="n">sampling</span>
+<span class="kn">from</span> <span class="nn">madminer.ml</span> <span class="kn">import</span> <span class="n">ScoreEstimator</span>
+<span class="kn">from</span> <span class="nn">madminer.fisherinformation</span> <span class="kn">import</span> <span class="n">FisherInformation</span><span class="p">,</span> <span class="n">profile_information</span><span class="p">,</span> <span class="n">project_information</span>
+<span class="kn">from</span> <span class="nn">madminer.plotting</span> <span class="kn">import</span> <span class="n">plot_systematics</span><span class="p">,</span> <span class="n">plot_fisher_information_contours_2d</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Please enter here the path to your MG5 root directory.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">mg_dir</span> <span class="o">=</span> <span class="s1">&#39;/Users/johannbrehmer/work/projects/madminer/MG5_aMC_v2_6_4&#39;</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>MadMiner uses the Python <code>logging</code> module to provide additional information and debugging output. You can choose how much of this output you want to see by switching the level in the following lines to <code>logging.DEBUG</code> or <code>logging.WARNING</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># MadMiner output</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="n">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)-5.5s</span><span class="s1"> </span><span class="si">%(name)-20.20s</span><span class="s1"> </span><span class="si">%(levelname)-7.7s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">datefmt</span><span class="o">=</span><span class="s1">&#39;%H:%M&#39;</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">DEBUG</span>
+<span class="p">)</span>
+
+<span class="c1"># Output of all other modules (e.g. matplotlib)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">loggerDict</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">&quot;madminer&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="1.-Parameters-and-benchmarks">1. Parameters and benchmarks<a class="anchor-link" href="#1.-Parameters-and-benchmarks"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>We'll just load the MadMiner setup from the first part of this tutorial:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">miner</span> <span class="o">=</span> <span class="n">MadMiner</span><span class="p">()</span>
+<span class="n">miner</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;data/setup.h5&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>15:34 madminer.core        INFO    Found 2 parameters:
+15:34 madminer.core        INFO       CWL2 (LHA: dim6 2, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+15:34 madminer.core        INFO       CPWL2 (LHA: dim6 5, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+15:34 madminer.core        INFO    Found 6 benchmarks:
+15:34 madminer.core        INFO       sm: CWL2 = 0.00e+00, CPWL2 = 0.00e+00
+15:34 madminer.core        INFO       w: CWL2 = 15.20, CPWL2 = 0.10
+15:34 madminer.core        INFO       neg_w: CWL2 = -1.54e+01, CPWL2 = 0.20
+15:34 madminer.core        INFO       ww: CWL2 = 0.30, CPWL2 = 15.10
+15:34 madminer.core        INFO       neg_ww: CWL2 = 0.40, CPWL2 = -1.53e+01
+15:34 madminer.core        INFO       morphing_basis_vector_5: CWL2 = -1.68e+01, CPWL2 = -1.72e+01
+15:34 madminer.core        INFO    Found morphing setup with 6 components
+15:34 madminer.core        INFO    Did not find systematics setup.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="2.-Set-up-systematics,-save-settings">2. Set up systematics, save settings<a class="anchor-link" href="#2.-Set-up-systematics,-save-settings"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This is where things become interesting: We want to model systematic uncertainties. The main function is <code>add_systematics()</code>, the keyword <code>effect</code> determines how the effect of the nuisance parameters on the event weights is calculated. For <code>effect="norm"</code>, the nuisance parameter rescales thee overall cross section of one or multiple samples. For <code>effect="pdf"</code>, its effect is calculated with PDF variations. Finally, with <code>effect="scale"</code> scale variations are used.</p>
+<p>Here we consider three nuisance parameters: one for the signal normalization, one for the background normalization, and one for scale uncertainties (which we here assume to be correlated between signal and background).</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">miner</span><span class="o">.</span><span class="n">add_systematics</span><span class="p">(</span><span class="n">effect</span><span class="o">=</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">systematic_name</span><span class="o">=</span><span class="s2">&quot;signal_norm&quot;</span><span class="p">,</span> <span class="n">norm_variation</span><span class="o">=</span><span class="mf">1.1</span><span class="p">)</span>
+<span class="n">miner</span><span class="o">.</span><span class="n">add_systematics</span><span class="p">(</span><span class="n">effect</span><span class="o">=</span><span class="s2">&quot;norm&quot;</span><span class="p">,</span> <span class="n">systematic_name</span><span class="o">=</span><span class="s2">&quot;bkg_norm&quot;</span><span class="p">,</span> <span class="n">norm_variation</span><span class="o">=</span><span class="mf">1.2</span><span class="p">)</span>
+<span class="n">miner</span><span class="o">.</span><span class="n">add_systematics</span><span class="p">(</span><span class="n">effect</span><span class="o">=</span><span class="s2">&quot;scale&quot;</span><span class="p">,</span> <span class="n">systematic_name</span><span class="o">=</span><span class="s2">&quot;scales&quot;</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="s2">&quot;mu&quot;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Again, we save our setup:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">miner</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;data/setup_systematics.h5&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>15:34 madminer.core        INFO    Saving setup (including morphing) to data/setup_systematics.h5
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="3.-Run-MadGraph">3. Run MadGraph<a class="anchor-link" href="#3.-Run-MadGraph"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now it's time to run MadGraph. MadMiner will instruct MadGraph to use its built-in <code>systematics</code> tool to calculate how the event weights change under the scale variation.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">miner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">sample_benchmark</span><span class="o">=</span><span class="s1">&#39;sm&#39;</span><span class="p">,</span>
+    <span class="n">mg_directory</span><span class="o">=</span><span class="n">mg_dir</span><span class="p">,</span>
+    <span class="n">mg_process_directory</span><span class="o">=</span><span class="s1">&#39;./mg_processes/signal_systematics&#39;</span><span class="p">,</span>
+    <span class="n">proc_card_file</span><span class="o">=</span><span class="s1">&#39;cards/proc_card_signal.dat&#39;</span><span class="p">,</span>
+    <span class="n">param_card_template_file</span><span class="o">=</span><span class="s1">&#39;cards/param_card_template.dat&#39;</span><span class="p">,</span>
+    <span class="n">run_card_file</span><span class="o">=</span><span class="s1">&#39;cards/run_card_signal_small.dat&#39;</span><span class="p">,</span>
+    <span class="n">log_directory</span><span class="o">=</span><span class="s1">&#39;logs/signal&#39;</span><span class="p">,</span>
+    <span class="n">python2_override</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">systematics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signal_norm&quot;</span><span class="p">,</span> <span class="s2">&quot;scales&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>15:43 madminer.utils.inter INFO    Generating MadGraph process folder from cards/proc_card_signal.dat at ./mg_processes/signal_systematics
+15:43 madminer.core        INFO    Run 0
+15:43 madminer.core        INFO      Sampling from benchmark: sm
+15:43 madminer.core        INFO      Original run card:       cards/run_card_signal_small.dat
+15:43 madminer.core        INFO      Original Pythia8 card:   None
+15:43 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_0.dat
+15:43 madminer.core        INFO      Copied Pythia8 card:     None
+15:43 madminer.core        INFO      Param card:              /madminer/cards/param_card_0.dat
+15:43 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_0.dat
+15:43 madminer.core        INFO      Log file:                run_0.log
+15:43 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/signal_systematics//madminer/cards/param_card_0.dat, ./mg_processes/signal_systematics//madminer/cards/reweight_card_0.dat
+15:43 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/signal_systematics
+15:49 madminer.core        INFO    Finished running MadGraph! Please check that events were succesfully generated in the following folders:
+
+./mg_processes/signal_systematics/Events/run_01
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">miner</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="n">sample_benchmark</span><span class="o">=</span><span class="s1">&#39;sm&#39;</span><span class="p">,</span>
+    <span class="n">mg_directory</span><span class="o">=</span><span class="n">mg_dir</span><span class="p">,</span>
+    <span class="n">mg_process_directory</span><span class="o">=</span><span class="s1">&#39;./mg_processes/bkg_systematics&#39;</span><span class="p">,</span>
+    <span class="n">proc_card_file</span><span class="o">=</span><span class="s1">&#39;cards/proc_card_background.dat&#39;</span><span class="p">,</span>
+    <span class="n">param_card_template_file</span><span class="o">=</span><span class="s1">&#39;cards/param_card_template.dat&#39;</span><span class="p">,</span>
+    <span class="n">run_card_file</span><span class="o">=</span><span class="s1">&#39;cards/run_card_background.dat&#39;</span><span class="p">,</span>
+    <span class="n">log_directory</span><span class="o">=</span><span class="s1">&#39;logs/background&#39;</span><span class="p">,</span>
+    <span class="n">python2_override</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">systematics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bkg_norm&quot;</span><span class="p">,</span> <span class="s2">&quot;scales&quot;</span><span class="p">],</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>15:49 madminer.utils.inter INFO    Generating MadGraph process folder from cards/proc_card_background.dat at ./mg_processes/bkg_systematics
+15:49 madminer.core        INFO    Run 0
+15:49 madminer.core        INFO      Sampling from benchmark: sm
+15:49 madminer.core        INFO      Original run card:       cards/run_card_background.dat
+15:49 madminer.core        INFO      Original Pythia8 card:   None
+15:49 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_0.dat
+15:49 madminer.core        INFO      Copied Pythia8 card:     None
+15:49 madminer.core        INFO      Param card:              /madminer/cards/param_card_0.dat
+15:49 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_0.dat
+15:49 madminer.core        INFO      Log file:                run_0.log
+15:49 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/bkg_systematics//madminer/cards/param_card_0.dat, ./mg_processes/bkg_systematics//madminer/cards/reweight_card_0.dat
+15:49 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/bkg_systematics
+17:18 madminer.core        INFO    Finished running MadGraph! Please check that events were succesfully generated in the following folders:
+
+./mg_processes/bkg_systematics/Events/run_01
+
+
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="4.-Load-events-from-LHE-file">4. Load events from LHE file<a class="anchor-link" href="#4.-Load-events-from-LHE-file"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When adding LHE or Delphes files, use the <code>systematics</code> keyword to list which systematic uncertainties apply to which sample:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">lhe</span> <span class="o">=</span> <span class="n">LHEReader</span><span class="p">(</span><span class="s1">&#39;data/setup_systematics.h5&#39;</span><span class="p">)</span>
+
+<span class="n">lhe</span><span class="o">.</span><span class="n">add_sample</span><span class="p">(</span>
+    <span class="n">lhe_filename</span><span class="o">=</span><span class="s1">&#39;mg_processes/signal_systematics/Events/run_01/unweighted_events.lhe.gz&#39;</span><span class="p">,</span>
+    <span class="n">sampled_from_benchmark</span><span class="o">=</span><span class="s1">&#39;sm&#39;</span><span class="p">,</span>
+    <span class="n">is_background</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">k_factor</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span>
+    <span class="n">systematics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;signal_norm&quot;</span><span class="p">,</span> <span class="s2">&quot;scales&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">lhe</span><span class="o">.</span><span class="n">add_sample</span><span class="p">(</span>
+    <span class="n">lhe_filename</span><span class="o">=</span><span class="s1">&#39;mg_processes/bkg_systematics/Events/run_01/unweighted_events.lhe.gz&#39;</span><span class="p">,</span>
+    <span class="n">sampled_from_benchmark</span><span class="o">=</span><span class="s1">&#39;sm&#39;</span><span class="p">,</span>
+    <span class="n">is_background</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="n">k_factor</span><span class="o">=</span><span class="mf">1.1</span><span class="p">,</span>
+    <span class="n">systematics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;bkg_norm&quot;</span><span class="p">,</span> <span class="s2">&quot;scales&quot;</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>11:11 madminer.utils.inter DEBUG   HDF5 file does not contain is_reference field.
+11:11 madminer.lhe         DEBUG   Adding event sample mg_processes/signal_systematics/Events/run_01/unweighted_events.lhe.gz
+11:11 madminer.lhe         DEBUG   Adding event sample mg_processes/bkg_systematics/Events/run_01/unweighted_events.lhe.gz
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The next steps are unaffected by systematics.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">lhe</span><span class="o">.</span><span class="n">set_smearing</span><span class="p">(</span>
+    <span class="n">pdgids</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">21</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">6</span><span class="p">],</span>   <span class="c1"># Partons giving rise to jets</span>
+    <span class="n">energy_resolution_abs</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
+    <span class="n">energy_resolution_rel</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">pt_resolution_abs</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+    <span class="n">pt_resolution_rel</span><span class="o">=</span><span class="bp">None</span><span class="p">,</span>
+    <span class="n">eta_resolution_abs</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">eta_resolution_rel</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
+    <span class="n">phi_resolution_abs</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span>
+    <span class="n">phi_resolution_rel</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">lhe</span><span class="o">.</span><span class="n">add_observable</span><span class="p">(</span>
+    <span class="s1">&#39;pt_j1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;j[0].pt&#39;</span><span class="p">,</span>
+    <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="n">default</span><span class="o">=</span><span class="mf">0.</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">lhe</span><span class="o">.</span><span class="n">add_observable</span><span class="p">(</span>
+    <span class="s1">&#39;delta_phi_jj&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;j[0].deltaphi(j[1]) * (-1. + 2.*float(j[0].eta &gt; j[1].eta))&#39;</span><span class="p">,</span>
+    <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">lhe</span><span class="o">.</span><span class="n">add_observable</span><span class="p">(</span>
+    <span class="s1">&#39;met&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;met.pt&#39;</span><span class="p">,</span>
+    <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">lhe</span><span class="o">.</span><span class="n">add_cut</span><span class="p">(</span><span class="s1">&#39;(a[0] + a[1]).m &gt; 122.&#39;</span><span class="p">)</span>
+<span class="n">lhe</span><span class="o">.</span><span class="n">add_cut</span><span class="p">(</span><span class="s1">&#39;(a[0] + a[1]).m &lt; 128.&#39;</span><span class="p">)</span>
+<span class="n">lhe</span><span class="o">.</span><span class="n">add_cut</span><span class="p">(</span><span class="s1">&#39;pt_j1 &gt; 30.&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>11:11 madminer.lhe         DEBUG   Adding optional observable pt_j1 = j[0].pt with default 0.0
+11:11 madminer.lhe         DEBUG   Adding required observable delta_phi_jj = j[0].deltaphi(j[1]) * (-1. + 2.*float(j[0].eta &gt; j[1].eta))
+11:11 madminer.lhe         DEBUG   Adding required observable met = met.pt
+11:11 madminer.lhe         DEBUG   Adding cut (a[0] + a[1]).m &gt; 122.
+11:11 madminer.lhe         DEBUG   Adding cut (a[0] + a[1]).m &lt; 128.
+11:11 madminer.lhe         DEBUG   Adding cut pt_j1 &gt; 30.
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">lhe</span><span class="o">.</span><span class="n">analyse_samples</span><span class="p">()</span>
+<span class="n">lhe</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;data/lhe_data_systematics.h5&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>11:11 madminer.lhe         INFO    Analysing LHE sample mg_processes/signal_systematics/Events/run_01/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with systematics signal_norm, scales
+11:11 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
+11:11 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/signal_systematics/Events/run_01/unweighted_events.lhe.gz
+11:11 madminer.utils.inter DEBUG   Systematics setup: OrderedDict([(u&#39;signal_norm&#39;, (u&#39;norm&#39;, 1.1)), (u&#39;scales&#39;, (u&#39;scale&#39;, &#39;mu&#39;, &#39;0.5,1.0,2.0&#39;))])
+11:11 madminer.utils.inter DEBUG   3 weight groups
+11:11 madminer.utils.inter DEBUG   Extracting nuisance parameter information for systematic signal_norm
+11:11 madminer.utils.inter DEBUG   Extracting nuisance parameter information for systematic scales
+11:11 madminer.utils.inter DEBUG   New weight group: Central scale variation
+11:11 madminer.utils.inter DEBUG   Weight group identified as scale variation
+11:11 root                 DEBUG   Found scale variation weight 1 / muf = 0.5, mur = 0.5
+11:11 root                 DEBUG   Found scale variation weight 2 / muf = 1.0, mur = 0.5
+11:11 root                 DEBUG   Found scale variation weight 3 / muf = 2.0, mur = 0.5
+11:11 root                 DEBUG   Found scale variation weight 4 / muf = 0.5, mur = 1.0
+11:11 root                 DEBUG   Found scale variation weight 5 / muf = 2.0, mur = 1.0
+11:11 root                 DEBUG   Found scale variation weight 6 / muf = 0.5, mur = 2.0
+11:11 root                 DEBUG   Found scale variation weight 7 / muf = 1.0, mur = 2.0
+11:11 root                 DEBUG   Found scale variation weight 8 / muf = 2.0, mur = 2.0
+11:11 madminer.utils.inter DEBUG   New weight group: NNPDF23_lo_as_0130_qed
+11:11 madminer.utils.inter DEBUG   New weight group: mg_reweighting
+11:11 madminer.utils.inter DEBUG   New weight group: Central scale variation
+11:11 madminer.utils.inter DEBUG   Weight group identified as scale variation
+11:11 root                 DEBUG   Found scale variation weight 1 / muf = 0.5, mur = 0.5
+11:11 madminer.utils.inter DEBUG   New weight group: NNPDF23_lo_as_0130_qed
+11:11 madminer.utils.inter DEBUG   New weight group: mg_reweighting
+11:11 madminer.lhe         DEBUG   systematics_dict: OrderedDict([(u&#39;signal_norm&#39;, {u&#39;signal_norm_nuisance_param_0&#39;: ((u&#39;signal_norm_nuisance_param_0_benchmark_0&#39;, None), (None, None), 1.1)}), (u&#39;scales&#39;, {u&#39;scales_nuisance_param_0&#39;: ((u&#39;scales_nuisance_param_0_benchmark_0&#39;, &#39;8&#39;), (u&#39;scales_nuisance_param_0_benchmark_1&#39;, &#39;1&#39;), None)})])
+11:11 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/signal_systematics/Events/run_01/unweighted_events.lhe.gz
+11:11 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
+11:11 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
+11:11 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:11 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &gt; 122.
+11:12 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &lt; 128.
+11:12 madminer.utils.inter INFO      9858 / 10000 events pass cut pt_j1 &gt; 30.
+11:12 madminer.utils.inter INFO      9858 events pass all cuts/efficiencies
+11:12 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;, u&#39;signal_norm_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_1&#39;] in LHE file
+11:12 madminer.lhe         DEBUG   Found 9858 events
+11:12 madminer.lhe         INFO    Analysing LHE sample mg_processes/bkg_systematics/Events/run_01/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with systematics bkg_norm, scales
+11:12 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
+11:12 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/bkg_systematics/Events/run_01/unweighted_events.lhe.gz
+11:12 madminer.utils.inter DEBUG   Systematics setup: OrderedDict([(u&#39;bkg_norm&#39;, (u&#39;norm&#39;, 1.2)), (u&#39;scales&#39;, (u&#39;scale&#39;, &#39;mu&#39;, &#39;0.5,1.0,2.0&#39;))])
+11:12 madminer.utils.inter DEBUG   3 weight groups
+11:12 madminer.utils.inter DEBUG   Extracting nuisance parameter information for systematic bkg_norm
+11:12 madminer.utils.inter DEBUG   Extracting nuisance parameter information for systematic scales
+11:12 madminer.utils.inter DEBUG   New weight group: Central scale variation
+11:12 madminer.utils.inter DEBUG   Weight group identified as scale variation
+11:12 root                 DEBUG   Found scale variation weight 1 / muf = 0.5, mur = 0.5
+11:12 root                 DEBUG   Found scale variation weight 2 / muf = 1.0, mur = 0.5
+11:12 root                 DEBUG   Found scale variation weight 3 / muf = 2.0, mur = 0.5
+11:12 root                 DEBUG   Found scale variation weight 4 / muf = 0.5, mur = 1.0
+11:12 root                 DEBUG   Found scale variation weight 5 / muf = 2.0, mur = 1.0
+11:12 root                 DEBUG   Found scale variation weight 6 / muf = 0.5, mur = 2.0
+11:12 root                 DEBUG   Found scale variation weight 7 / muf = 1.0, mur = 2.0
+11:12 root                 DEBUG   Found scale variation weight 8 / muf = 2.0, mur = 2.0
+11:12 madminer.utils.inter DEBUG   New weight group: NNPDF23_lo_as_0130_qed
+11:12 madminer.utils.inter DEBUG   New weight group: mg_reweighting
+11:12 madminer.utils.inter DEBUG   New weight group: Central scale variation
+11:12 madminer.utils.inter DEBUG   Weight group identified as scale variation
+11:12 root                 DEBUG   Found scale variation weight 1 / muf = 0.5, mur = 0.5
+11:12 madminer.utils.inter DEBUG   New weight group: NNPDF23_lo_as_0130_qed
+11:12 madminer.utils.inter DEBUG   New weight group: mg_reweighting
+11:12 madminer.lhe         DEBUG   systematics_dict: OrderedDict([(u&#39;bkg_norm&#39;, {u&#39;bkg_norm_nuisance_param_0&#39;: ((u&#39;bkg_norm_nuisance_param_0_benchmark_0&#39;, None), (None, None), 1.2)}), (u&#39;scales&#39;, {u&#39;scales_nuisance_param_0&#39;: ((u&#39;scales_nuisance_param_0_benchmark_0&#39;, &#39;8&#39;), (u&#39;scales_nuisance_param_0_benchmark_1&#39;, &#39;1&#39;), None)})])
+11:12 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/bkg_systematics/Events/run_01/unweighted_events.lhe.gz
+11:12 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
+11:12 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
+11:12 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:12 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
+11:13 madminer.utils.inter INFO      50000 / 50000 events pass cut (a[0] + a[1]).m &gt; 122.
+11:13 madminer.utils.inter INFO      50000 / 50000 events pass cut (a[0] + a[1]).m &lt; 128.
+11:13 madminer.utils.inter INFO      47829 / 50000 events pass cut pt_j1 &gt; 30.
+11:13 madminer.utils.inter INFO      47829 events pass all cuts/efficiencies
+11:13 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;, u&#39;bkg_norm_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_1&#39;] in LHE file
+11:13 madminer.lhe         DEBUG   Found 47829 events
+11:13 root                 DEBUG   Merging data extracted from this file with data from previous files
+11:13 root                 DEBUG     Weights for benchmark sm exist in both
+11:13 root                 DEBUG     Weights for benchmark w exist in both
+11:13 root                 DEBUG     Weights for benchmark neg_w exist in both
+11:13 root                 DEBUG     Weights for benchmark ww exist in both
+11:13 root                 DEBUG     Weights for benchmark neg_ww exist in both
+11:13 root                 DEBUG     Weights for benchmark morphing_basis_vector_5 exist in both
+11:13 root                 DEBUG     Weights for benchmark signal_norm_nuisance_param_0_benchmark_0 exist only in previous files
+11:13 root                 DEBUG     Weights for benchmark scales_nuisance_param_0_benchmark_0 exist in both
+11:13 root                 DEBUG     Weights for benchmark scales_nuisance_param_0_benchmark_1 exist in both
+11:13 root                 DEBUG     Weights for benchmark bkg_norm_nuisance_param_0_benchmark_0 exist only in new file
+11:13 madminer.lhe         INFO    Analysed number of events per sampling benchmark:
+11:13 madminer.lhe         INFO      9858 from sm
+11:13 madminer.lhe         INFO      47829 from backgrounds
+11:13 madminer.lhe         DEBUG   Loading HDF5 data from data/setup_systematics.h5 and saving file to data/lhe_data_systematics.h5
+11:13 madminer.lhe         DEBUG   Weight names: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;, u&#39;signal_norm_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_1&#39;, u&#39;bkg_norm_nuisance_param_0_benchmark_0&#39;]
+11:13 madminer.utils.inter DEBUG   HDF5 file does not contain is_reference field.
+11:13 madminer.utils.inter DEBUG   Adding nuisance benchmark bkg_norm_nuisance_param_0_benchmark_0
+11:13 madminer.utils.inter DEBUG   Benchmark morphing_basis_vector_5 already in benchmark_names_phys
+11:13 madminer.utils.inter DEBUG   Benchmark neg_w already in benchmark_names_phys
+11:13 madminer.utils.inter DEBUG   Benchmark neg_ww already in benchmark_names_phys
+11:13 madminer.utils.inter DEBUG   Adding nuisance benchmark scales_nuisance_param_0_benchmark_0
+11:13 madminer.utils.inter DEBUG   Adding nuisance benchmark scales_nuisance_param_0_benchmark_1
+11:13 madminer.utils.inter DEBUG   Adding nuisance benchmark signal_norm_nuisance_param_0_benchmark_0
+11:13 madminer.utils.inter DEBUG   Benchmark sm already in benchmark_names_phys
+11:13 madminer.utils.inter DEBUG   Benchmark w already in benchmark_names_phys
+11:13 madminer.utils.inter DEBUG   Benchmark ww already in benchmark_names_phys
+11:13 madminer.utils.inter DEBUG   Combined benchmark names: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;, u&#39;bkg_norm_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_1&#39;, u&#39;signal_norm_nuisance_param_0_benchmark_0&#39;]
+11:13 madminer.utils.inter DEBUG   Combined is_nuisance: [0 0 0 0 0 0 1 1 1 1]
+11:13 madminer.utils.inter DEBUG   Combined is_reference: [1 0 0 0 0 0 0 0 0 0]
+11:13 madminer.utils.inter DEBUG   Weight names found in event file: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;, u&#39;signal_norm_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_1&#39;, u&#39;bkg_norm_nuisance_param_0_benchmark_0&#39;]
+11:13 madminer.utils.inter DEBUG   Benchmarks found in MadMiner file: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;, u&#39;bkg_norm_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_1&#39;, u&#39;signal_norm_nuisance_param_0_benchmark_0&#39;]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="A-look-at-distributions">A look at distributions<a class="anchor-link" href="#A-look-at-distributions"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The function <code>plot_systematics()</code> makes it easy to check the effect of the various nuisance parameters on a distribution:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span>plot_systematics<span class="o">?</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">plot_systematics</span><span class="p">(</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;data/lhe_data_systematics.h5&#39;</span><span class="p">,</span>
+    <span class="n">theta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">]),</span>
+    <span class="n">observable</span><span class="o">=</span><span class="s2">&quot;pt_j1&quot;</span><span class="p">,</span>
+    <span class="n">obs_label</span><span class="o">=</span><span class="s2">&quot;$p_{T,j}$&quot;</span><span class="p">,</span>
+    <span class="n">obs_range</span><span class="o">=</span><span class="p">(</span><span class="mf">30.</span><span class="p">,</span><span class="mf">400.</span><span class="p">),</span>
+    <span class="n">ratio_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">1.4</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>11:23 madminer.analysis    INFO    Loading data from data/lhe_data_systematics.h5
+11:23 madminer.analysis    INFO    Found 2 parameters
+11:23 madminer.analysis    DEBUG      CWL2 (LHA: dim6 2, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+11:23 madminer.analysis    DEBUG      CPWL2 (LHA: dim6 5, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+11:23 madminer.analysis    INFO    Found 3 nuisance parameters
+11:23 madminer.analysis    DEBUG      signal_norm_nuisance_param_0 ((u&#39;signal_norm&#39;, u&#39;signal_norm_nuisance_param_0_benchmark_0&#39;, None))
+11:23 madminer.analysis    DEBUG      scales_nuisance_param_0 ((u&#39;scales&#39;, u&#39;scales_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_1&#39;))
+11:23 madminer.analysis    DEBUG      bkg_norm_nuisance_param_0 ((u&#39;bkg_norm&#39;, u&#39;bkg_norm_nuisance_param_0_benchmark_0&#39;, None))
+11:23 madminer.analysis    INFO    Found 10 benchmarks, of which 6 physical
+11:23 madminer.analysis    DEBUG      sm: CWL2 = 0.00e+00, CPWL2 = 0.00e+00
+11:23 madminer.analysis    DEBUG      w: CWL2 = 15.20, CPWL2 = 0.10
+11:23 madminer.analysis    DEBUG      neg_w: CWL2 = -1.54e+01, CPWL2 = 0.20
+11:23 madminer.analysis    DEBUG      ww: CWL2 = 0.30, CPWL2 = 15.10
+11:23 madminer.analysis    DEBUG      neg_ww: CWL2 = 0.40, CPWL2 = -1.53e+01
+11:23 madminer.analysis    DEBUG      morphing_basis_vector_5: CWL2 = -1.68e+01, CPWL2 = -1.72e+01
+11:23 madminer.analysis    DEBUG      bkg_norm_nuisance_param_0_benchmark_0: systematics
+11:23 madminer.analysis    DEBUG      scales_nuisance_param_0_benchmark_0: systematics
+11:23 madminer.analysis    DEBUG      scales_nuisance_param_0_benchmark_1: systematics
+11:23 madminer.analysis    DEBUG      signal_norm_nuisance_param_0_benchmark_0: systematics
+11:23 madminer.analysis    INFO    Found 3 observables
+11:23 madminer.analysis    DEBUG      0 pt_j1
+11:23 madminer.analysis    DEBUG      1 delta_phi_jj
+11:23 madminer.analysis    DEBUG      2 met
+11:23 madminer.analysis    INFO    Found 57687 events
+11:23 madminer.analysis    INFO      9858 signal events sampled from benchmark sm
+11:23 madminer.analysis    INFO      47829 background events
+11:23 madminer.analysis    INFO    Found morphing setup with 6 components
+11:23 madminer.analysis    INFO    Found nuisance morphing setup
+11:23 madminer.analysis    DEBUG   Sampling benchmark closest to None: None
+11:23 madminer.analysis    DEBUG   Events per benchmark: [9858.    0.    0.    0.    0.    0.]
+11:23 madminer.plotting    DEBUG   Systematics signal_norm based on 1 nuisance parameters
+11:23 madminer.plotting    DEBUG   Systematics bkg_norm based on 1 nuisance parameters
+11:23 madminer.plotting    DEBUG   Systematics scales based on 1 nuisance parameters
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/tutorial_particle_physics/A1_systematic_uncertainties_30_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">plot_systematics</span><span class="p">(</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;data/lhe_data_systematics.h5&#39;</span><span class="p">,</span>
+    <span class="n">theta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">]),</span>
+    <span class="n">observable</span><span class="o">=</span><span class="s2">&quot;delta_phi_jj&quot;</span><span class="p">,</span>
+    <span class="n">obs_label</span><span class="o">=</span><span class="sa">r</span><span class="s2">&quot;$\Delta\phi$&quot;</span><span class="p">,</span>
+    <span class="n">obs_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.1</span><span class="p">,</span><span class="mf">3.1</span><span class="p">),</span>
+    <span class="n">ratio_range</span><span class="o">=</span><span class="p">(</span><span class="mf">0.7</span><span class="p">,</span><span class="mf">1.4</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>11:24 madminer.analysis    INFO    Loading data from data/lhe_data_systematics.h5
+11:24 madminer.analysis    INFO    Found 2 parameters
+11:24 madminer.analysis    DEBUG      CWL2 (LHA: dim6 2, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+11:24 madminer.analysis    DEBUG      CPWL2 (LHA: dim6 5, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+11:24 madminer.analysis    INFO    Found 3 nuisance parameters
+11:24 madminer.analysis    DEBUG      signal_norm_nuisance_param_0 ((u&#39;signal_norm&#39;, u&#39;signal_norm_nuisance_param_0_benchmark_0&#39;, None))
+11:24 madminer.analysis    DEBUG      scales_nuisance_param_0 ((u&#39;scales&#39;, u&#39;scales_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_1&#39;))
+11:24 madminer.analysis    DEBUG      bkg_norm_nuisance_param_0 ((u&#39;bkg_norm&#39;, u&#39;bkg_norm_nuisance_param_0_benchmark_0&#39;, None))
+11:24 madminer.analysis    INFO    Found 10 benchmarks, of which 6 physical
+11:24 madminer.analysis    DEBUG      sm: CWL2 = 0.00e+00, CPWL2 = 0.00e+00
+11:24 madminer.analysis    DEBUG      w: CWL2 = 15.20, CPWL2 = 0.10
+11:24 madminer.analysis    DEBUG      neg_w: CWL2 = -1.54e+01, CPWL2 = 0.20
+11:24 madminer.analysis    DEBUG      ww: CWL2 = 0.30, CPWL2 = 15.10
+11:24 madminer.analysis    DEBUG      neg_ww: CWL2 = 0.40, CPWL2 = -1.53e+01
+11:24 madminer.analysis    DEBUG      morphing_basis_vector_5: CWL2 = -1.68e+01, CPWL2 = -1.72e+01
+11:24 madminer.analysis    DEBUG      bkg_norm_nuisance_param_0_benchmark_0: systematics
+11:24 madminer.analysis    DEBUG      scales_nuisance_param_0_benchmark_0: systematics
+11:24 madminer.analysis    DEBUG      scales_nuisance_param_0_benchmark_1: systematics
+11:24 madminer.analysis    DEBUG      signal_norm_nuisance_param_0_benchmark_0: systematics
+11:24 madminer.analysis    INFO    Found 3 observables
+11:24 madminer.analysis    DEBUG      0 pt_j1
+11:24 madminer.analysis    DEBUG      1 delta_phi_jj
+11:24 madminer.analysis    DEBUG      2 met
+11:24 madminer.analysis    INFO    Found 57687 events
+11:24 madminer.analysis    INFO      9858 signal events sampled from benchmark sm
+11:24 madminer.analysis    INFO      47829 background events
+11:24 madminer.analysis    INFO    Found morphing setup with 6 components
+11:24 madminer.analysis    INFO    Found nuisance morphing setup
+11:24 madminer.analysis    DEBUG   Sampling benchmark closest to None: None
+11:24 madminer.analysis    DEBUG   Events per benchmark: [9858.    0.    0.    0.    0.    0.]
+11:24 madminer.plotting    DEBUG   Systematics signal_norm based on 1 nuisance parameters
+11:24 madminer.plotting    DEBUG   Systematics bkg_norm based on 1 nuisance parameters
+11:24 madminer.plotting    DEBUG   Systematics scales based on 1 nuisance parameters
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/tutorial_particle_physics/A1_systematic_uncertainties_31_1.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="5.-Sampling">5. Sampling<a class="anchor-link" href="#5.-Sampling"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Let's generate training data for the SALLY method.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">sampler</span> <span class="o">=</span> <span class="n">SampleAugmenter</span><span class="p">(</span><span class="s1">&#39;data/lhe_data_systematics.h5&#39;</span><span class="p">,</span> <span class="n">include_nuisance_parameters</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+
+<span class="n">x</span><span class="p">,</span> <span class="n">theta</span><span class="p">,</span> <span class="n">t_xz</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">sample_train_local</span><span class="p">(</span>
+    <span class="n">theta</span><span class="o">=</span><span class="n">sampling</span><span class="o">.</span><span class="n">benchmark</span><span class="p">(</span><span class="s1">&#39;sm&#39;</span><span class="p">),</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span>
+    <span class="n">folder</span><span class="o">=</span><span class="s1">&#39;./data/samples&#39;</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="s1">&#39;train_score_systematics&#39;</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>11:27 madminer.analysis    INFO    Loading data from data/lhe_data_systematics.h5
+11:27 madminer.analysis    INFO    Found 2 parameters
+11:27 madminer.analysis    DEBUG      CWL2 (LHA: dim6 2, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+11:27 madminer.analysis    DEBUG      CPWL2 (LHA: dim6 5, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+11:27 madminer.analysis    INFO    Found 3 nuisance parameters
+11:27 madminer.analysis    DEBUG      signal_norm_nuisance_param_0 ((u&#39;signal_norm&#39;, u&#39;signal_norm_nuisance_param_0_benchmark_0&#39;, None))
+11:27 madminer.analysis    DEBUG      scales_nuisance_param_0 ((u&#39;scales&#39;, u&#39;scales_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_1&#39;))
+11:27 madminer.analysis    DEBUG      bkg_norm_nuisance_param_0 ((u&#39;bkg_norm&#39;, u&#39;bkg_norm_nuisance_param_0_benchmark_0&#39;, None))
+11:27 madminer.analysis    INFO    Found 10 benchmarks, of which 6 physical
+11:27 madminer.analysis    DEBUG      sm: CWL2 = 0.00e+00, CPWL2 = 0.00e+00
+11:27 madminer.analysis    DEBUG      w: CWL2 = 15.20, CPWL2 = 0.10
+11:27 madminer.analysis    DEBUG      neg_w: CWL2 = -1.54e+01, CPWL2 = 0.20
+11:27 madminer.analysis    DEBUG      ww: CWL2 = 0.30, CPWL2 = 15.10
+11:27 madminer.analysis    DEBUG      neg_ww: CWL2 = 0.40, CPWL2 = -1.53e+01
+11:27 madminer.analysis    DEBUG      morphing_basis_vector_5: CWL2 = -1.68e+01, CPWL2 = -1.72e+01
+11:27 madminer.analysis    DEBUG      bkg_norm_nuisance_param_0_benchmark_0: systematics
+11:27 madminer.analysis    DEBUG      scales_nuisance_param_0_benchmark_0: systematics
+11:27 madminer.analysis    DEBUG      scales_nuisance_param_0_benchmark_1: systematics
+11:27 madminer.analysis    DEBUG      signal_norm_nuisance_param_0_benchmark_0: systematics
+11:27 madminer.analysis    INFO    Found 3 observables
+11:27 madminer.analysis    DEBUG      0 pt_j1
+11:27 madminer.analysis    DEBUG      1 delta_phi_jj
+11:27 madminer.analysis    DEBUG      2 met
+11:27 madminer.analysis    INFO    Found 57687 events
+11:27 madminer.analysis    INFO      9858 signal events sampled from benchmark sm
+11:27 madminer.analysis    INFO      47829 background events
+11:27 madminer.analysis    INFO    Found morphing setup with 6 components
+11:27 madminer.analysis    INFO    Found nuisance morphing setup
+11:27 madminer.sampling    INFO    Extracting training sample for local score regression. Sampling and score evaluation according to sm
+11:27 madminer.sampling    DEBUG   Starting sample extraction
+11:27 madminer.sampling    INFO    Starting sampling serially
+11:27 madminer.sampling    DEBUG   Will print training progress every 1 sets
+11:27 madminer.sampling    INFO    Sampling from parameter point 1 / 1
+11:27 madminer.sampling    DEBUG   Drawing 100000 events for the following parameter points:
+11:27 madminer.sampling    DEBUG     0: theta = [0. 0.], nu = None (sampling)
+11:27 madminer.analysis    DEBUG   Calculating cross sections for thetas = [u&#39;sm&#39;] and nus = [None]
+11:27 madminer.analysis    DEBUG   Sampling benchmark closest to [0. 0.]: 0
+11:27 madminer.analysis    DEBUG   xsecs and uncertainties [pb]:
+11:27 madminer.analysis    DEBUG     (0.010494 +/- 0.000058) pb (0.552236 %)
+11:27 madminer.analysis    DEBUG   Calculating cross section gradients for thetas = [u&#39;sm&#39;] and nus = [None]
+11:27 madminer.analysis    DEBUG   Sampling benchmark closest to [0. 0.]: 0
+11:27 madminer.analysis    DEBUG   Batch 1 with 34612 events
+11:27 madminer.sampling    DEBUG   Sampling from partition train, using weighted events 0 to 34612 and a correction factor 1.66666666667
+11:27 madminer.analysis    DEBUG   Sampling benchmark closest to [0. 0.]: 0
+11:27 madminer.sampling    DEBUG     Cumulative probability (should be close to 1): 0.9999999999995065
+11:27 madminer.sampling    INFO    Effective number of samples: mean 30130.740105470468, with individual thetas ranging from 30130.740105470468 to 30130.740105470468
+11:27 madminer.sampling    DEBUG   Effective number of samples for all thetas: [30130.74010547 30130.74010547 30130.74010547 ... 30130.74010547
+ 30130.74010547 30130.74010547]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="6.-Training">6. Training<a class="anchor-link" href="#6.-Training"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The SALLY estimator will learn the score in terms of both the physics parameters and the nuisance parameters. In our case, its output will therefore be a vector with five components.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">estimator</span> <span class="o">=</span> <span class="n">ScoreEstimator</span><span class="p">(</span><span class="n">n_hidden</span><span class="o">=</span><span class="p">(</span><span class="mi">50</span><span class="p">,))</span>
+
+<span class="n">estimator</span><span class="o">.</span><span class="n">train</span><span class="p">(</span>
+    <span class="n">method</span><span class="o">=</span><span class="s1">&#39;sally&#39;</span><span class="p">,</span>
+    <span class="n">x</span><span class="o">=</span><span class="s1">&#39;data/samples/x_train_score_systematics.npy&#39;</span><span class="p">,</span>
+    <span class="n">t_xz</span><span class="o">=</span><span class="s1">&#39;data/samples/t_xz_train_score_systematics.npy&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">estimator</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;models/sally_systematics&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>11:29 madminer.ml          INFO    Starting training
+11:29 madminer.ml          INFO      Batch size:             128
+11:29 madminer.ml          INFO      Optimizer:              amsgrad
+11:29 madminer.ml          INFO      Epochs:                 50
+11:29 madminer.ml          INFO      Learning rate:          0.001 initially, decaying to 0.0001
+11:29 madminer.ml          INFO      Validation split:       0.25
+11:29 madminer.ml          INFO      Early stopping:         True
+11:29 madminer.ml          INFO      Scale inputs:           True
+11:29 madminer.ml          INFO      Shuffle labels          False
+11:29 madminer.ml          INFO      Samples:                all
+11:29 madminer.ml          INFO    Loading training data
+11:29 madminer.utils.vario INFO      Loading data/samples/x_train_score_systematics.npy into RAM
+11:29 madminer.utils.vario INFO      Loading data/samples/t_xz_train_score_systematics.npy into RAM
+11:29 madminer.ml          INFO    Found 100000 samples with 5 parameters and 3 observables
+11:29 madminer.ml          INFO    Setting up input rescaling
+11:29 madminer.ml          INFO    Creating model
+11:29 madminer.ml          INFO    Training model
+11:29 madminer.utils.ml.tr INFO    Training on CPU with single precision
+11:29 madminer.utils.ml.tr DEBUG   Initialising training data
+11:29 madminer.utils.ml.tr DEBUG   Training data:
+11:29 madminer.utils.ml.tr DEBUG     x: shape (100000, 3), first [ 0.1499094 -0.8703383 -0.6764644], mean [-1.6620490e-06 -3.0627550e-08  7.5273755e-07], min [-0.9810185 -1.2922192 -1.008653 ], max [11.069061   1.2930026 17.653084 ]
+11:29 madminer.utils.ml.tr DEBUG     t_xz: shape (100000, 5), first [ 0.06507041  0.00125731 -0.01700781 -0.04920172  0.03253473], mean [-6.3074619e-04  1.6555152e-03 -7.2156312e-05 -2.1219793e-04
+  1.3823029e-04], min [-5.7848801e+01 -1.6493576e+01 -1.7007815e-02 -3.0026883e-01
+ -1.4978682e-01], max [ 3.669      19.298151    0.07830236  0.26171386  0.03253473]
+11:29 madminer.utils.ml.tr DEBUG   Setting up optimizer
+11:29 madminer.utils.ml.tr DEBUG   Using early stopping with infinite patience
+11:29 madminer.utils.ml.tr DEBUG   Will print training progress every 3 epochs
+11:29 madminer.utils.ml.tr DEBUG   Beginning main training loop
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 1 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.001
+11:29 madminer.utils.ml.tr DEBUG   Epoch   1: train loss  0.05749 (mse_score:  0.057)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.05317 (mse_score:  0.053)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 2 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.00095409547635
+11:29 madminer.utils.ml.tr DEBUG   Epoch   2: train loss  0.05407 (mse_score:  0.054)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.05050 (mse_score:  0.050)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 3 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000910298177992
+11:29 madminer.utils.ml.tr INFO    Epoch   3: train loss  0.05199 (mse_score:  0.052)
+11:29 madminer.utils.ml.tr INFO               val. loss   0.04903 (mse_score:  0.049)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 4 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000868511373751
+11:29 madminer.utils.ml.tr DEBUG   Epoch   4: train loss  0.05047 (mse_score:  0.050)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04704 (mse_score:  0.047)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 5 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000828642772855
+11:29 madminer.utils.ml.tr DEBUG   Epoch   5: train loss  0.04944 (mse_score:  0.049)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04623 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 6 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000790604321091
+11:29 madminer.utils.ml.tr INFO    Epoch   6: train loss  0.04868 (mse_score:  0.049)
+11:29 madminer.utils.ml.tr INFO               val. loss   0.04519 (mse_score:  0.045)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 7 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000754312006335
+11:29 madminer.utils.ml.tr DEBUG   Epoch   7: train loss  0.04815 (mse_score:  0.048)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04469 (mse_score:  0.045)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 8 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000719685673001
+11:29 madminer.utils.ml.tr DEBUG   Epoch   8: train loss  0.04774 (mse_score:  0.048)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04426 (mse_score:  0.044)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 9 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000686648845004
+11:29 madminer.utils.ml.tr INFO    Epoch   9: train loss  0.04751 (mse_score:  0.048)
+11:29 madminer.utils.ml.tr INFO               val. loss   0.04403 (mse_score:  0.044)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 10 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.00065512855686
+11:29 madminer.utils.ml.tr DEBUG   Epoch  10: train loss  0.04723 (mse_score:  0.047)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04487 (mse_score:  0.045)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 11 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000625055192527
+11:29 madminer.utils.ml.tr DEBUG   Epoch  11: train loss  0.04704 (mse_score:  0.047)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04336 (mse_score:  0.043)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 12 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000596362331659
+11:29 madminer.utils.ml.tr INFO    Epoch  12: train loss  0.04686 (mse_score:  0.047)
+11:29 madminer.utils.ml.tr INFO               val. loss   0.04340 (mse_score:  0.043)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 13 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000568986602902
+11:29 madminer.utils.ml.tr DEBUG   Epoch  13: train loss  0.04662 (mse_score:  0.047)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04320 (mse_score:  0.043)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 14 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000542867543932
+11:29 madminer.utils.ml.tr DEBUG   Epoch  14: train loss  0.04649 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04283 (mse_score:  0.043)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 15 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000517947467923
+11:29 madminer.utils.ml.tr INFO    Epoch  15: train loss  0.04640 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr INFO               val. loss   0.04253 (mse_score:  0.043)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 16 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000494171336132
+11:29 madminer.utils.ml.tr DEBUG   Epoch  16: train loss  0.04620 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04238 (mse_score:  0.042)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 17 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000471486636346
+11:29 madminer.utils.ml.tr DEBUG   Epoch  17: train loss  0.04614 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04243 (mse_score:  0.042)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 18 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000449843266897
+11:29 madminer.utils.ml.tr INFO    Epoch  18: train loss  0.04601 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr INFO               val. loss   0.04219 (mse_score:  0.042)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 19 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000429193426013
+11:29 madminer.utils.ml.tr DEBUG   Epoch  19: train loss  0.04591 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04219 (mse_score:  0.042)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 20 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000409491506238
+11:29 madminer.utils.ml.tr DEBUG   Epoch  20: train loss  0.04580 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04193 (mse_score:  0.042)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 21 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000390693993705
+11:29 madminer.utils.ml.tr INFO    Epoch  21: train loss  0.04574 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr INFO               val. loss   0.04177 (mse_score:  0.042)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 22 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000372759372031
+11:29 madminer.utils.ml.tr DEBUG   Epoch  22: train loss  0.04564 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04274 (mse_score:  0.043)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 23 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000355648030622
+11:29 madminer.utils.ml.tr DEBUG   Epoch  23: train loss  0.04556 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04160 (mse_score:  0.042)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 24 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.00033932217719
+11:29 madminer.utils.ml.tr INFO    Epoch  24: train loss  0.04552 (mse_score:  0.046)
+11:29 madminer.utils.ml.tr INFO               val. loss   0.04154 (mse_score:  0.042)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 25 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000323745754282
+11:29 madminer.utils.ml.tr DEBUG   Epoch  25: train loss  0.04542 (mse_score:  0.045)
+11:29 madminer.utils.ml.tr DEBUG              val. loss   0.04150 (mse_score:  0.041)
+11:29 madminer.utils.ml.tr DEBUG   Training epoch 26 / 50
+11:29 madminer.utils.ml.tr DEBUG   Learning rate: 0.000308884359648
+11:30 madminer.utils.ml.tr DEBUG   Epoch  26: train loss  0.04533 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04147 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 27 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000294705170255
+11:30 madminer.utils.ml.tr INFO    Epoch  27: train loss  0.04530 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr INFO               val. loss   0.04139 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 28 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000281176869797
+11:30 madminer.utils.ml.tr DEBUG   Epoch  28: train loss  0.04524 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04135 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 29 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000268269579528
+11:30 madminer.utils.ml.tr DEBUG   Epoch  29: train loss  0.04517 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04112 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 30 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.00025595479227
+11:30 madminer.utils.ml.tr INFO    Epoch  30: train loss  0.04514 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr INFO               val. loss   0.04112 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 31 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000244205309455
+11:30 madminer.utils.ml.tr DEBUG   Epoch  31: train loss  0.04506 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04158 (mse_score:  0.042)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 32 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000232995181052
+11:30 madminer.utils.ml.tr DEBUG   Epoch  32: train loss  0.04506 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04107 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 33 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000222299648253
+11:30 madminer.utils.ml.tr INFO    Epoch  33: train loss  0.04500 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr INFO               val. loss   0.04101 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 34 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000212095088792
+11:30 madminer.utils.ml.tr DEBUG   Epoch  34: train loss  0.04493 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04094 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 35 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000202358964773
+11:30 madminer.utils.ml.tr DEBUG   Epoch  35: train loss  0.04491 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04080 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 36 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000193069772888
+11:30 madminer.utils.ml.tr INFO    Epoch  36: train loss  0.04487 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr INFO               val. loss   0.04085 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 37 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000184206996933
+11:30 madminer.utils.ml.tr DEBUG   Epoch  37: train loss  0.04482 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04081 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 38 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000175751062485
+11:30 madminer.utils.ml.tr DEBUG   Epoch  38: train loss  0.04481 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04070 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 39 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000167683293681
+11:30 madminer.utils.ml.tr INFO    Epoch  39: train loss  0.04476 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr INFO               val. loss   0.04069 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 40 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000159985871961
+11:30 madminer.utils.ml.tr DEBUG   Epoch  40: train loss  0.04474 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04089 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 41 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000152641796718
+11:30 madminer.utils.ml.tr DEBUG   Epoch  41: train loss  0.04473 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04064 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 42 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.00014563484775
+11:30 madminer.utils.ml.tr INFO    Epoch  42: train loss  0.04469 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr INFO               val. loss   0.04076 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 43 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000138949549437
+11:30 madminer.utils.ml.tr DEBUG   Epoch  43: train loss  0.04467 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04086 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 44 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000132571136559
+11:30 madminer.utils.ml.tr DEBUG   Epoch  44: train loss  0.04463 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04053 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 45 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000126485521686
+11:30 madminer.utils.ml.tr INFO    Epoch  45: train loss  0.04461 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr INFO               val. loss   0.04062 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 46 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000120679264064
+11:30 madminer.utils.ml.tr DEBUG   Epoch  46: train loss  0.04460 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04079 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 47 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000115139539933
+11:30 madminer.utils.ml.tr DEBUG   Epoch  47: train loss  0.04458 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04049 (mse_score:  0.040)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 48 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000109854114199
+11:30 madminer.utils.ml.tr INFO    Epoch  48: train loss  0.04456 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr INFO               val. loss   0.04044 (mse_score:  0.040)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 49 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.000104811313415
+11:30 madminer.utils.ml.tr DEBUG   Epoch  49: train loss  0.04454 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04059 (mse_score:  0.041)
+11:30 madminer.utils.ml.tr DEBUG   Training epoch 50 / 50
+11:30 madminer.utils.ml.tr DEBUG   Learning rate: 0.0001
+11:30 madminer.utils.ml.tr DEBUG   Epoch  50: train loss  0.04451 (mse_score:  0.045)
+11:30 madminer.utils.ml.tr DEBUG              val. loss   0.04039 (mse_score:  0.040)
+11:30 madminer.utils.ml.tr INFO    Early stopping did not improve performance
+11:30 madminer.utils.ml.tr DEBUG   Training finished
+11:30 madminer.utils.ml.tr INFO    Training time spend on:
+11:30 madminer.utils.ml.tr INFO                      initialize model:   0.00h
+11:30 madminer.utils.ml.tr INFO                                   ALL:   0.03h
+11:30 madminer.utils.ml.tr INFO                            check data:   0.00h
+11:30 madminer.utils.ml.tr INFO                          make dataset:   0.00h
+11:30 madminer.utils.ml.tr INFO                       make dataloader:   0.00h
+11:30 madminer.utils.ml.tr INFO                       setup optimizer:   0.00h
+11:30 madminer.utils.ml.tr INFO                   initialize training:   0.00h
+11:30 madminer.utils.ml.tr INFO                                set lr:   0.00h
+11:30 madminer.utils.ml.tr INFO                   load training batch:   0.01h
+11:30 madminer.utils.ml.tr INFO                        fwd: move data:   0.00h
+11:30 madminer.utils.ml.tr INFO                   fwd: check for nans:   0.01h
+11:30 madminer.utils.ml.tr INFO                    fwd: model.forward:   0.00h
+11:30 madminer.utils.ml.tr INFO                 fwd: calculate losses:   0.00h
+11:30 madminer.utils.ml.tr INFO                 training forward pass:   0.01h
+11:30 madminer.utils.ml.tr INFO                   training sum losses:   0.00h
+11:30 madminer.utils.ml.tr INFO                        opt: zero grad:   0.00h
+11:30 madminer.utils.ml.tr INFO                         opt: backward:   0.00h
+11:30 madminer.utils.ml.tr INFO                   opt: clip grad norm:   0.00h
+11:30 madminer.utils.ml.tr INFO                             opt: step:   0.00h
+11:30 madminer.utils.ml.tr INFO                        optimizer step:   0.01h
+11:30 madminer.utils.ml.tr INFO                 load validation batch:   0.00h
+11:30 madminer.utils.ml.tr INFO               validation forward pass:   0.00h
+11:30 madminer.utils.ml.tr INFO                 validation sum losses:   0.00h
+11:30 madminer.utils.ml.tr INFO                        early stopping:   0.00h
+11:30 madminer.utils.ml.tr INFO                          report epoch:   0.00h
+11:30 madminer.ml          INFO    Saving model to models/sally_systematics
+11:30 madminer.ml          DEBUG   Saving settings to models/sally_systematics_settings.json
+11:30 madminer.ml          DEBUG   Saving input scaling information to models/sally_systematics_x_means.npy and models/sally_systematics_x_stds.npy
+11:30 madminer.ml          DEBUG   Saving state dictionary to models/sally_systematics_state_dict.pt
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="7.-Fisher-information">7. Fisher information<a class="anchor-link" href="#7.-Fisher-information"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>The Fisher information is now also a 5x5 matrix. Constraint terms on the nuisance parameters, representing our prior knowledge on their values, can be calculated with <code>FisherInformation.nuisance_constraint_information()</code>.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fisher</span> <span class="o">=</span> <span class="n">FisherInformation</span><span class="p">(</span><span class="s1">&#39;data/lhe_data_systematics.h5&#39;</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>11:47 madminer.analysis    INFO    Loading data from data/lhe_data_systematics.h5
+11:47 madminer.analysis    INFO    Found 2 parameters
+11:47 madminer.analysis    DEBUG      CWL2 (LHA: dim6 2, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+11:47 madminer.analysis    DEBUG      CPWL2 (LHA: dim6 5, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+11:47 madminer.analysis    INFO    Found 3 nuisance parameters
+11:47 madminer.analysis    DEBUG      signal_norm_nuisance_param_0 ((u&#39;signal_norm&#39;, u&#39;signal_norm_nuisance_param_0_benchmark_0&#39;, None))
+11:47 madminer.analysis    DEBUG      scales_nuisance_param_0 ((u&#39;scales&#39;, u&#39;scales_nuisance_param_0_benchmark_0&#39;, u&#39;scales_nuisance_param_0_benchmark_1&#39;))
+11:47 madminer.analysis    DEBUG      bkg_norm_nuisance_param_0 ((u&#39;bkg_norm&#39;, u&#39;bkg_norm_nuisance_param_0_benchmark_0&#39;, None))
+11:47 madminer.analysis    INFO    Found 10 benchmarks, of which 6 physical
+11:47 madminer.analysis    DEBUG      sm: CWL2 = 0.00e+00, CPWL2 = 0.00e+00
+11:47 madminer.analysis    DEBUG      w: CWL2 = 15.20, CPWL2 = 0.10
+11:47 madminer.analysis    DEBUG      neg_w: CWL2 = -1.54e+01, CPWL2 = 0.20
+11:47 madminer.analysis    DEBUG      ww: CWL2 = 0.30, CPWL2 = 15.10
+11:47 madminer.analysis    DEBUG      neg_ww: CWL2 = 0.40, CPWL2 = -1.53e+01
+11:47 madminer.analysis    DEBUG      morphing_basis_vector_5: CWL2 = -1.68e+01, CPWL2 = -1.72e+01
+11:47 madminer.analysis    DEBUG      bkg_norm_nuisance_param_0_benchmark_0: systematics
+11:47 madminer.analysis    DEBUG      scales_nuisance_param_0_benchmark_0: systematics
+11:47 madminer.analysis    DEBUG      scales_nuisance_param_0_benchmark_1: systematics
+11:47 madminer.analysis    DEBUG      signal_norm_nuisance_param_0_benchmark_0: systematics
+11:47 madminer.analysis    INFO    Found 3 observables
+11:47 madminer.analysis    DEBUG      0 pt_j1
+11:47 madminer.analysis    DEBUG      1 delta_phi_jj
+11:47 madminer.analysis    DEBUG      2 met
+11:47 madminer.analysis    INFO    Found 57687 events
+11:47 madminer.analysis    INFO      9858 signal events sampled from benchmark sm
+11:47 madminer.analysis    INFO      47829 background events
+11:47 madminer.analysis    INFO    Found morphing setup with 6 components
+11:47 madminer.analysis    INFO    Found nuisance morphing setup
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span>fisher.full_information<span class="o">?</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_sally</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">full_information</span><span class="p">(</span>
+    <span class="n">theta</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span>
+    <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/sally_systematics&#39;</span><span class="p">,</span>
+    <span class="n">luminosity</span><span class="o">=</span><span class="mf">1000000.</span><span class="p">,</span>
+    <span class="n">include_xsec_info</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>12:03 madminer.ml          INFO    Loading model from models/sally_systematics
+12:03 madminer.ml          DEBUG   Loading settings from models/sally_systematics_settings.json
+12:03 madminer.ml          DEBUG     Found input scaling information: means [ 1.0988512e+02 -9.4394531e-04  1.8538557e+01], stds [81.42455    2.4303637 18.326069 ]
+12:03 madminer.ml          DEBUG   Loading state dictionary from models/sally_systematics_state_dict.pt
+12:03 madminer.ml          DEBUG   Did not find nuisance profiling / projection setup in models/sally_systematics
+12:03 madminer.fisherinfor INFO    Found 5 parameters in SALLY model, matching 2 physical parameters + 3 nuisance parameters in MadMiner file
+12:03 madminer.fisherinfor DEBUG   Including nuisance parameters
+12:03 madminer.fisherinfor DEBUG   Calculating total cross section for theta = [0. 0. 0. 0. 0.]
+12:03 madminer.analysis    DEBUG   Sampling benchmark closest to None: None
+12:03 madminer.analysis    DEBUG   Events per benchmark: [9858.    0.    0.    0.    0.    0.]
+12:03 madminer.fisherinfor DEBUG   Benchmarks xsecs [pb]: [0.0111179  0.06866617 0.08298054 0.07294509 0.07500684 0.17198725
+ 0.01311677 0.00941475 0.01343215 0.01123025]
+12:03 madminer.fisherinfor DEBUG   Theta matrix: [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+12:03 madminer.fisherinfor DEBUG   Cross section at theta: 0.011117896246311 pb
+12:03 madminer.fisherinfor DEBUG   Total cross section: 0.011117896246311 pb
+12:03 madminer.fisherinfor DEBUG   Calculating total cross section for theta = [0. 0. 0. 0. 0.]
+12:03 madminer.analysis    DEBUG   Sampling benchmark closest to None: None
+12:03 madminer.analysis    DEBUG   Events per benchmark: [9858.    0.    0.    0.    0.    0.]
+12:03 madminer.fisherinfor DEBUG   Benchmarks xsecs [pb]: [0.00241057 0.00241057 0.00241057 0.00241057 0.00241057 0.00241057
+ 0.00289268 0.00201283 0.00295409 0.00241057]
+12:03 madminer.fisherinfor DEBUG   Theta matrix: [1. 0. 0. 0. 0. 0. 0. 0. 0. 0.]
+12:03 madminer.fisherinfor DEBUG   Cross section at theta: 0.0024105679357757023 pb
+12:03 madminer.analysis    DEBUG   Sampling benchmark closest to None: None
+12:03 madminer.analysis    DEBUG   Events per benchmark: [9858.    0.    0.    0.    0.    0.]
+12:03 madminer.fisherinfor INFO    Evaluating kinematic Fisher information on batch 1 / 1
+12:03 madminer.ml          INFO    Loading evaluation data
+12:03 madminer.ml          INFO    Calculating Fisher information
+12:03 madminer.ml          DEBUG   Expected per-event score (should be close to zero): [ 0.01813948 -0.00052202 -0.00252429 -0.00320577  0.00499027]
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_nuisance</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">nuisance_constraint_information</span><span class="p">()</span>
+<span class="n">info</span> <span class="o">=</span> <span class="n">info_sally</span> <span class="o">+</span> <span class="n">info_nuisance</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">info</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="s2">&quot;{:6.2f}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">row</span><span class="p">]))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>241.94  16.07 -12.44 -14.26  22.83
+ 16.07 163.94   0.78  -0.19   1.90
+-12.44   0.78   2.65   2.28  -2.76
+-14.26  -0.19   2.28   5.03  -4.44
+ 22.83   1.90  -2.76  -4.44   6.59
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Fisher-contours-and-profiled-information">Fisher contours and profiled information<a class="anchor-link" href="#Fisher-contours-and-profiled-information"> </a></h3>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>When looking at a subset of these five parameter, we can either ignore the other parameters ("project"), or conservatively pick the most pessimistic value of them ("profile" them). MadMiner provides the functions <code>profile_information()</code> and <code>project_information()</code> for this purpose. Let's do that for the parameter space of the two physics parameters:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_proj</span> <span class="o">=</span> <span class="n">project_information</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">info_prof</span> <span class="o">=</span> <span class="n">profile_information</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>12:03 madminer.fisherinfor DEBUG   Profiling Fisher information
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">plot_fisher_information_contours_2d</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">info_proj</span><span class="p">,</span> <span class="n">info_prof</span><span class="p">],</span>
+    <span class="n">inline_labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Projected&quot;</span><span class="p">,</span> <span class="s2">&quot;Profiled&quot;</span><span class="p">],</span>
+    <span class="nb">xrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span>
+    <span class="n">yrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/tutorial_particle_physics/A1_systematic_uncertainties_48_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For illustration, we can look at just one physics parameter and one nuisance parameter:</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_demo</span> <span class="o">=</span> <span class="n">project_information</span><span class="p">(</span><span class="n">info</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+
+<span class="n">info_demo_profiled</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="n">info_demo_profiled</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">profile_information</span><span class="p">(</span><span class="n">info_demo</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,])</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>12:06 madminer.fisherinfor DEBUG   Profiling Fisher information
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">plot_fisher_information_contours_2d</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">info_demo</span><span class="p">,</span> <span class="n">info_demo_profiled</span><span class="p">],</span>
+    <span class="n">inline_labels</span><span class="o">=</span><span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="s2">&quot;Profiled&quot;</span><span class="p">],</span>
+    <span class="nb">xrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.2</span><span class="p">,</span><span class="mf">0.2</span><span class="p">),</span>
+    <span class="n">yrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.6</span><span class="p">,</span><span class="mf">0.6</span><span class="p">),</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Parameter of interest&quot;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="s2">&quot;Nuisance parameter&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_png output_subarea ">
+<img src="../images/tutorial_particle_physics/A1_systematic_uncertainties_51_0.png"
+>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span>plot_fisher_information_contours_2d<span class="o">?</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
+            </div>
+            <div class="c-textbook__footer" id="textbook_footer">
+              
+<nav class="c-page__nav">
+  
+    
+    
+
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/tutorial_particle_physics/4c_information_geometry.html">
+      〈 <span class="u-margin-right-tiny"></span> Information Geometry
+    </a>
+  
+
+  
+    
+
+    
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html">
+      Appendix <span class="u-margin-right-tiny"></span> 〉
+    </a>
+  
+</nav>
+
+              <footer>
+  <p class="footer">This page was created by <a href="https://github.com/diana-hep/madminer">The MadMiner Team</a></p>
+</footer>
+
+            </div>
+
+        </div>
+      </main>
+    </div>
+  </body>
+</html>
