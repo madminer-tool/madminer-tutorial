@@ -62,6 +62,7 @@ Now you should be able to connect to the Jupyter notebook server inside the cont
 
 Now you shouuld be all set and see something like this.
 
+![](/madminer-tutorial/images/notebook.png)
 
 ## The rest of the tutorials should run as is with these exceptions
 
