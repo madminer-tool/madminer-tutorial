@@ -31,7 +31,7 @@ url: "https://cranmer.github.io"   # the base hostname & protocol for your site,
 
 # Main page settings
 footer_text: This page was created by <a href="https://github.com/diana-hep/madminer">The
-  MadMiner Team</a>
+  MadMiner Team</a>. The source is <a href="https://github.com/cranmer/madminer-tutorial">here</a>.
 
 # Sidebar settings
 show_sidebar: true                # Show the sidebar. Only set to false if your only wish to host a single page.

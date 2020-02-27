@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/preliminaries.html",
   "headline": "Preliminaries",
-  "datePublished": "2020-02-27T10:41:21-05:00",
-  "dateModified": "2020-02-27T10:41:21-05:00",
+  "datePublished": "2020-02-27T12:31:56-05:00",
+  "dateModified": "2020-02-27T12:31:56-05:00",
   "description": "        Preliminaries    Preliminaries The tutorial has several software dependenciesMadGraph (including Fortran)pythiaDelphes (optional)pytorchJupyterscipy ...",
   "author": {
     "@type": "Person",
@@ -976,11 +976,21 @@ Irina Espejo has built Docker containers with everything installed already and p
 <p>We will still use our computer's normal browser to connect to the server as described in this tutorial: <a href="https://www.dataquest.io/blog/docker-data-science/">Running a Dockerized Jupyter Server for Data Science</a>.</p>
 <p>The process is fairly painless and will also work on Mac and Windows . Follow the steps below.</p>
 <h2 id="Install-Docker">Install Docker<a class="anchor-link" href="#Install-Docker"> </a></h2><p><a href="https://www.docker.com/products/docker-desktop">Download Docker Desktop</a></p>
+<h2 id="Make-a-directory-to-share-between-your-laptop-and-the-container">Make a directory to share between your laptop and the container<a class="anchor-link" href="#Make-a-directory-to-share-between-your-laptop-and-the-container"> </a></h2><p>Make a directory</p>
+<div class="highlight"><pre><span></span>mkdir ~/madminer_shared
+</pre></div>
+<p>(You can put it somewhere else if you want, but I'll assume it's there)</p>
 <h2 id="Get-tutorial-&amp;-start-Jupyter-in-container">Get tutorial &amp; start Jupyter in container<a class="anchor-link" href="#Get-tutorial-&amp;-start-Jupyter-in-container"> </a></h2><p>Enter an interactive session in the MadMiner docker container.
 The first time you execute this it will need to pull the container, which will take about a minute.</p>
-<div class="highlight"><pre><span></span>docker run -p <span class="m">8888</span>:8888 -it madminertool/docker-madminer-physics /bin/bash
+<div class="highlight"><pre><span></span>docker run -p <span class="m">8888</span>:8888 -v ~/madminer_shared:/madminer/shared -it madminertool/docker-madminer-physics /bin/bash
 </pre></div>
-<p>Now you have a prompt inside the container.</p>
+<p>Now you have a prompt inside the container. See what's there and then go into the <code>shared</code> directory</p>
+<div class="highlight"><pre><span></span><span class="nb">pwd</span>
+ls
+<span class="nb">cd</span> shared
+<span class="nb">echo</span> <span class="s1">&#39;hello world&#39;</span> &gt;&gt; test.txt
+</pre></div>
+<p>Now you might want to check that on your computer you see <code>~/madminer_shared/test.txt</code></p>
 <p>Get the MadMiner repository with tutorial notebooks</p>
 <div class="highlight"><pre><span></span>git clone https://github.com/diana-hep/madminer.git
 </pre></div>
@@ -1004,7 +1014,7 @@ The first time you execute this it will need to pull the container, which will t
 <div class="highlight"><pre><span></span><span class="nv">mg_dir</span> <span class="o">=</span> <span class="err">&#39;</span>/Users/johannbrehmer/work/projects/madminer/MG5_aMC_v2_6_5’
 </pre></div>
 <p>to</p>
-<div class="highlight"><pre><span></span><span class="nv">mg_dir</span> <span class="o">=</span> <span class="s1">&#39;mg_dir = &#39;</span>/home/software/MG5_aMC_v2_6_2<span class="err">&#39;</span>
+<div class="highlight"><pre><span></span><span class="nv">mg_dir</span> <span class="o">=</span> <span class="s1">&#39;/home/software/MG5_aMC_v2_6_2&#39;</span>
 </pre></div>
 <p>which is where madgraph is located in this container.</p>
 
@@ -1042,7 +1052,7 @@ The first time you execute this it will need to pull the container, which will t
 </nav>
 
               <footer>
-  <p class="footer">This page was created by <a href="https://github.com/diana-hep/madminer">The MadMiner Team</a></p>
+  <p class="footer">This page was created by <a href="https://github.com/diana-hep/madminer">The MadMiner Team</a>. The source is <a href="https://github.com/cranmer/madminer-tutorial">here</a>.</p>
 </footer>
 
             </div>

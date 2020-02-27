@@ -23,15 +23,33 @@ The process is fairly painless and will also work on Mac and Windows . Follow th
 
 [Download Docker Desktop](https://www.docker.com/products/docker-desktop)
 
+## Make a directory to share between your laptop and the container
+
+Make a directory 
+```bash
+mkdir ~/madminer_shared
+```
+
+(You can put it somewhere else if you want, but I'll assume it's there)
+
 ## Get tutorial & start Jupyter in container
 
 Enter an interactive session in the MadMiner docker container.
 The first time you execute this it will need to pull the container, which will take about a minute.
 ```bash
-docker run -p 8888:8888 -it madminertool/docker-madminer-physics /bin/bash
+docker run -p 8888:8888 -v ~/madminer_shared:/madminer/shared -it madminertool/docker-madminer-physics /bin/bash
 ```
 
-Now you have a prompt inside the container.
+Now you have a prompt inside the container. See what's there and then go into the `shared` directory
+
+```bash
+pwd
+ls
+cd shared
+echo 'hello world' >> test.txt
+```
+
+Now you might want to check that on your computer you see `~/madminer_shared/test.txt`
 
 Get the MadMiner repository with tutorial notebooks
 ```bash
@@ -73,7 +91,7 @@ mg_dir = '/Users/johannbrehmer/work/projects/madminer/MG5_aMC_v2_6_5’
 ```
 to
 ```bash
-mg_dir = 'mg_dir = '/home/software/MG5_aMC_v2_6_2'
+mg_dir = '/home/software/MG5_aMC_v2_6_2'
 ```
 
 which is where madgraph is located in this container.
