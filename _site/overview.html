@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Morphing</title>
-  <meta name="description" content="        Morphing    Morphing We have an interactive demo for the morphing in this notebook.The result is hereYou can run the interactive basis chooser by ope...">
+  <title>Overview</title>
+  <meta name="description" content="        Overview    Typical work flow Here we illustrate the structure of data analysis with MadMiner:madminer.core contains the functions to set up the proc...">
 
-  <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/morphing.html">
+  <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/overview.html">
   <link rel="alternate" type="application/rss+xml" title="MadMiner Tutorial" href="https://cranmer.github.io/madminer-tutorial/feed.xml">
 
-  <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/morphing.html" />
+  <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/overview.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Morphing" />
-<meta property="og:description" content="        Morphing    Morphing We have an interactive demo for the morphing in this notebook.The result is hereYou can run the interactive basis chooser by ope..." />
+<meta property="og:title"       content="Overview" />
+<meta property="og:description" content="        Overview    Typical work flow Here we illustrate the structure of data analysis with MadMiner:madminer.core contains the functions to set up the proc..." />
 <meta property="og:image"       content="https://iris-hep.org/assets/logos/madminer-square.png" />
 
 <meta name="twitter:card" content="summary">
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/morphing.html",
-  "headline": "Morphing",
+  "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/overview.html",
+  "headline": "Overview",
   "datePublished": "2020-02-28T13:56:17-05:00",
   "dateModified": "2020-02-28T13:56:17-05:00",
-  "description": "        Morphing    Morphing We have an interactive demo for the morphing in this notebook.The result is hereYou can run the interactive basis chooser by ope...",
+  "description": "        Overview    Typical work flow Here we illustrate the structure of data analysis with MadMiner:madminer.core contains the functions to set up the proc...",
   "author": {
     "@type": "Person",
     "name": "Kyle Cranmer,"
@@ -1031,18 +1031,31 @@ initFunction(initPrint)
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
                   <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">Morphing</div>
+    <div id="page-info"><div id="page-title">Overview</div>
 </div>
     
 <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Morphing">Morphing<a class="anchor-link" href="#Morphing"> </a></h1><p>We have an interactive demo for the morphing in <a href="https://github.com/diana-hep/madminer/blob/master/examples/morphing_basis/interactive_basis_chooser.ipynb">this notebook</a>.</p>
-<p>The result is here
-<img src="https://github.com/diana-hep/madminer/raw/master/examples/morphing_basis/morphing.gif" /></p>
-<p>You can run the interactive basis chooser by opening this notebook in the container:</p>
-<p><code>/home/shared/madminer/blob/master/examples/morphing_basis/interactive_basis_chooser.ipynb</code></p>
+<h2 id="Typical-work-flow">Typical work flow<a class="anchor-link" href="#Typical-work-flow"> </a></h2><p>Here we illustrate the structure of data analysis with MadMiner:</p>
+<p><img src="images/workflow_combined.jpg" alt="MadMiner workflow"></p>
+<ul>
+<li><code>madminer.core</code> contains the functions to set up the process, parameter space, morphing, and to steer MadGraph and
+ Pythia.</li>
+<li><code>madminer.lhe</code> and <code>madminer.delphes</code> contain two example implementations of a detector simulation and observable
+ calculation. This part can easily be swapped out depending on the use case.</li>
+<li>In <code>madminer.sampling</code>, train and test samples for the machine learning part are generated and augmented with the
+joint score and joint ratio.</li>
+<li><code>madminer.ml</code>  contains an implementation of the machine learning part. The user can train and evaluate estimators
+for the likelihood ratio or score.</li>
+<li>Finally,  <code>madminer.fisherinformation</code> contains functions to calculate the Fisher information, both on parton level
+or detector level, in the full process, individual observables, or the total cross section.</li>
+</ul>
+<h2 id="Technical-documentation">Technical documentation<a class="anchor-link" href="#Technical-documentation"> </a></h2><p>The madminer API is documented on here as well, just look through the pages linked on the left.</p>
+<h2 id="Support">Support<a class="anchor-link" href="#Support"> </a></h2><p>If you have any questions, please
+chat to us <a href="https://gitter.im/madminer/community">in our Gitter community</a> or write us at 
+<a href="johann.brehmer@nyu.edu">johann.brehmer@nyu.edu</a>.</p>
 
 </div>
 </div>
@@ -1062,8 +1075,8 @@ initFunction(initPrint)
     
     
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/tutorial_particle_physics/1_setup.html">
-      〈 <span class="u-margin-right-tiny"></span> Define process to study
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/preliminaries.html">
+      〈 <span class="u-margin-right-tiny"></span> Preliminaries
     </a>
   
 
@@ -1071,8 +1084,8 @@ initFunction(initPrint)
     
 
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/morphing_basis/interactive_basis_chooser.html">
-      Interactive Morphing Demo <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/tutorial_particle_physics/1_setup.html">
+      Define process to study <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

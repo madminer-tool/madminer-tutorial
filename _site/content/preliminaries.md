@@ -23,6 +23,8 @@ The process is fairly painless and will also work on Mac and Windows . Follow th
 
 [Download Docker Desktop](https://www.docker.com/products/docker-desktop)
 
+The link above should work for Mac OS X or Windows, but it requires Windows 10 Professional or Enterprise 64-bit. For previous versions of Windows (or Windows Home 10) use [Docker Toolbox](https://docs.docker.com/toolbox/overview/): use [these instructions](https://docs.docker.com/toolbox/toolbox_install_windows/).
+
 ## Make a directory to share between your laptop and the container
 
 Make a directory 
