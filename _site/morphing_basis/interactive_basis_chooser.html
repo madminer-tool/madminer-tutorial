@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Set MadGraph Directory</title>
-  <meta name="description" content="        Set MadGraph Directory    Set the MadGraph Directory In part 2a_parton_level and/or 2b_delphes_level_analysis in Cell 3, the location of MadGraph is ...">
+  <title>Interactive Morphing Demo</title>
+  <meta name="description" content="        Interactive Morphing Demo    Interactive basis plaything Allows you to interactively move the basis points (black dots) like in the animation below. ...">
 
-  <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/set_mg_dir.html">
+  <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/morphing_basis/interactive_basis_chooser.html">
   <link rel="alternate" type="application/rss+xml" title="MadMiner Tutorial" href="https://cranmer.github.io/madminer-tutorial/feed.xml">
 
-  <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/set_mg_dir.html" />
+  <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/morphing_basis/interactive_basis_chooser.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Set MadGraph Directory" />
-<meta property="og:description" content="        Set MadGraph Directory    Set the MadGraph Directory In part 2a_parton_level and/or 2b_delphes_level_analysis in Cell 3, the location of MadGraph is ..." />
+<meta property="og:title"       content="Interactive Morphing Demo" />
+<meta property="og:description" content="        Interactive Morphing Demo    Interactive basis plaything Allows you to interactively move the basis points (black dots) like in the animation below. ..." />
 <meta property="og:image"       content="https://iris-hep.org/assets/logos/madminer-square.png" />
 
 <meta name="twitter:card" content="summary">
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/set_mg_dir.html",
-  "headline": "Set MadGraph Directory",
+  "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/morphing_basis/interactive_basis_chooser.html",
+  "headline": "Interactive Morphing Demo",
   "datePublished": "2020-02-27T16:10:07-05:00",
   "dateModified": "2020-02-27T16:10:07-05:00",
-  "description": "        Set MadGraph Directory    Set the MadGraph Directory In part 2a_parton_level and/or 2b_delphes_level_analysis in Cell 3, the location of MadGraph is ...",
+  "description": "        Interactive Morphing Demo    Interactive basis plaything Allows you to interactively move the basis points (black dots) like in the animation below. ...",
   "author": {
     "@type": "Person",
     "name": "Kyle Cranmer,"
@@ -409,8 +409,8 @@ initFunction(initPrint)
     mode: "python"
     },
     kernelOptions: {
-    kernelName: "python3",
-    path: ""
+    kernelName: "python2",
+    path: "content/morphing_basis"
     }
 }
 </script>
@@ -977,10 +977,20 @@ initFunction(initPrint)
 <div class="download-buttons-dropdown">
     <button id="dropdown-button-trigger" class="interact-button"><img src="/madminer-tutorial/assets/images/download-solid.svg" alt="Download" /></button>
     <div class="download-buttons">
+        <a href="/madminer-tutorial/content/morphing_basis/interactive_basis_chooser.ipynb" download>
+        <button id="interact-button-download" class="interact-button">.ipynb</button>
+        </a>
         
         <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
     </div>
 </div>
+
+
+  <button id="interact-button-thebelab" class="interact-button">Thebelab</button>
+
+  
+  
+  
 
 
 </div>
@@ -1000,24 +1010,327 @@ initFunction(initPrint)
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
                   <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">Set MadGraph Directory</div>
+    <div id="page-info"><div id="page-title">Interactive Morphing Demo</div>
 </div>
     
 <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Set-the-MadGraph-Directory">Set the MadGraph Directory<a class="anchor-link" href="#Set-the-MadGraph-Directory"> </a></h1><p>In part <code>2a_parton_level</code> and/or <code>2b_delphes_level_analysis</code> in Cell 3, the location of MadGraph is set.
-In this webpage it is listed as</p>
+<h1 id="Interactive-basis-plaything">Interactive basis plaything<a class="anchor-link" href="#Interactive-basis-plaything"> </a></h1>
+</div>
+</div>
+</div>
+</div>
 
-<pre><code>mg_dir = '/Users/johannbrehmer/work/projects/madminer/MG5_aMC_v2_6_5’</code></pre>
-<p>In the GitHub repository it has been updated to be be consistent with the docker container:</p>
+<div class="jb_cell">
 
-<pre><code>mg_dir = 'mg_dir = '/home/software/MG5_aMC_v2_6_2'</code></pre>
-<p>If you install everything yourself, then you would need to change this.</p>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Allows you to interactively move the basis points (black dots) like in the animation below.</p>
+<p><img src="morphing.gif" alt="morphing animation"></p>
 
 </div>
 </div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">bqplot</span>
+<span class="kn">from</span> <span class="nn">bqplot</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="kn">from</span> <span class="nn">ipywidgets</span> <span class="kn">import</span> <span class="n">Layout</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="o">%</span><span class="k">matplotlib</span> notebook
+<span class="kn">import</span> <span class="nn">sys</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">madminer.morphing</span> <span class="kn">import</span> <span class="n">Morpher</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;../..&#39;</span><span class="p">)</span>
+    <span class="kn">from</span> <span class="nn">madminer.morphing</span> <span class="kn">import</span> <span class="n">Morpher</span>
+    
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Settings">Settings<a class="anchor-link" href="#Settings"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">n_bases</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">n_resolution</span> <span class="o">=</span> <span class="mi">50</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Preparation">Preparation<a class="anchor-link" href="#Preparation"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">morpher</span> <span class="o">=</span> <span class="n">Morpher</span><span class="p">(</span><span class="n">parameter_max_power</span><span class="o">=</span><span class="p">[</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">],</span>
+                  <span class="n">parameter_range</span><span class="o">=</span><span class="p">[(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">)])</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">morpher</span><span class="o">.</span><span class="n">find_components</span><span class="p">(</span><span class="n">max_overall_power</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="n">n_resolution</span><span class="p">)</span>
+<span class="n">yi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">,</span><span class="n">n_resolution</span><span class="p">)</span>
+<span class="n">xx</span><span class="p">,</span> <span class="n">yy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xi</span><span class="p">,</span> <span class="n">yi</span><span class="p">)</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="n">xx</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">yy</span> <span class="o">=</span> <span class="n">yy</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">theta_evaluation</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hstack</span><span class="p">([</span><span class="n">xx</span><span class="p">,</span> <span class="n">yy</span><span class="p">])</span>
+
+<span class="n">x_updated</span> <span class="o">=</span> <span class="bp">False</span>
+<span class="n">y_updated</span> <span class="o">=</span> <span class="bp">False</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Basis-evaluation">Basis evaluation<a class="anchor-link" href="#Basis-evaluation"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">evaluate_basis</span><span class="p">(</span><span class="n">basis</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    
+    <span class="c1"># Optimization</span>
+    <span class="k">if</span> <span class="n">basis</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">basis</span> <span class="o">=</span> <span class="n">morpher</span><span class="o">.</span><span class="n">optimize_basis</span><span class="p">()</span>
+
+    <span class="c1"># Evaluate basis</span>
+    <span class="n">squared_weights</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">theta_evaluation</span><span class="p">:</span>
+        <span class="n">wi</span> <span class="o">=</span> <span class="n">morpher</span><span class="o">.</span><span class="n">calculate_morphing_weights</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span>
+        <span class="n">squared_weights</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">wi</span><span class="o">*</span><span class="n">wi</span><span class="p">)</span><span class="o">**</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="n">squared_weights</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">squared_weights</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">n_resolution</span><span class="p">,</span><span class="n">n_resolution</span><span class="p">))</span>
+    
+    <span class="k">return</span> <span class="n">basis</span><span class="p">,</span> <span class="n">squared_weights</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Initial-set-up">Initial set up<a class="anchor-link" href="#Initial-set-up"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">basis</span><span class="p">,</span> <span class="n">squared_weights</span> <span class="o">=</span> <span class="n">evaluate_basis</span><span class="p">(</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Interactive-tool">Interactive tool<a class="anchor-link" href="#Interactive-tool"> </a></h2>
+</div>
+</div>
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">def</span> <span class="nf">update</span><span class="p">(</span><span class="n">change</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">basis</span><span class="p">,</span> <span class="n">squared_weights</span><span class="p">,</span> <span class="n">x_updated</span><span class="p">,</span> <span class="n">y_updated</span>
+    
+    <span class="n">variable</span> <span class="o">=</span> <span class="n">change</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>
+    <span class="n">values</span> <span class="o">=</span> <span class="n">change</span><span class="p">[</span><span class="s1">&#39;new&#39;</span><span class="p">]</span>
+    
+    <span class="k">if</span> <span class="n">variable</span> <span class="o">==</span> <span class="s1">&#39;x&#39;</span><span class="p">:</span>
+        <span class="n">basis</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="n">x_updated</span> <span class="o">=</span> <span class="bp">True</span>
+    <span class="k">elif</span> <span class="n">variable</span> <span class="o">==</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span>
+        <span class="n">basis</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">values</span>
+        <span class="n">y_updated</span> <span class="o">=</span> <span class="bp">True</span>
+    
+    <span class="k">if</span> <span class="n">x_updated</span> <span class="ow">and</span> <span class="n">y_updated</span><span class="p">:</span>
+        <span class="n">basis</span><span class="p">,</span> <span class="n">squared_weights</span> <span class="o">=</span> <span class="n">evaluate_basis</span><span class="p">(</span><span class="n">basis</span><span class="p">)</span>
+        <span class="n">heat</span><span class="o">.</span><span class="n">color</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">squared_weights</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+        
+        <span class="n">x_updated</span> <span class="o">=</span> <span class="bp">False</span>
+        <span class="n">y_updated</span> <span class="o">=</span> <span class="bp">False</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">x_sc</span> <span class="o">=</span> <span class="n">bqplot</span><span class="o">.</span><span class="n">scales</span><span class="o">.</span><span class="n">LinearScale</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mf">1.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+<span class="n">y_sc</span> <span class="o">=</span> <span class="n">bqplot</span><span class="o">.</span><span class="n">scales</span><span class="o">.</span><span class="n">LinearScale</span><span class="p">(</span><span class="nb">min</span><span class="o">=-</span><span class="mf">1.</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.</span><span class="p">)</span>
+<span class="n">c_sc</span> <span class="o">=</span> <span class="n">bqplot</span><span class="o">.</span><span class="n">scales</span><span class="o">.</span><span class="n">ColorScale</span><span class="p">(</span><span class="nb">min</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">scheme</span><span class="o">=</span><span class="s1">&#39;YlOrRd&#39;</span><span class="p">)</span>
+
+<span class="n">heat</span> <span class="o">=</span> <span class="n">bqplot</span><span class="o">.</span><span class="n">GridHeatMap</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">squared_weights</span><span class="p">)</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">10</span><span class="p">),</span>
+                          <span class="n">scales</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;row&#39;</span><span class="p">:</span> <span class="n">x_sc</span><span class="p">,</span> <span class="s1">&#39;column&#39;</span><span class="p">:</span> <span class="n">y_sc</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">:</span> <span class="n">c_sc</span><span class="p">},</span>
+                          <span class="n">row</span><span class="o">=</span><span class="n">yi</span><span class="p">,</span>
+                          <span class="n">column</span><span class="o">=</span><span class="n">xi</span><span class="p">,</span>
+                          <span class="n">stroke</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+<span class="n">scatter</span> <span class="o">=</span> <span class="n">bqplot</span><span class="o">.</span><span class="n">Scatter</span><span class="p">(</span><span class="n">colors</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;black&#39;</span><span class="p">]</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">basis</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]),</span>
+                         <span class="n">x</span><span class="o">=</span><span class="n">basis</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span>
+                         <span class="n">y</span><span class="o">=</span><span class="n">basis</span><span class="p">[:,</span><span class="mi">1</span><span class="p">],</span>
+                         <span class="n">scales</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;x&#39;</span><span class="p">:</span> <span class="n">x_sc</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">:</span> <span class="n">y_sc</span><span class="p">})</span>
+
+<span class="n">ax_x</span> <span class="o">=</span> <span class="n">bqplot</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">x_sc</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fW&#39;</span><span class="p">)</span>
+<span class="n">ax_y</span> <span class="o">=</span> <span class="n">bqplot</span><span class="o">.</span><span class="n">Axis</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">y_sc</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;fWW&#39;</span><span class="p">)</span>
+<span class="n">ax_c</span> <span class="o">=</span> <span class="n">bqplot</span><span class="o">.</span><span class="n">ColorAxis</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="n">c_sc</span><span class="p">,</span>
+                        <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> 
+                        <span class="n">side</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">bqplot</span><span class="o">.</span><span class="n">Figure</span><span class="p">(</span><span class="n">marks</span><span class="o">=</span><span class="p">[</span><span class="n">heat</span><span class="p">,</span> <span class="n">scatter</span><span class="p">],</span>
+                    <span class="n">axes</span><span class="o">=</span><span class="p">[</span><span class="n">ax_x</span><span class="p">,</span> <span class="n">ax_y</span><span class="p">,</span> <span class="n">ax_c</span><span class="p">],</span>
+                    <span class="n">layout</span><span class="o">=</span><span class="n">Layout</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="s1">&#39;600px&#39;</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="s1">&#39;600px&#39;</span><span class="p">))</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">fig</span><span class="p">)</span>
+
+<span class="n">scatter</span><span class="o">.</span><span class="n">observe</span><span class="p">(</span><span class="n">update</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;y&#39;</span><span class="p">,</span><span class="s1">&#39;x&#39;</span><span class="p">])</span>
+<span class="n">scatter</span><span class="o">.</span><span class="n">enable_move</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+
+ 
+ 
+<div id="78613bf3-256b-4d67-a703-1ab281d2f4fa"></div>
+<div class="output_subarea output_widget_view ">
+<script type="text/javascript">
+var element = $('#78613bf3-256b-4d67-a703-1ab281d2f4fa');
+</script>
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id": "57775ec5c94a40dd914046b614250b40", "version_major": 2, "version_minor": 0}
+</script>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
 </div>
 </div>
 
@@ -1034,8 +1347,8 @@ In this webpage it is listed as</p>
     
     
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/parton_or_delphes.html">
-      〈 <span class="u-margin-right-tiny"></span> Create training data
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/morphing.html">
+      〈 <span class="u-margin-right-tiny"></span> Morphing
     </a>
   
 
@@ -1043,8 +1356,8 @@ In this webpage it is listed as</p>
     
 
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/tutorial_particle_physics/2a_parton_level_analysis.html">
-      Parton Level <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/parton_or_delphes.html">
+      Create training data <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

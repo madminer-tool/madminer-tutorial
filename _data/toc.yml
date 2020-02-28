@@ -48,6 +48,15 @@
   url: /tutorial_particle_physics/1_setup
   not_numbered: true
   expand_sections: true
+  sections:
+  - title: Morphing 
+    url: /morphing
+    not_numbered: true
+    expand_sections: true
+  - title: Interactive Morphing Demo
+    url: /morphing_basis/interactive_basis_chooser
+    not_numbered: true
+    expand_sections: true
 
   # A chapter w/ a collection of sections beneath it
 - title: Create training data
