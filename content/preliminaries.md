@@ -91,3 +91,11 @@ Now you should be all set and see something like this.
 
 ![](/madminer-tutorial/images/notebook.png)
 
+## Updating the docker image
+
+While developig and testing this tutorial we may occasionally update the docker image. If you completed the preliminaries some time ago, you might want to update with:
+```shell
+docker pull madminertool/docker-madminer-all
+```
+This will replace all the contents of the docker image, but not the files in the shared directory. YOu will still want to re-do the 
+steps described above in **Get tutorial & start Jupyter in container**.

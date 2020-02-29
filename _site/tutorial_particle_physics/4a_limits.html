@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/4a_limits.html",
   "headline": "Limits on EFT parameters",
-  "datePublished": "2020-02-28T13:56:17-05:00",
-  "dateModified": "2020-02-28T13:56:17-05:00",
+  "datePublished": "2020-02-29T09:34:00-05:00",
+  "dateModified": "2020-02-29T09:34:00-05:00",
   "description": "        Limits on EFT parameters    MadMiner particle physics tutorial Part 4a: Limit setting Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer 201...",
   "author": {
     "@type": "Person",
@@ -401,7 +401,7 @@ initFunction(initPrint)
     <script type="text/x-thebe-config">{
     requestKernel: true,
     binderOptions: {
-    repo: "YOUR-ORG/YOUR-REPO",
+    repo: "cranmer/madminer-tutorial",
     ref: "gh-pages",
     },
     codeMirrorConfig: {
@@ -902,6 +902,37 @@ initFunction(initPrint)
 
       
       
+      <li class="c-sidebar__chapter" data-url="/congratulations">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/congratulations.html"
+        >
+          
+          Congratulations
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
       <li class="c-sidebar__chapter" data-url="/tutorial_particle_physics/A1_systematic_uncertainties">
         <a class="c-sidebar__entry"
           href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
@@ -1176,19 +1207,19 @@ initFunction(initPrint)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>23:43 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
-23:43 madminer.analysis    INFO    Found 2 parameters
-23:43 madminer.analysis    INFO    Did not find nuisance parameters
-23:43 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
-23:43 madminer.analysis    INFO    Found 3 observables
-23:43 madminer.analysis    INFO    Found 539913 events
-23:43 madminer.analysis    INFO      499913 signal events sampled from benchmark sm
-23:43 madminer.analysis    INFO      10000 signal events sampled from benchmark w
-23:43 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
-23:43 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
-23:43 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
-23:43 madminer.analysis    INFO    Found morphing setup with 6 components
-23:43 madminer.analysis    INFO    Did not find nuisance morphing setup
+<pre>03:06 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
+03:06 madminer.analysis    INFO    Found 2 parameters
+03:06 madminer.analysis    INFO    Did not find nuisance parameters
+03:06 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
+03:06 madminer.analysis    INFO    Found 3 observables
+03:06 madminer.analysis    INFO    Found 89991 events
+03:06 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
+03:06 madminer.analysis    INFO      10000 signal events sampled from benchmark w
+03:06 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
+03:06 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
+03:06 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
+03:06 madminer.analysis    INFO    Found morphing setup with 6 components
+03:06 madminer.analysis    INFO    Did not find nuisance morphing setup
 </pre>
 </div>
 </div>
@@ -1290,6 +1321,24 @@ initFunction(initPrint)
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">p_values</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">mle</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_histo</span><span class="p">,</span> <span class="n">best_fit_expected_histo</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">histos</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">observed_weights</span><span class="p">)</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
     <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;histo&quot;</span><span class="p">,</span>
     <span class="n">hist_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pt_j1&quot;</span><span class="p">],</span>
@@ -1316,15 +1365,17 @@ initFunction(initPrint)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>23:43 madminer.limits      INFO    Generating Asimov data
-23:43 madminer.limits      INFO    Expected events: 313.1522825343162
-23:43 madminer.limits      INFO    Calculating p-values for 313.1522825343162 expected events in mode histo without rate information
-23:43 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-23:43 madminer.limits      INFO    Setting up standard summary statistics
-23:43 madminer.limits      INFO    Creating histograms of 1 summary statistics. Using (25,) bins each, or 25 in total.
-23:43 madminer.limits      INFO    Determining fixed adaptive histogram binning for all points on grid
-23:44 madminer.limits      INFO    Calculating kinematic log likelihood with histograms
-23:44 madminer.limits      INFO    Calculating p-values
+<pre>03:12 madminer.limits      INFO    Generating Asimov data
+03:12 madminer.limits      INFO    Expected events: 303.4579250833741
+03:12 madminer.limits      INFO    Calculating p-values for 303.4579250833741 expected events in mode histo without rate information
+03:12 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+03:12 madminer.limits      INFO    Setting up standard summary statistics
+03:12 madminer.limits      INFO    Creating histograms of 1 summary statistics. Using (25,) bins each, or 25 in total.
+03:12 madminer.limits      INFO    Determining fixed adaptive histogram binning for all points on grid
+03:12 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
+03:12 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
+03:12 madminer.limits      INFO    Calculating kinematic log likelihood with histograms
+03:12 madminer.limits      INFO    Calculating p-values
 </pre>
 </div>
 </div>
@@ -1391,7 +1442,7 @@ initFunction(initPrint)
 
 
 <div class="output_png output_subarea ">
-<img src="../images/tutorial_particle_physics/4a_limits_17_0.png"
+<img src="../images/tutorial_particle_physics/4a_limits_18_0.png"
 >
 </div>
 
@@ -1456,17 +1507,17 @@ initFunction(initPrint)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>23:44 madminer.limits      INFO    Generating Asimov data
-23:44 madminer.limits      INFO    Expected events: 313.1522825343162
-23:44 madminer.limits      INFO    Calculating p-values for 313.1522825343162 expected events in mode ml without rate information
-23:44 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-23:44 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
-23:44 madminer.ml          INFO    Loading model from models/alices
-23:44 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
-23:44 madminer.ml          INFO    Loading evaluation data
-23:44 madminer.ml          INFO    Starting ratio evaluation for 62466250 x-theta combinations
-00:00 madminer.ml          INFO    Evaluation done
-00:00 madminer.limits      INFO    Calculating p-values
+<pre>03:12 madminer.limits      INFO    Generating Asimov data
+03:12 madminer.limits      INFO    Expected events: 303.4579250833741
+03:12 madminer.limits      INFO    Calculating p-values for 303.4579250833741 expected events in mode ml without rate information
+03:12 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+03:12 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+03:12 madminer.ml          INFO    Loading model from models/alices
+03:12 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
+03:12 madminer.ml          INFO    Loading evaluation data
+03:12 madminer.ml          INFO    Starting ratio evaluation for 6259375 x-theta combinations
+03:14 madminer.ml          INFO    Evaluation done
+03:14 madminer.limits      INFO    Calculating p-values
 </pre>
 </div>
 </div>
@@ -1520,17 +1571,17 @@ initFunction(initPrint)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>00:00 madminer.limits      INFO    Generating Asimov data
-00:00 madminer.limits      INFO    Expected events: 313.1522825343162
-00:00 madminer.limits      INFO    Calculating p-values for 313.1522825343162 expected events in mode ml without rate information
-00:00 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-00:00 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
-00:00 madminer.ml          INFO    Loading model from models/alices_pt
-00:00 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
-00:00 madminer.ml          INFO    Loading evaluation data
-00:00 madminer.ml          INFO    Starting ratio evaluation for 62466250 x-theta combinations
-00:15 madminer.ml          INFO    Evaluation done
-00:15 madminer.limits      INFO    Calculating p-values
+<pre>03:14 madminer.limits      INFO    Generating Asimov data
+03:14 madminer.limits      INFO    Expected events: 303.4579250833741
+03:14 madminer.limits      INFO    Calculating p-values for 303.4579250833741 expected events in mode ml without rate information
+03:14 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+03:14 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+03:14 madminer.ml          INFO    Loading model from models/alices_pt
+03:14 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
+03:14 madminer.ml          INFO    Loading evaluation data
+03:14 madminer.ml          INFO    Starting ratio evaluation for 6259375 x-theta combinations
+03:17 madminer.ml          INFO    Evaluation done
+03:17 madminer.limits      INFO    Calculating p-values
 </pre>
 </div>
 </div>
@@ -1569,6 +1620,41 @@ initFunction(initPrint)
 
 <div class="inner_cell">
     <div class="input_area">
+<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">madminer</span>
+<span class="n">madminer</span><span class="o">.</span><span class="n">__version__</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+
+
+<div class="output_text output_subarea output_execute_result">
+<pre>&#39;0.6.3&#39;</pre>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="jb_cell">
+
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
 <div class=" highlight hl-ipython2"><pre><span></span><span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_sally</span><span class="p">,</span> <span class="n">best_fit_expected_sally</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">histos</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">observed_weights</span><span class="p">)</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
     <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;sally&quot;</span><span class="p">,</span>
     <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/sally&#39;</span><span class="p">,</span>
@@ -1595,19 +1681,21 @@ initFunction(initPrint)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>00:15 madminer.limits      INFO    Generating Asimov data
-00:15 madminer.limits      INFO    Expected events: 313.1522825343162
-00:15 madminer.limits      INFO    Calculating p-values for 313.1522825343162 expected events in mode sally without rate information
-00:15 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-00:15 madminer.limits      INFO    Loading score estimator and setting all components up as summary statistics
-00:15 madminer.ml          INFO    Loading model from models/sally
-00:15 madminer.ml          INFO    Starting score evaluation
-00:15 madminer.limits      INFO    Creating histograms of 2 summary statistics. Using (8, 8) bins each, or 64 in total.
-00:15 madminer.limits      INFO    Determining fixed adaptive histogram binning for all points on grid
-00:15 madminer.ml          INFO    Starting score evaluation
-00:15 madminer.ml          INFO    Starting score evaluation
-00:15 madminer.limits      INFO    Calculating kinematic log likelihood with histograms
-00:15 madminer.limits      INFO    Calculating p-values
+<pre>03:40 madminer.limits      INFO    Generating Asimov data
+03:40 madminer.limits      INFO    Expected events: 303.4579250833741
+03:40 madminer.limits      INFO    Calculating p-values for 303.4579250833741 expected events in mode sally without rate information
+03:40 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+03:40 madminer.limits      INFO    Loading score estimator and setting all components up as summary statistics
+03:40 madminer.ml          INFO    Loading model from models/sally
+03:40 madminer.ml          INFO    Starting score evaluation
+03:40 madminer.limits      INFO    Creating histograms of 2 summary statistics. Using (8, 8) bins each, or 64 in total.
+03:40 madminer.limits      INFO    Determining fixed adaptive histogram binning for all points on grid
+03:40 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
+03:40 madminer.ml          INFO    Starting score evaluation
+03:40 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
+03:40 madminer.ml          INFO    Starting score evaluation
+03:40 madminer.limits      INFO    Calculating kinematic log likelihood with histograms
+03:40 madminer.limits      INFO    Calculating p-values
 </pre>
 </div>
 </div>
@@ -1667,7 +1755,7 @@ initFunction(initPrint)
 
 
 <div class="output_png output_subarea ">
-<img src="../images/tutorial_particle_physics/4a_limits_27_0.png"
+<img src="../images/tutorial_particle_physics/4a_limits_29_0.png"
 >
 </div>
 
@@ -1721,16 +1809,16 @@ initFunction(initPrint)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>00:15 madminer.limits      INFO    Generating Asimov data
-00:15 madminer.limits      INFO    Expected events: 313.1522825343162
-00:15 madminer.limits      INFO    Calculating p-values for 313.1522825343162 expected events in mode ml without rate information
-00:15 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-00:15 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
-00:15 madminer.ml          INFO    Loading model from models/scandal
-00:15 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
-00:15 madminer.ml          INFO    Starting ratio evaluation for 62466250 x-theta combinations
-00:32 madminer.ml          INFO    Evaluation done
-00:32 madminer.limits      INFO    Calculating p-values
+<pre>05:31 madminer.limits      INFO    Generating Asimov data
+05:31 madminer.limits      INFO    Expected events: 303.4579250833741
+05:31 madminer.limits      INFO    Calculating p-values for 303.4579250833741 expected events in mode ml without rate information
+05:31 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+05:31 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+05:31 madminer.ml          INFO    Loading model from models/scandal
+05:31 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
+05:31 madminer.ml          INFO    Starting ratio evaluation for 6259375 x-theta combinations
+05:34 madminer.ml          INFO    Evaluation done
+05:34 madminer.limits      INFO    Calculating p-values
 </pre>
 </div>
 </div>
@@ -1789,23 +1877,23 @@ initFunction(initPrint)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>09:47 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
-09:47 madminer.analysis    INFO    Found 2 parameters
-09:47 madminer.analysis    INFO    Did not find nuisance parameters
-09:47 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
-09:47 madminer.analysis    INFO    Found 3 observables
-09:47 madminer.analysis    INFO    Found 539913 events
-09:47 madminer.analysis    INFO      499913 signal events sampled from benchmark sm
-09:47 madminer.analysis    INFO      10000 signal events sampled from benchmark w
-09:47 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
-09:47 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
-09:47 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
-09:47 madminer.analysis    INFO    Found morphing setup with 6 components
-09:47 madminer.analysis    INFO    Did not find nuisance morphing setup
-09:47 madminer.sampling    INFO    Extracting evaluation sample. Sampling according to [0.5 0.5]
-09:47 madminer.sampling    INFO    Starting sampling serially
-09:47 madminer.sampling    INFO    Sampling from parameter point 1 / 1
-09:47 madminer.sampling    INFO    Effective number of samples: mean 314.8774474865079, with individual thetas ranging from 314.8774474865079 to 314.8774474865079
+<pre>05:34 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
+05:34 madminer.analysis    INFO    Found 2 parameters
+05:34 madminer.analysis    INFO    Did not find nuisance parameters
+05:34 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
+05:34 madminer.analysis    INFO    Found 3 observables
+05:34 madminer.analysis    INFO    Found 89991 events
+05:34 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
+05:34 madminer.analysis    INFO      10000 signal events sampled from benchmark w
+05:34 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
+05:34 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
+05:34 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
+05:34 madminer.analysis    INFO    Found morphing setup with 6 components
+05:34 madminer.analysis    INFO    Did not find nuisance morphing setup
+05:34 madminer.sampling    INFO    Extracting evaluation sample. Sampling according to [0.5 0.5]
+05:34 madminer.sampling    INFO    Starting sampling serially
+05:34 madminer.sampling    INFO    Sampling from parameter point 1 / 1
+05:34 madminer.sampling    INFO    Effective number of samples: mean 507.4997220887104, with individual thetas ranging from 507.4997220887103 to 507.4997220887103
 </pre>
 </div>
 </div>
@@ -1848,15 +1936,15 @@ initFunction(initPrint)
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>09:47 madminer.limits      INFO    Calculating p-values for 100 expected events in mode ml without rate information
-09:47 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-09:47 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
-09:47 madminer.ml          INFO    Loading model from models/alices
-09:47 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
-09:47 madminer.ml          INFO    Loading evaluation data
-09:47 madminer.ml          INFO    Starting ratio evaluation for 62500 x-theta combinations
-09:47 madminer.ml          INFO    Evaluation done
-09:47 madminer.limits      INFO    Calculating p-values
+<pre>05:34 madminer.limits      INFO    Calculating p-values for 100 expected events in mode ml without rate information
+05:34 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+05:34 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+05:34 madminer.ml          INFO    Loading model from models/alices
+05:34 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
+05:34 madminer.ml          INFO    Loading evaluation data
+05:34 madminer.ml          INFO    Starting ratio evaluation for 62500 x-theta combinations
+05:34 madminer.ml          INFO    Evaluation done
+05:34 madminer.limits      INFO    Calculating p-values
 </pre>
 </div>
 </div>
@@ -1948,7 +2036,7 @@ initFunction(initPrint)
 
 
 <div class="output_png output_subarea ">
-<img src="../images/tutorial_particle_physics/4a_limits_36_0.png"
+<img src="../images/tutorial_particle_physics/4a_limits_38_0.png"
 >
 </div>
 

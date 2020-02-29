@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/preliminaries.html",
   "headline": "Preliminaries",
-  "datePublished": "2020-02-28T13:56:17-05:00",
-  "dateModified": "2020-02-28T13:56:17-05:00",
+  "datePublished": "2020-02-29T09:34:00-05:00",
+  "dateModified": "2020-02-29T09:34:00-05:00",
   "description": "        Preliminaries    Preliminaries The tutorial has several software dependenciesMadGraph (including Fortran)pythiaDelphes (optional)pytorchJupyterscipy ...",
   "author": {
     "@type": "Person",
@@ -401,7 +401,7 @@ initFunction(initPrint)
     <script type="text/x-thebe-config">{
     requestKernel: true,
     binderOptions: {
-    repo: "YOUR-ORG/YOUR-REPO",
+    repo: "cranmer/madminer-tutorial",
     ref: "gh-pages",
     },
     codeMirrorConfig: {
@@ -902,6 +902,37 @@ initFunction(initPrint)
 
       
       
+      <li class="c-sidebar__chapter" data-url="/congratulations">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/congratulations.html"
+        >
+          
+          Congratulations
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
       <li class="c-sidebar__chapter" data-url="/tutorial_particle_physics/A1_systematic_uncertainties">
         <a class="c-sidebar__entry"
           href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
@@ -1095,6 +1126,11 @@ pip install --upgrade madminer
 <p>Now you should be able to connect to the Jupyter notebook server inside the container using your normal browser. Click this link (open in a new tab): <a href="localhost:8888">localhost:8888</a>. You should see a Jupyter terminal and it will ask for a login token. Paste the token (in this example, <code>123copywhatyouseeherexyz</code>) and login.</p>
 <p>Now you should be all set and see something like this.</p>
 <p><img src="/madminer-tutorial/images/notebook.png" alt=""></p>
+<h2 id="Updating-the-docker-image">Updating the docker image<a class="anchor-link" href="#Updating-the-docker-image"> </a></h2><p>While developig and testing this tutorial we may occasionally update the docker image. If you completed the preliminaries some time ago, you might want to update with:</p>
+<div class="highlight"><pre><span></span>docker pull madminertool/docker-madminer-all
+</pre></div>
+<p>This will replace all the contents of the docker image, but not the files in the shared directory. YOu will still want to re-do the 
+steps described above in <strong>Get tutorial &amp; start Jupyter in container</strong>.</p>
 
 </div>
 </div>

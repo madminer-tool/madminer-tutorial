@@ -112,6 +112,12 @@
     not_numbered: true
 
 # A chapter w/ a collection of sections beneath it
+- title: Congratulations 
+  url: /congratulations
+  not_numbered: true
+
+
+# A chapter w/ a collection of sections beneath it
 - title: Appendix
   url: /tutorial_particle_physics/A1_systematic_uncertainties
   not_numbered: true

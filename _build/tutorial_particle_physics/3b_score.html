@@ -164,19 +164,19 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:23 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
-20:23 madminer.analysis    INFO    Found 2 parameters
-20:23 madminer.analysis    INFO    Did not find nuisance parameters
-20:23 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
-20:23 madminer.analysis    INFO    Found 3 observables
-20:23 madminer.analysis    INFO    Found 539913 events
-20:23 madminer.analysis    INFO      499913 signal events sampled from benchmark sm
-20:23 madminer.analysis    INFO      10000 signal events sampled from benchmark w
-20:23 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
-20:23 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
-20:23 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
-20:23 madminer.analysis    INFO    Found morphing setup with 6 components
-20:23 madminer.analysis    INFO    Did not find nuisance morphing setup
+<pre>03:20 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
+03:20 madminer.analysis    INFO    Found 2 parameters
+03:20 madminer.analysis    INFO    Did not find nuisance parameters
+03:20 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
+03:20 madminer.analysis    INFO    Found 3 observables
+03:20 madminer.analysis    INFO    Found 89991 events
+03:20 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
+03:20 madminer.analysis    INFO      10000 signal events sampled from benchmark w
+03:20 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
+03:20 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
+03:20 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
+03:20 madminer.analysis    INFO    Found morphing setup with 6 components
+03:20 madminer.analysis    INFO    Did not find nuisance morphing setup
 </pre>
 </div>
 </div>
@@ -224,10 +224,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:23 madminer.sampling    INFO    Extracting training sample for local score regression. Sampling and score evaluation according to sm
-20:23 madminer.sampling    INFO    Starting sampling serially
-20:23 madminer.sampling    INFO    Sampling from parameter point 1 / 1
-20:23 madminer.sampling    INFO    Effective number of samples: mean 300067.99999999994, with individual thetas ranging from 300067.9999999998 to 300067.9999999998
+<pre>03:20 madminer.sampling    INFO    Extracting training sample for local score regression. Sampling and score evaluation according to sm
+03:20 madminer.sampling    INFO    Starting sampling serially
+03:20 madminer.sampling    INFO    Sampling from parameter point 1 / 1
+03:20 madminer.sampling    INFO    Effective number of samples: mean 29993.000000000004, with individual thetas ranging from 29993.000000000004 to 29993.000000000004
 </pre>
 </div>
 </div>
@@ -275,10 +275,10 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:23 madminer.sampling    INFO    Extracting evaluation sample. Sampling according to sm
-20:23 madminer.sampling    INFO    Starting sampling serially
-20:23 madminer.sampling    INFO    Sampling from parameter point 1 / 1
-20:23 madminer.sampling    INFO    Effective number of samples: mean 99945.99999999999, with individual thetas ranging from 99945.99999999996 to 99945.99999999996
+<pre>03:20 madminer.sampling    INFO    Extracting evaluation sample. Sampling according to sm
+03:20 madminer.sampling    INFO    Starting sampling serially
+03:20 madminer.sampling    INFO    Sampling from parameter point 1 / 1
+03:20 madminer.sampling    INFO    Effective number of samples: mean 10015.0, with individual thetas ranging from 10015.0 to 10015.0
 </pre>
 </div>
 </div>
@@ -355,84 +355,84 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:23 madminer.ml          INFO    Starting training
-20:23 madminer.ml          INFO      Batch size:             128
-20:23 madminer.ml          INFO      Optimizer:              amsgrad
-20:23 madminer.ml          INFO      Epochs:                 50
-20:23 madminer.ml          INFO      Learning rate:          0.001 initially, decaying to 0.0001
-20:23 madminer.ml          INFO      Validation split:       0.25
-20:23 madminer.ml          INFO      Early stopping:         True
-20:23 madminer.ml          INFO      Scale inputs:           True
-20:23 madminer.ml          INFO      Shuffle labels          False
-20:23 madminer.ml          INFO      Samples:                all
-20:23 madminer.ml          INFO    Loading training data
-20:23 madminer.utils.vario INFO      Loading data/samples/x_train_score.npy into RAM
-20:23 madminer.utils.vario INFO      Loading data/samples/t_xz_train_score.npy into RAM
-20:23 madminer.ml          INFO    Found 500000 samples with 2 parameters and 3 observables
-20:23 madminer.ml          INFO    Setting up input rescaling
-20:23 madminer.ml          INFO    Creating model
-20:23 madminer.ml          INFO    Training model
-20:23 madminer.utils.ml.tr INFO    Training on CPU with single precision
-20:23 madminer.utils.ml.tr INFO      Epoch   3: train loss  0.19029 (mse_score:  0.190)
-20:23 madminer.utils.ml.tr INFO                 val. loss   0.20702 (mse_score:  0.207)
-20:24 madminer.utils.ml.tr INFO      Epoch   6: train loss  0.18637 (mse_score:  0.186)
-20:24 madminer.utils.ml.tr INFO                 val. loss   0.20334 (mse_score:  0.203)
-20:25 madminer.utils.ml.tr INFO      Epoch   9: train loss  0.18468 (mse_score:  0.185)
-20:25 madminer.utils.ml.tr INFO                 val. loss   0.19906 (mse_score:  0.199)
-20:25 madminer.utils.ml.tr INFO      Epoch  12: train loss  0.18354 (mse_score:  0.184)
-20:25 madminer.utils.ml.tr INFO                 val. loss   0.19785 (mse_score:  0.198)
-20:26 madminer.utils.ml.tr INFO      Epoch  15: train loss  0.18248 (mse_score:  0.182)
-20:26 madminer.utils.ml.tr INFO                 val. loss   0.19682 (mse_score:  0.197)
-20:27 madminer.utils.ml.tr INFO      Epoch  18: train loss  0.18196 (mse_score:  0.182)
-20:27 madminer.utils.ml.tr INFO                 val. loss   0.19714 (mse_score:  0.197)
-20:27 madminer.utils.ml.tr INFO      Epoch  21: train loss  0.18131 (mse_score:  0.181)
-20:27 madminer.utils.ml.tr INFO                 val. loss   0.19759 (mse_score:  0.198)
-20:28 madminer.utils.ml.tr INFO      Epoch  24: train loss  0.18092 (mse_score:  0.181)
-20:28 madminer.utils.ml.tr INFO                 val. loss   0.19569 (mse_score:  0.196)
-20:29 madminer.utils.ml.tr INFO      Epoch  27: train loss  0.18056 (mse_score:  0.181)
-20:29 madminer.utils.ml.tr INFO                 val. loss   0.19527 (mse_score:  0.195)
-20:30 madminer.utils.ml.tr INFO      Epoch  30: train loss  0.18017 (mse_score:  0.180)
-20:30 madminer.utils.ml.tr INFO                 val. loss   0.19607 (mse_score:  0.196)
-20:30 madminer.utils.ml.tr INFO      Epoch  33: train loss  0.17988 (mse_score:  0.180)
-20:30 madminer.utils.ml.tr INFO                 val. loss   0.19461 (mse_score:  0.195)
-20:31 madminer.utils.ml.tr INFO      Epoch  36: train loss  0.17971 (mse_score:  0.180)
-20:31 madminer.utils.ml.tr INFO                 val. loss   0.19450 (mse_score:  0.194)
-20:32 madminer.utils.ml.tr INFO      Epoch  39: train loss  0.17953 (mse_score:  0.180)
-20:32 madminer.utils.ml.tr INFO                 val. loss   0.19477 (mse_score:  0.195)
-20:32 madminer.utils.ml.tr INFO      Epoch  42: train loss  0.17930 (mse_score:  0.179)
-20:32 madminer.utils.ml.tr INFO                 val. loss   0.19415 (mse_score:  0.194)
-20:33 madminer.utils.ml.tr INFO      Epoch  45: train loss  0.17926 (mse_score:  0.179)
-20:33 madminer.utils.ml.tr INFO                 val. loss   0.19477 (mse_score:  0.195)
-20:34 madminer.utils.ml.tr INFO      Epoch  48: train loss  0.17908 (mse_score:  0.179)
-20:34 madminer.utils.ml.tr INFO                 val. loss   0.19428 (mse_score:  0.194)
-20:34 madminer.utils.ml.tr INFO    Early stopping after epoch 46, with loss  0.19398 compared to final loss  0.19416
-20:34 madminer.utils.ml.tr INFO    Training time spend on:
-20:34 madminer.utils.ml.tr INFO                      initialize model:   0.00h
-20:34 madminer.utils.ml.tr INFO                                   ALL:   0.19h
-20:34 madminer.utils.ml.tr INFO                            check data:   0.00h
-20:34 madminer.utils.ml.tr INFO                          make dataset:   0.00h
-20:34 madminer.utils.ml.tr INFO                       make dataloader:   0.00h
-20:34 madminer.utils.ml.tr INFO                       setup optimizer:   0.00h
-20:34 madminer.utils.ml.tr INFO                   initialize training:   0.00h
-20:34 madminer.utils.ml.tr INFO                                set lr:   0.00h
-20:34 madminer.utils.ml.tr INFO                   load training batch:   0.06h
-20:34 madminer.utils.ml.tr INFO                        fwd: move data:   0.00h
-20:34 madminer.utils.ml.tr INFO                   fwd: check for nans:   0.04h
-20:34 madminer.utils.ml.tr INFO                    fwd: model.forward:   0.02h
-20:34 madminer.utils.ml.tr INFO                 fwd: calculate losses:   0.01h
-20:34 madminer.utils.ml.tr INFO                 training forward pass:   0.06h
-20:34 madminer.utils.ml.tr INFO                   training sum losses:   0.00h
-20:34 madminer.utils.ml.tr INFO                        opt: zero grad:   0.00h
-20:34 madminer.utils.ml.tr INFO                         opt: backward:   0.02h
-20:34 madminer.utils.ml.tr INFO                   opt: clip grad norm:   0.00h
-20:34 madminer.utils.ml.tr INFO                             opt: step:   0.01h
-20:34 madminer.utils.ml.tr INFO                        optimizer step:   0.03h
-20:34 madminer.utils.ml.tr INFO                 load validation batch:   0.02h
-20:34 madminer.utils.ml.tr INFO               validation forward pass:   0.02h
-20:34 madminer.utils.ml.tr INFO                 validation sum losses:   0.00h
-20:34 madminer.utils.ml.tr INFO                        early stopping:   0.00h
-20:34 madminer.utils.ml.tr INFO                          report epoch:   0.00h
-20:34 madminer.ml          INFO    Saving model to models/sally
+<pre>03:20 madminer.ml          INFO    Starting training
+03:20 madminer.ml          INFO      Batch size:             128
+03:20 madminer.ml          INFO      Optimizer:              amsgrad
+03:20 madminer.ml          INFO      Epochs:                 50
+03:20 madminer.ml          INFO      Learning rate:          0.001 initially, decaying to 0.0001
+03:20 madminer.ml          INFO      Validation split:       0.25
+03:20 madminer.ml          INFO      Early stopping:         True
+03:20 madminer.ml          INFO      Scale inputs:           True
+03:20 madminer.ml          INFO      Shuffle labels          False
+03:20 madminer.ml          INFO      Samples:                all
+03:20 madminer.ml          INFO    Loading training data
+03:20 madminer.utils.vario INFO      Loading data/samples/x_train_score.npy into RAM
+03:20 madminer.utils.vario INFO      Loading data/samples/t_xz_train_score.npy into RAM
+03:20 madminer.ml          INFO    Found 500000 samples with 2 parameters and 3 observables
+03:20 madminer.ml          INFO    Setting up input rescaling
+03:20 madminer.ml          INFO    Creating model
+03:20 madminer.ml          INFO    Training model
+03:20 madminer.utils.ml.tr INFO    Training on CPU with single precision
+03:21 madminer.utils.ml.tr INFO      Epoch   3: train loss  0.22320 (mse_score:  0.223)
+03:21 madminer.utils.ml.tr INFO                 val. loss   0.23275 (mse_score:  0.233)
+03:22 madminer.utils.ml.tr INFO      Epoch   6: train loss  0.21290 (mse_score:  0.213)
+03:22 madminer.utils.ml.tr INFO                 val. loss   0.22271 (mse_score:  0.223)
+03:23 madminer.utils.ml.tr INFO      Epoch   9: train loss  0.20639 (mse_score:  0.206)
+03:23 madminer.utils.ml.tr INFO                 val. loss   0.21605 (mse_score:  0.216)
+03:24 madminer.utils.ml.tr INFO      Epoch  12: train loss  0.20170 (mse_score:  0.202)
+03:24 madminer.utils.ml.tr INFO                 val. loss   0.20919 (mse_score:  0.209)
+03:25 madminer.utils.ml.tr INFO      Epoch  15: train loss  0.19744 (mse_score:  0.197)
+03:25 madminer.utils.ml.tr INFO                 val. loss   0.20493 (mse_score:  0.205)
+03:25 madminer.utils.ml.tr INFO      Epoch  18: train loss  0.19445 (mse_score:  0.194)
+03:25 madminer.utils.ml.tr INFO                 val. loss   0.20146 (mse_score:  0.201)
+03:26 madminer.utils.ml.tr INFO      Epoch  21: train loss  0.19184 (mse_score:  0.192)
+03:26 madminer.utils.ml.tr INFO                 val. loss   0.19981 (mse_score:  0.200)
+03:27 madminer.utils.ml.tr INFO      Epoch  24: train loss  0.18964 (mse_score:  0.190)
+03:27 madminer.utils.ml.tr INFO                 val. loss   0.19736 (mse_score:  0.197)
+03:28 madminer.utils.ml.tr INFO      Epoch  27: train loss  0.18799 (mse_score:  0.188)
+03:28 madminer.utils.ml.tr INFO                 val. loss   0.19577 (mse_score:  0.196)
+03:29 madminer.utils.ml.tr INFO      Epoch  30: train loss  0.18634 (mse_score:  0.186)
+03:29 madminer.utils.ml.tr INFO                 val. loss   0.19459 (mse_score:  0.195)
+03:30 madminer.utils.ml.tr INFO      Epoch  33: train loss  0.18535 (mse_score:  0.185)
+03:30 madminer.utils.ml.tr INFO                 val. loss   0.19200 (mse_score:  0.192)
+03:31 madminer.utils.ml.tr INFO      Epoch  36: train loss  0.18427 (mse_score:  0.184)
+03:31 madminer.utils.ml.tr INFO                 val. loss   0.19096 (mse_score:  0.191)
+03:32 madminer.utils.ml.tr INFO      Epoch  39: train loss  0.18341 (mse_score:  0.183)
+03:32 madminer.utils.ml.tr INFO                 val. loss   0.19023 (mse_score:  0.190)
+03:33 madminer.utils.ml.tr INFO      Epoch  42: train loss  0.18268 (mse_score:  0.183)
+03:33 madminer.utils.ml.tr INFO                 val. loss   0.18907 (mse_score:  0.189)
+03:34 madminer.utils.ml.tr INFO      Epoch  45: train loss  0.18199 (mse_score:  0.182)
+03:34 madminer.utils.ml.tr INFO                 val. loss   0.18866 (mse_score:  0.189)
+03:35 madminer.utils.ml.tr INFO      Epoch  48: train loss  0.18147 (mse_score:  0.181)
+03:35 madminer.utils.ml.tr INFO                 val. loss   0.18789 (mse_score:  0.188)
+03:36 madminer.utils.ml.tr INFO    Early stopping did not improve performance
+03:36 madminer.utils.ml.tr INFO    Training time spend on:
+03:36 madminer.utils.ml.tr INFO                      initialize model:   0.00h
+03:36 madminer.utils.ml.tr INFO                                   ALL:   0.27h
+03:36 madminer.utils.ml.tr INFO                            check data:   0.00h
+03:36 madminer.utils.ml.tr INFO                          make dataset:   0.00h
+03:36 madminer.utils.ml.tr INFO                       make dataloader:   0.00h
+03:36 madminer.utils.ml.tr INFO                       setup optimizer:   0.00h
+03:36 madminer.utils.ml.tr INFO                   initialize training:   0.00h
+03:36 madminer.utils.ml.tr INFO                                set lr:   0.00h
+03:36 madminer.utils.ml.tr INFO                   load training batch:   0.09h
+03:36 madminer.utils.ml.tr INFO                        fwd: move data:   0.00h
+03:36 madminer.utils.ml.tr INFO                   fwd: check for nans:   0.03h
+03:36 madminer.utils.ml.tr INFO                    fwd: model.forward:   0.04h
+03:36 madminer.utils.ml.tr INFO                 fwd: calculate losses:   0.01h
+03:36 madminer.utils.ml.tr INFO                 training forward pass:   0.06h
+03:36 madminer.utils.ml.tr INFO                   training sum losses:   0.00h
+03:36 madminer.utils.ml.tr INFO                        opt: zero grad:   0.00h
+03:36 madminer.utils.ml.tr INFO                         opt: backward:   0.03h
+03:36 madminer.utils.ml.tr INFO                   opt: clip grad norm:   0.00h
+03:36 madminer.utils.ml.tr INFO                             opt: step:   0.02h
+03:36 madminer.utils.ml.tr INFO                        optimizer step:   0.06h
+03:36 madminer.utils.ml.tr INFO                 load validation batch:   0.03h
+03:36 madminer.utils.ml.tr INFO               validation forward pass:   0.02h
+03:36 madminer.utils.ml.tr INFO                 validation sum losses:   0.00h
+03:36 madminer.utils.ml.tr INFO                        early stopping:   0.00h
+03:36 madminer.utils.ml.tr INFO                          report epoch:   0.00h
+03:36 madminer.ml          INFO    Saving model to models/sally
 </pre>
 </div>
 </div>
@@ -489,9 +489,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:34 madminer.ml          INFO    Loading model from models/sally
-20:34 madminer.utils.vario INFO      Loading data/samples/x_test.npy into RAM
-20:34 madminer.ml          INFO    Starting score evaluation
+<pre>03:36 madminer.ml          INFO    Loading model from models/sally
+03:36 madminer.utils.vario INFO      Loading data/samples/x_test.npy into RAM
+03:36 madminer.ml          INFO    Starting score evaluation
 </pre>
 </div>
 </div>

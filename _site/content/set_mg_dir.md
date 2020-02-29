@@ -8,7 +8,7 @@ mg_dir = '/Users/johannbrehmer/work/projects/madminer/MG5_aMC_v2_6_5’
 
 In the GitHub repository it has been updated to be be consistent with the docker container:
 ```
-mg_dir = 'mg_dir = '/home/software/MG5_aMC_v2_6_2'
+mg_dir = '/home/software/MG5_aMC_v2_6_2'
 ```
 
 If you install everything yourself, then you would need to change this.
