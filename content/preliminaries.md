@@ -23,7 +23,7 @@ The process is fairly painless and will also work on Mac and Windows . Follow th
 
 [Download Docker Desktop](https://www.docker.com/products/docker-desktop)
 
-The link above should work for Mac OS X or Windows, but it requires Windows 10 Professional or Enterprise 64-bit. For previous versions of Windows (or Windows Home 10) use [Docker Toolbox](https://docs.docker.com/toolbox/overview/): use [these instructions](https://docs.docker.com/toolbox/toolbox_install_windows/).
+The link above should work for Mac OS X or Windows, but it requires Windows 10 Professional or Enterprise 64-bit. For previous versions of Windows (or Windows Home 10) use [Docker Toolbox](https://docs.docker.com/toolbox/overview/): use [these instructions](https://docs.docker.com/toolbox/toolbox_install_windows/). Note there are some other small changes listed at the bottom of this page. 
 
 ## Make a directory to share between your laptop and the container
 
@@ -41,6 +41,7 @@ The first time you execute this it will need to pull the container, which will t
 ```bash
 docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/docker-madminer-all /bin/bash
 ```
+(If you are using Docker Toolbox on windows, see section below.)
 
 Now you have a prompt inside the container. See what's there and then go into the `shared` directory
 
@@ -85,7 +86,7 @@ You should see something like this:
 
 will want to copy the text after the token (in your terminal, this is just an example). In this case you would copy the `123copywhatyouseeherexyz`
 
-Now you should be able to connect to the Jupyter notebook server inside the container using your normal browser. Click this link (open in a new tab): [localhost:8888](localhost:8888). You should see a Jupyter terminal and it will ask for a login token. Paste the token (in this example, `123copywhatyouseeherexyz`) and login.
+Now you should be able to connect to the Jupyter notebook server inside the container using your normal browser. Click this link (open in a new tab): [localhost:8888](localhost:8888). (If you are using Docker Toolbox on windows, see section below.) You should see a Jupyter terminal and it will ask for a login token. Paste the token (in this example, `123copywhatyouseeherexyz`) and login.
 
 Now you should be all set and see something like this.
 
@@ -99,3 +100,32 @@ docker pull madminertool/docker-madminer-all
 ```
 This will replace all the contents of the docker image, but not the files in the shared directory. YOu will still want to re-do the 
 steps described above in **Get tutorial & start Jupyter in container**.
+
+## Special instructions for Docker Toolbox Windows 
+
+Thanks to Ioannis Karkanias for these notes on Docker Toolbox
+
+1) The 
+```docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/docker-madminer-all /bin/bash``` 
+command's -v argument needs to be something like this
+
+```shell
+-v /c/Users/kark/madminer_shared:/home/shared
+```
+(replace `kark` is your username). The shared folder needs to be in the `Users/` directory, as the Docker Toolbox uses VirtualBox and the shared folder specified for the machine that is created in VirtualBox only has `C:/Users/` as a shared folder. There are instructions [here](https://docs.docker.com/toolbox/toolbox_install_windows/#optional-add-shared-directories)
+
+2) Since Docker-Toolbox uses a virtual machine and there is no `localhost`, the 
+"Click this link (open in a new tab): `localhost:8888`." 
+part of the instructions needs to change to the default IP used by the Docker Toolbox's virtual machine, which you can find in the [Docker Toolbox command line interface](https://docs.docker.com/toolbox/toolbox_install_windows/#step-3-verify-your-installation) by typing the command:
+
+```shell
+docker-machine ip default
+```
+which should return something like:
+```
+docker is configured to use the default machine with IP 192.XXX.YY.ZZZ
+```
+and then you can access the created Jupyter notebook by pointing your browser to: ```<result of the docker-machine ip default command>:8888```
+
+
+
