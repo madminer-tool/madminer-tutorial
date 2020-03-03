@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/statistics.html",
   "headline": "Statistical Analysis",
-  "datePublished": "2020-03-03T11:41:04-05:00",
-  "dateModified": "2020-03-03T11:41:04-05:00",
+  "datePublished": "2020-03-03T12:06:05-05:00",
+  "dateModified": "2020-03-03T12:06:05-05:00",
   "description": "        Statistical Analysis    Choose your adventure At this stage we have a trained model to approximate a likelihood, likelihood ratio, or score. With thi...",
   "author": {
     "@type": "Person",
@@ -113,125 +113,6 @@ MathJax.Hub.Config({
 
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
-
-
-<!-- Display Thebelab button in each code cell -->
-<script>
-/**
- * Set up thebelab button for code blocks
- */
-
-const thebelabCellButton = id =>
-  `<a id="thebelab-cell-button-${id}" class="btn thebebtn o-tooltip--left" data-tooltip="Interactive Mode">
-    <img src="/madminer-tutorial/assets/images/edit-button.svg" alt="Start thebelab interactive mode">
-  </a>`
-
-
-const addThebelabButtonToCodeCells =  () => {
-
-  const codeCells = document.querySelectorAll('div.input_area > div.highlight:not(.output) pre')
-  codeCells.forEach((codeCell, index) => {
-    const id = codeCellId(index)
-    codeCell.setAttribute('id', id)
-    if (document.getElementById("thebelab-cell-button-" + id) == null) {
-      codeCell.insertAdjacentHTML('afterend', thebelabCellButton(id));
-    }
-  })
-}
-
-initFunction(addThebelabButtonToCodeCells);
-</script>
-
-
-<script src="https://unpkg.com/thebelab@latest/lib/index.js" async></script>
-<script>
-    /**
-     * Add attributes to Thebelab blocks
-     */
-
-    const initThebelab = () => {
-        const addThebelabToCodeCells = () => {
-            console.log("Adding thebelab to code cells...");
-            // If Thebelab hasn't loaded, wait a bit and try again. This
-            // happens because we load ClipboardJS asynchronously.
-            if (window.thebelab === undefined) {
-                setTimeout(addThebelabToCodeCells, 250)
-            return
-            }
-
-            // If we already detect a Thebelab cell, don't re-run
-            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
-                return;
-            }
-
-            // Find all code cells, replace with Thebelab interactive code cells
-            const codeCells = document.querySelectorAll('.input_area pre')
-            codeCells.forEach((codeCell, index) => {
-                const id = codeCellId(index)
-
-                // Clean up the language to make it work w/ CodeMirror and add it to the cell
-                dataLanguage = ""
-                dataLanguage = detectLanguage(dataLanguage);
-                codeCell.setAttribute('data-language', dataLanguage)
-                codeCell.setAttribute('data-executable', 'true')
-
-                // If the code cell is hidden, show it
-                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
-                if (inputCheckbox !== null) {
-                    setCodeCellVisibility(inputCheckbox, 'visible');
-                }
-            });
-
-            // Remove the event listener from the page so keyboard press doesn't
-            // Change page
-            document.removeEventListener('keydown', initPageNav)
-            keyboardListener = false;
-
-            // Init thebelab
-            thebelab.bootstrap();
-
-            // Remove copy buttons since they won't work anymore
-            const copyAndThebeButtons = document.querySelectorAll('.copybtn, .thebebtn')
-            copyAndThebeButtons.forEach((button, index) => {
-                button.remove();
-            });
-
-            // Remove outputs since they'll be stale
-            const outputs = document.querySelectorAll('.output *, .output')
-            outputs.forEach((output, index) => {
-                output.remove();
-            });
-
-            // Find any cells with an initialization tag and ask ThebeLab to run them when ready
-            var thebeInitCells = document.querySelectorAll('div.tag_thebelab-init');
-            thebeInitCells.forEach((cell) => {
-                console.log("Initializing ThebeLab with cell: " + cell.id);
-                cell.querySelector('.thebelab-run-button').click();
-            });
-        }
-
-        // Add event listener for the function to modify code cells
-        const thebelabButtons = document.querySelectorAll('[id^=thebelab], [id$=thebelab]')
-        thebelabButtons.forEach((thebelabButton,index) => {
-            if (thebelabButton === null) {
-                setTimeout(initThebelab, 250)
-                return
-            };
-            thebelabButton.addEventListener('click', addThebelabToCodeCells);
-        });
-    }
-
-    // Initialize Thebelab
-    initFunction(initThebelab);
-
-// Helper function to munge the language name
-var detectLanguage = (language) => {
-    if (language.indexOf('python') > -1) {
-        language = "python";
-    }
-    return language;
-}
-</script>
 
 
 
@@ -1079,7 +960,7 @@ initFunction(initPrint)
           href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
         >
           
-          Appendix
+          Systematic uncertainties
         </a>
       </li>
 
@@ -1111,7 +992,7 @@ initFunction(initPrint)
                 href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
               >
                 
-                Appendix
+                Systematic uncertainties
               </a>
             </li>
             

@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/preliminaries.html",
   "headline": "Preliminaries",
-  "datePublished": "2020-03-03T11:41:04-05:00",
-  "dateModified": "2020-03-03T11:41:04-05:00",
+  "datePublished": "2020-03-03T12:06:05-05:00",
+  "dateModified": "2020-03-03T12:06:05-05:00",
   "description": "        Preliminaries    Preliminaries The tutorial has several software dependenciesMadGraph (including Fortran)pythiaDelphes (optional)pytorchJupyterscipy ...",
   "author": {
     "@type": "Person",
@@ -113,125 +113,6 @@ MathJax.Hub.Config({
 
   <!-- Load Thebelab for interactive widgets -->
   <!-- Include Thebelab for interactive code if it's enabled -->
-
-
-<!-- Display Thebelab button in each code cell -->
-<script>
-/**
- * Set up thebelab button for code blocks
- */
-
-const thebelabCellButton = id =>
-  `<a id="thebelab-cell-button-${id}" class="btn thebebtn o-tooltip--left" data-tooltip="Interactive Mode">
-    <img src="/madminer-tutorial/assets/images/edit-button.svg" alt="Start thebelab interactive mode">
-  </a>`
-
-
-const addThebelabButtonToCodeCells =  () => {
-
-  const codeCells = document.querySelectorAll('div.input_area > div.highlight:not(.output) pre')
-  codeCells.forEach((codeCell, index) => {
-    const id = codeCellId(index)
-    codeCell.setAttribute('id', id)
-    if (document.getElementById("thebelab-cell-button-" + id) == null) {
-      codeCell.insertAdjacentHTML('afterend', thebelabCellButton(id));
-    }
-  })
-}
-
-initFunction(addThebelabButtonToCodeCells);
-</script>
-
-
-<script src="https://unpkg.com/thebelab@latest/lib/index.js" async></script>
-<script>
-    /**
-     * Add attributes to Thebelab blocks
-     */
-
-    const initThebelab = () => {
-        const addThebelabToCodeCells = () => {
-            console.log("Adding thebelab to code cells...");
-            // If Thebelab hasn't loaded, wait a bit and try again. This
-            // happens because we load ClipboardJS asynchronously.
-            if (window.thebelab === undefined) {
-                setTimeout(addThebelabToCodeCells, 250)
-            return
-            }
-
-            // If we already detect a Thebelab cell, don't re-run
-            if (document.querySelectorAll('div.thebelab-cell').length > 0) {
-                return;
-            }
-
-            // Find all code cells, replace with Thebelab interactive code cells
-            const codeCells = document.querySelectorAll('.input_area pre')
-            codeCells.forEach((codeCell, index) => {
-                const id = codeCellId(index)
-
-                // Clean up the language to make it work w/ CodeMirror and add it to the cell
-                dataLanguage = ""
-                dataLanguage = detectLanguage(dataLanguage);
-                codeCell.setAttribute('data-language', dataLanguage)
-                codeCell.setAttribute('data-executable', 'true')
-
-                // If the code cell is hidden, show it
-                var inputCheckbox = document.querySelector(`input#hidebtn${codeCell.id}`);
-                if (inputCheckbox !== null) {
-                    setCodeCellVisibility(inputCheckbox, 'visible');
-                }
-            });
-
-            // Remove the event listener from the page so keyboard press doesn't
-            // Change page
-            document.removeEventListener('keydown', initPageNav)
-            keyboardListener = false;
-
-            // Init thebelab
-            thebelab.bootstrap();
-
-            // Remove copy buttons since they won't work anymore
-            const copyAndThebeButtons = document.querySelectorAll('.copybtn, .thebebtn')
-            copyAndThebeButtons.forEach((button, index) => {
-                button.remove();
-            });
-
-            // Remove outputs since they'll be stale
-            const outputs = document.querySelectorAll('.output *, .output')
-            outputs.forEach((output, index) => {
-                output.remove();
-            });
-
-            // Find any cells with an initialization tag and ask ThebeLab to run them when ready
-            var thebeInitCells = document.querySelectorAll('div.tag_thebelab-init');
-            thebeInitCells.forEach((cell) => {
-                console.log("Initializing ThebeLab with cell: " + cell.id);
-                cell.querySelector('.thebelab-run-button').click();
-            });
-        }
-
-        // Add event listener for the function to modify code cells
-        const thebelabButtons = document.querySelectorAll('[id^=thebelab], [id$=thebelab]')
-        thebelabButtons.forEach((thebelabButton,index) => {
-            if (thebelabButton === null) {
-                setTimeout(initThebelab, 250)
-                return
-            };
-            thebelabButton.addEventListener('click', addThebelabToCodeCells);
-        });
-    }
-
-    // Initialize Thebelab
-    initFunction(initThebelab);
-
-// Helper function to munge the language name
-var detectLanguage = (language) => {
-    if (language.indexOf('python') > -1) {
-        language = "python";
-    }
-    return language;
-}
-</script>
 
 
 
@@ -1079,7 +960,7 @@ initFunction(initPrint)
           href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
         >
           
-          Appendix
+          Systematic uncertainties
         </a>
       </li>
 
@@ -1111,7 +992,7 @@ initFunction(initPrint)
                 href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
               >
                 
-                Appendix
+                Systematic uncertainties
               </a>
             </li>
             
@@ -1224,8 +1105,10 @@ initFunction(initPrint)
 Irina Espejo has built Docker containers with everything installed already and pushed them to <a href="https://hub.docker.com/u/madminertool/">DockerHub under madminertool</a>.</p>
 <p>We will still use our computer's normal browser to connect to the server as described in this tutorial: <a href="https://www.dataquest.io/blog/docker-data-science/">Running a Dockerized Jupyter Server for Data Science</a>.</p>
 <p>The process is fairly painless and will also work on Mac and Windows . Follow the steps below.</p>
+<p>In addition, the pages with code have an "Interactive" button at the top, and if you click them you should be able to run the notebooks in the cloud (intead of on your laptop) thanks to <a href="https://mybinder.org">Binder</a>. However, the working area is temporary and it won't save your files once the session ends.</p>
 <h2 id="Install-Docker">Install Docker<a class="anchor-link" href="#Install-Docker"> </a></h2><p><a href="https://www.docker.com/products/docker-desktop">Download Docker Desktop</a></p>
 <p>The link above should work for Mac OS X or Windows, but it requires Windows 10 Professional or Enterprise 64-bit. For previous versions of Windows (or Windows Home 10) use <a href="https://docs.docker.com/toolbox/overview/">Docker Toolbox</a>: use <a href="https://docs.docker.com/toolbox/toolbox_install_windows/">these instructions</a>. Note there are some other small changes listed at the bottom of this page.</p>
+<p>You may want to go into docker preferences and adjust the resources given to the docker engine. In particular memory and swap space since this will involve machine learning.</p>
 <h2 id="Make-a-directory-to-share-between-your-laptop-and-the-container">Make a directory to share between your laptop and the container<a class="anchor-link" href="#Make-a-directory-to-share-between-your-laptop-and-the-container"> </a></h2><p>Make a directory</p>
 <div class="highlight"><pre><span></span>mkdir ~/madminer_shared
 </pre></div>

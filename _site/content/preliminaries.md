@@ -19,11 +19,15 @@ We will still use our computer's normal browser to connect to the server as desc
 
 The process is fairly painless and will also work on Mac and Windows . Follow the steps below. 
 
+In addition, the pages with code have an "Interactive" button at the top, and if you click them you should be able to run the notebooks in the cloud (intead of on your laptop) thanks to [Binder](https://mybinder.org). However, the working area is temporary and it won't save your files once the session ends. 
+
 ## Install Docker
 
 [Download Docker Desktop](https://www.docker.com/products/docker-desktop)
 
 The link above should work for Mac OS X or Windows, but it requires Windows 10 Professional or Enterprise 64-bit. For previous versions of Windows (or Windows Home 10) use [Docker Toolbox](https://docs.docker.com/toolbox/overview/): use [these instructions](https://docs.docker.com/toolbox/toolbox_install_windows/). Note there are some other small changes listed at the bottom of this page. 
+
+You may want to go into docker preferences and adjust the resources given to the docker engine. In particular memory and swap space since this will involve machine learning. 
 
 ## Make a directory to share between your laptop and the container
 
