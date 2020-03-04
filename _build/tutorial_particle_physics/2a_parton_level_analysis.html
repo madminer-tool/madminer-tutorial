@@ -138,7 +138,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">mg_dir</span> <span class="o">=</span> <span class="s1">&#39;/home/software/MG5_aMC_v2_6_2&#39;</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="n">mg_dir</span> <span class="o">=</span> <span class="s1">&#39;/home/software/MG5_aMC_v2_6_7&#39;</span>
 </pre></div>
 
     </div>
@@ -191,19 +191,19 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:31 madminer.utils.inter DEBUG   HDF5 file does not contain is_reference field.
-20:31 madminer.core        INFO    Found 2 parameters:
-20:31 madminer.core        INFO       CWL2 (LHA: dim6 2, maximal power in squared ME: (2,), range: (-20.0, 20.0))
-20:31 madminer.core        INFO       CPWL2 (LHA: dim6 5, maximal power in squared ME: (2,), range: (-20.0, 20.0))
-20:31 madminer.core        INFO    Found 6 benchmarks:
-20:31 madminer.core        INFO       sm: CWL2 = 0.00e+00, CPWL2 = 0.00e+00
-20:31 madminer.core        INFO       w: CWL2 = 15.20, CPWL2 = 0.10
-20:31 madminer.core        INFO       neg_w: CWL2 = -1.54e+01, CPWL2 = 0.20
-20:31 madminer.core        INFO       ww: CWL2 = 0.30, CPWL2 = 15.10
-20:31 madminer.core        INFO       neg_ww: CWL2 = 0.40, CPWL2 = -1.53e+01
-20:31 madminer.core        INFO       morphing_basis_vector_5: CWL2 = -1.58e+01, CPWL2 = -1.94e+01
-20:31 madminer.core        INFO    Found morphing setup with 6 components
-20:31 madminer.core        INFO    Did not find systematics setup.
+<pre>16:39 madminer.utils.inter DEBUG   HDF5 file does not contain is_reference field.
+16:39 madminer.core        INFO    Found 2 parameters:
+16:39 madminer.core        INFO       CWL2 (LHA: dim6 2, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+16:39 madminer.core        INFO       CPWL2 (LHA: dim6 5, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+16:39 madminer.core        INFO    Found 6 benchmarks:
+16:39 madminer.core        INFO       sm: CWL2 = 0.00e+00, CPWL2 = 0.00e+00
+16:39 madminer.core        INFO       w: CWL2 = 15.20, CPWL2 = 0.10
+16:39 madminer.core        INFO       neg_w: CWL2 = -1.54e+01, CPWL2 = 0.20
+16:39 madminer.core        INFO       ww: CWL2 = 0.30, CPWL2 = 15.10
+16:39 madminer.core        INFO       neg_ww: CWL2 = 0.40, CPWL2 = -1.53e+01
+16:39 madminer.core        INFO       morphing_basis_vector_5: CWL2 = 16.88, CPWL2 = 14.95
+16:39 madminer.core        INFO    Found morphing setup with 6 components
+16:39 madminer.core        INFO    Did not find systematics setup.
 </pre>
 </div>
 </div>
@@ -258,19 +258,21 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:31 madminer.utils.inter INFO    Generating MadGraph process folder from cards/proc_card_signal.dat at ./mg_processes/signal1
-20:31 madminer.core        INFO    Run 0
-20:31 madminer.core        INFO      Sampling from benchmark: sm
-20:31 madminer.core        INFO      Original run card:       cards/run_card_signal_large.dat
-20:31 madminer.core        INFO      Original Pythia8 card:   None
-20:31 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_0.dat
-20:31 madminer.core        INFO      Copied Pythia8 card:     None
-20:31 madminer.core        INFO      Param card:              /madminer/cards/param_card_0.dat
-20:31 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_0.dat
-20:31 madminer.core        INFO      Log file:                run_0.log
-20:31 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/signal1//madminer/cards/param_card_0.dat, ./mg_processes/signal1//madminer/cards/reweight_card_0.dat
-20:31 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/signal1
-20:43 madminer.core        INFO    Finished running MadGraph! Please check that events were succesfully generated in the following folders:
+<pre>16:39 madminer.utils.inter INFO    Generating MadGraph process folder from cards/proc_card_signal.dat at ./mg_processes/signal1
+16:39 madminer.core        INFO    Run 0
+16:39 madminer.core        INFO      Sampling from benchmark: sm
+16:39 madminer.core        INFO      Original run card:       cards/run_card_signal_large.dat
+16:39 madminer.core        INFO      Original Pythia8 card:   None
+16:39 madminer.core        INFO      Original config card:    None
+16:39 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_0.dat
+16:39 madminer.core        INFO      Copied Pythia8 card:     None
+16:39 madminer.core        INFO      Copied config card:      None
+16:39 madminer.core        INFO      Param card:              /madminer/cards/param_card_0.dat
+16:39 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_0.dat
+16:39 madminer.core        INFO      Log file:                run_0.log
+16:39 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/signal1//madminer/cards/param_card_0.dat, ./mg_processes/signal1//madminer/cards/reweight_card_0.dat
+16:39 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/signal1
+16:52 madminer.core        INFO    Finished running MadGraph! Please check that events were succesfully generated in the following folders:
 
 ./mg_processes/signal1/Events/run_01
 
@@ -332,52 +334,60 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:43 madminer.utils.inter INFO    Generating MadGraph process folder from cards/proc_card_signal.dat at ./mg_processes/signal2
-20:44 madminer.core        INFO    Run 0
-20:44 madminer.core        INFO      Sampling from benchmark: w
-20:44 madminer.core        INFO      Original run card:       cards/run_card_signal_small.dat
-20:44 madminer.core        INFO      Original Pythia8 card:   None
-20:44 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_0.dat
-20:44 madminer.core        INFO      Copied Pythia8 card:     None
-20:44 madminer.core        INFO      Param card:              /madminer/cards/param_card_0.dat
-20:44 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_0.dat
-20:44 madminer.core        INFO      Log file:                run_0.log
-20:44 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/signal2//madminer/cards/param_card_0.dat, ./mg_processes/signal2//madminer/cards/reweight_card_0.dat
-20:44 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/signal2
-20:46 madminer.core        INFO    Run 1
-20:46 madminer.core        INFO      Sampling from benchmark: ww
-20:46 madminer.core        INFO      Original run card:       cards/run_card_signal_small.dat
-20:46 madminer.core        INFO      Original Pythia8 card:   None
-20:46 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_1.dat
-20:46 madminer.core        INFO      Copied Pythia8 card:     None
-20:46 madminer.core        INFO      Param card:              /madminer/cards/param_card_1.dat
-20:46 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_1.dat
-20:46 madminer.core        INFO      Log file:                run_1.log
-20:46 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/signal2//madminer/cards/param_card_1.dat, ./mg_processes/signal2//madminer/cards/reweight_card_1.dat
-20:46 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/signal2
-20:49 madminer.core        INFO    Run 2
-20:49 madminer.core        INFO      Sampling from benchmark: neg_w
-20:49 madminer.core        INFO      Original run card:       cards/run_card_signal_small.dat
-20:49 madminer.core        INFO      Original Pythia8 card:   None
-20:49 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_2.dat
-20:49 madminer.core        INFO      Copied Pythia8 card:     None
-20:49 madminer.core        INFO      Param card:              /madminer/cards/param_card_2.dat
-20:49 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_2.dat
-20:49 madminer.core        INFO      Log file:                run_2.log
-20:49 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/signal2//madminer/cards/param_card_2.dat, ./mg_processes/signal2//madminer/cards/reweight_card_2.dat
-20:49 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/signal2
-20:51 madminer.core        INFO    Run 3
-20:51 madminer.core        INFO      Sampling from benchmark: neg_ww
-20:51 madminer.core        INFO      Original run card:       cards/run_card_signal_small.dat
-20:51 madminer.core        INFO      Original Pythia8 card:   None
-20:51 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_3.dat
-20:51 madminer.core        INFO      Copied Pythia8 card:     None
-20:51 madminer.core        INFO      Param card:              /madminer/cards/param_card_3.dat
-20:51 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_3.dat
-20:51 madminer.core        INFO      Log file:                run_3.log
-20:51 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/signal2//madminer/cards/param_card_3.dat, ./mg_processes/signal2//madminer/cards/reweight_card_3.dat
-20:51 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/signal2
-20:54 madminer.core        INFO    Finished running MadGraph! Please check that events were succesfully generated in the following folders:
+<pre>16:52 madminer.utils.inter INFO    Generating MadGraph process folder from cards/proc_card_signal.dat at ./mg_processes/signal2
+16:52 madminer.core        INFO    Run 0
+16:52 madminer.core        INFO      Sampling from benchmark: w
+16:52 madminer.core        INFO      Original run card:       cards/run_card_signal_small.dat
+16:52 madminer.core        INFO      Original Pythia8 card:   None
+16:52 madminer.core        INFO      Original config card:    None
+16:52 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_0.dat
+16:52 madminer.core        INFO      Copied Pythia8 card:     None
+16:52 madminer.core        INFO      Copied config card:      None
+16:52 madminer.core        INFO      Param card:              /madminer/cards/param_card_0.dat
+16:52 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_0.dat
+16:52 madminer.core        INFO      Log file:                run_0.log
+16:52 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/signal2//madminer/cards/param_card_0.dat, ./mg_processes/signal2//madminer/cards/reweight_card_0.dat
+16:52 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/signal2
+16:55 madminer.core        INFO    Run 1
+16:55 madminer.core        INFO      Sampling from benchmark: ww
+16:55 madminer.core        INFO      Original run card:       cards/run_card_signal_small.dat
+16:55 madminer.core        INFO      Original Pythia8 card:   None
+16:55 madminer.core        INFO      Original config card:    None
+16:55 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_1.dat
+16:55 madminer.core        INFO      Copied Pythia8 card:     None
+16:55 madminer.core        INFO      Copied config card:      None
+16:55 madminer.core        INFO      Param card:              /madminer/cards/param_card_1.dat
+16:55 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_1.dat
+16:55 madminer.core        INFO      Log file:                run_1.log
+16:55 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/signal2//madminer/cards/param_card_1.dat, ./mg_processes/signal2//madminer/cards/reweight_card_1.dat
+16:55 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/signal2
+16:57 madminer.core        INFO    Run 2
+16:57 madminer.core        INFO      Sampling from benchmark: neg_w
+16:57 madminer.core        INFO      Original run card:       cards/run_card_signal_small.dat
+16:57 madminer.core        INFO      Original Pythia8 card:   None
+16:57 madminer.core        INFO      Original config card:    None
+16:57 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_2.dat
+16:57 madminer.core        INFO      Copied Pythia8 card:     None
+16:57 madminer.core        INFO      Copied config card:      None
+16:57 madminer.core        INFO      Param card:              /madminer/cards/param_card_2.dat
+16:57 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_2.dat
+16:57 madminer.core        INFO      Log file:                run_2.log
+16:57 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/signal2//madminer/cards/param_card_2.dat, ./mg_processes/signal2//madminer/cards/reweight_card_2.dat
+16:57 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/signal2
+17:00 madminer.core        INFO    Run 3
+17:00 madminer.core        INFO      Sampling from benchmark: neg_ww
+17:00 madminer.core        INFO      Original run card:       cards/run_card_signal_small.dat
+17:00 madminer.core        INFO      Original Pythia8 card:   None
+17:00 madminer.core        INFO      Original config card:    None
+17:00 madminer.core        INFO      Copied run card:         /madminer/cards/run_card_3.dat
+17:00 madminer.core        INFO      Copied Pythia8 card:     None
+17:00 madminer.core        INFO      Copied config card:      None
+17:00 madminer.core        INFO      Param card:              /madminer/cards/param_card_3.dat
+17:00 madminer.core        INFO      Reweight card:           /madminer/cards/reweight_card_3.dat
+17:00 madminer.core        INFO      Log file:                run_3.log
+17:00 madminer.core        INFO    Creating param and reweight cards in ./mg_processes/signal2//madminer/cards/param_card_3.dat, ./mg_processes/signal2//madminer/cards/reweight_card_3.dat
+17:00 madminer.utils.inter INFO    Starting MadGraph and Pythia in ./mg_processes/signal2
+17:03 madminer.core        INFO    Finished running MadGraph! Please check that events were succesfully generated in the following folders:
 
 ./mg_processes/signal2/Events/run_01
 ./mg_processes/signal2/Events/run_02
@@ -527,7 +537,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:54 madminer.utils.inter DEBUG   HDF5 file does not contain is_reference field.
+<pre>17:03 madminer.utils.inter DEBUG   HDF5 file does not contain is_reference field.
 </pre>
 </div>
 </div>
@@ -591,11 +601,11 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:54 madminer.lhe         DEBUG   Adding event sample mg_processes/signal1/Events/run_01/unweighted_events.lhe.gz
-20:54 madminer.lhe         DEBUG   Adding event sample mg_processes/signal2/Events/run_01/unweighted_events.lhe.gz
-20:54 madminer.lhe         DEBUG   Adding event sample mg_processes/signal2/Events/run_02/unweighted_events.lhe.gz
-20:54 madminer.lhe         DEBUG   Adding event sample mg_processes/signal2/Events/run_03/unweighted_events.lhe.gz
-20:54 madminer.lhe         DEBUG   Adding event sample mg_processes/signal2/Events/run_04/unweighted_events.lhe.gz
+<pre>17:03 madminer.lhe         DEBUG   Adding event sample mg_processes/signal1/Events/run_01/unweighted_events.lhe.gz
+17:03 madminer.lhe         DEBUG   Adding event sample mg_processes/signal2/Events/run_01/unweighted_events.lhe.gz
+17:03 madminer.lhe         DEBUG   Adding event sample mg_processes/signal2/Events/run_02/unweighted_events.lhe.gz
+17:03 madminer.lhe         DEBUG   Adding event sample mg_processes/signal2/Events/run_03/unweighted_events.lhe.gz
+17:03 madminer.lhe         DEBUG   Adding event sample mg_processes/signal2/Events/run_04/unweighted_events.lhe.gz
 </pre>
 </div>
 </div>
@@ -753,9 +763,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:54 madminer.lhe         DEBUG   Adding optional observable pt_j1 = j[0].pt with default 0.0
-20:54 madminer.lhe         DEBUG   Adding required observable delta_phi_jj = j[0].deltaphi(j[1]) * (-1. + 2.*float(j[0].eta &gt; j[1].eta))
-20:54 madminer.lhe         DEBUG   Adding required observable met = met.pt
+<pre>17:03 madminer.lhe         DEBUG   Adding optional observable pt_j1 = j[0].pt with default 0.0
+17:03 madminer.lhe         DEBUG   Adding required observable delta_phi_jj = j[0].deltaphi(j[1]) * (-1. + 2.*float(j[0].eta &gt; j[1].eta))
+17:03 madminer.lhe         DEBUG   Adding required observable met = met.pt
 </pre>
 </div>
 </div>
@@ -800,9 +810,9 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:54 madminer.lhe         DEBUG   Adding cut (a[0] + a[1]).m &gt; 122.
-20:54 madminer.lhe         DEBUG   Adding cut (a[0] + a[1]).m &lt; 128.
-20:54 madminer.lhe         DEBUG   Adding cut pt_j1 &gt; 20.
+<pre>17:03 madminer.lhe         DEBUG   Adding cut (a[0] + a[1]).m &gt; 122.
+17:03 madminer.lhe         DEBUG   Adding cut (a[0] + a[1]).m &lt; 128.
+17:03 madminer.lhe         DEBUG   Adding cut pt_j1 &gt; 20.
 </pre>
 </div>
 </div>
@@ -855,215 +865,215 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:54 madminer.lhe         INFO    Analysing LHE sample mg_processes/signal1/Events/run_01/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with no systematics
-20:54 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
-20:54 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/signal1/Events/run_01/unweighted_events.lhe.gz
-20:54 madminer.utils.inter DEBUG   Systematics setup: OrderedDict()
-20:54 madminer.utils.inter DEBUG   1 weight groups
-20:54 madminer.lhe         DEBUG   systematics_dict: OrderedDict()
-20:54 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/signal1/Events/run_01/unweighted_events.lhe.gz
-20:54 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
-20:54 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
-20:54 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:54 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter INFO      50000 / 50000 events pass cut (a[0] + a[1]).m &gt; 122.
-20:55 madminer.utils.inter INFO      50000 / 50000 events pass cut (a[0] + a[1]).m &lt; 128.
-20:55 madminer.utils.inter INFO      49991 / 50000 events pass cut pt_j1 &gt; 20.
-20:55 madminer.utils.inter INFO      49991 events pass all cuts/efficiencies
-20:55 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;] in LHE file
-20:55 madminer.lhe         DEBUG   Found 49991 events
-20:55 madminer.lhe         INFO    Analysing LHE sample mg_processes/signal2/Events/run_01/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with no systematics
-20:55 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
-20:55 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/signal2/Events/run_01/unweighted_events.lhe.gz
-20:55 madminer.utils.inter DEBUG   Systematics setup: OrderedDict()
-20:55 madminer.utils.inter DEBUG   1 weight groups
-20:55 madminer.lhe         DEBUG   systematics_dict: OrderedDict()
-20:55 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/signal2/Events/run_01/unweighted_events.lhe.gz
-20:55 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
-20:55 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
-20:55 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &gt; 122.
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &lt; 128.
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut pt_j1 &gt; 20.
-20:55 madminer.utils.inter INFO      10000 events pass all cuts/efficiencies
-20:55 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;] in LHE file
-20:55 madminer.lhe         DEBUG   Found 10000 events
-20:55 root                 DEBUG   Merging data extracted from this file with data from previous files
-20:55 root                 DEBUG     Weights for benchmark sm exist in both
-20:55 root                 DEBUG     Weights for benchmark w exist in both
-20:55 root                 DEBUG     Weights for benchmark neg_w exist in both
-20:55 root                 DEBUG     Weights for benchmark ww exist in both
-20:55 root                 DEBUG     Weights for benchmark neg_ww exist in both
-20:55 root                 DEBUG     Weights for benchmark morphing_basis_vector_5 exist in both
-20:55 madminer.lhe         INFO    Analysing LHE sample mg_processes/signal2/Events/run_02/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with no systematics
-20:55 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
-20:55 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/signal2/Events/run_02/unweighted_events.lhe.gz
-20:55 madminer.utils.inter DEBUG   Systematics setup: OrderedDict()
-20:55 madminer.utils.inter DEBUG   1 weight groups
-20:55 madminer.lhe         DEBUG   systematics_dict: OrderedDict()
-20:55 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/signal2/Events/run_02/unweighted_events.lhe.gz
-20:55 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
-20:55 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
-20:55 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &gt; 122.
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &lt; 128.
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut pt_j1 &gt; 20.
-20:55 madminer.utils.inter INFO      10000 events pass all cuts/efficiencies
-20:55 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;] in LHE file
-20:55 madminer.lhe         DEBUG   Found 10000 events
-20:55 root                 DEBUG   Merging data extracted from this file with data from previous files
-20:55 root                 DEBUG     Weights for benchmark sm exist in both
-20:55 root                 DEBUG     Weights for benchmark w exist in both
-20:55 root                 DEBUG     Weights for benchmark neg_w exist in both
-20:55 root                 DEBUG     Weights for benchmark ww exist in both
-20:55 root                 DEBUG     Weights for benchmark neg_ww exist in both
-20:55 root                 DEBUG     Weights for benchmark morphing_basis_vector_5 exist in both
-20:55 madminer.lhe         INFO    Analysing LHE sample mg_processes/signal2/Events/run_03/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with no systematics
-20:55 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
-20:55 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/signal2/Events/run_03/unweighted_events.lhe.gz
-20:55 madminer.utils.inter DEBUG   Systematics setup: OrderedDict()
-20:55 madminer.utils.inter DEBUG   1 weight groups
-20:55 madminer.lhe         DEBUG   systematics_dict: OrderedDict()
-20:55 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/signal2/Events/run_03/unweighted_events.lhe.gz
-20:55 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
-20:55 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
-20:55 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &gt; 122.
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &lt; 128.
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut pt_j1 &gt; 20.
-20:55 madminer.utils.inter INFO      10000 events pass all cuts/efficiencies
-20:55 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;] in LHE file
-20:55 madminer.lhe         DEBUG   Found 10000 events
-20:55 root                 DEBUG   Merging data extracted from this file with data from previous files
-20:55 root                 DEBUG     Weights for benchmark sm exist in both
-20:55 root                 DEBUG     Weights for benchmark w exist in both
-20:55 root                 DEBUG     Weights for benchmark neg_w exist in both
-20:55 root                 DEBUG     Weights for benchmark ww exist in both
-20:55 root                 DEBUG     Weights for benchmark neg_ww exist in both
-20:55 root                 DEBUG     Weights for benchmark morphing_basis_vector_5 exist in both
-20:55 madminer.lhe         INFO    Analysing LHE sample mg_processes/signal2/Events/run_04/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with no systematics
-20:55 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
-20:55 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/signal2/Events/run_04/unweighted_events.lhe.gz
-20:55 madminer.utils.inter DEBUG   Systematics setup: OrderedDict()
-20:55 madminer.utils.inter DEBUG   1 weight groups
-20:55 madminer.lhe         DEBUG   systematics_dict: OrderedDict()
-20:55 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/signal2/Events/run_04/unweighted_events.lhe.gz
-20:55 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
-20:55 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
-20:55 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &gt; 122.
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &lt; 128.
-20:55 madminer.utils.inter INFO      10000 / 10000 events pass cut pt_j1 &gt; 20.
-20:55 madminer.utils.inter INFO      10000 events pass all cuts/efficiencies
-20:55 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;] in LHE file
-20:55 madminer.lhe         DEBUG   Found 10000 events
-20:55 root                 DEBUG   Merging data extracted from this file with data from previous files
-20:55 root                 DEBUG     Weights for benchmark sm exist in both
-20:55 root                 DEBUG     Weights for benchmark w exist in both
-20:55 root                 DEBUG     Weights for benchmark neg_w exist in both
-20:55 root                 DEBUG     Weights for benchmark ww exist in both
-20:55 root                 DEBUG     Weights for benchmark neg_ww exist in both
-20:55 root                 DEBUG     Weights for benchmark morphing_basis_vector_5 exist in both
-20:55 madminer.lhe         INFO    Analysed number of events per sampling benchmark:
-20:55 madminer.lhe         INFO      49991 from sm
-20:55 madminer.lhe         INFO      10000 from w
-20:55 madminer.lhe         INFO      10000 from neg_w
-20:55 madminer.lhe         INFO      10000 from ww
-20:55 madminer.lhe         INFO      10000 from neg_ww
+<pre>17:03 madminer.lhe         INFO    Analysing LHE sample mg_processes/signal1/Events/run_01/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with no systematics
+17:03 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
+17:03 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/signal1/Events/run_01/unweighted_events.lhe.gz
+17:03 madminer.utils.inter DEBUG   Systematics setup: OrderedDict()
+17:03 madminer.utils.inter DEBUG   1 weight groups
+17:03 madminer.lhe         DEBUG   systematics_dict: OrderedDict()
+17:03 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/signal1/Events/run_01/unweighted_events.lhe.gz
+17:03 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
+17:03 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
+17:03 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter INFO      50000 / 50000 events pass cut (a[0] + a[1]).m &gt; 122.
+17:03 madminer.utils.inter INFO      50000 / 50000 events pass cut (a[0] + a[1]).m &lt; 128.
+17:03 madminer.utils.inter INFO      49991 / 50000 events pass cut pt_j1 &gt; 20.
+17:03 madminer.utils.inter INFO      49991 events pass all cuts/efficiencies
+17:03 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;] in LHE file
+17:03 madminer.lhe         DEBUG   Found 49991 events
+17:03 madminer.lhe         INFO    Analysing LHE sample mg_processes/signal2/Events/run_01/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with no systematics
+17:03 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
+17:03 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/signal2/Events/run_01/unweighted_events.lhe.gz
+17:03 madminer.utils.inter DEBUG   Systematics setup: OrderedDict()
+17:03 madminer.utils.inter DEBUG   1 weight groups
+17:03 madminer.lhe         DEBUG   systematics_dict: OrderedDict()
+17:03 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/signal2/Events/run_01/unweighted_events.lhe.gz
+17:03 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
+17:03 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
+17:03 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &gt; 122.
+17:03 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &lt; 128.
+17:03 madminer.utils.inter INFO      10000 / 10000 events pass cut pt_j1 &gt; 20.
+17:03 madminer.utils.inter INFO      10000 events pass all cuts/efficiencies
+17:03 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;] in LHE file
+17:03 madminer.lhe         DEBUG   Found 10000 events
+17:03 root                 DEBUG   Merging data extracted from this file with data from previous files
+17:03 root                 DEBUG     Weights for benchmark sm exist in both
+17:03 root                 DEBUG     Weights for benchmark w exist in both
+17:03 root                 DEBUG     Weights for benchmark neg_w exist in both
+17:03 root                 DEBUG     Weights for benchmark ww exist in both
+17:03 root                 DEBUG     Weights for benchmark neg_ww exist in both
+17:03 root                 DEBUG     Weights for benchmark morphing_basis_vector_5 exist in both
+17:03 madminer.lhe         INFO    Analysing LHE sample mg_processes/signal2/Events/run_02/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with no systematics
+17:03 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
+17:03 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/signal2/Events/run_02/unweighted_events.lhe.gz
+17:03 madminer.utils.inter DEBUG   Systematics setup: OrderedDict()
+17:03 madminer.utils.inter DEBUG   1 weight groups
+17:03 madminer.lhe         DEBUG   systematics_dict: OrderedDict()
+17:03 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/signal2/Events/run_02/unweighted_events.lhe.gz
+17:03 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
+17:03 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
+17:03 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:03 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &gt; 122.
+17:04 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &lt; 128.
+17:04 madminer.utils.inter INFO      10000 / 10000 events pass cut pt_j1 &gt; 20.
+17:04 madminer.utils.inter INFO      10000 events pass all cuts/efficiencies
+17:04 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;] in LHE file
+17:04 madminer.lhe         DEBUG   Found 10000 events
+17:04 root                 DEBUG   Merging data extracted from this file with data from previous files
+17:04 root                 DEBUG     Weights for benchmark sm exist in both
+17:04 root                 DEBUG     Weights for benchmark w exist in both
+17:04 root                 DEBUG     Weights for benchmark neg_w exist in both
+17:04 root                 DEBUG     Weights for benchmark ww exist in both
+17:04 root                 DEBUG     Weights for benchmark neg_ww exist in both
+17:04 root                 DEBUG     Weights for benchmark morphing_basis_vector_5 exist in both
+17:04 madminer.lhe         INFO    Analysing LHE sample mg_processes/signal2/Events/run_03/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with no systematics
+17:04 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
+17:04 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/signal2/Events/run_03/unweighted_events.lhe.gz
+17:04 madminer.utils.inter DEBUG   Systematics setup: OrderedDict()
+17:04 madminer.utils.inter DEBUG   1 weight groups
+17:04 madminer.lhe         DEBUG   systematics_dict: OrderedDict()
+17:04 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/signal2/Events/run_03/unweighted_events.lhe.gz
+17:04 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
+17:04 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
+17:04 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &gt; 122.
+17:04 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &lt; 128.
+17:04 madminer.utils.inter INFO      10000 / 10000 events pass cut pt_j1 &gt; 20.
+17:04 madminer.utils.inter INFO      10000 events pass all cuts/efficiencies
+17:04 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;] in LHE file
+17:04 madminer.lhe         DEBUG   Found 10000 events
+17:04 root                 DEBUG   Merging data extracted from this file with data from previous files
+17:04 root                 DEBUG     Weights for benchmark sm exist in both
+17:04 root                 DEBUG     Weights for benchmark w exist in both
+17:04 root                 DEBUG     Weights for benchmark neg_w exist in both
+17:04 root                 DEBUG     Weights for benchmark ww exist in both
+17:04 root                 DEBUG     Weights for benchmark neg_ww exist in both
+17:04 root                 DEBUG     Weights for benchmark morphing_basis_vector_5 exist in both
+17:04 madminer.lhe         INFO    Analysing LHE sample mg_processes/signal2/Events/run_04/unweighted_events.lhe.gz: Calculating 3 observables, requiring 3 selection cuts, using 0 efficiency factors, associated with no systematics
+17:04 madminer.lhe         DEBUG   Extracting nuisance parameter definitions from LHE file
+17:04 madminer.utils.inter DEBUG   Parsing nuisance parameter setup from LHE file at mg_processes/signal2/Events/run_04/unweighted_events.lhe.gz
+17:04 madminer.utils.inter DEBUG   Systematics setup: OrderedDict()
+17:04 madminer.utils.inter DEBUG   1 weight groups
+17:04 madminer.lhe         DEBUG   systematics_dict: OrderedDict()
+17:04 madminer.utils.inter DEBUG   Parsing LHE file mg_processes/signal2/Events/run_04/unweighted_events.lhe.gz
+17:04 madminer.utils.inter DEBUG   Parsing header and events as XML with cElementTree
+17:04 madminer.utils.inter DEBUG   Found entry event_norm = sum in LHE header. Interpreting this as weight_norm_is_average = False.
+17:04 madminer.utils.inter DEBUG   Event 1 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 2 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 3 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 4 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 5 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 6 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 7 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 8 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 9 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 10 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 11 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 12 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 13 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 14 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 15 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 16 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 17 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 18 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 19 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter DEBUG   Event 20 passes observations, passes cuts, passes efficiencies -&gt; passes
+17:04 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &gt; 122.
+17:04 madminer.utils.inter INFO      10000 / 10000 events pass cut (a[0] + a[1]).m &lt; 128.
+17:04 madminer.utils.inter INFO      10000 / 10000 events pass cut pt_j1 &gt; 20.
+17:04 madminer.utils.inter INFO      10000 events pass all cuts/efficiencies
+17:04 madminer.lhe         DEBUG   Found weights [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;] in LHE file
+17:04 madminer.lhe         DEBUG   Found 10000 events
+17:04 root                 DEBUG   Merging data extracted from this file with data from previous files
+17:04 root                 DEBUG     Weights for benchmark sm exist in both
+17:04 root                 DEBUG     Weights for benchmark w exist in both
+17:04 root                 DEBUG     Weights for benchmark neg_w exist in both
+17:04 root                 DEBUG     Weights for benchmark ww exist in both
+17:04 root                 DEBUG     Weights for benchmark neg_ww exist in both
+17:04 root                 DEBUG     Weights for benchmark morphing_basis_vector_5 exist in both
+17:04 madminer.lhe         INFO    Analysed number of events per sampling benchmark:
+17:04 madminer.lhe         INFO      49991 from sm
+17:04 madminer.lhe         INFO      10000 from w
+17:04 madminer.lhe         INFO      10000 from neg_w
+17:04 madminer.lhe         INFO      10000 from ww
+17:04 madminer.lhe         INFO      10000 from neg_ww
 </pre>
 </div>
 </div>
@@ -1106,26 +1116,26 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:55 madminer.lhe         DEBUG   Loading HDF5 data from data/setup.h5 and saving file to data/lhe_data.h5
-20:55 madminer.lhe         DEBUG   Weight names: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;]
-20:55 madminer.utils.inter DEBUG   HDF5 file does not contain is_reference field.
-20:55 madminer.utils.inter DEBUG   Benchmark morphing_basis_vector_5 already in benchmark_names_phys
-20:55 madminer.utils.inter DEBUG   Benchmark neg_w already in benchmark_names_phys
-20:55 madminer.utils.inter DEBUG   Benchmark neg_ww already in benchmark_names_phys
-20:55 madminer.utils.inter DEBUG   Benchmark sm already in benchmark_names_phys
-20:55 madminer.utils.inter DEBUG   Benchmark w already in benchmark_names_phys
-20:55 madminer.utils.inter DEBUG   Benchmark ww already in benchmark_names_phys
-20:55 madminer.utils.inter DEBUG   Combined benchmark names: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;]
-20:55 madminer.utils.inter DEBUG   Combined is_nuisance: [0 0 0 0 0 0]
-20:55 madminer.utils.inter DEBUG   Combined is_reference: [1 0 0 0 0 0]
-20:55 madminer.utils.inter DEBUG   Weight names found in event file: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;]
-20:55 madminer.utils.inter DEBUG   Benchmarks found in MadMiner file: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;]
-20:55 madminer.sampling    DEBUG   Combining and shuffling samples
-20:55 madminer.sampling    DEBUG   Copying setup from data/lhe_data.h5 to data/lhe_data.h5
-20:55 madminer.sampling    DEBUG   Loading samples from file 1 / 1 at data/lhe_data.h5, multiplying weights with k factor 1.0
-20:55 madminer.sampling    DEBUG   Sampling benchmarks: [0 0 0 ... 4 4 4]
-20:55 madminer.sampling    DEBUG   Combined sampling benchmarks: [0 0 0 ... 4 4 4]
-20:55 madminer.sampling    DEBUG   Recalculated event numbers per benchmark: [49991 10000 10000 10000 10000     0], background: 0
+<pre>17:04 madminer.lhe         DEBUG   Loading HDF5 data from data/setup.h5 and saving file to data/lhe_data.h5
+17:04 madminer.lhe         DEBUG   Weight names: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;]
+17:04 madminer.utils.inter DEBUG   HDF5 file does not contain is_reference field.
+17:04 madminer.utils.inter DEBUG   Benchmark morphing_basis_vector_5 already in benchmark_names_phys
+17:04 madminer.utils.inter DEBUG   Benchmark neg_w already in benchmark_names_phys
+17:04 madminer.utils.inter DEBUG   Benchmark neg_ww already in benchmark_names_phys
+17:04 madminer.utils.inter DEBUG   Benchmark sm already in benchmark_names_phys
+17:04 madminer.utils.inter DEBUG   Benchmark w already in benchmark_names_phys
+17:04 madminer.utils.inter DEBUG   Benchmark ww already in benchmark_names_phys
+17:04 madminer.utils.inter DEBUG   Combined benchmark names: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;]
+17:04 madminer.utils.inter DEBUG   Combined is_nuisance: [0 0 0 0 0 0]
+17:04 madminer.utils.inter DEBUG   Combined is_reference: [1 0 0 0 0 0]
+17:04 madminer.utils.inter DEBUG   Weight names found in event file: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;]
+17:04 madminer.utils.inter DEBUG   Benchmarks found in MadMiner file: [u&#39;sm&#39;, u&#39;w&#39;, u&#39;neg_w&#39;, u&#39;ww&#39;, u&#39;neg_ww&#39;, u&#39;morphing_basis_vector_5&#39;]
+17:04 madminer.sampling    DEBUG   Combining and shuffling samples
+17:04 madminer.sampling    DEBUG   Copying setup from data/lhe_data.h5 to data/lhe_data.h5
+17:04 madminer.sampling    DEBUG   Loading samples from file 1 / 1 at data/lhe_data.h5, multiplying weights with k factor 1.0
+17:04 madminer.sampling    DEBUG   Sampling benchmarks: [0 0 0 ... 4 4 4]
+17:04 madminer.sampling    DEBUG   Combined sampling benchmarks: [0 0 0 ... 4 4 4]
+17:04 madminer.sampling    DEBUG   Recalculated event numbers per benchmark: [49991 10000 10000 10000 10000     0], background: 0
 </pre>
 </div>
 </div>
@@ -1187,43 +1197,43 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:55 madminer.analysis    INFO    Loading data from data/lhe_data.h5
-20:55 madminer.analysis    INFO    Found 2 parameters
-20:55 madminer.analysis    DEBUG      CWL2 (LHA: dim6 2, maximal power in squared ME: (2,), range: (-20.0, 20.0))
-20:55 madminer.analysis    DEBUG      CPWL2 (LHA: dim6 5, maximal power in squared ME: (2,), range: (-20.0, 20.0))
-20:55 madminer.analysis    INFO    Did not find nuisance parameters
-20:55 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
-20:55 madminer.analysis    DEBUG      sm: CWL2 = 0.00e+00, CPWL2 = 0.00e+00
-20:55 madminer.analysis    DEBUG      w: CWL2 = 15.20, CPWL2 = 0.10
-20:55 madminer.analysis    DEBUG      neg_w: CWL2 = -1.54e+01, CPWL2 = 0.20
-20:55 madminer.analysis    DEBUG      ww: CWL2 = 0.30, CPWL2 = 15.10
-20:55 madminer.analysis    DEBUG      neg_ww: CWL2 = 0.40, CPWL2 = -1.53e+01
-20:55 madminer.analysis    DEBUG      morphing_basis_vector_5: CWL2 = -1.58e+01, CPWL2 = -1.94e+01
-20:55 madminer.analysis    INFO    Found 3 observables
-20:55 madminer.analysis    DEBUG      0 pt_j1
-20:55 madminer.analysis    DEBUG      1 delta_phi_jj
-20:55 madminer.analysis    DEBUG      2 met
-20:55 madminer.analysis    INFO    Found 89991 events
-20:55 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
-20:55 madminer.analysis    INFO      10000 signal events sampled from benchmark w
-20:55 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
-20:55 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
-20:55 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
-20:55 madminer.analysis    INFO    Found morphing setup with 6 components
-20:55 madminer.analysis    INFO    Did not find nuisance morphing setup
-20:55 madminer.plotting    DEBUG   Observable indices: [0, 1, 2]
-20:55 madminer.plotting    DEBUG   Calculated 2 theta matrices
-20:55 madminer.analysis    DEBUG   Sampling benchmark closest to None: None
-20:55 madminer.analysis    DEBUG   Events per benchmark: [49991. 10000. 10000. 10000. 10000.     0.]
-20:55 madminer.plotting    DEBUG   Loaded raw data with shapes (89991, 3), (89991, 6)
-20:55 madminer.analysis    DEBUG   Sampling benchmark closest to [0. 0.]: 0
-20:55 madminer.analysis    DEBUG   Sampling benchmark closest to [10.  0.]: 1
-20:55 madminer.plotting    DEBUG   Plotting panel 0: observable 0, label pt_j1
-20:55 madminer.plotting    DEBUG   Ranges for observable pt_j1: min = [20.250223679913294, 20.250223679913294], max = [311.4531372780531, 1131.4092266890839]
-20:55 madminer.plotting    DEBUG   Plotting panel 1: observable 1, label delta_phi_jj
-20:55 madminer.plotting    DEBUG   Ranges for observable delta_phi_jj: min = [-3.1415902606030084, -3.1415902606030084], max = [3.1415635673903166, 3.1415635673903166]
-20:55 madminer.plotting    DEBUG   Plotting panel 2: observable 2, label met
-20:55 madminer.plotting    DEBUG   Ranges for observable met: min = [0.15734320281863676, 0.15734320281863676], max = [100.88382464398212, 581.6603427525945]
+<pre>17:04 madminer.analysis    INFO    Loading data from data/lhe_data.h5
+17:04 madminer.analysis    INFO    Found 2 parameters
+17:04 madminer.analysis    DEBUG      CWL2 (LHA: dim6 2, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+17:04 madminer.analysis    DEBUG      CPWL2 (LHA: dim6 5, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+17:04 madminer.analysis    INFO    Did not find nuisance parameters
+17:04 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
+17:04 madminer.analysis    DEBUG      sm: CWL2 = 0.00e+00, CPWL2 = 0.00e+00
+17:04 madminer.analysis    DEBUG      w: CWL2 = 15.20, CPWL2 = 0.10
+17:04 madminer.analysis    DEBUG      neg_w: CWL2 = -1.54e+01, CPWL2 = 0.20
+17:04 madminer.analysis    DEBUG      ww: CWL2 = 0.30, CPWL2 = 15.10
+17:04 madminer.analysis    DEBUG      neg_ww: CWL2 = 0.40, CPWL2 = -1.53e+01
+17:04 madminer.analysis    DEBUG      morphing_basis_vector_5: CWL2 = 16.88, CPWL2 = 14.95
+17:04 madminer.analysis    INFO    Found 3 observables
+17:04 madminer.analysis    DEBUG      0 pt_j1
+17:04 madminer.analysis    DEBUG      1 delta_phi_jj
+17:04 madminer.analysis    DEBUG      2 met
+17:04 madminer.analysis    INFO    Found 89991 events
+17:04 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
+17:04 madminer.analysis    INFO      10000 signal events sampled from benchmark w
+17:04 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
+17:04 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
+17:04 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
+17:04 madminer.analysis    INFO    Found morphing setup with 6 components
+17:04 madminer.analysis    INFO    Did not find nuisance morphing setup
+17:04 madminer.plotting    DEBUG   Observable indices: [0, 1, 2]
+17:04 madminer.plotting    DEBUG   Calculated 2 theta matrices
+17:04 madminer.analysis    DEBUG   Sampling benchmark closest to None: None
+17:04 madminer.analysis    DEBUG   Events per benchmark: [49991. 10000. 10000. 10000. 10000.     0.]
+17:04 madminer.plotting    DEBUG   Loaded raw data with shapes (89991, 3), (89991, 6)
+17:04 madminer.analysis    DEBUG   Sampling benchmark closest to [0. 0.]: 0
+17:04 madminer.analysis    DEBUG   Sampling benchmark closest to [10.  0.]: 1
+17:04 madminer.plotting    DEBUG   Plotting panel 0: observable 0, label pt_j1
+17:04 madminer.plotting    DEBUG   Ranges for observable pt_j1: min = [20.172650642695523, 20.172650642695523], max = [308.68458504027717, 1578.1646035292065]
+17:04 madminer.plotting    DEBUG   Plotting panel 1: observable 1, label delta_phi_jj
+17:04 madminer.plotting    DEBUG   Ranges for observable delta_phi_jj: min = [-3.141586511001732, -3.141586511001732], max = [3.141542330470944, 3.141542330470944]
+17:04 madminer.plotting    DEBUG   Plotting panel 2: observable 2, label met
+17:04 madminer.plotting    DEBUG   Ranges for observable met: min = [0.1060288929419313, 0.1060288929419313], max = [105.62721157551425, 351.0223478095247]
 </pre>
 </div>
 </div>
@@ -1292,12 +1302,12 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>20:55 madminer.sampling    DEBUG   Combining and shuffling samples
-20:55 madminer.sampling    DEBUG   Copying setup from data/lhe_data.h5 to data/lhe_data_shuffled.h5
-20:55 madminer.sampling    DEBUG   Loading samples from file 1 / 1 at data/lhe_data.h5, multiplying weights with k factor 1.0
-20:55 madminer.sampling    DEBUG   Sampling benchmarks: [2 1 0 ... 0 1 0]
-20:55 madminer.sampling    DEBUG   Combined sampling benchmarks: [2 1 0 ... 0 1 0]
-20:55 madminer.sampling    DEBUG   Recalculated event numbers per benchmark: [49991 10000 10000 10000 10000     0], background: 0
+<pre>17:04 madminer.sampling    DEBUG   Combining and shuffling samples
+17:04 madminer.sampling    DEBUG   Copying setup from data/lhe_data.h5 to data/lhe_data_shuffled.h5
+17:04 madminer.sampling    DEBUG   Loading samples from file 1 / 1 at data/lhe_data.h5, multiplying weights with k factor 1.0
+17:04 madminer.sampling    DEBUG   Sampling benchmarks: [0 0 1 ... 0 2 1]
+17:04 madminer.sampling    DEBUG   Combined sampling benchmarks: [0 0 1 ... 0 2 1]
+17:04 madminer.sampling    DEBUG   Recalculated event numbers per benchmark: [49991 10000 10000 10000 10000     0], background: 0
 </pre>
 </div>
 </div>
