@@ -49,7 +49,7 @@
 
 
 # A chapter w/ a collection of sections beneath it
-- title: Define process to study
+- title: Define process to study *
   url: /tutorial_particle_physics/1_setup
   not_numbered: true
   expand_sections: true
@@ -72,7 +72,7 @@
   - title: Set MadGraph Directory
     url: /set_mg_dir
     not_numbered: true
-  - title: Parton Level
+  - title: Parton Level *
     url: /tutorial_particle_physics/2a_parton_level_analysis
     not_numbered: true
   - title: With Delphes
@@ -85,10 +85,10 @@
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Likelihood Ratio
+  - title: Likelihood Ratio *
     url: /tutorial_particle_physics/3a_likelihood_ratio
     not_numbered: true
-  - title: Score 
+  - title: Score *
     url: /tutorial_particle_physics/3b_score
     not_numbered: true
   - title: Likelihood 
@@ -101,7 +101,7 @@
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Limits on EFT parameters
+  - title: Limits on EFT parameters *
     url: /tutorial_particle_physics/4a_limits
     not_numbered: true
   - title: Fisher Information
