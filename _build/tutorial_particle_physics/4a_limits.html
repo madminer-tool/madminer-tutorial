@@ -154,19 +154,19 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>03:06 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
-03:06 madminer.analysis    INFO    Found 2 parameters
-03:06 madminer.analysis    INFO    Did not find nuisance parameters
-03:06 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
-03:06 madminer.analysis    INFO    Found 3 observables
-03:06 madminer.analysis    INFO    Found 89991 events
-03:06 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
-03:06 madminer.analysis    INFO      10000 signal events sampled from benchmark w
-03:06 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
-03:06 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
-03:06 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
-03:06 madminer.analysis    INFO    Found morphing setup with 6 components
-03:06 madminer.analysis    INFO    Did not find nuisance morphing setup
+<pre>19:11 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
+19:11 madminer.analysis    INFO    Found 2 parameters
+19:11 madminer.analysis    INFO    Did not find nuisance parameters
+19:11 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
+19:11 madminer.analysis    INFO    Found 3 observables
+19:11 madminer.analysis    INFO    Found 89991 events
+19:11 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
+19:11 madminer.analysis    INFO      10000 signal events sampled from benchmark w
+19:11 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
+19:11 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
+19:11 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
+19:11 madminer.analysis    INFO    Found morphing setup with 6 components
+19:11 madminer.analysis    INFO    Did not find nuisance morphing setup
 </pre>
 </div>
 </div>
@@ -268,7 +268,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">p_values</span> <span class="o">=</span> <span class="p">{}</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="c1">## create dictionaries to store results</span>
+<span class="n">p_values</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="n">mle</span> <span class="o">=</span> <span class="p">{}</span>
 </pre></div>
 
@@ -286,19 +287,22 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_histo</span><span class="p">,</span> <span class="n">best_fit_expected_histo</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">histos</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">observed_weights</span><span class="p">)</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;histo&quot;</span><span class="p">,</span>
-    <span class="n">hist_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pt_j1&quot;</span><span class="p">],</span>
-    <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
-    <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
-    <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
-    <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
-    <span class="n">include_xsec</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-    <span class="n">return_asimov</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-<span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_histo</span><span class="p">,</span> <span class="n">best_fit_expected_histo</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">histos</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">observed_weights</span><span class="p">)</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;histo&quot;</span><span class="p">,</span>
+        <span class="n">hist_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pt_j1&quot;</span><span class="p">],</span>
+        <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+        <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
+        <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+        <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
+        <span class="n">include_xsec</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">return_asimov</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="p">)</span>
 
-<span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;Histogram&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_histo</span>
-<span class="n">mle</span><span class="p">[</span><span class="s2">&quot;Histogram&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_histo</span>
+    <span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;Histogram&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_histo</span>
+    <span class="n">mle</span><span class="p">[</span><span class="s2">&quot;Histogram&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_histo</span>
+<span class="k">except</span><span class="p">:</span> 
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;no Histogram&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -312,17 +316,17 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>03:12 madminer.limits      INFO    Generating Asimov data
-03:12 madminer.limits      INFO    Expected events: 303.4579250833741
-03:12 madminer.limits      INFO    Calculating p-values for 303.4579250833741 expected events in mode histo without rate information
-03:12 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-03:12 madminer.limits      INFO    Setting up standard summary statistics
-03:12 madminer.limits      INFO    Creating histograms of 1 summary statistics. Using (25,) bins each, or 25 in total.
-03:12 madminer.limits      INFO    Determining fixed adaptive histogram binning for all points on grid
-03:12 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
-03:12 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
-03:12 madminer.limits      INFO    Calculating kinematic log likelihood with histograms
-03:12 madminer.limits      INFO    Calculating p-values
+<pre>19:11 madminer.limits      INFO    Generating Asimov data
+19:11 madminer.limits      INFO    Expected events: 296.8608606876634
+19:11 madminer.limits      INFO    Calculating p-values for 296.8608606876634 expected events in mode histo without rate information
+19:11 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+19:11 madminer.limits      INFO    Setting up standard summary statistics
+19:11 madminer.limits      INFO    Creating histograms of 1 summary statistics. Using (25,) bins each, or 25 in total.
+19:11 madminer.limits      INFO    Determining fixed adaptive histogram binning for all points on grid
+19:11 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
+19:11 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
+19:11 madminer.limits      INFO    Calculating kinematic log likelihood with histograms
+19:11 madminer.limits      INFO    Calculating p-values
 </pre>
 </div>
 </div>
@@ -429,18 +433,21 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_alices</span><span class="p">,</span> <span class="n">best_fit_expected_alices</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;ml&quot;</span><span class="p">,</span>
-    <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/alices&#39;</span><span class="p">,</span>
-    <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
-    <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
-    <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
-    <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
-    <span class="n">include_xsec</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-<span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_alices</span><span class="p">,</span> <span class="n">best_fit_expected_alices</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;ml&quot;</span><span class="p">,</span>
+        <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/alices&#39;</span><span class="p">,</span>
+        <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+        <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
+        <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+        <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
+        <span class="n">include_xsec</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="p">)</span>
 
-<span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;ALICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_alices</span>
-<span class="n">mle</span><span class="p">[</span><span class="s2">&quot;ALICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_alices</span>
+    <span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;ALICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_alices</span>
+    <span class="n">mle</span><span class="p">[</span><span class="s2">&quot;ALICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_alices</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;no ALICES&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -454,17 +461,17 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>03:12 madminer.limits      INFO    Generating Asimov data
-03:12 madminer.limits      INFO    Expected events: 303.4579250833741
-03:12 madminer.limits      INFO    Calculating p-values for 303.4579250833741 expected events in mode ml without rate information
-03:12 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-03:12 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
-03:12 madminer.ml          INFO    Loading model from models/alices
-03:12 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
-03:12 madminer.ml          INFO    Loading evaluation data
-03:12 madminer.ml          INFO    Starting ratio evaluation for 6259375 x-theta combinations
-03:14 madminer.ml          INFO    Evaluation done
-03:14 madminer.limits      INFO    Calculating p-values
+<pre>19:11 madminer.limits      INFO    Generating Asimov data
+19:11 madminer.limits      INFO    Expected events: 296.8608606876634
+19:11 madminer.limits      INFO    Calculating p-values for 296.8608606876634 expected events in mode ml without rate information
+19:11 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+19:11 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+19:11 madminer.ml          INFO    Loading model from models/alices
+19:11 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
+19:11 madminer.ml          INFO    Loading evaluation data
+19:11 madminer.ml          INFO    Starting ratio evaluation for 6310625 x-theta combinations
+19:13 madminer.ml          INFO    Evaluation done
+19:13 madminer.limits      INFO    Calculating p-values
 </pre>
 </div>
 </div>
@@ -493,18 +500,21 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_alices_pt</span><span class="p">,</span> <span class="n">best_fit_expected_alices_pt</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;ml&quot;</span><span class="p">,</span>
-    <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/alices_pt&#39;</span><span class="p">,</span>
-    <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
-    <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
-    <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
-    <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
-    <span class="n">include_xsec</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-<span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_alices_pt</span><span class="p">,</span> <span class="n">best_fit_expected_alices_pt</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;ml&quot;</span><span class="p">,</span>
+        <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/alices_pt&#39;</span><span class="p">,</span>
+        <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+        <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
+        <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+        <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
+        <span class="n">include_xsec</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="p">)</span>
 
-<span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;ALICES_pt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_alices_pt</span>
-<span class="n">mle</span><span class="p">[</span><span class="s2">&quot;ALICES_pt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_alices_pt</span>
+    <span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;ALICES_pt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_alices_pt</span>
+    <span class="n">mle</span><span class="p">[</span><span class="s2">&quot;ALICES_pt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_alices_pt</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;no ALICES_pt&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -518,17 +528,17 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>03:14 madminer.limits      INFO    Generating Asimov data
-03:14 madminer.limits      INFO    Expected events: 303.4579250833741
-03:14 madminer.limits      INFO    Calculating p-values for 303.4579250833741 expected events in mode ml without rate information
-03:14 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-03:14 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
-03:14 madminer.ml          INFO    Loading model from models/alices_pt
-03:14 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
-03:14 madminer.ml          INFO    Loading evaluation data
-03:14 madminer.ml          INFO    Starting ratio evaluation for 6259375 x-theta combinations
-03:17 madminer.ml          INFO    Evaluation done
-03:17 madminer.limits      INFO    Calculating p-values
+<pre>19:13 madminer.limits      INFO    Generating Asimov data
+19:13 madminer.limits      INFO    Expected events: 296.8608606876634
+19:13 madminer.limits      INFO    Calculating p-values for 296.8608606876634 expected events in mode ml without rate information
+19:13 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+19:13 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+19:13 madminer.ml          INFO    Loading model from models/alices_pt
+19:13 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
+19:13 madminer.ml          INFO    Loading evaluation data
+19:13 madminer.ml          INFO    Starting ratio evaluation for 6310625 x-theta combinations
+19:16 madminer.ml          INFO    Evaluation done
+19:16 madminer.limits      INFO    Calculating p-values
 </pre>
 </div>
 </div>
@@ -567,54 +577,21 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">import</span> <span class="nn">madminer</span>
-<span class="n">madminer</span><span class="o">.</span><span class="n">__version__</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_text output_subarea output_execute_result">
-<pre>&#39;0.6.3&#39;</pre>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_sally</span><span class="p">,</span> <span class="n">best_fit_expected_sally</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">histos</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">observed_weights</span><span class="p">)</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;sally&quot;</span><span class="p">,</span>
-    <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/sally&#39;</span><span class="p">,</span>
-    <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
-    <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
-    <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
-    <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
-    <span class="n">include_xsec</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-    <span class="n">return_asimov</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;SALLY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_sally</span>
-<span class="n">mle</span><span class="p">[</span><span class="s2">&quot;SALLY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_sally</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_sally</span><span class="p">,</span> <span class="n">best_fit_expected_sally</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">histos</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">observed_weights</span><span class="p">)</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;sally&quot;</span><span class="p">,</span>
+        <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/sally&#39;</span><span class="p">,</span>
+        <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+        <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
+        <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+        <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
+        <span class="n">include_xsec</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+        <span class="n">return_asimov</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;SALLY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_sally</span>
+    <span class="n">mle</span><span class="p">[</span><span class="s2">&quot;SALLY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_sally</span>
+<span class="k">except</span><span class="p">:</span> 
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;no SALLY&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -628,21 +605,20 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>03:40 madminer.limits      INFO    Generating Asimov data
-03:40 madminer.limits      INFO    Expected events: 303.4579250833741
-03:40 madminer.limits      INFO    Calculating p-values for 303.4579250833741 expected events in mode sally without rate information
-03:40 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-03:40 madminer.limits      INFO    Loading score estimator and setting all components up as summary statistics
-03:40 madminer.ml          INFO    Loading model from models/sally
-03:40 madminer.ml          INFO    Starting score evaluation
-03:40 madminer.limits      INFO    Creating histograms of 2 summary statistics. Using (8, 8) bins each, or 64 in total.
-03:40 madminer.limits      INFO    Determining fixed adaptive histogram binning for all points on grid
-03:40 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
-03:40 madminer.ml          INFO    Starting score evaluation
-03:40 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
-03:40 madminer.ml          INFO    Starting score evaluation
-03:40 madminer.limits      INFO    Calculating kinematic log likelihood with histograms
-03:40 madminer.limits      INFO    Calculating p-values
+<pre>19:16 madminer.limits      INFO    Generating Asimov data
+19:16 madminer.limits      INFO    Expected events: 296.8608606876634
+19:16 madminer.limits      INFO    Calculating p-values for 296.8608606876634 expected events in mode sally without rate information
+19:16 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+19:16 madminer.limits      INFO    Loading score estimator and setting all components up as summary statistics
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>no SALLY
 </pre>
 </div>
 </div>
@@ -699,10 +675,20 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="jb_output_wrapper }}">
 <div class="output_area">
 
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/usr/local/lib/python2.7/dist-packages/matplotlib/axes/_base.py:3477: UserWarning: Attempted to set non-positive ylimits for log-scale axis; invalid limits will be ignored.
+  &#39;Attempted to set non-positive ylimits for log-scale axis; &#39;
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
 
 
 <div class="output_png output_subarea ">
-<img src="../images/tutorial_particle_physics/4a_limits_29_0.png"
+<img src="../images/tutorial_particle_physics/4a_limits_28_1.png"
 >
 </div>
 
@@ -731,18 +717,21 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_scandal</span><span class="p">,</span> <span class="n">best_fit_expected_scandal</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
-    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;ml&quot;</span><span class="p">,</span>
-    <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/scandal&#39;</span><span class="p">,</span>
-    <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
-    <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
-    <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
-    <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
-    <span class="n">include_xsec</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
-<span class="p">)</span>
+<div class=" highlight hl-ipython2"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_scandal</span><span class="p">,</span> <span class="n">best_fit_expected_scandal</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;ml&quot;</span><span class="p">,</span>
+        <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/scandal&#39;</span><span class="p">,</span>
+        <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+        <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
+        <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+        <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
+        <span class="n">include_xsec</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+    <span class="p">)</span>
 
-<span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;SCANDAL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_scandal</span>
-<span class="n">mle</span><span class="p">[</span><span class="s2">&quot;SCANDAL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_scandal</span>
+    <span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;SCANDAL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_scandal</span>
+    <span class="n">mle</span><span class="p">[</span><span class="s2">&quot;SCANDAL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_scandal</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;no SCANDAL&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -756,16 +745,20 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>05:31 madminer.limits      INFO    Generating Asimov data
-05:31 madminer.limits      INFO    Expected events: 303.4579250833741
-05:31 madminer.limits      INFO    Calculating p-values for 303.4579250833741 expected events in mode ml without rate information
-05:31 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-05:31 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
-05:31 madminer.ml          INFO    Loading model from models/scandal
-05:31 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
-05:31 madminer.ml          INFO    Starting ratio evaluation for 6259375 x-theta combinations
-05:34 madminer.ml          INFO    Evaluation done
-05:34 madminer.limits      INFO    Calculating p-values
+<pre>19:16 madminer.limits      INFO    Generating Asimov data
+19:16 madminer.limits      INFO    Expected events: 296.8608606876634
+19:16 madminer.limits      INFO    Calculating p-values for 296.8608606876634 expected events in mode ml without rate information
+19:16 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+19:16 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+</pre>
+</div>
+</div>
+</div>
+<div class="jb_output_wrapper }}">
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stdout output_text">
+<pre>no SCANDAL
 </pre>
 </div>
 </div>
@@ -824,23 +817,23 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>05:34 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
-05:34 madminer.analysis    INFO    Found 2 parameters
-05:34 madminer.analysis    INFO    Did not find nuisance parameters
-05:34 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
-05:34 madminer.analysis    INFO    Found 3 observables
-05:34 madminer.analysis    INFO    Found 89991 events
-05:34 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
-05:34 madminer.analysis    INFO      10000 signal events sampled from benchmark w
-05:34 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
-05:34 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
-05:34 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
-05:34 madminer.analysis    INFO    Found morphing setup with 6 components
-05:34 madminer.analysis    INFO    Did not find nuisance morphing setup
-05:34 madminer.sampling    INFO    Extracting evaluation sample. Sampling according to [0.5 0.5]
-05:34 madminer.sampling    INFO    Starting sampling serially
-05:34 madminer.sampling    INFO    Sampling from parameter point 1 / 1
-05:34 madminer.sampling    INFO    Effective number of samples: mean 507.4997220887104, with individual thetas ranging from 507.4997220887103 to 507.4997220887103
+<pre>19:16 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
+19:16 madminer.analysis    INFO    Found 2 parameters
+19:16 madminer.analysis    INFO    Did not find nuisance parameters
+19:16 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
+19:16 madminer.analysis    INFO    Found 3 observables
+19:16 madminer.analysis    INFO    Found 89991 events
+19:16 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
+19:16 madminer.analysis    INFO      10000 signal events sampled from benchmark w
+19:16 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
+19:16 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
+19:16 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
+19:16 madminer.analysis    INFO    Found morphing setup with 6 components
+19:16 madminer.analysis    INFO    Did not find nuisance morphing setup
+19:16 madminer.sampling    INFO    Extracting evaluation sample. Sampling according to [0.5 0.5]
+19:16 madminer.sampling    INFO    Starting sampling serially
+19:16 madminer.sampling    INFO    Sampling from parameter point 1 / 1
+19:16 madminer.sampling    INFO    Effective number of samples: mean 195.22279009818115, with individual thetas ranging from 195.22279009818112 to 195.22279009818112
 </pre>
 </div>
 </div>
@@ -868,8 +861,8 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
     <span class="n">include_xsec</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;ALICES signal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_observed</span>
-<span class="n">mle</span><span class="p">[</span><span class="s2">&quot;ALICES signal&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_observed</span>
+<span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;ALICES (observed)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_observed</span>
+<span class="n">mle</span><span class="p">[</span><span class="s2">&quot;ALICES (observed)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_observed</span>
 </pre></div>
 
     </div>
@@ -883,15 +876,15 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <div class="output_area">
 
 <div class="output_subarea output_stream output_stderr output_text">
-<pre>05:34 madminer.limits      INFO    Calculating p-values for 100 expected events in mode ml without rate information
-05:34 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
-05:34 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
-05:34 madminer.ml          INFO    Loading model from models/alices
-05:34 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
-05:34 madminer.ml          INFO    Loading evaluation data
-05:34 madminer.ml          INFO    Starting ratio evaluation for 62500 x-theta combinations
-05:34 madminer.ml          INFO    Evaluation done
-05:34 madminer.limits      INFO    Calculating p-values
+<pre>19:16 madminer.limits      INFO    Calculating p-values for 100 expected events in mode ml without rate information
+19:16 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+19:16 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+19:16 madminer.ml          INFO    Loading model from models/alices
+19:16 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
+19:16 madminer.ml          INFO    Loading evaluation data
+19:16 madminer.ml          INFO    Starting ratio evaluation for 62500 x-theta combinations
+19:16 madminer.ml          INFO    Evaluation done
+19:16 madminer.limits      INFO    Calculating p-values
 </pre>
 </div>
 </div>
@@ -983,7 +976,7 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 
 
 <div class="output_png output_subarea ">
-<img src="../images/tutorial_particle_physics/4a_limits_38_0.png"
+<img src="../images/tutorial_particle_physics/4a_limits_37_0.png"
 >
 </div>
 
