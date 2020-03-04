@@ -2,7 +2,6 @@
 #
 # Dockerfile for MG5 Pythia Delphes and patches for Madminer deployment
 # BINDER version
-# Prepared by Irina Espejo
 ###############################
 
 FROM rootproject/root-ubuntu16:6.10 AS madgraph
@@ -58,9 +57,11 @@ RUN echo "install Delphes" | ${HOME}/software/${MG_VERSION}/bin/mg5_aMC
 
 FROM rootproject/root-ubuntu16:6.10 AS madminer
 
+ENV HOME /home
+
 USER root 
 WORKDIR /home
-COPY --from=madgraph /home /home
+COPY --from=madgraph / /
 
 RUN apt-get update &&\
     apt-get install -y python-pip && pip install --upgrade pip && pip install --no-cache-dir notebook==5.* && pip install PyYAML  && pip install madminer
@@ -85,10 +86,10 @@ ENV HOME /home
 
 USER root
 
-RUN adduser --disabled-password \
-    --gecos "Default user" \
-    --uid ${NB_UID} \
-    ${NB_USER}
+#RUN adduser --disabled-password \
+#    --gecos "Default user" \
+#    --uid ${NB_UID} \
+#    ${NB_USER}
 RUN chown -R ${NB_UID} ${HOME}
 USER ${NB_USER}
 
