@@ -67,7 +67,7 @@ pip install --upgrade madminer
 
 Get the MadMiner repository with tutorial notebooks
 ```bash
-git clone https://github.com/diana-hep/madminer.git
+git clone --depth=1 https://github.com/diana-hep/madminer.git
 ```
 
 Now move to the directory with the example tutorial
