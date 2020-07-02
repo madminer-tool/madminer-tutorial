@@ -52,7 +52,7 @@ Now you have a prompt inside the container. See what's there and then go into th
 ```bash
 pwd
 ls
-cd shared
+cd /home/shared
 echo 'hello world' >> test.txt
 ```
 
