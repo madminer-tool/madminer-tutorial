@@ -1115,7 +1115,7 @@ Irina Espejo has built Docker containers with everything installed already and p
 <p>(You can put it somewhere else if you want, but I'll assume it's there)</p>
 <h2 id="Get-tutorial-&amp;-start-Jupyter-in-container">Get tutorial &amp; start Jupyter in container<a class="anchor-link" href="#Get-tutorial-&amp;-start-Jupyter-in-container"> </a></h2><p>Enter an interactive session in the MadMiner docker container.
 The first time you execute this it will need to pull the container, which will take about a minute.</p>
-<div class="highlight"><pre><span></span>docker run -p <span class="m">8888</span>:8888 -v ~/madminer_shared:/home/shared -it madminertool/docker-madminer-all /bin/bash
+<div class="highlight"><pre><span></span>docker run -p <span class="m">8888</span>:8888 -v ~/madminer_shared:/home/shared -it madminertool/madminer-jupyter-env /bin/bash
 </pre></div>
 <p>(If you are using Docker Toolbox on windows, see section below.)</p>
 <p>Now you have a prompt inside the container. See what's there and then go into the <code>shared</code> directory</p>
@@ -1133,7 +1133,7 @@ pip install --upgrade madminer
 -->
 
 <p>Get the MadMiner repository with tutorial notebooks</p>
-<div class="highlight"><pre><span></span>git clone https://github.com/diana-hep/madminer.git
+<div class="highlight"><pre><span></span>git clone --depth=1 https://github.com/diana-hep/madminer.git
 </pre></div>
 <p>Now move to the directory with the example tutorial</p>
 <div class="highlight"><pre><span></span><span class="nb">cd</span> madminer/examples/tutorial_particle_physics
@@ -1151,15 +1151,15 @@ pip install --upgrade madminer
 <p>Now you should be able to connect to the Jupyter notebook server inside the container using your normal browser. Click this link (open in a new tab): <a href="localhost:8888">localhost:8888</a>. (If you are using Docker Toolbox on windows, see section below.) You should see a Jupyter terminal and it will ask for a login token. Paste the token (in this example, <code>123copywhatyouseeherexyz</code>) and login.</p>
 <p>Now you should be all set and see something like this.</p>
 <p><img src="/madminer-tutorial/images/notebook.png" alt=""></p>
-<h2 id="Updating-the-docker-image">Updating the docker image<a class="anchor-link" href="#Updating-the-docker-image"> </a></h2><p>While developig and testing this tutorial we may occasionally update the docker image. If you completed the preliminaries some time ago, you might want to update with:</p>
-<div class="highlight"><pre><span></span>docker pull madminertool/docker-madminer-all
+<h2 id="Updating-the-docker-image">Updating the docker image<a class="anchor-link" href="#Updating-the-docker-image"> </a></h2><p>While developing and testing this tutorial we may occasionally update the docker image. If you completed the preliminaries some time ago, you might want to update with:</p>
+<div class="highlight"><pre><span></span>docker pull madminertool/madminer-jupyter-env
 </pre></div>
 <p>This will replace all the contents of the docker image, but not the files in the shared directory. YOu will still want to re-do the 
-steps described above in <strong>Get tutorial &amp; start Jupyter in container</strong>.</p>
+steps described above in <strong>Get tutorial &amp; start Jupyter in a container</strong>.</p>
 <h2 id="Special-instructions-for-Docker-Toolbox-Windows">Special instructions for Docker Toolbox Windows<a class="anchor-link" href="#Special-instructions-for-Docker-Toolbox-Windows"> </a></h2><p>Thanks to Ioannis Karkanias for these notes on Docker Toolbox</p>
 <p>1) The 
-<code>docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/docker-madminer-all /bin/bash</code> 
-command's -v argument needs to be something like this</p>
+<code>docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/madminer-jupyter-env /bin/bash</code>
+command's -v argument needs to be something like this.</p>
 <div class="highlight"><pre><span></span>-v /c/Users/kark/madminer_shared:/home/shared
 </pre></div>
 <p>(replace <code>kark</code> is your username). The shared folder needs to be in the <code>Users/</code> directory, as the Docker Toolbox uses VirtualBox and the shared folder specified for the machine that is created in VirtualBox only has <code>C:/Users/</code> as a shared folder. There are instructions <a href="https://docs.docker.com/toolbox/toolbox_install_windows/#optional-add-shared-directories">here</a></p>

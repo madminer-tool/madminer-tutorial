@@ -43,7 +43,7 @@ mkdir ~/madminer_shared
 Enter an interactive session in the MadMiner docker container.
 The first time you execute this it will need to pull the container, which will take about a minute.
 ```bash
-docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/docker-madminer-all /bin/bash
+docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/madminer-jupyter-env /bin/bash
 ```
 (If you are using Docker Toolbox on windows, see section below.)
 
@@ -52,7 +52,7 @@ Now you have a prompt inside the container. See what's there and then go into th
 ```bash
 pwd
 ls
-cd shared
+cd /home/shared
 echo 'hello world' >> test.txt
 ```
 
@@ -67,7 +67,7 @@ pip install --upgrade madminer
 
 Get the MadMiner repository with tutorial notebooks
 ```bash
-git clone https://github.com/diana-hep/madminer.git
+git clone --depth=1 https://github.com/diana-hep/madminer.git
 ```
 
 Now move to the directory with the example tutorial
@@ -100,7 +100,7 @@ Now you should be all set and see something like this.
 
 While developig and testing this tutorial we may occasionally update the docker image. If you completed the preliminaries some time ago, you might want to update with:
 ```shell
-docker pull madminertool/docker-madminer-all
+docker pull madminertool/madminer-jupyter-env
 ```
 This will replace all the contents of the docker image, but not the files in the shared directory. YOu will still want to re-do the 
 steps described above in **Get tutorial & start Jupyter in container**.
@@ -110,7 +110,7 @@ steps described above in **Get tutorial & start Jupyter in container**.
 Thanks to Ioannis Karkanias for these notes on Docker Toolbox
 
 1) The 
-```docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/docker-madminer-all /bin/bash``` 
+```docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/madminer-jupyter-env /bin/bash``` 
 command's -v argument needs to be something like this
 
 ```shell
