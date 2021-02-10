@@ -26,3 +26,8 @@ Before jumping the different commands to interactuate with the workflow, some wo
 
 *Note*: The Docker images used within the workflow have been already built and pushed to the [Madminertool DockerHub account](https://hub.docker.com/u/madminertool).Those images are of general purpose, and their maintenance / evolution remains a responsibility of the madminer-workflow developers, not the users.
 
+## The workflow
+
+Below is an image of a full MadMiner workflow (the largest blue box), which includes the two subworkflows. The first blue boxes labeled `workflow_ph[0]` is responsible for event generation with MadGraph and simulation with Delphes running at multiple EFT parameter points, followed by a combine step that produces a single large data file. The `workflow_ml[0]` is responsible the ML portions, and it starts with a sampling the combined data file for training data, three training runs, evaluation of each of the three models, and then a plotting stage.
+
+![image of the workflow](../images/workflow-all.png)
