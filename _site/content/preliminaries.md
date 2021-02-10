@@ -98,12 +98,12 @@ Now you should be all set and see something like this.
 
 ## Updating the docker image
 
-While developig and testing this tutorial we may occasionally update the docker image. If you completed the preliminaries some time ago, you might want to update with:
+While developing and testing this tutorial we may occasionally update the docker image. If you completed the preliminaries some time ago, you might want to update with:
 ```shell
 docker pull madminertool/madminer-jupyter-env
 ```
 This will replace all the contents of the docker image, but not the files in the shared directory. YOu will still want to re-do the 
-steps described above in **Get tutorial & start Jupyter in container**.
+steps described above in **Get tutorial & start Jupyter in a container**.
 
 ## Special instructions for Docker Toolbox Windows 
 
@@ -111,7 +111,7 @@ Thanks to Ioannis Karkanias for these notes on Docker Toolbox
 
 1) The 
 ```docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/madminer-jupyter-env /bin/bash``` 
-command's -v argument needs to be something like this
+command's -v argument needs to be something like this.
 
 ```shell
 -v /c/Users/kark/madminer_shared:/home/shared

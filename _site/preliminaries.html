@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/preliminaries.html",
   "headline": "Preliminaries",
-  "datePublished": "2020-03-04T16:27:52-05:00",
-  "dateModified": "2020-03-04T16:27:52-05:00",
+  "datePublished": "2021-02-10T14:12:18-05:00",
+  "dateModified": "2021-02-10T14:12:18-05:00",
   "description": "        Preliminaries    Preliminaries The tutorial has several software dependenciesMadGraph (including Fortran)pythiaDelphes (optional)pytorchJupyterscipy ...",
   "author": {
     "@type": "Person",
@@ -960,7 +960,7 @@ initFunction(initPrint)
           href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
         >
           
-          Appendix
+          Systematic uncertainties
         </a>
       </li>
 
@@ -992,7 +992,7 @@ initFunction(initPrint)
                 href="/madminer-tutorial/tutorial_particle_physics/A1_systematic_uncertainties.html"
               >
                 
-                Appendix
+                Systematic uncertainties
               </a>
             </li>
             
@@ -1037,6 +1037,37 @@ initFunction(initPrint)
             
           
         </ul>
+      
+
+      
+    
+      
+      
+
+      
+      
+      
+      
+
+      
+      
+      <li class="c-sidebar__chapter" data-url="/REANA">
+        <a class="c-sidebar__entry"
+          href="/madminer-tutorial/REANA.html"
+        >
+          
+          MadMiner on REANA
+        </a>
+      </li>
+
+      
+      
+
+      
+
+      
+      
+
       
 
       
@@ -1121,7 +1152,7 @@ The first time you execute this it will need to pull the container, which will t
 <p>Now you have a prompt inside the container. See what's there and then go into the <code>shared</code> directory</p>
 <div class="highlight"><pre><span></span><span class="nb">pwd</span>
 ls
-<span class="nb">cd</span> shared
+<span class="nb">cd</span> /home/shared
 <span class="nb">echo</span> <span class="s1">&#39;hello world&#39;</span> &gt;&gt; test.txt
 </pre></div>
 <p>Now you might want to check that on your computer you see <code>~/madminer_shared/test.txt</code></p>
@@ -1133,7 +1164,7 @@ pip install --upgrade madminer
 -->
 
 <p>Get the MadMiner repository with tutorial notebooks</p>
-<div class="highlight"><pre><span></span>git clone --depth=1 https://github.com/diana-hep/madminer.git
+<div class="highlight"><pre><span></span>git clone --depth<span class="o">=</span><span class="m">1</span> https://github.com/diana-hep/madminer.git
 </pre></div>
 <p>Now move to the directory with the example tutorial</p>
 <div class="highlight"><pre><span></span><span class="nb">cd</span> madminer/examples/tutorial_particle_physics
@@ -1158,7 +1189,7 @@ pip install --upgrade madminer
 steps described above in <strong>Get tutorial &amp; start Jupyter in a container</strong>.</p>
 <h2 id="Special-instructions-for-Docker-Toolbox-Windows">Special instructions for Docker Toolbox Windows<a class="anchor-link" href="#Special-instructions-for-Docker-Toolbox-Windows"> </a></h2><p>Thanks to Ioannis Karkanias for these notes on Docker Toolbox</p>
 <p>1) The 
-<code>docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/madminer-jupyter-env /bin/bash</code>
+<code>docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/madminer-jupyter-env /bin/bash</code> 
 command's -v argument needs to be something like this.</p>
 <div class="highlight"><pre><span></span>-v /c/Users/kark/madminer_shared:/home/shared
 </pre></div>

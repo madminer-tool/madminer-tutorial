@@ -132,3 +132,10 @@
   - title: Reweighting existing samples
     url: /tutorial_particle_physics/A3_reweighting_existing_samples
     not_numbered: true
+
+
+- title: MadMiner on REANA
+  url: /REANA 
+  not_numbered: true
+
+
