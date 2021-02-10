@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/reana/introduction.html",
   "headline": "MadMiner on REANA",
-  "datePublished": "2021-02-10T15:02:34-05:00",
-  "dateModified": "2021-02-10T15:02:34-05:00",
+  "datePublished": "2021-02-10T15:05:17-05:00",
+  "dateModified": "2021-02-10T15:05:17-05:00",
   "description": "        MadMiner on REANA    MadMiner on REANA The workflow version of Madminer aims to provide a complete example of how Madminer can be used on highly scal...",
   "author": {
     "@type": "Person",
@@ -1227,7 +1227,7 @@ initFunction(initPrint)
 </li>
 </ul>
 <p><em>Note</em>: The Docker images used within the workflow have been already built and pushed to the <a href="https://hub.docker.com/u/madminertool">Madminertool DockerHub account</a>.Those images are of general purpose, and their maintenance / evolution remains a responsibility of the madminer-workflow developers, not the users.</p>
-<h2 id="The-workflow">The workflow<a class="anchor-link" href="#The-workflow"> </a></h2><p>Below is an image of a full MadMiner workflow (the largest blue box), which includes the two subworkflows. The first blue boxes labeled <code>workflow_ph[0]</code> is responsible for event generation with MadGraph and simulation with Delphes running at multiple EFT parameter points, followed by a combine step that produces a single large data file. The <code>workflow_ml[0]</code> is responsible the ML portions, and it starts with a sampling the combined data file for training data, three training runs, evaluation of each of the three models, and then a plotting stage.</p>
+<h2 id="The-workflow">The workflow<a class="anchor-link" href="#The-workflow"> </a></h2><p>Below is an image of a full MadMiner workflow (the largest blue box), which includes the two subworkflows. The first blue boxes labeled <code>workflow_ph[0]</code> is responsible for event generation with MadGraph and simulation with Delphes running at multiple EFT parameter points, followed by a combine step that produces a single large data file. The <code>workflow_ml[0]</code> is responsible the ML portions, and it starts with a sampling the combined data file for training data, three training runs (for SALLY, ALICE, and ALICES methods), evaluation of each of the three trained models, and then a plotting stage.</p>
 <p><img src="../images/workflow-all.png" alt="image of the workflow"></p>
 
 </div>

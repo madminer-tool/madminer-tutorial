@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Fisher Information</title>
-  <meta name="description" content="        Fisher Information    MadMiner particle physics tutorial Part 4b: The Fisher information Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer ...">
+  <title>Parametrization</title>
+  <meta name="description" content="# ParametrizationOne of the most powerful features of the workflow is the ability to parametrize and tune the workflow execution. Each sub-workflow (PH and M...">
 
-  <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/4b_fisher_information.html">
+  <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/content/reana/parametrization.html">
   <link rel="alternate" type="application/rss+xml" title="MadMiner Tutorial" href="https://cranmer.github.io/madminer-tutorial/feed.xml">
 
-  <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/4b_fisher_information.html" />
+  <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/content/reana/parametrization.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Fisher Information" />
-<meta property="og:description" content="        Fisher Information    MadMiner particle physics tutorial Part 4b: The Fisher information Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer ..." />
+<meta property="og:title"       content="Parametrization" />
+<meta property="og:description" content="# ParametrizationOne of the most powerful features of the workflow is the ability to parametrize and tune the workflow execution. Each sub-workflow (PH and M..." />
 <meta property="og:image"       content="https://iris-hep.org/assets/logos/madminer-square.png" />
 
 <meta name="twitter:card" content="summary">
@@ -24,11 +24,11 @@
   {
   "@context": "http://schema.org",
   "@type": "NewsArticle",
-  "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/tutorial_particle_physics/4b_fisher_information.html",
-  "headline": "Fisher Information",
+  "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/content/reana/parametrization.html",
+  "headline": "Parametrization",
   "datePublished": "2021-02-10T15:05:17-05:00",
   "dateModified": "2021-02-10T15:05:17-05:00",
-  "description": "        Fisher Information    MadMiner particle physics tutorial Part 4b: The Fisher information Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer ...",
+  "description": "# ParametrizationOne of the most powerful features of the workflow is the ability to parametrize and tune the workflow execution. Each sub-workflow (PH and M...",
   "author": {
     "@type": "Person",
     "name": "Kyle Cranmer,"
@@ -431,8 +431,8 @@ initFunction(initPrint)
     mode: "python"
     },
     kernelOptions: {
-    kernelName: "python2",
-    path: "content/tutorial_particle_physics"
+    kernelName: "python3",
+    path: ""
     }
 }
 </script>
@@ -1176,26 +1176,10 @@ initFunction(initPrint)
 <div class="download-buttons-dropdown">
     <button id="dropdown-button-trigger" class="interact-button"><img src="/madminer-tutorial/assets/images/download-solid.svg" alt="Download" /></button>
     <div class="download-buttons">
-        <a href="/madminer-tutorial/content/tutorial_particle_physics/4b_fisher_information.ipynb" download>
-        <button id="interact-button-download" class="interact-button">.ipynb</button>
-        </a>
         
         <a id="interact-button-print"><button id="interact-button-download" class="interact-button">.pdf</button></a>
     </div>
 </div>
-
-
-  
-  
-  
-
-
-
-
-
-
-<a href="https://mybinder.org/v2/gh/cranmer/madminer-tutorial/master?filepath=content%2Ftutorial_particle_physics%2F4b_fisher_information.ipynb"><button class="interact-button" id="interact-button-binder"><img class="interact-button-logo" src="/madminer-tutorial/assets/images/logo_binder.svg" alt="Interact" />Interactive</button></a>
-  
 
 
 </div>
@@ -1214,549 +1198,18 @@ initFunction(initPrint)
 
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
-                  <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">Fisher Information</div>
-</div>
-    
-<div class="jb_cell">
+              <h1 id="parametrization">Parametrization</h1>
 
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="MadMiner-particle-physics-tutorial">MadMiner particle physics tutorial<a class="anchor-link" href="#MadMiner-particle-physics-tutorial"> </a></h1><h1 id="Part-4b:-The-Fisher-information">Part 4b: The Fisher information<a class="anchor-link" href="#Part-4b:-The-Fisher-information"> </a></h1><p>Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer 2018-2019</p>
+<p>One of the most powerful features of the workflow is the ability to parametrize and tune the workflow execution. Each sub-workflow (PH and ML) constrains a small set of locations where runnable parameters can be specified.</p>
 
-</div>
-</div>
-</div>
-</div>
+<p>…. to be completed</p>
 
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="0.-Preparations">0. Preparations<a class="anchor-link" href="#0.-Preparations"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">,</span> <span class="n">unicode_literals</span>
-
-<span class="kn">import</span> <span class="nn">six</span>
-<span class="kn">import</span> <span class="nn">logging</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
-<span class="kn">import</span> <span class="nn">matplotlib</span>
-<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<span class="o">%</span><span class="k">matplotlib</span> inline
-
-<span class="kn">from</span> <span class="nn">madminer.fisherinformation</span> <span class="kn">import</span> <span class="n">FisherInformation</span>
-<span class="kn">from</span> <span class="nn">madminer.plotting</span> <span class="kn">import</span> <span class="n">plot_fisher_information_contours_2d</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="c1"># MadMiner output</span>
-<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
-    <span class="n">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)-5.5s</span><span class="s1"> </span><span class="si">%(name)-20.20s</span><span class="s1"> </span><span class="si">%(levelname)-7.7s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
-    <span class="n">datefmt</span><span class="o">=</span><span class="s1">&#39;%H:%M&#39;</span><span class="p">,</span>
-    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
-<span class="p">)</span>
-
-<span class="c1"># Output of all other modules (e.g. matplotlib)</span>
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">loggerDict</span><span class="p">:</span>
-    <span class="k">if</span> <span class="s2">&quot;madminer&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
-        <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="1.-Calculating-the-Fisher-information-from-a-SALLY-model">1. Calculating the Fisher information from a SALLY model<a class="anchor-link" href="#1.-Calculating-the-Fisher-information-from-a-SALLY-model"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We can use SALLY estimators (see part 3b of this tutorial) not just to define optimal observables, but also to calculate the (expected) Fisher information in a process. In <code>madminer.fisherinformation</code> we provide the <code>FisherInformation</code> class that makes this more convenient.</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">fisher</span> <span class="o">=</span> <span class="n">FisherInformation</span><span class="p">(</span><span class="s1">&#39;data/lhe_data_shuffled.h5&#39;</span><span class="p">)</span>
-<span class="c1"># fisher = FisherInformation(&#39;data/delphes_data_shuffled.h5&#39;)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>22:20 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
-22:20 madminer.analysis    INFO    Found 2 parameters
-22:20 madminer.analysis    INFO    Did not find nuisance parameters
-22:20 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
-22:20 madminer.analysis    INFO    Found 3 observables
-22:20 madminer.analysis    INFO    Found 89991 events
-22:20 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
-22:20 madminer.analysis    INFO      10000 signal events sampled from benchmark w
-22:20 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
-22:20 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
-22:20 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
-22:20 madminer.analysis    INFO    Found morphing setup with 6 components
-22:20 madminer.analysis    INFO    Did not find nuisance morphing setup
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>This class provides different functions:</p>
-<ul>
-<li><code>rate_information()</code> calculates the Fisher information in total rates,</li>
-<li><code>histo_information()</code> calculates the Fisher information in 1D histograms,</li>
-<li><code>histo_information_2d()</code> calculates the Fisher information in 2D histograms,</li>
-<li><code>full_information()</code> calculates the full detector-level Fisher information using a SALLY estimator, and</li>
-<li><code>truth_information()</code> calculates the truth-level Fisher information.</li>
-</ul>
-<p>Here we use the SALLY approach:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_sally</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">full_information</span><span class="p">(</span>
-    <span class="n">theta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
-    <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/sally&#39;</span><span class="p">,</span>
-    <span class="n">luminosity</span><span class="o">=</span><span class="mf">300.</span><span class="o">*</span><span class="mf">1000.</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Fisher information after 300 ifb:</span><span class="se">\n</span><span class="s1">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info_sally</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>22:20 madminer.ml          INFO    Loading model from models/sally
-22:20 madminer.fisherinfor INFO    Found 2 parameters in Score Estimator model, matching 2 physical parameters in MadMiner file
-22:20 madminer.fisherinfor INFO    Evaluating rate Fisher information
-22:20 madminer.fisherinfor INFO    Evaluating kinematic Fisher information on batch 1 / 1
-22:20 madminer.ml          INFO    Loading evaluation data
-22:20 madminer.ml          INFO    Starting score evaluation
-22:20 madminer.ml          INFO    Calculating Fisher information
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Fisher information after 300 ifb:
-[[154.2065932    7.58469138]
- [  7.58469138 114.22734665]]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>For comparison, we can calculate the Fisher information in the histogram of observables:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_histo_1d</span><span class="p">,</span> <span class="n">cov_histo_1d</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">histo_information</span><span class="p">(</span>
-    <span class="n">theta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
-    <span class="n">luminosity</span><span class="o">=</span><span class="mf">300.</span><span class="o">*</span><span class="mf">1000.</span><span class="p">,</span>
-    <span class="n">observable</span><span class="o">=</span><span class="s2">&quot;pt_j1&quot;</span><span class="p">,</span>
-    <span class="n">bins</span><span class="o">=</span><span class="p">[</span><span class="mf">30.</span><span class="p">,</span><span class="mf">100.</span><span class="p">,</span><span class="mf">200.</span><span class="p">,</span><span class="mf">400.</span><span class="p">],</span>
-    <span class="n">histrange</span><span class="o">=</span><span class="p">[</span><span class="mf">30.</span><span class="p">,</span><span class="mf">400.</span><span class="p">],</span>
-<span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Histogram Fisher information after 300 ifb:</span><span class="se">\n</span><span class="s1">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info_histo_1d</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>22:20 madminer.fisherinfor INFO    Bins with largest statistical uncertainties on rates:
-22:20 madminer.fisherinfor INFO      Bin 1: (0.01611 +/- 0.00227) fb (14 %)
-22:20 madminer.fisherinfor INFO      Bin 5: (0.00608 +/- 0.00022) fb (4 %)
-22:20 madminer.fisherinfor INFO      Bin 2: (0.61234 +/- 0.01392) fb (2 %)
-22:20 madminer.fisherinfor INFO      Bin 3: (0.33775 +/- 0.00763) fb (2 %)
-22:20 madminer.fisherinfor INFO      Bin 4: (0.07152 +/- 0.00115) fb (2 %)
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Histogram Fisher information after 300 ifb:
-[[121.76127418   4.08193078]
- [  4.08193078   0.20594473]]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We can do the same thing in 2D:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_histo_2d</span><span class="p">,</span> <span class="n">cov_histo_2d</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">histo_information_2d</span><span class="p">(</span>
-    <span class="n">theta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
-    <span class="n">luminosity</span><span class="o">=</span><span class="mf">300.</span><span class="o">*</span><span class="mf">1000.</span><span class="p">,</span>
-    <span class="n">observable1</span><span class="o">=</span><span class="s2">&quot;pt_j1&quot;</span><span class="p">,</span>
-    <span class="n">bins1</span><span class="o">=</span><span class="p">[</span><span class="mf">30.</span><span class="p">,</span><span class="mf">100.</span><span class="p">,</span><span class="mf">200.</span><span class="p">,</span><span class="mf">400.</span><span class="p">],</span>
-    <span class="n">histrange1</span><span class="o">=</span><span class="p">[</span><span class="mf">30.</span><span class="p">,</span><span class="mf">400.</span><span class="p">],</span>
-    <span class="n">observable2</span><span class="o">=</span><span class="s2">&quot;delta_phi_jj&quot;</span><span class="p">,</span>
-    <span class="n">bins2</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
-    <span class="n">histrange2</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mf">6.2</span><span class="p">],</span>
-<span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Histogram Fisher information after 300 ifb:</span><span class="se">\n</span><span class="s1">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info_histo_2d</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>22:20 madminer.fisherinfor INFO    Bins with largest statistical uncertainties on rates:
-22:20 madminer.fisherinfor INFO      Bin (1, 2): (0.00343 +/- 0.00122) fb (36 %)
-22:20 madminer.fisherinfor INFO      Bin (1, 3): (0.00300 +/- 0.00069) fb (23 %)
-22:20 madminer.fisherinfor INFO      Bin (1, 1): (0.00862 +/- 0.00178) fb (21 %)
-22:20 madminer.fisherinfor INFO      Bin (1, 4): (0.00106 +/- 0.00020) fb (19 %)
-22:20 madminer.fisherinfor INFO      Bin (3, 4): (0.05622 +/- 0.00607) fb (11 %)
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Histogram Fisher information after 300 ifb:
-[[134.22651878   5.81184852]
- [  5.81184852  88.64608542]]
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/home/shared/madminer/madminer/fisherinformation.py:1187: RuntimeWarning: divide by zero encountered in true_divide
-  inv_sigma = sanitize_array(1.0 / sigma)  # Shape (n_events,)
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="2.-Calculating-the-Fisher-information-from-a-SALLY-model">2. Calculating the Fisher information from a SALLY model<a class="anchor-link" href="#2.-Calculating-the-Fisher-information-from-a-SALLY-model"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We can also calculate the Fisher Information using an ALICES model</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">info_alices</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">full_information</span><span class="p">(</span>
-    <span class="n">theta</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
-    <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/alices&#39;</span><span class="p">,</span>
-    <span class="n">luminosity</span><span class="o">=</span><span class="mf">300.</span><span class="o">*</span><span class="mf">1000.</span><span class="p">,</span>
-<span class="p">)</span>
-
-<span class="k">print</span><span class="p">(</span><span class="s1">&#39;Fisher information using ALICES after 300 ifb:</span><span class="se">\n</span><span class="s1">{}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">info_alices</span><span class="p">))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>22:20 madminer.ml          INFO    Loading model from models/alices
-22:20 madminer.fisherinfor INFO    Found 2 parameters in Parameterized Ratio Estimator model, matching 2 physical parameters in MadMiner file
-22:20 madminer.fisherinfor INFO    Evaluating rate Fisher information
-22:20 madminer.fisherinfor INFO    Evaluating kinematic Fisher information on batch 1 / 1
-22:20 madminer.ml          INFO    Loading evaluation data
-22:20 madminer.ml          INFO    Loading evaluation data
-22:20 madminer.ml          INFO    Starting ratio evaluation
-22:20 madminer.ml          INFO    Evaluation done
-22:20 madminer.ml          INFO    Calculating Fisher information
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>Fisher information using ALICES after 300 ifb:
-[[123.61310981  -1.26192061]
- [ -1.26192061  98.31902823]]
-</pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="3.-Plot-Fisher-distances">3. Plot Fisher distances<a class="anchor-link" href="#3.-Plot-Fisher-distances"> </a></h2>
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
-<div class="text_cell_render border-box-sizing rendered_html">
-<p>We also provide a convenience function to plot contours of constant Fisher distance <code>d^2(theta, theta_ref) = I_ij(theta_ref) * (theta-theta_ref)_i * (theta-theta_ref)_j</code>:</p>
-
-</div>
-</div>
-</div>
-</div>
-
-<div class="jb_cell">
-
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-
-<div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython2"><pre><span></span><span class="n">_</span> <span class="o">=</span> <span class="n">plot_fisher_information_contours_2d</span><span class="p">(</span>
-    <span class="p">[</span><span class="n">info_sally</span><span class="p">,</span> <span class="n">info_histo_1d</span><span class="p">,</span> <span class="n">info_histo_2d</span><span class="p">,</span><span class="n">info_alices</span><span class="p">],</span>
-    <span class="p">[</span><span class="bp">None</span><span class="p">,</span> <span class="n">cov_histo_1d</span><span class="p">,</span> <span class="n">cov_histo_2d</span><span class="p">,</span><span class="bp">None</span><span class="p">],</span>
-    <span class="n">inline_labels</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;SALLY&quot;</span><span class="p">,</span> <span class="s2">&quot;1d&quot;</span><span class="p">,</span> <span class="s2">&quot;2d&quot;</span><span class="p">,</span><span class="s2">&quot;ALICES&quot;</span><span class="p">],</span>
-    <span class="nb">xrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.3</span><span class="p">),</span>
-    <span class="n">yrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">0.3</span><span class="p">,</span><span class="mf">0.3</span><span class="p">)</span>
-<span class="p">)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>/usr/local/lib/python2.7/dist-packages/matplotlib/contour.py:1006: UserWarning: The following kwargs were not used by contour: &#39;label&#39;
-  s)
-/usr/local/lib/python2.7/dist-packages/matplotlib/cbook/deprecation.py:107: MatplotlibDeprecationWarning: Adding an axes using the same arguments as a previous axes currently reuses the earlier instance.  In a future version, a new instance will always be created and returned.  Meanwhile, this warning can be suppressed, and the future behavior ensured, by passing a unique label to each axes instance.
-  warnings.warn(message, mplDeprecation, stacklevel=1)
-</pre>
-</div>
-</div>
-</div>
-<div class="jb_output_wrapper }}">
-<div class="output_area">
-
-
-
-<div class="output_png output_subarea ">
-<img src="../images/tutorial_particle_physics/4b_fisher_information_18_1.png"
->
-</div>
-
-</div>
-</div>
-</div>
-</div>
-
-</div>
-</div>
-
- 
-
-
-    </main>
-    
             </div>
             <div class="c-textbook__footer" id="textbook_footer">
               
 <nav class="c-page__nav">
   
-    
-    
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/tutorial_particle_physics/4a_limits.html">
-      〈 <span class="u-margin-right-tiny"></span> Limits on EFT parameters *
-    </a>
-  
-
-  
-    
-
-    
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/tutorial_particle_physics/4c_information_geometry.html">
-      Information Geometry <span class="u-margin-right-tiny"></span> 〉
-    </a>
   
 </nav>
 
