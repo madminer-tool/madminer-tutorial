@@ -1,6 +1,6 @@
 # MadMiner tutorial
 
-This is a tutorial on [MadMiner](https://github.com/diana-hep/madminer) developed by Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer. It is built using [Jupyter Book](https://jupyterbook.org/intro).
+This is a tutorial on [MadMiner](https://github.com/diana-hep/madminer) developed by Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer. Sinclert Pérez has made major contributions to the docker containers and workflows, and documentation for running MadMiner on REANA. The site is built using [Jupyter Book](https://jupyterbook.org/intro).
 
 ![](https://iris-hep.org/assets/logos/madminer.png)
 

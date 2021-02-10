@@ -1,0 +1,54 @@
+---
+title: |-
+  MadMiner on REANA
+pagenum: 23
+prev_page:
+  url: /tutorial_particle_physics/A3_reweighting_existing_samples.html
+next_page:
+  url: /reana/workflow_setup.html
+suffix: .md
+search: workflow madminer part locally scailfin used reana run github com complete machine learning both yadage io metrics mlflow different ph ml workflows docker execution its inference making remotely also tracking certain repositories into containing sub those own parameters technologies dependencies installed coordinates computational itself not images madminertool version aims provide example highly scalable experiments generate collision events perform data contains necessary elements readthedocs en latest reanahub integrates system called org optionally save currently split event generation wrapping parts construct distribution separate wrapper around allow us executable researchers option particular multiple times without having deal uninterested before jumping commands interactuate words
+
+comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
+---
+
+    <main class="jupyter-page">
+    <div id="page-info"><div id="page-title">MadMiner on REANA</div>
+</div>
+    
+<div class="jb_cell">
+
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="MadMiner-on-REANA">MadMiner on REANA<a class="anchor-link" href="#MadMiner-on-REANA"> </a></h1><p>The workflow version of Madminer aims to provide a complete example of how Madminer can be used on highly scalable experiments to (1) generate collision events, and (2) perform Machine Learning inference on that data.</p>
+<p>The workflow contains all the necessary elements to be run both locally (making use of <a href="https://yadage.readthedocs.io/en/latest/">Yadage</a>) and remotely (making use of <a href="https://reanahub.io/">REANA</a>). It also integrates with a metrics tracking system called <a href="https://mlflow.org/">MLFlow</a>, that can, optionally, save certain Machine Learning metrics from run to run.</p>
+<h2 id="Workflow-repositories">Workflow repositories<a class="anchor-link" href="#Workflow-repositories"> </a></h2><p>The workflow is currently split into 3 different GitHub repositories:</p>
+<ul>
+<li><a href="https://github.com/scailfin/madminer-workflow-ph">Scailfin/madminer-workflow-ph</a>: containing the event generation part.</li>
+<li><a href="https://github.com/scailfin/madminer-workflow-ml">Scailfin/madminer-workflow-ml</a>: containing the inference part.</li>
+<li><a href="https://github.com/scailfin/madminer-workflow">Scailfin/madminer-workflow</a>: wrapping both parts to construct the complete workflow.</li>
+</ul>
+<p>The distribution of the workflow into 2 separate sub-workflows (PH and ML) with a wrapper around them, allow us to make both of those sub-workflow <strong>locally</strong> executable on their own. This way, researchers have the option to <strong>locally</strong> run a particular part of the complete workflow multiple times, and with different parameters, without having to deal with the uninterested part.</p>
+<h2 id="Technologies">Technologies<a class="anchor-link" href="#Technologies"> </a></h2><p>Before jumping the different commands to interactuate with the workflow, some words about the technologies the workflow relies on:</p>
+<ul>
+<li><p><strong>Docker</strong>: used to encapsulate and isolate the dependencies and the small snippets of code that the workflow steps use to interact with Madminer (installed as one of the dependencies).*</p>
+</li>
+<li><p><strong>Yadage</strong>: a command line interface (CLI) tool that coordinates the execution of computational workflows locally. It also defines its own workflow specification language, which is the one in which the workflow itself is defined.</p>
+</li>
+<li><p><strong>REANA</strong>: a cloud-based platform that coordinates the execution of computational workflows remotely. It can be used to scale up the workflow execution increasing the values of the default parameters. It can be <a href="https://docs.reana.io/administration/deployment/deploying-locally/">installed locally</a>, although it requires some experience.</p>
+</li>
+<li><p><strong>MLFlow</strong>: external component used to store and track certain metrics of the Machine Learning part of the workflow, thanks to the use of its tracking-UI part. It is not part of the Madminer-workflow itself and its usage is optional.</p>
+</li>
+</ul>
+<p><em>Note</em>: The Docker images used within the workflow have been already built and pushed to the <a href="https://hub.docker.com/u/madminertool">Madminertool DockerHub account</a>.Those images are of general purpose, and their maintenance / evolution remains a responsibility of the madminer-workflow developers, not the users.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+ 
+
+
+    </main>
+    
