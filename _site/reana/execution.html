@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/reana/execution.html",
   "headline": "Execution commands",
-  "datePublished": "2021-02-10T15:05:17-05:00",
-  "dateModified": "2021-02-10T15:05:17-05:00",
+  "datePublished": "2021-02-11T14:57:18-05:00",
+  "dateModified": "2021-02-11T14:57:18-05:00",
   "description": "        Execution commands    Execution commands Local deployment The local deployment makes reference to the use of Yadage as the execution coordinator.Both...",
   "author": {
     "@type": "Person",
@@ -1083,6 +1083,25 @@ initFunction(initPrint)
             
             
 
+            <li class="c-sidebar__section" data-url="/reana/demo_video">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/reana/demo_video.html"
+              >
+                
+                Demo video
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
             <li class="c-sidebar__section" data-url="/reana/workflow_setup">
               <a class="c-sidebar__entry"
                 href="/madminer-tutorial/reana/workflow_setup.html"
@@ -1207,16 +1226,16 @@ initFunction(initPrint)
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Execution-commands">Execution commands<a class="anchor-link" href="#Execution-commands"> </a></h1><h2 id="Local-deployment">Local deployment<a class="anchor-link" href="#Local-deployment"> </a></h2><p>The local deployment makes reference to the use of Yadage as the execution coordinator.</p>
-<p>Both the complete workflow as well as the sub-workflow repositories define a series of high-level commands by the definition of a Makefile. The main command that it exposes is the yadage-run command:</p>
+<p>Both the complete workflow as well as the sub-workflow repositories have a <code>Makefile</code> that defines a few high-level commands for convenience. The main command that it exposes is the <code>yadage-run</code> command:</p>
 <div class="highlight"><pre><span></span>make yadage-run
 </pre></div>
-<p>This command would run the specified workflow within the workflow folder, generating a set of results within the .yadage folder (invisible folder only accessible via terminal or IDE).</p>
+<p>This command would run the specified workflow within the <code>workflow</code> folder, generating a set of results within the .yadage folder (invisible folder only accessible via terminal or IDE).</p>
 <div class="highlight"><pre><span></span><span class="nb">cd</span> .yadage
 ls -l
 </pre></div>
-<p>Remote deployment
-The local deployment makes reference to the use of REANA as the execution coordinator.</p>
-<p>In this case, only the complete workflow exposes a Makefile high-level command to use REANA as the deployment and coordination platform. However, it requires a preliminar configuration in order for our reana-client CLI to be able to connect with a REANA instance:</p>
+<h2 id="Remote-deployment">Remote deployment<a class="anchor-link" href="#Remote-deployment"> </a></h2><p>This section describes executing the workflow on a REANA instance running on a remote cluster.</p>
+<p>The <code>Makefile</code> in the complete workflow repository also defines a high-level command for submitting the job to a REANA cluster (the sub-workflows do not). 
+However, one must first set some environment variables  in order for the <code>reana-client</code> CLI to be able to connect with a REANA instance:</p>
 <div class="highlight"><pre><span></span><span class="c1"># Optional. Only if a virtual env was created</span>
 <span class="nb">source</span> ~/.virtualenvs/reana/bin/activate
 
@@ -1233,13 +1252,18 @@ REANA server version: 0.7.1
 REANA client version: 0.7.2
 Authenticated as: &lt;username&gt; &lt;username@institution&gt;
 Status: Connected</code></pre>
-<p>There is, however, a shortcut in the case that the REANA instance has been installed locally in the same computer where the workflow has been cloned. Only in those cases, users could use the reana-dev CLI tool to automatically set up some environment variables for them.</p>
-<div class="highlight"><pre><span></span><span class="c1"># Mandatory, as REANA was installed locally</span>
-<span class="nb">source</span> ~/.virtualenvs/reana/bin/activate
+<!--
+There is, however, a shortcut in the case that the REANA instance has been installed locally in the same computer where the workflow has been cloned. Only in those cases, users could use the reana-dev CLI tool to automatically set up some environment variables for them.
 
-<span class="nb">eval</span> <span class="k">$(</span>reana-dev client-setup-environment<span class="k">)</span>
-<span class="nb">export</span> <span class="nv">REANA_WORKON</span><span class="o">=</span>madminer-workflow
-</pre></div>
+```bash
+# Mandatory, as REANA was installed locally
+source ~/.virtualenvs/reana/bin/activate
+
+eval $(reana-dev client-setup-environment)
+export REANA_WORKON=madminer-workflow
+```
+-->
+
 <p>Finally, and on the same terminal window, run:</p>
 <div class="highlight"><pre><span></span>make reana-run
 </pre></div>
@@ -1266,6 +1290,21 @@ ssh -q -L &lt;port&gt;:&lt;REANA_SERVER_URL&gt;:&lt;port&gt; &lt;username&gt;@&l
 <pre><code>REANA_SERVER_URL=”https://kubmaster01.sdcc.bnl.gov:30443” (port=30443)
 REANA_ACCESS_TOKEN contact with admin</code></pre>
 <p>You can now check the progress of your workflows in <code>https://localhost:&lt;port&gt;</code> on your local browser and download output files. Congratulations!</p>
+<h2 id="Example-screenshots">Example screenshots<a class="anchor-link" href="#Example-screenshots"> </a></h2><p>The list of REANA workflows that have been submitted and their status:
+<img src="../images/mm-reana-workflows.png" alt=""></p>
+<p>The specification for one of the workflows:
+<img src="../images/mm-reana-specification.png" alt=""></p>
+<p>The files produced in the workflow and stored in the workflow's workspace
+<img src="../images/mm-reana-workspace.png" alt=""></p>
+<p>You can access individual files either from the web interface or with the <code>reana-client</code> CLI
+<img src="../images/mm-reana-outputfile.png" alt=""></p>
+<p>You can also directly view some files, like this plot:</p>
+<p><img src="../images/mm-reana-logs-plotting.png" alt=""></p>
+<p>You can also inspect the logs for different steps in the workflow (eg. generate and plotting below)</p>
+<p><img src="../images/mm-reana-logs-generate.png" alt=""></p>
+<p><img src="../images/mm-reana-plot.png" alt=""></p>
+<p>And if you have an MLFlow tracking server runnning, you can view the metrics and artifacts being tracked</p>
+<p><img src="../images/mlflow_screenshot.png" alt=""></p>
 
 </div>
 </div>

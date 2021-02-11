@@ -3,13 +3,13 @@ redirect_from:
   - "/reana/workflow-setup"
 title: |-
   Workflow Setup
-pagenum: 24
+pagenum: 25
 prev_page:
-  url: /reana/introduction.html
+  url: /reana/demo_video.html
 next_page:
   url: /reana/execution.html
 suffix: .md
-search: workflow clone madminer github com scailfin install bash git setup locally sub workflows running also ph ml want yadage reana client need installed pip docker order just repository wrapped recurse submodules command inside modules folder separately interact separate manner depending whether run remotely both cli official documentation readme files repositories recommend creating python virtual environment packages however interaction project going user perspective not mandatory finally used dockerhub image pulling mechanism please follow instructions installation guide
+search: workflow clone madminer github com scailfin install locally running bash git also yadage setup sub workflows command ph ml want reana client need installed pip docker preliminaries order just repository wrapped recurse submodules phyiscs machine learning inside modules folder separately interact separate manner depending whether run remotely both line interface cli official documentation readme files repositories recommend creating python virtual environment packages however interaction project going user perspective not mandatory used dockerhub image pulling mechanism note installing already part tutorial described section
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
@@ -25,16 +25,16 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <h1 id="Workflow-setup">Workflow setup<a class="anchor-link" href="#Workflow-setup"> </a></h1><p>In order to setup the workflow locally, you can just clone the <a href="https://github.com/scailfin/madminer-workflow">madminer-workflow</a> repository,  as long as the two wrapped sub-workflows by running:</p>
 <div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/scailfin/madminer-workflow
 </pre></div>
-<p>This command will also clone the PH and ML sub-workflows inside the modules folder. You can also install them separately (if you want to interact with them in a separate manner), by running:</p>
+<p>This command will also clone the phyiscs (PH) and machine learning (ML) sub-workflows inside the modules folder. You can also install them separately (if you want to interact with them in a separate manner), by running:</p>
 <div class="highlight"><pre><span></span>git clone https://github.com/scailfin/madminer-workflow-ml
 git clone https://github.com/scailfin/madminer-workflow-ph
 </pre></div>
-<p>Then, depending whether you want to run the workflow locally, or remotely, both Yadage and the reana-client CLI would need to be installed:</p>
+<p>Then, depending whether you want to run the workflow locally, or remotely, both Yadage and the <code>reana-client</code> command line interface (CLI) would need to be installed:</p>
 <div class="highlight"><pre><span></span>pip3 install yadage
 pip3 install reana-client
 </pre></div>
-<p>The official documentation, and the README files of these repositories recommend creating a Python virtual environment to install these packages. However, if your interaction with the project is going to be from a user perspective, this is not mandatory.</p>
-<p>Finally, you would need to have Docker installed, as it will be used as the DockerHub image-pulling mechanism. Please follow the instructions on the Docker installation guide.</p>
+<p>The official documentation and the README files of these repositories recommend creating a Python virtual environment to install these packages. However, if your interaction with the project is going to be from a user perspective, this is not mandatory.</p>
+<p>If you are running locally with yadage, then you will also need to have Docker installed, as it will be used as the DockerHub image-pulling mechanism. Note, installing docker was already part of the tutorial and was described in the <a href="../preliminaries">Preliminaries</a> section.</p>
 
 </div>
 </div>

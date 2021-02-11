@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/reana/workflow_setup.html",
   "headline": "Workflow Setup",
-  "datePublished": "2021-02-10T15:05:17-05:00",
-  "dateModified": "2021-02-10T15:05:17-05:00",
+  "datePublished": "2021-02-11T14:57:18-05:00",
+  "dateModified": "2021-02-11T14:57:18-05:00",
   "description": "        Workflow Setup    Workflow setup In order to setup the workflow locally, you can just clone the madminer-workflow repository,  as long as the two wra...",
   "author": {
     "@type": "Person",
@@ -1083,6 +1083,25 @@ initFunction(initPrint)
             
             
 
+            <li class="c-sidebar__section" data-url="/reana/demo_video">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/reana/demo_video.html"
+              >
+                
+                Demo video
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
             <li class="c-sidebar__section" data-url="/reana/workflow_setup">
               <a class="c-sidebar__entry"
                 href="/madminer-tutorial/reana/workflow_setup.html"
@@ -1209,16 +1228,16 @@ initFunction(initPrint)
 <h1 id="Workflow-setup">Workflow setup<a class="anchor-link" href="#Workflow-setup"> </a></h1><p>In order to setup the workflow locally, you can just clone the <a href="https://github.com/scailfin/madminer-workflow">madminer-workflow</a> repository,  as long as the two wrapped sub-workflows by running:</p>
 <div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/scailfin/madminer-workflow
 </pre></div>
-<p>This command will also clone the PH and ML sub-workflows inside the modules folder. You can also install them separately (if you want to interact with them in a separate manner), by running:</p>
+<p>This command will also clone the phyiscs (PH) and machine learning (ML) sub-workflows inside the modules folder. You can also install them separately (if you want to interact with them in a separate manner), by running:</p>
 <div class="highlight"><pre><span></span>git clone https://github.com/scailfin/madminer-workflow-ml
 git clone https://github.com/scailfin/madminer-workflow-ph
 </pre></div>
-<p>Then, depending whether you want to run the workflow locally, or remotely, both Yadage and the reana-client CLI would need to be installed:</p>
+<p>Then, depending whether you want to run the workflow locally, or remotely, both Yadage and the <code>reana-client</code> command line interface (CLI) would need to be installed:</p>
 <div class="highlight"><pre><span></span>pip3 install yadage
 pip3 install reana-client
 </pre></div>
-<p>The official documentation, and the README files of these repositories recommend creating a Python virtual environment to install these packages. However, if your interaction with the project is going to be from a user perspective, this is not mandatory.</p>
-<p>Finally, you would need to have Docker installed, as it will be used as the DockerHub image-pulling mechanism. Please follow the instructions on the Docker installation guide.</p>
+<p>The official documentation and the README files of these repositories recommend creating a Python virtual environment to install these packages. However, if your interaction with the project is going to be from a user perspective, this is not mandatory.</p>
+<p>If you are running locally with yadage, then you will also need to have Docker installed, as it will be used as the DockerHub image-pulling mechanism. Note, installing docker was already part of the tutorial and was described in the <a href="../preliminaries">Preliminaries</a> section.</p>
 
 </div>
 </div>
@@ -1238,8 +1257,8 @@ pip3 install reana-client
     
     
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/reana/introduction.html">
-      〈 <span class="u-margin-right-tiny"></span> MadMiner on REANA
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/reana/demo_video.html">
+      〈 <span class="u-margin-right-tiny"></span> Demo video
     </a>
   
 
