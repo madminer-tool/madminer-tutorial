@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Execution commands</title>
-  <meta name="description" content="        Execution commands    Execution commands Local deployment The local deployment makes reference to the use of Yadage as the execution coordinator.Both...">
+  <title>Execute the workflow</title>
+  <meta name="description" content="        Execute the workflow    This section describes executing the workflow on a REANA instance running on a remote cluster. This section assumes that you ...">
 
   <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/reana/execution.html">
   <link rel="alternate" type="application/rss+xml" title="MadMiner Tutorial" href="https://cranmer.github.io/madminer-tutorial/feed.xml">
 
   <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/reana/execution.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Execution commands" />
-<meta property="og:description" content="        Execution commands    Execution commands Local deployment The local deployment makes reference to the use of Yadage as the execution coordinator.Both..." />
+<meta property="og:title"       content="Execute the workflow" />
+<meta property="og:description" content="        Execute the workflow    This section describes executing the workflow on a REANA instance running on a remote cluster. This section assumes that you ..." />
 <meta property="og:image"       content="https://iris-hep.org/assets/logos/madminer-square.png" />
 
 <meta name="twitter:card" content="summary">
@@ -25,10 +25,10 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/reana/execution.html",
-  "headline": "Execution commands",
-  "datePublished": "2021-02-11T14:57:18-05:00",
-  "dateModified": "2021-02-11T14:57:18-05:00",
-  "description": "        Execution commands    Execution commands Local deployment The local deployment makes reference to the use of Yadage as the execution coordinator.Both...",
+  "headline": "Execute the workflow",
+  "datePublished": "2021-02-11T18:08:25-05:00",
+  "dateModified": "2021-02-11T18:08:25-05:00",
+  "description": "        Execute the workflow    This section describes executing the workflow on a REANA instance running on a remote cluster. This section assumes that you ...",
   "author": {
     "@type": "Person",
     "name": "Kyle Cranmer,"
@@ -1102,50 +1102,31 @@ initFunction(initPrint)
             
             
 
+            <li class="c-sidebar__section" data-url="/reana/preliminaries">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/reana/preliminaries.html"
+              >
+                
+                Setup the REANA Client
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
             <li class="c-sidebar__section" data-url="/reana/workflow_setup">
               <a class="c-sidebar__entry"
                 href="/madminer-tutorial/reana/workflow_setup.html"
               >
                 
-                Workflow Setup
-              </a>
-            </li>
-            
-            
-          
-            
-            
-
-            
-            
-            
-            
-
-            <li class="c-sidebar__section" data-url="/reana/execution">
-              <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/execution.html"
-              >
-                
-                Execution commands
-              </a>
-            </li>
-            
-            
-          
-            
-            
-
-            
-            
-            
-            
-
-            <li class="c-sidebar__section" data-url="/reana/mlflow">
-              <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/mlflow.html"
-              >
-                
-                MLFlow
+                Get the Workflow
               </a>
             </li>
             
@@ -1164,7 +1145,45 @@ initFunction(initPrint)
                 href="/madminer-tutorial/reana/parametrization.html"
               >
                 
-                Workflow parametrization
+                Configure the workflow
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reana/execution">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/reana/execution.html"
+              >
+                
+                Execute the workflow
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reana/running_locally">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/reana/running_locally.html"
+              >
+                
+                Run locally
               </a>
             </li>
             
@@ -1218,31 +1237,15 @@ initFunction(initPrint)
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
                   <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">Execution commands</div>
+    <div id="page-info"><div id="page-title">Execute the workflow</div>
 </div>
     
 <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Execution-commands">Execution commands<a class="anchor-link" href="#Execution-commands"> </a></h1><h2 id="Local-deployment">Local deployment<a class="anchor-link" href="#Local-deployment"> </a></h2><p>The local deployment makes reference to the use of Yadage as the execution coordinator.</p>
-<p>Both the complete workflow as well as the sub-workflow repositories have a <code>Makefile</code> that defines a few high-level commands for convenience. The main command that it exposes is the <code>yadage-run</code> command:</p>
-<div class="highlight"><pre><span></span>make yadage-run
-</pre></div>
-<p>This command would run the specified workflow within the <code>workflow</code> folder, generating a set of results within the .yadage folder (invisible folder only accessible via terminal or IDE).</p>
-<div class="highlight"><pre><span></span><span class="nb">cd</span> .yadage
-ls -l
-</pre></div>
-<h2 id="Remote-deployment">Remote deployment<a class="anchor-link" href="#Remote-deployment"> </a></h2><p>This section describes executing the workflow on a REANA instance running on a remote cluster.</p>
-<p>The <code>Makefile</code> in the complete workflow repository also defines a high-level command for submitting the job to a REANA cluster (the sub-workflows do not). 
-However, one must first set some environment variables  in order for the <code>reana-client</code> CLI to be able to connect with a REANA instance:</p>
-<div class="highlight"><pre><span></span><span class="c1"># Optional. Only if a virtual env was created</span>
-<span class="nb">source</span> ~/.virtualenvs/reana/bin/activate
-
-<span class="nb">export</span> <span class="nv">REANA_ACCESS_TOKEN</span><span class="o">=</span>“&lt;your access token here&gt;”
-<span class="nb">export</span> <span class="nv">REANA_SERVER_URL</span><span class="o">=</span>“&lt;the REANA instance URL here&gt;”
-<span class="nb">export</span> <span class="nv">REANA_WORKON</span><span class="o">=</span>madminer-workflow
-</pre></div>
+<p>This section describes executing the workflow on a REANA instance running on a remote cluster. 
+This section assumes that you have installed and configured the REANA client and the MLFlow tracking server as described <a href="preliminaries">here</a>.</p>
 <p>To determine if the connection is established check the following output</p>
 <div class="highlight"><pre><span></span>reana-client ping
 </pre></div>
@@ -1252,19 +1255,8 @@ REANA server version: 0.7.1
 REANA client version: 0.7.2
 Authenticated as: &lt;username&gt; &lt;username@institution&gt;
 Status: Connected</code></pre>
-<!--
-There is, however, a shortcut in the case that the REANA instance has been installed locally in the same computer where the workflow has been cloned. Only in those cases, users could use the reana-dev CLI tool to automatically set up some environment variables for them.
-
-```bash
-# Mandatory, as REANA was installed locally
-source ~/.virtualenvs/reana/bin/activate
-
-eval $(reana-dev client-setup-environment)
-export REANA_WORKON=madminer-workflow
-```
--->
-
-<p>Finally, and on the same terminal window, run:</p>
+<p>The <code>Makefile</code> in the complete workflow repository  defines a high-level command for submitting the job to a REANA cluster (the sub-workflows do not). 
+To launch the workflow on the remote REANA instance, simply type:</p>
 <div class="highlight"><pre><span></span>make reana-run
 </pre></div>
 <p>You should see an output similar to this</p>
@@ -1280,16 +1272,7 @@ File /ml/yadage/steps.yml was successfully uploaded.
 File /ml/yadage/workflow.yml was successfully uploaded.
 File /workflow.yml was successfully uploaded.
 madminer-workflow has been queued</code></pre>
-<h2 id="Local-monitoring-of-remote-workflows">Local monitoring of remote workflows<a class="anchor-link" href="#Local-monitoring-of-remote-workflows"> </a></h2><p>If we have access to a remote REANA server instance, it is more helpful to monitor the workflows and retrieve output files from the local browser than from the working directory at the cluster’s institution.  Here are the steps to do it:</p>
-<div class="highlight"><pre><span></span><span class="c1">#local terminal, ssh to the institution hosting the REANA server</span>
-ssh -q -L &lt;port&gt;:&lt;REANA_SERVER_URL&gt;:&lt;port&gt; &lt;username&gt;@&lt;institution&gt;
-<span class="c1">#if the previous command brings you to a bastion, go ahead and login to your workspace</span>
-</pre></div>
-<p>In the case of Brookhaven National Lab, the REANA server is located at</p>
-
-<pre><code>REANA_SERVER_URL=”https://kubmaster01.sdcc.bnl.gov:30443” (port=30443)
-REANA_ACCESS_TOKEN contact with admin</code></pre>
-<p>You can now check the progress of your workflows in <code>https://localhost:&lt;port&gt;</code> on your local browser and download output files. Congratulations!</p>
+<h2 id="Local-monitoring-of-remote-workflows">Local monitoring of remote workflows<a class="anchor-link" href="#Local-monitoring-of-remote-workflows"> </a></h2><p>You can monitor the workflows and retrieve output files from your local browser by setting up a local monitor of the remote workflow than from the working directory at the cluster’s institution.  If you haven't already done it, follow the instructions <a href="preliminaries.html#Local-monitoring-of-remote-workflows">here</a>.</p>
 <h2 id="Example-screenshots">Example screenshots<a class="anchor-link" href="#Example-screenshots"> </a></h2><p>The list of REANA workflows that have been submitted and their status:
 <img src="../images/mm-reana-workflows.png" alt=""></p>
 <p>The specification for one of the workflows:
@@ -1324,8 +1307,8 @@ REANA_ACCESS_TOKEN contact with admin</code></pre>
     
     
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/reana/workflow_setup.html">
-      〈 <span class="u-margin-right-tiny"></span> Workflow Setup
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/reana/parametrization.html">
+      〈 <span class="u-margin-right-tiny"></span> Configure the workflow
     </a>
   
 
@@ -1333,8 +1316,8 @@ REANA_ACCESS_TOKEN contact with admin</code></pre>
     
 
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/reana/mlflow.html">
-      MLFlow <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/reana/running_locally.html">
+      Run locally <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

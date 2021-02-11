@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
   <title>MadMiner on REANA</title>
-  <meta name="description" content="        MadMiner on REANA    MadMiner on REANA Thus far, the tutorial describes running the various steps on your local computer. In the interest of time, we...">
+  <meta name="description" content="        MadMiner on REANA    Thus far, the tutorial describes running the various steps on your local computer. In the interest of time, we did not generate ...">
 
   <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/reana/introduction.html">
   <link rel="alternate" type="application/rss+xml" title="MadMiner Tutorial" href="https://cranmer.github.io/madminer-tutorial/feed.xml">
@@ -14,7 +14,7 @@
   <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/reana/introduction.html" />
 <meta property="og:type"        content="article" />
 <meta property="og:title"       content="MadMiner on REANA" />
-<meta property="og:description" content="        MadMiner on REANA    MadMiner on REANA Thus far, the tutorial describes running the various steps on your local computer. In the interest of time, we..." />
+<meta property="og:description" content="        MadMiner on REANA    Thus far, the tutorial describes running the various steps on your local computer. In the interest of time, we did not generate ..." />
 <meta property="og:image"       content="https://iris-hep.org/assets/logos/madminer-square.png" />
 
 <meta name="twitter:card" content="summary">
@@ -26,9 +26,9 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/reana/introduction.html",
   "headline": "MadMiner on REANA",
-  "datePublished": "2021-02-11T14:57:18-05:00",
-  "dateModified": "2021-02-11T14:57:18-05:00",
-  "description": "        MadMiner on REANA    MadMiner on REANA Thus far, the tutorial describes running the various steps on your local computer. In the interest of time, we...",
+  "datePublished": "2021-02-11T18:08:25-05:00",
+  "dateModified": "2021-02-11T18:08:25-05:00",
+  "description": "        MadMiner on REANA    Thus far, the tutorial describes running the various steps on your local computer. In the interest of time, we did not generate ...",
   "author": {
     "@type": "Person",
     "name": "Kyle Cranmer,"
@@ -1102,50 +1102,31 @@ initFunction(initPrint)
             
             
 
+            <li class="c-sidebar__section" data-url="/reana/preliminaries">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/reana/preliminaries.html"
+              >
+                
+                Setup the REANA Client
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
             <li class="c-sidebar__section" data-url="/reana/workflow_setup">
               <a class="c-sidebar__entry"
                 href="/madminer-tutorial/reana/workflow_setup.html"
               >
                 
-                Workflow Setup
-              </a>
-            </li>
-            
-            
-          
-            
-            
-
-            
-            
-            
-            
-
-            <li class="c-sidebar__section" data-url="/reana/execution">
-              <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/execution.html"
-              >
-                
-                Execution commands
-              </a>
-            </li>
-            
-            
-          
-            
-            
-
-            
-            
-            
-            
-
-            <li class="c-sidebar__section" data-url="/reana/mlflow">
-              <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/mlflow.html"
-              >
-                
-                MLFlow
+                Get the Workflow
               </a>
             </li>
             
@@ -1164,7 +1145,45 @@ initFunction(initPrint)
                 href="/madminer-tutorial/reana/parametrization.html"
               >
                 
-                Workflow parametrization
+                Configure the workflow
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reana/execution">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/reana/execution.html"
+              >
+                
+                Execute the workflow
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reana/running_locally">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/reana/running_locally.html"
+              >
+                
+                Run locally
               </a>
             </li>
             
@@ -1225,16 +1244,9 @@ initFunction(initPrint)
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="MadMiner-on-REANA">MadMiner on REANA<a class="anchor-link" href="#MadMiner-on-REANA"> </a></h1><p>Thus far, the tutorial describes running the various steps on your local computer. In the interest of time, we did not generate much training data. For serious research we will need to generate more data for training and evaluation. For this, you will probably want to run these jobs on a cluster. You may also want compare various methods or tune the hyperparameters for the machine learning models and training steps. Furthermore, the MadMiner tutorial involves several steps (event generation, detector simulation, training the machine learning models, evaluating the trained models, and the final analysis and plotting stages). To streamline this, we’ve integrated MadMiner into the <a href="https://reanahub.io/">REANA</a>) workflow execution system and defined a workflow using the yadage workflow language.</p>
+<p>Thus far, the tutorial describes running the various steps on your local computer. In the interest of time, we did not generate much training data. For serious research we will need to generate more data for training and evaluation. For this, you will probably want to run these jobs on a cluster. You may also want compare various methods or tune the hyperparameters for the machine learning models and training steps. Furthermore, the MadMiner tutorial involves several steps (event generation, detector simulation, training the machine learning models, evaluating the trained models, and the final analysis and plotting stages). To streamline this, we’ve integrated MadMiner into the <a href="https://reanahub.io/">REANA</a>) workflow execution system and defined a workflow using the yadage workflow language.</p>
 <p>Integrating MadMiner into the REANA workflow system allows us to scale the tutorial to large numbers of events and large parameter scans. This work was supported by the <a href="https://scailfin.github.io">SCAILFIN</a> (Scalable CyberInfrastructure for Artificial Intelligence and Likelihood Free Inference) Project and <a href="https://iris-hep.org">IRIS-HEP</a>.</p>
 <p>The workflow contains all the necessary elements to be run both locally (requiring only the <a href="https://yadage.readthedocs.io/en/latest/">Yadage</a> workflow engine) and remotely (making use of <a href="https://reanahub.io/">REANA</a>). It also integrates with a metrics tracking system called <a href="https://mlflow.org/">MLFlow</a>, that can, optionally, save certain Machine Learning metrics from run to run.</p>
-<h2 id="Workflow-repositories">Workflow repositories<a class="anchor-link" href="#Workflow-repositories"> </a></h2><p>The workflow is currently split into 3 different GitHub repositories:</p>
-<ul>
-<li><a href="https://github.com/scailfin/madminer-workflow-ph">Scailfin/madminer-workflow-ph</a>: containing the event generation and detector simulation part.</li>
-<li><a href="https://github.com/scailfin/madminer-workflow-ml">Scailfin/madminer-workflow-ml</a>: containing the ML training and inference part.</li>
-<li><a href="https://github.com/scailfin/madminer-workflow">Scailfin/madminer-workflow</a>: wrapping both parts to construct the complete workflow.</li>
-</ul>
-<p>The distribution of the workflow into 2 separate sub-workflows (PH and ML) with a wrapper around them, allows us to make both of those sub-workflow <strong>locally</strong> executable on their own. This way, researchers have the option to <strong>locally</strong> run a particular part of the complete workflow multiple times, and with different parameters, without having to deal with the other part.</p>
 <h2 id="Technologies">Technologies<a class="anchor-link" href="#Technologies"> </a></h2><p>Before jumping the different commands to execute the workflow, some words about the technologies the workflow relies on:</p>
 <ul>
 <li><p><strong>Docker</strong>: used to encapsulate and isolate the dependencies and the small snippets of code that the workflow steps use to interact with Madminer (installed as one of the dependencies). See note below.</p>

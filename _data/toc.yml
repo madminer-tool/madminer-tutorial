@@ -142,17 +142,20 @@
   - title: Demo video
     url: /reana/demo_video
     not_numbered: true
-  - title: Workflow Setup
+  - title: Setup the REANA Client
+    url: /reana/preliminaries
+    not_numbered: true
+  - title: Get the Workflow
     url: /reana/workflow_setup
     not_numbered: true
-  - title: Execution commands
+  - title: Configure the workflow
+    url: /reana/parametrization
+    not_numbered: true
+  - title: Execute the workflow
     url: /reana/execution
     not_numbered: true
-  - title: MLFlow
-    url: /reana/mlflow
-    not_numbered: true
-  - title: Workflow parametrization
-    url: /reana/parametrization
+  - title: Run locally
+    url: /reana/running_locally
     not_numbered: true
 
 

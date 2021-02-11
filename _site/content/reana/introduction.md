@@ -1,4 +1,3 @@
-# MadMiner on REANA
 
 Thus far, the tutorial describes running the various steps on your local computer. In the interest of time, we did not generate much training data. For serious research we will need to generate more data for training and evaluation. For this, you will probably want to run these jobs on a cluster. You may also want compare various methods or tune the hyperparameters for the machine learning models and training steps. Furthermore, the MadMiner tutorial involves several steps (event generation, detector simulation, training the machine learning models, evaluating the trained models, and the final analysis and plotting stages). To streamline this, we’ve integrated MadMiner into the [REANA](https://reanahub.io/)) workflow execution system and defined a workflow using the yadage workflow language. 
 
@@ -6,14 +5,6 @@ Integrating MadMiner into the REANA workflow system allows us to scale the tutor
 
 The workflow contains all the necessary elements to be run both locally (requiring only the [Yadage](https://yadage.readthedocs.io/en/latest/) workflow engine) and remotely (making use of [REANA](https://reanahub.io/)). It also integrates with a metrics tracking system called [MLFlow](https://mlflow.org/), that can, optionally, save certain Machine Learning metrics from run to run.
 
-## Workflow repositories
-The workflow is currently split into 3 different GitHub repositories:
-
-  * [Scailfin/madminer-workflow-ph](https://github.com/scailfin/madminer-workflow-ph): containing the event generation and detector simulation part.
-  * [Scailfin/madminer-workflow-ml](https://github.com/scailfin/madminer-workflow-ml): containing the ML training and inference part.
-  * [Scailfin/madminer-workflow](https://github.com/scailfin/madminer-workflow): wrapping both parts to construct the complete workflow.
-
-The distribution of the workflow into 2 separate sub-workflows (PH and ML) with a wrapper around them, allows us to make both of those sub-workflow **locally** executable on their own. This way, researchers have the option to **locally** run a particular part of the complete workflow multiple times, and with different parameters, without having to deal with the other part.
 
 ## Technologies
 Before jumping the different commands to execute the workflow, some words about the technologies the workflow relies on:
