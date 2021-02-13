@@ -27,6 +27,10 @@
   search: true
   not_numbered: true
 
+- title: Demo video
+  url: /video
+  search: true
+  not_numbered: true
   
 ## Adds a searchbar link
 #- title: Search
