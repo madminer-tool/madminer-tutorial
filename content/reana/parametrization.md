@@ -17,20 +17,24 @@ When running locally, via Yadage, there is a small set of parameters being defin
 In the case of the PH sub-workflow:
 
  * `input_file`: path to the input.yml file to use.
- * `num_jobs`: number of chunks to split the collision event generation.
+ * `num_generation_jobs`: number of chunks to split the collision event generation.
 
 In the case of the ML sub-workflow:
 
  * `data_file`: path to the Physics sub-workflow events generated file.
  * `input_file`: path to the input.yml file to use.
- * `mlflow_args_s`: arguments to override the default MLproject ones on the sample step
- * `mlflow_args_t`: arguments to override the default MLproject ones on the training step
- * `mlflow_args_e`: arguments to override the default MLproject ones on the eval. step.
+ * `mlflow_args_s`: arguments to override the default sampling values.
+ * `mlflow_args_t`: arguments to override the default training values.
+ * `mlflow_args_e`: arguments to override the default evaluation values.
 
-A good example of passing MLFlow arguments to override defaults is the following:
+In order to pass MLFlow-specific arguments to override the default ones (specified on the [MLproject](https://github.com/scailfin/madminer-workflow-ml/blob/master/MLproject) file), change the `Makefile` rules. For example, to override the MLFlow parameters of the _sampling_ step:
 
-```
--p mlflow_args_s="test_split=0.5 nuisance_flag=0"
+```makefile
+yadage-run:
+    @yadage-run ... \
+        -p ... \
+        -p mlflow_args_s="test_split=0.5 nuisance_flag=0" \
+        -p ...
 ```
 
 Note: when an empty set of MLFlow arguments are provided through the Makefile, the empty string needs to be wrapped up in a weird set of quotes in order for the underlying engine (Yadage) to properly understand empty string, instead of NULL value. Check out [this GitHub issue](https://github.com/yadage/yadage/issues/101) for more information.
@@ -41,6 +45,3 @@ Note: when an empty set of MLFlow arguments are provided through the Makefile, t
 When running the workflow on REANA (which is only available for the complete workflow), the same parameters that are made available over the `yadage-run` Makefile rule, are made available on the `reana.yml` file within the [`reana` folder](https://github.com/scailfin/madminer-workflow/tree/master/reana).
 
 However, it is important to understand that some of these parameters (i.e. `mlflow_server` and `mlflow_user`), are directly provided by the `reana-run` Makefile rule, and must not be specified within the `reana.yml` file. In short, they must be left empty.
-
-
-
