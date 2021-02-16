@@ -149,11 +149,11 @@
   - title: Get the Workflow
     url: /reana/workflow_setup
     not_numbered: true
+  - title: Parametrize the workflow
+    url: /reana/parametrization
+    not_numbered: true
   - title: Setup the REANA Client
     url: /reana/preliminaries
-    not_numbered: true
-  - title: Configure the workflow
-    url: /reana/parametrization
     not_numbered: true
   - title: Execute the workflow
     url: /reana/execution
