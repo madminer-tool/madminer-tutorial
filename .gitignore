@@ -1,0 +1,7 @@
+# Ignore all auto-generated folders
+.sass-cache
+_build
+_site
+
+# Mac OS specific
+**/.DS_Store
