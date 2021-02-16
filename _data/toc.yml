@@ -155,9 +155,9 @@
   - title: Setup the REANA / MLFlow
     url: /reana/preliminaries
     not_numbered: true
-  - title: Execute the workflow
-    url: /reana/execution
+  - title: Remote execution on REANA
+    url: /reana/exec_remotely
     not_numbered: true
-  - title: Run locally
-    url: /reana/running_locally
+  - title: Local execution on Yadage
+    url: /reana/exec_locally
     not_numbered: true
