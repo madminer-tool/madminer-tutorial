@@ -152,7 +152,7 @@
   - title: Parametrize the workflow
     url: /reana/parametrization
     not_numbered: true
-  - title: Setup the REANA Client
+  - title: Setup the REANA / MLFlow
     url: /reana/preliminaries
     not_numbered: true
   - title: Execute the workflow
