@@ -21,7 +21,7 @@ runall:
 	jupyter-book run ./content
 
 clean:
-	python scripts/clean.py
+	python3 scripts/clean.py
 
 serve:
 	bundle exec guard
