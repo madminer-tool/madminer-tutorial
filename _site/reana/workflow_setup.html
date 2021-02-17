@@ -26,8 +26,8 @@
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/reana/workflow_setup.html",
   "headline": "Get the Workflow",
-  "datePublished": "2021-02-13T09:05:29-05:00",
-  "dateModified": "2021-02-13T09:05:29-05:00",
+  "datePublished": "2021-02-17T17:56:58-05:00",
+  "dateModified": "2021-02-17T17:56:58-05:00",
   "description": "        Get the Workflow    Workflow repositories The workflow is currently split into 3 different GitHub repositories:Scailfin/madminer-workflow-ph: contain...",
   "author": {
     "@type": "Person",
@@ -1133,25 +1133,6 @@ initFunction(initPrint)
             
             
 
-            <li class="c-sidebar__section" data-url="/reana/preliminaries">
-              <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/preliminaries.html"
-              >
-                
-                Setup the REANA Client
-              </a>
-            </li>
-            
-            
-          
-            
-            
-
-            
-            
-            
-            
-
             <li class="c-sidebar__section" data-url="/reana/workflow_setup">
               <a class="c-sidebar__entry"
                 href="/madminer-tutorial/reana/workflow_setup.html"
@@ -1176,7 +1157,7 @@ initFunction(initPrint)
                 href="/madminer-tutorial/reana/parametrization.html"
               >
                 
-                Configure the workflow
+                Parametrize the workflow
               </a>
             </li>
             
@@ -1190,12 +1171,12 @@ initFunction(initPrint)
             
             
 
-            <li class="c-sidebar__section" data-url="/reana/execution">
+            <li class="c-sidebar__section" data-url="/reana/preliminaries">
               <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/execution.html"
+                href="/madminer-tutorial/reana/preliminaries.html"
               >
                 
-                Execute the workflow
+                Setup the REANA / MLFlow
               </a>
             </li>
             
@@ -1209,12 +1190,31 @@ initFunction(initPrint)
             
             
 
-            <li class="c-sidebar__section" data-url="/reana/running_locally">
+            <li class="c-sidebar__section" data-url="/reana/exec_remotely">
               <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/running_locally.html"
+                href="/madminer-tutorial/reana/exec_remotely.html"
               >
                 
-                Run locally
+                Remote execution on REANA
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reana/exec_locally">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/reana/exec_locally.html"
+              >
+                
+                Local execution on Yadage
               </a>
             </li>
             
@@ -1285,13 +1285,12 @@ initFunction(initPrint)
 <h2 id="Workflow-setup">Workflow setup<a class="anchor-link" href="#Workflow-setup"> </a></h2><p>In order to setup the workflow locally, you can just clone the <a href="https://github.com/scailfin/madminer-workflow">madminer-workflow</a> repository,  as long as the two wrapped sub-workflows by running:</p>
 <div class="highlight"><pre><span></span>git clone --recurse-submodules https://github.com/scailfin/madminer-workflow
 </pre></div>
-<p>This command will also clone the phyiscs (PH) and machine learning (ML) sub-workflows inside the modules folder. You can also install them separately (if you want to interact with them in a separate manner), by running:</p>
+<p>This command will also clone the physics (PH) and machine learning (ML) sub-workflows inside the modules folder. You can also install them separately (if you want to interact with them in a separate manner), by running:</p>
 <div class="highlight"><pre><span></span>git clone https://github.com/scailfin/madminer-workflow-ml
 git clone https://github.com/scailfin/madminer-workflow-ph
 </pre></div>
-<h2 id="The-default-example">The default example<a class="anchor-link" href="#The-default-example"> </a></h2><p>These repositories define a default workflow as an example, but you would modify the configuration files to change the physics process that you are interested in, the number of events to generate, modify the detector simulation settings, choose which machine learning models and inference strategies you would like to use, etc. The next section describes how to configure the workflow, but if you want you can skip that for now and go straight to executing the default example workflow.</p>
-<p>The image below shows the default workflow. The first blue boxes labeled <code>workflow_ph[0]</code> is responsible for event generation with MadGraph and and simulation with Delphes, which is parallelized across 6 different event-generation jobs.  It is followed by a combine step that produces a single large data file with the information needed to for training (including the event weights for multiple EFT parameter points). The <code>workflow_ml[0]</code> is responsible the ML portions, and it performs a test/train/validate split and trains three different models (for the SALLY, ALICE, and ALICES methods). Later it evaluates each of the three trained models and concludes with a plotting stage.</p>
-<p>This is the example workflow in the <code>madminer-workflow</code> repository. In the section titled <a href="parametrization">Workflow parametrization</a>, we describe how to modify the workflow's configuration files for your own research purposes.</p>
+<h2 id="The-default-example">The default example<a class="anchor-link" href="#The-default-example"> </a></h2><p>These repositories define a default workflow as an example, but you would modify the configuration files to change the physics process that you are interested in, the number of events to generate, modify the detector simulation settings, choose which machine learning models and inference strategies you would like to use, etc. In the section titled <a href="parametrization">Parametrize the workflow</a>, we describe how to modify the workflow's configuration files for your own research purposes. You can skip that for now and go straight to executing the default example workflow.</p>
+<p>The image below shows the default workflow. The first blue boxes labeled <code>workflow_ph[0]</code> is responsible for event generation with MadGraph and simulation with Delphes, which is parallelized across 6 different event-generation jobs.  It is followed by a combine step that produces a single large data file with the information needed to for training (including the event weights for multiple EFT parameter points). The <code>workflow_ml[0]</code> is responsible the ML portions, and it performs a test/train/validate split and trains three different models (for the SALLY, ALICE, and ALICES methods). Later it evaluates each of the three trained models and concludes with a plotting stage.</p>
 <p><img src="../images/workflow-all.png" alt="image of the workflow"></p>
 
 </div>
@@ -1312,8 +1311,8 @@ git clone https://github.com/scailfin/madminer-workflow-ph
     
     
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/reana/preliminaries.html">
-      〈 <span class="u-margin-right-tiny"></span> Setup the REANA Client
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/reana/demo_video.html">
+      〈 <span class="u-margin-right-tiny"></span> Demo video
     </a>
   
 
@@ -1322,7 +1321,7 @@ git clone https://github.com/scailfin/madminer-workflow-ph
 
     
     <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/reana/parametrization.html">
-      Configure the workflow <span class="u-margin-right-tiny"></span> 〉
+      Parametrize the workflow <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

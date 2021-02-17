@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Setup the REANA Client</title>
-  <meta name="description" content="        Setup the REANA Client    The information below describes how to install and configure the software needed to run the workflow remotely or locally. N...">
+  <title>Setup the REANA / MLFlow</title>
+  <meta name="description" content="        Setup the REANA / MLFlow    The information below describes how to install and configure the software needed to run the workflow remotely or locally....">
 
   <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/reana/preliminaries.html">
   <link rel="alternate" type="application/rss+xml" title="MadMiner Tutorial" href="https://cranmer.github.io/madminer-tutorial/feed.xml">
 
   <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/reana/preliminaries.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Setup the REANA Client" />
-<meta property="og:description" content="        Setup the REANA Client    The information below describes how to install and configure the software needed to run the workflow remotely or locally. N..." />
+<meta property="og:title"       content="Setup the REANA / MLFlow" />
+<meta property="og:description" content="        Setup the REANA / MLFlow    The information below describes how to install and configure the software needed to run the workflow remotely or locally...." />
 <meta property="og:image"       content="https://iris-hep.org/assets/logos/madminer-square.png" />
 
 <meta name="twitter:card" content="summary">
@@ -25,10 +25,10 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/reana/preliminaries.html",
-  "headline": "Setup the REANA Client",
-  "datePublished": "2021-02-13T09:05:29-05:00",
-  "dateModified": "2021-02-13T09:05:29-05:00",
-  "description": "        Setup the REANA Client    The information below describes how to install and configure the software needed to run the workflow remotely or locally. N...",
+  "headline": "Setup the REANA / MLFlow",
+  "datePublished": "2021-02-17T17:56:58-05:00",
+  "dateModified": "2021-02-17T17:56:58-05:00",
+  "description": "        Setup the REANA / MLFlow    The information below describes how to install and configure the software needed to run the workflow remotely or locally....",
   "author": {
     "@type": "Person",
     "name": "Kyle Cranmer,"
@@ -1133,25 +1133,6 @@ initFunction(initPrint)
             
             
 
-            <li class="c-sidebar__section" data-url="/reana/preliminaries">
-              <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/preliminaries.html"
-              >
-                
-                Setup the REANA Client
-              </a>
-            </li>
-            
-            
-          
-            
-            
-
-            
-            
-            
-            
-
             <li class="c-sidebar__section" data-url="/reana/workflow_setup">
               <a class="c-sidebar__entry"
                 href="/madminer-tutorial/reana/workflow_setup.html"
@@ -1176,7 +1157,7 @@ initFunction(initPrint)
                 href="/madminer-tutorial/reana/parametrization.html"
               >
                 
-                Configure the workflow
+                Parametrize the workflow
               </a>
             </li>
             
@@ -1190,12 +1171,12 @@ initFunction(initPrint)
             
             
 
-            <li class="c-sidebar__section" data-url="/reana/execution">
+            <li class="c-sidebar__section" data-url="/reana/preliminaries">
               <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/execution.html"
+                href="/madminer-tutorial/reana/preliminaries.html"
               >
                 
-                Execute the workflow
+                Setup the REANA / MLFlow
               </a>
             </li>
             
@@ -1209,12 +1190,31 @@ initFunction(initPrint)
             
             
 
-            <li class="c-sidebar__section" data-url="/reana/running_locally">
+            <li class="c-sidebar__section" data-url="/reana/exec_remotely">
               <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/running_locally.html"
+                href="/madminer-tutorial/reana/exec_remotely.html"
               >
                 
-                Run locally
+                Remote execution on REANA
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reana/exec_locally">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/reana/exec_locally.html"
+              >
+                
+                Local execution on Yadage
               </a>
             </li>
             
@@ -1268,15 +1268,15 @@ initFunction(initPrint)
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
                   <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">Setup the REANA Client</div>
+    <div id="page-info"><div id="page-title">Setup the REANA / MLFlow</div>
 </div>
     
 <div class="jb_cell">
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>The information below describes how to install and configure the software needed to run the workflow remotely or locally. Note, that you will also need to configure an MLFlow tracking server, which is also described below.</p>
-<h2 id="Install-the-REANA-client">Install the REANA client<a class="anchor-link" href="#Install-the-REANA-client"> </a></h2><p>The <code>reana-cient</code> is an easy-to-install python package that provides a command line interface (CLI) for submitting workflows to a REANA cluster. Normally, you would configure the workflow locally on your laptop or some interactive node on a cluster and then use the <code>reana-client</code> to submit the workflow to the REANA cluster. To install the <code>reana-client</code> simply type:</p>
+<p>The information below describes how to install and configure the software needed to run the workflow remotely or locally.</p>
+<h2 id="Install-the-REANA-client">Install the REANA client<a class="anchor-link" href="#Install-the-REANA-client"> </a></h2><p>The <code>reana-client</code> is an easy-to-install python package that provides a command line interface (CLI) for submitting workflows to a REANA cluster. Normally, you would configure the workflow locally on your laptop or some interactive node on a cluster and then use the <code>reana-client</code> to submit the workflow to the REANA cluster. To install the <code>reana-client</code> simply type:</p>
 <div class="highlight"><pre><span></span>pip3 install reana-client
 </pre></div>
 <p>The official documentation and the README files of these repositories recommend creating a Python virtual environment to install these packages. However, if your interaction with the project is going to be from a user perspective, this is not mandatory.</p>
@@ -1284,10 +1284,7 @@ initFunction(initPrint)
 <h2 id="Get-a-Token-from-the-REANA-server">Get a Token from the REANA server<a class="anchor-link" href="#Get-a-Token-from-the-REANA-server"> </a></h2><p>You will need access to a REANA server instance. You can find your authentication <strong>token</strong> from the web interface for the REANA cluster. 
 There is a REANA instance at CERN <a href="https://reana.cern.ch">https://reana.cern.ch</a>, but it requires a CERN IP address. There is also one running at BNL, which was used for the <a href="demo_video">demo video</a>. You can also contact the system administrators for your university or lab to ask if they can setup a REANA instance, or if you have credits on a public cloud computing platform it's fairly easy to deploy REANA there. For instance, we have setup a REANA instance on the <a href="https://www.nyu.edu/research/navigating-research-technology/nyu-greene.html">NYU Greene</a> cluster, which uses the SLURM backend to submit jobs.</p>
 <h2 id="Configure-the-client">Configure the client<a class="anchor-link" href="#Configure-the-client"> </a></h2><p>Before submitting your workflows, you will  need to set some environment variables in order for the <code>reana-client</code> to be able to connect with a REANA server instance.</p>
-<div class="highlight"><pre><span></span><span class="c1"># Optional. Only if a virtual env was created</span>
-<span class="nb">source</span> ~/.virtualenvs/reana/bin/activate
-
-<span class="nb">export</span> <span class="nv">REANA_ACCESS_TOKEN</span><span class="o">=</span>“&lt;your access token here&gt;”
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">REANA_ACCESS_TOKEN</span><span class="o">=</span>“&lt;your access token here&gt;”
 <span class="nb">export</span> <span class="nv">REANA_SERVER_URL</span><span class="o">=</span>“&lt;the REANA instance URL here&gt;”
 <span class="nb">export</span> <span class="nv">REANA_WORKON</span><span class="o">=</span>madminer-workflow
 </pre></div>
@@ -1300,36 +1297,20 @@ REANA server version: 0.7.1
 REANA client version: 0.7.2
 Authenticated as: &lt;username&gt; &lt;username@institution&gt;
 Status: Connected</code></pre>
-<!--
-There is, however, a shortcut in the case that the REANA instance has been installed locally in the same computer where the workflow has been cloned. Only in those cases, users could use the reana-dev CLI tool to automatically set up some environment variables for them.
-
-```bash
-# Mandatory, as REANA was installed locally
-source ~/.virtualenvs/reana/bin/activate
-
-eval $(reana-dev client-setup-environment)
-export REANA_WORKON=madminer-workflow
-```
--->
-
-<h2 id="Local-monitoring-of-remote-workflows">Local monitoring of remote workflows<a class="anchor-link" href="#Local-monitoring-of-remote-workflows"> </a></h2><p>If we have access to a remote REANA server instance, it is more helpful to monitor the workflows and retrieve output files from the local browser than from the working directory at the cluster’s institution.  Here are the steps to do it:</p>
+<h2 id="Local-monitoring-of-remote-workflows">Local monitoring of remote workflows<a class="anchor-link" href="#Local-monitoring-of-remote-workflows"> </a></h2><p>If we have access to a remote REANA server instance, it is more helpful to monitor the workflows and retrieve output files from the local browser than from the working directory at the cluster’s institution. Here are the steps to do it:</p>
 <div class="highlight"><pre><span></span><span class="c1">#local terminal, ssh to the institution hosting the REANA server</span>
 ssh -q -L &lt;port&gt;:&lt;REANA_SERVER_URL&gt;:&lt;port&gt; &lt;username&gt;@&lt;institution&gt;
 <span class="c1">#if the previous command brings you to a bastion, go ahead and login to your workspace</span>
 </pre></div>
-<p>In the case of Brookhaven National Lab, the REANA server is located at</p>
-
-<pre><code>REANA_SERVER_URL=”https://kubmaster01.sdcc.bnl.gov:30443” (port=30443)
-REANA_ACCESS_TOKEN contact with admin</code></pre>
-<p>You can now check the progress of your workflows in <code>https://localhost:&lt;port&gt;</code> on your local browser and download output files. Congratulations!</p>
+<p>In the particular case of the Brookhaven National Lab, the REANA cluster URL is <code>https://kubmaster01.sdcc.bnl.gov:30443</code>.</p>
+<p>You can check the progress of your workflow on <code>https://localhost:30443</code> using your local browser.</p>
 <p><img src="../images/mm-reana-workflows.png" alt=""></p>
-<h2 id="A-schematic-for-a-user-and-REANA-cluster">A schematic for a user and REANA cluster<a class="anchor-link" href="#A-schematic-for-a-user-and-REANA-cluster"> </a></h2><p>Below is a schematic showing your local macine (the smiley face) with the <code>reana-client</code> and local web browser monitor interacting with the remote REANA cluster.</p>
+<h2 id="A-schematic-for-a-user-and-REANA-cluster">A schematic for a user and REANA cluster<a class="anchor-link" href="#A-schematic-for-a-user-and-REANA-cluster"> </a></h2><p>Below is a schematic showing your local machine (the smiley face) with the <code>reana-client</code> and local web browser monitor interacting with the remote REANA cluster.</p>
 <p><img src="../images/reana-platform-20181202.png" alt=""></p>
-<h1 id="The-MLFlow-tracking-server">The MLFlow tracking server<a class="anchor-link" href="#The-MLFlow-tracking-server"> </a></h1><p><a href="https://mlflow.org">MLFlow</a> is a framework that offers developers a consistent way of (1) defining ML projects, (2) run parameterized experiments on those projects, and (3) track results, metrics and artifacts from run to run.</p>
+<h1 id="Optional:-MLFlow-tracking-server">Optional: MLFlow tracking server<a class="anchor-link" href="#Optional:-MLFlow-tracking-server"> </a></h1><p><a href="https://mlflow.org">MLFlow</a> is a framework that offers developers a consistent way of (1) defining ML projects, (2) run parameterized experiments on those projects, and (3) track results, metrics and artifacts from run to run.</p>
 <p><img src="../images/mlflow_screenshot.png" alt=""></p>
 <p>MLFlow has been <strong>integrated to the ML sub-workflow</strong>, in order to provide the third capability: the tracking of results and metrics on consecutive (but different) runs. Therefore, the following information applies only to the ML sub-workflow leaving the physics sub-workflow unaffected.</p>
-<p>If you are running remotely on REANA, you will need an MLFlow tracking server up and running. If you are running locally with yadage, you will not need an MLFLow tracking server.</p>
-<p>This could be provided to you (common case), or deployed by you in a HTTP accessible computer (including your laptop). If you are running the workflow locally with yadage (not using REANA), then you don’t need an MLflow tracking server running.</p>
+<p>If you want to make Machine Learning metrics accessible through a web interface, you will need a MLFlow tracking server <em>up and running</em>. This could be provided to you (usual case), or deployed by you at a network open address (such as the address <code>0.0.0.0</code> on your laptop).</p>
 <p>To deploy your very own MLFlow tracking server:</p>
 <div class="highlight"><pre><span></span><span class="c1"># Install the Python package</span>
 pip3 install mlflow
@@ -1342,22 +1323,20 @@ mlflow server <span class="se">\ </span>
     --backend-store-uri <span class="s2">&quot;file:///tmp/mlflow/runs/metadata&quot;</span> <span class="se">\</span>
     --default-artifact-root <span class="s2">&quot;file:///tmp/mlflow/runs/artifacts&quot;</span>
 </pre></div>
-<h3 id="Connection-setup">Connection setup<a class="anchor-link" href="#Connection-setup"> </a></h3><p>Once you have an up-and-running MLFlow tracking server, you can specify the connection URL to the workflow just before executing it. If your tracking server instance has been deployed locally, the URL needs to be: <code>http://host.docker.internal:5000</code>, otherwise, specify a common URL:</p>
-<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">MLFLOW_TRACKING_URI</span><span class="o">=</span>”&lt;the tracking server URL here&gt;”
-
-<span class="c1"># One of the following high-level commands</span>
-make yadage-run 
-make reana-run
-</pre></div>
-<p><em>Note 1</em>: There is an additional environment variable to set up in case the MLFlow tracking server was deployed locally, and you are using Linux. This command tells Docker to map the magic string <code>host.docker.internal</code> to what Docker considers the “host network”:</p>
-<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">PACKTIVITY_DOCKER_CMD_MOD</span><span class="o">=</span><span class="s2">&quot;--add-host host.docker.internal:host-gateway&quot;</span>
-</pre></div>
-<p><em>Note 2</em>: due to some race conditions within the MLFlow implementation, you may need to preventively create the MLFlow tracking server experiments before running the workflow. This may have been fixed by the time you are reading this, but just in case.</p>
+<h3 id="Connection-setup">Connection setup<a class="anchor-link" href="#Connection-setup"> </a></h3><p>Once you have a MLFlow tracking server instance <em>up and running</em>, you need to create the MLFlow <em>experiments</em> to which the workflow ML metrics will be associated to. To do it:</p>
 <div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">MLFLOW_TRACKING_URI</span><span class="o">=</span>”&lt;the tracking server URL here&gt;”
 
 mlflow experiments create --experiment-name <span class="s2">&quot;madminer-ml-sample&quot;</span>
 mlflow experiments create --experiment-name <span class="s2">&quot;madminer-ml-train&quot;</span>
 mlflow experiments create --experiment-name <span class="s2">&quot;madminer-ml-eval&quot;</span>
+</pre></div>
+<p>Now, you are ready to run the workflow with a properly configured MLFlow tracking server. Do not forget to set the tracking server URL before running the workflow.</p>
+<p>In case the tracking server is deployed <strong>remotely</strong>:</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">MLFLOW_TRACKING_URI</span><span class="o">=</span>”&lt;the tracking server URL here&gt;”
+</pre></div>
+<p>In case the tracking server is deployed <strong>locally</strong> in your computer:</p>
+<div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">MLFLOW_TRACKING_URI</span><span class="o">=</span><span class="s2">&quot;http://host.docker.internal:5000&quot;</span>
+<span class="nb">export</span> <span class="nv">PACKTIVITY_DOCKER_CMD_MOD</span><span class="o">=</span><span class="s2">&quot;--add-host host.docker.internal:host-gateway&quot;</span> <span class="c1"># Only if you are on linux</span>
 </pre></div>
 
 </div>
@@ -1378,8 +1357,8 @@ mlflow experiments create --experiment-name <span class="s2">&quot;madminer-ml-e
     
     
 
-    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/reana/demo_video.html">
-      〈 <span class="u-margin-right-tiny"></span> Demo video
+    <a id="js-page__nav__prev" class="c-page__nav__prev" href="/madminer-tutorial/reana/parametrization.html">
+      〈 <span class="u-margin-right-tiny"></span> Parametrize the workflow
     </a>
   
 
@@ -1387,8 +1366,8 @@ mlflow experiments create --experiment-name <span class="s2">&quot;madminer-ml-e
     
 
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/reana/workflow_setup.html">
-      Get the Workflow <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/reana/exec_remotely.html">
+      Remote execution on REANA <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

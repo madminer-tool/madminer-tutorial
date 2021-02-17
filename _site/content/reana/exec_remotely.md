@@ -1,6 +1,6 @@
 
 This section describes executing the workflow on a REANA instance running on a remote cluster. 
-This section assumes that you have installed and configured the REANA client and the MLFlow tracking server as described [here](preliminaries).
+This section assumes that you have installed and configured the REANA client and, optionally, the MLFlow tracking server as described [here](preliminaries).
 
 To determine if the connection is established check the following output
 
@@ -41,7 +41,7 @@ madminer-workflow has been queued
 
 ## Local monitoring of remote workflows
 
-You can monitor the workflows and retrieve output files from your local browser by setting up a local monitor of the remote workflow than from the working directory at the cluster’s institution.  If you haven't already done it, follow the instructions [here](preliminaries.html#Local-monitoring-of-remote-workflows).
+You can monitor the workflows and retrieve output files from your local browser by setting up a local monitor of the remote workflow than from the working directory at the cluster’s institution. If you haven't already done it, follow the instructions [here](preliminaries.html#Local-monitoring-of-remote-workflows).
 
 ## Example screenshots
 
@@ -68,6 +68,6 @@ You can also inspect the logs for different steps in the workflow (eg. generate 
 
 ![](../images/mm-reana-plot.png)
 
-And if you have an MLFlow tracking server runnning, you can view the metrics and artifacts being tracked
+In case you have an MLFlow tracking server running, you can view the metrics and artifacts being tracked
 
 ![](../images/mlflow_screenshot.png)

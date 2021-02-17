@@ -1,19 +1,19 @@
 ---
 title: |-
-  Configure the workflow
-pagenum: 28
+  Parametrize the workflow
+pagenum: 27
 prev_page:
   url: /reana/workflow_setup.html
 next_page:
-  url: /reana/execution.html
+  url: /reana/preliminaries.html
 suffix: .md
-search: workflow reana makefile yadage parameters yml step file sub madminer arguments set within override empty input files values run rule path default mlproject ones github available ph ml small specified directly injected upon change parameter value documentation running case inputfile mlflowargss mlflow provided string understand com made must parametrization powerful features ability parametrize tune execution constrains locations where runnable placed corresponding folders contain pure those into python invocations loaded launch command either related need rebuild docker image grouped get although specification certain affect definition different further full represent take please visit readthedocs io en latest index html rules locally via
+search: workflow makefile yadage reana parameters file yml madminer values sub run arguments override set within step default github empty ml specified input files change rule path mlflow com p available ph small directly injected upon parameter value documentation rules running case inputfile mlflowargss sampling order mlproject scailfin master provided string understand made must parametrization powerful features ability parametrize tune execution constrains locations where runnable placed corresponding folders contain pure those into python invocations loaded launch command either related need rebuild docker image grouped get although specification certain affect definition different further full represent take please visit readthedocs io en latest
 
 comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /content***"
 ---
 
     <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">Configure the workflow</div>
+    <div id="page-info"><div id="page-title">Parametrize the workflow</div>
 </div>
     
 <div class="jb_cell">
@@ -28,19 +28,23 @@ comment: "***PROGRAMMATICALLY GENERATED, DO NOT EDIT. SEE ORIGINAL FILES IN /con
 <p>In the case of the PH sub-workflow:</p>
 <ul>
 <li><code>input_file</code>: path to the input.yml file to use.</li>
-<li><code>num_jobs</code>: number of chunks to split the collision event generation.</li>
+<li><code>num_generation_jobs</code>: number of chunks to split the collision event generation.</li>
 </ul>
 <p>In the case of the ML sub-workflow:</p>
 <ul>
 <li><code>data_file</code>: path to the Physics sub-workflow events generated file.</li>
 <li><code>input_file</code>: path to the input.yml file to use.</li>
-<li><code>mlflow_args_s</code>: arguments to override the default MLproject ones on the sample step</li>
-<li><code>mlflow_args_t</code>: arguments to override the default MLproject ones on the training step</li>
-<li><code>mlflow_args_e</code>: arguments to override the default MLproject ones on the eval. step.</li>
+<li><code>mlflow_args_s</code>: arguments to override the default sampling values.</li>
+<li><code>mlflow_args_t</code>: arguments to override the default training values.</li>
+<li><code>mlflow_args_e</code>: arguments to override the default evaluation values.</li>
 </ul>
-<p>A good example of passing MLFlow arguments to override defaults is the following:</p>
-
-<pre><code>-p mlflow_args_s="test_split=0.5 nuisance_flag=0"</code></pre>
+<p>In order to pass MLFlow-specific arguments to override the default ones (specified on the <a href="https://github.com/scailfin/madminer-workflow-ml/blob/master/MLproject">MLproject</a> file), change the <code>Makefile</code> rules. For example, to override the MLFlow parameters of the <em>sampling</em> step:</p>
+<div class="highlight"><pre><span></span><span class="nf">yadage-run</span><span class="o">:</span>
+    @yadage-run ... <span class="se">\</span>
+        -p ... <span class="se">\</span>
+        -p <span class="nv">mlflow_args_s</span><span class="o">=</span><span class="s2">&quot;test_split=0.5 nuisance_flag=0&quot;</span> <span class="se">\</span>
+        -p ...
+</pre></div>
 <p>Note: when an empty set of MLFlow arguments are provided through the Makefile, the empty string needs to be wrapped up in a weird set of quotes in order for the underlying engine (Yadage) to properly understand empty string, instead of NULL value. Check out <a href="https://github.com/yadage/yadage/issues/101">this GitHub issue</a> for more information.</p>
 <h2 id="Reana.yml-file">Reana.yml file<a class="anchor-link" href="#Reana.yml-file"> </a></h2><p>When running the workflow on REANA (which is only available for the complete workflow), the same parameters that are made available over the <code>yadage-run</code> Makefile rule, are made available on the <code>reana.yml</code> file within the <a href="https://github.com/scailfin/madminer-workflow/tree/master/reana"><code>reana</code> folder</a>.</p>
 <p>However, it is important to understand that some of these parameters (i.e. <code>mlflow_server</code> and <code>mlflow_user</code>), are directly provided by the <code>reana-run</code> Makefile rule, and must not be specified within the <code>reana.yml</code> file. In short, they must be left empty.</p>

@@ -5,16 +5,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
 
-  <title>Configure the workflow</title>
-  <meta name="description" content="        Configure the workflow    Parametrization One of the most powerful features of the workflow is the ability to parametrize and tune the workflow execu...">
+  <title>Parametrize the workflow</title>
+  <meta name="description" content="        Parametrize the workflow    Parametrization One of the most powerful features of the workflow is the ability to parametrize and tune the workflow exe...">
 
   <link rel="canonical" href="https://cranmer.github.io/madminer-tutorial/reana/parametrization.html">
   <link rel="alternate" type="application/rss+xml" title="MadMiner Tutorial" href="https://cranmer.github.io/madminer-tutorial/feed.xml">
 
   <meta property="og:url"         content="https://cranmer.github.io/madminer-tutorial/reana/parametrization.html" />
 <meta property="og:type"        content="article" />
-<meta property="og:title"       content="Configure the workflow" />
-<meta property="og:description" content="        Configure the workflow    Parametrization One of the most powerful features of the workflow is the ability to parametrize and tune the workflow execu..." />
+<meta property="og:title"       content="Parametrize the workflow" />
+<meta property="og:description" content="        Parametrize the workflow    Parametrization One of the most powerful features of the workflow is the ability to parametrize and tune the workflow exe..." />
 <meta property="og:image"       content="https://iris-hep.org/assets/logos/madminer-square.png" />
 
 <meta name="twitter:card" content="summary">
@@ -25,10 +25,10 @@
   "@context": "http://schema.org",
   "@type": "NewsArticle",
   "mainEntityOfPage": "https://cranmer.github.io/madminer-tutorial/reana/parametrization.html",
-  "headline": "Configure the workflow",
-  "datePublished": "2021-02-13T09:05:29-05:00",
-  "dateModified": "2021-02-13T09:05:29-05:00",
-  "description": "        Configure the workflow    Parametrization One of the most powerful features of the workflow is the ability to parametrize and tune the workflow execu...",
+  "headline": "Parametrize the workflow",
+  "datePublished": "2021-02-17T17:56:58-05:00",
+  "dateModified": "2021-02-17T17:56:58-05:00",
+  "description": "        Parametrize the workflow    Parametrization One of the most powerful features of the workflow is the ability to parametrize and tune the workflow exe...",
   "author": {
     "@type": "Person",
     "name": "Kyle Cranmer,"
@@ -1133,25 +1133,6 @@ initFunction(initPrint)
             
             
 
-            <li class="c-sidebar__section" data-url="/reana/preliminaries">
-              <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/preliminaries.html"
-              >
-                
-                Setup the REANA Client
-              </a>
-            </li>
-            
-            
-          
-            
-            
-
-            
-            
-            
-            
-
             <li class="c-sidebar__section" data-url="/reana/workflow_setup">
               <a class="c-sidebar__entry"
                 href="/madminer-tutorial/reana/workflow_setup.html"
@@ -1176,7 +1157,7 @@ initFunction(initPrint)
                 href="/madminer-tutorial/reana/parametrization.html"
               >
                 
-                Configure the workflow
+                Parametrize the workflow
               </a>
             </li>
             
@@ -1190,12 +1171,12 @@ initFunction(initPrint)
             
             
 
-            <li class="c-sidebar__section" data-url="/reana/execution">
+            <li class="c-sidebar__section" data-url="/reana/preliminaries">
               <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/execution.html"
+                href="/madminer-tutorial/reana/preliminaries.html"
               >
                 
-                Execute the workflow
+                Setup the REANA / MLFlow
               </a>
             </li>
             
@@ -1209,12 +1190,31 @@ initFunction(initPrint)
             
             
 
-            <li class="c-sidebar__section" data-url="/reana/running_locally">
+            <li class="c-sidebar__section" data-url="/reana/exec_remotely">
               <a class="c-sidebar__entry"
-                href="/madminer-tutorial/reana/running_locally.html"
+                href="/madminer-tutorial/reana/exec_remotely.html"
               >
                 
-                Run locally
+                Remote execution on REANA
+              </a>
+            </li>
+            
+            
+          
+            
+            
+
+            
+            
+            
+            
+
+            <li class="c-sidebar__section" data-url="/reana/exec_locally">
+              <a class="c-sidebar__entry"
+                href="/madminer-tutorial/reana/exec_locally.html"
+              >
+                
+                Local execution on Yadage
               </a>
             </li>
             
@@ -1268,7 +1268,7 @@ initFunction(initPrint)
       <main class="c-textbook__page" tabindex="-1">
             <div class="c-textbook__content" id="textbook_content">
                   <main class="jupyter-page">
-    <div id="page-info"><div id="page-title">Configure the workflow</div>
+    <div id="page-info"><div id="page-title">Parametrize the workflow</div>
 </div>
     
 <div class="jb_cell">
@@ -1283,19 +1283,23 @@ initFunction(initPrint)
 <p>In the case of the PH sub-workflow:</p>
 <ul>
 <li><code>input_file</code>: path to the input.yml file to use.</li>
-<li><code>num_jobs</code>: number of chunks to split the collision event generation.</li>
+<li><code>num_generation_jobs</code>: number of chunks to split the collision event generation.</li>
 </ul>
 <p>In the case of the ML sub-workflow:</p>
 <ul>
 <li><code>data_file</code>: path to the Physics sub-workflow events generated file.</li>
 <li><code>input_file</code>: path to the input.yml file to use.</li>
-<li><code>mlflow_args_s</code>: arguments to override the default MLproject ones on the sample step</li>
-<li><code>mlflow_args_t</code>: arguments to override the default MLproject ones on the training step</li>
-<li><code>mlflow_args_e</code>: arguments to override the default MLproject ones on the eval. step.</li>
+<li><code>mlflow_args_s</code>: arguments to override the default sampling values.</li>
+<li><code>mlflow_args_t</code>: arguments to override the default training values.</li>
+<li><code>mlflow_args_e</code>: arguments to override the default evaluation values.</li>
 </ul>
-<p>A good example of passing MLFlow arguments to override defaults is the following:</p>
-
-<pre><code>-p mlflow_args_s="test_split=0.5 nuisance_flag=0"</code></pre>
+<p>In order to pass MLFlow-specific arguments to override the default ones (specified on the <a href="https://github.com/scailfin/madminer-workflow-ml/blob/master/MLproject">MLproject</a> file), change the <code>Makefile</code> rules. For example, to override the MLFlow parameters of the <em>sampling</em> step:</p>
+<div class="highlight"><pre><span></span><span class="nf">yadage-run</span><span class="o">:</span>
+    @yadage-run ... <span class="se">\</span>
+        -p ... <span class="se">\</span>
+        -p <span class="nv">mlflow_args_s</span><span class="o">=</span><span class="s2">&quot;test_split=0.5 nuisance_flag=0&quot;</span> <span class="se">\</span>
+        -p ...
+</pre></div>
 <p>Note: when an empty set of MLFlow arguments are provided through the Makefile, the empty string needs to be wrapped up in a weird set of quotes in order for the underlying engine (Yadage) to properly understand empty string, instead of NULL value. Check out <a href="https://github.com/yadage/yadage/issues/101">this GitHub issue</a> for more information.</p>
 <h2 id="Reana.yml-file">Reana.yml file<a class="anchor-link" href="#Reana.yml-file"> </a></h2><p>When running the workflow on REANA (which is only available for the complete workflow), the same parameters that are made available over the <code>yadage-run</code> Makefile rule, are made available on the <code>reana.yml</code> file within the <a href="https://github.com/scailfin/madminer-workflow/tree/master/reana"><code>reana</code> folder</a>.</p>
 <p>However, it is important to understand that some of these parameters (i.e. <code>mlflow_server</code> and <code>mlflow_user</code>), are directly provided by the <code>reana-run</code> Makefile rule, and must not be specified within the <code>reana.yml</code> file. In short, they must be left empty.</p>
@@ -1327,8 +1331,8 @@ initFunction(initPrint)
     
 
     
-    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/reana/execution.html">
-      Execute the workflow <span class="u-margin-right-tiny"></span> 〉
+    <a id="js-page__nav__next" class="c-page__nav__next" href="/madminer-tutorial/reana/preliminaries.html">
+      Setup the REANA / MLFlow <span class="u-margin-right-tiny"></span> 〉
     </a>
   
 </nav>

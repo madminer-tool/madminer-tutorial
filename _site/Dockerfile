@@ -21,9 +21,15 @@ RUN adduser --disabled-password \
     ${NB_USER}
 
 #install basics
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    wget curl ca-certificates gfortran build-essential ghostscript  libboost-all-dev
-
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends \
+        wget \
+        curl \
+        ca-certificates \
+        gfortran \
+        build-essential \
+        ghostscript \
+        libboost-all-dev
 
 #
 # MadGraph + Pythia + Delphes
@@ -31,20 +37,18 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 WORKDIR ${HOME}/software
 ENV MG_EPOCH = "2.6.x"
-ENV MG_VERSION="MG5_aMC_v2_6_7" 
-ENV MG_VERSION_WEB="MG5_aMC_v2.6.7" 
+ENV MG_VERSION="MG5_aMC_v2_6_7"
+ENV MG_VERSION_WEB="MG5_aMC_v2.6.7"
 RUN curl -sSL https://launchpad.net/mg5amcnlo/2.0/2.6.x/+download/MG5_aMC_v2.6.7.tar.gz | tar -xzv
-
 
 WORKDIR ${HOME}/software
 RUN ./${MG_VERSION}/bin/mg5_aMC
 
 #config path
 WORKDIR ${HOME}/software/${MG_VERSION}
-ENV ROOTSYS /usr/local 
-ENV PATH $PATH:$ROOTSYS/bin 
+ENV ROOTSYS /usr/local
+ENV PATH $PATH:$ROOTSYS/bin
 ENV LD_LIBRARY_PATH $LD_LIBRARY_PATH:$ROOTSYS/lib
-
 
 RUN echo "install lhapdf6" | ${HOME}/software/${MG_VERSION}/bin/mg5_aMC
 RUN echo "install pythia8" | ${HOME}/software/${MG_VERSION}/bin/mg5_aMC
@@ -59,12 +63,18 @@ FROM rootproject/root-ubuntu16:6.10 AS madminer
 
 ENV HOME /home
 
-USER root 
+USER root
 WORKDIR /home
 COPY --from=madgraph / /
 
-RUN apt-get update &&\
-    apt-get install -y python-pip && pip install --upgrade pip && pip install --no-cache-dir notebook==5.* && pip install PyYAML  && pip install madminer
+# Need to bootstrap pip as Python 2 is EOL
+# madminer should move off Python 2 ASAP
+RUN apt-get update -y && \
+    apt-get install -y curl && \
+    curl -sL https://bootstrap.pypa.io/2.7/get-pip.py | python && \
+    python -m pip install --no-cache-dir "notebook~=5.7" && \
+    python -m pip install --no-cache-dir "PyYAML~=5.4" && \
+    python -m pip install --no-cache-dir madminer
 
 #
 # code tutorial
