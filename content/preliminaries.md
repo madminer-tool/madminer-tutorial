@@ -45,7 +45,7 @@ The first time you execute this it will need to pull the container, which will t
 ```bash
 docker run -p 8888:8888 -v ~/madminer_shared:/home/shared -it madminertool/madminer-jupyter-env /bin/bash
 ```
-(If you are using Docker Toolbox on windows, see section below.)
+(If you are using Docker Toolbox on Windows, see section below).
 
 Now you have a prompt inside the container. See what's there and then go into the `shared` directory
 
@@ -130,6 +130,3 @@ which should return something like:
 docker is configured to use the default machine with IP 192.XXX.YY.ZZZ
 ```
 and then you can access the created Jupyter notebook by pointing your browser to: ```<result of the docker-machine ip default command>:8888```
-
-
-

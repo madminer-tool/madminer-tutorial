@@ -22,5 +22,5 @@ Our main publication [MadMiner: Machine-learning-based inference for particle ph
 
 ## Documentation
 
-Tutorials are nice, but they are no substitute for proper documentatin. Fortunately, 
-MadMiner has extensive documentation on [readthedocs](https://madminer.readthedocs.io/en/latest/index.html).
+Tutorials are nice, but they are no substitute for a proper documentation. Fortunately, 
+MadMiner has an extensive documentation on [readthedocs](https://madminer.readthedocs.io/en/latest/index.html).

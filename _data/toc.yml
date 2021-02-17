@@ -146,20 +146,18 @@
   - title: Demo video
     url: /reana/demo_video
     not_numbered: true
-  - title: Setup the REANA Client
-    url: /reana/preliminaries
-    not_numbered: true
   - title: Get the Workflow
     url: /reana/workflow_setup
     not_numbered: true
-  - title: Configure the workflow
+  - title: Parametrize the workflow
     url: /reana/parametrization
     not_numbered: true
-  - title: Execute the workflow
-    url: /reana/execution
+  - title: Setup the REANA / MLFlow
+    url: /reana/preliminaries
     not_numbered: true
-  - title: Run locally
-    url: /reana/running_locally
+  - title: Remote execution on REANA
+    url: /reana/exec_remotely
     not_numbered: true
-
-
+  - title: Local execution on Yadage
+    url: /reana/exec_locally
+    not_numbered: true
