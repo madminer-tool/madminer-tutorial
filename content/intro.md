@@ -1,6 +1,6 @@
 # MadMiner tutorial
 
-This is a tutorial on [MadMiner](https://github.com/diana-hep/madminer) developed by Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer. Sinclert Pérez has made major contributions to the docker containers and workflows, and documentation for running MadMiner on REANA. The site is built using [Jupyter Book](https://jupyterbook.org/intro).
+This is a tutorial on [MadMiner](https://github.com/diana-hep/madminer) developed by Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer. Sinclert Pérez has made major contributions to the docker containers and workflows, and documentation for running MadMiner on REANA. Matthew Feickert helped with Binder and streamlined docker files. The site is built using [Jupyter Book](https://jupyterbook.org/intro).
 
 ![](https://iris-hep.org/assets/logos/madminer.png)
 
@@ -22,5 +22,5 @@ Our main publication [MadMiner: Machine-learning-based inference for particle ph
 
 ## Documentation
 
-Tutorials are nice, but they are no substitute for a proper documentation. Fortunately, 
+Tutorials are nice, but they are no substitute for proper documentation. Fortunately, 
 MadMiner has an extensive documentation on [readthedocs](https://madminer.readthedocs.io/en/latest/index.html).
