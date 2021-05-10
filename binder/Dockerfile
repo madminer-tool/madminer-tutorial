@@ -10,17 +10,18 @@ ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
 WORKDIR ${HOME}
 
-RUN adduser --disabled-password \
+RUN adduser \
+    --disabled-password \
     --gecos "Default user" \
     --uid ${NB_UID} \
     ${NB_USER}
 
-RUN python3 -m pip install --upgrade --no-cache-dir pip setuptools wheel && \
+RUN python3 -m pip install --no-cache-dir --upgrade pip setuptools wheel && \
     python3 -m pip install --no-cache-dir --upgrade \
-       "notebook~=5.7" \
-       jupyter \
-       metakernel \
-       zmq
+        "notebook~=5.7" \
+        "jupyter" \
+        "metakernel" \
+        "zmq"
 
 # Make sure the contents of our repo are in ${HOME}
 COPY content ${HOME}/content
