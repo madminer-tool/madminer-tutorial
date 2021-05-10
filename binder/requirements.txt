@@ -1,6 +1,6 @@
-# Requirements for the demo notebooks
-# Useful for MyBinder configuration
+# Requirements for the MyBinder environment
+# 'Datascience' gets scipy, numpy, pandas, folium, bokeh, and plotly
+datascience~=0.17
+madminer==0.7.7
 nbinteract~=0.2
-datascience~=0.17 # Gets scipy, numpy, pandas, folium, bokeh, and plotly
-PyYAML~=5.4
-madminer
+pyyaml~=5.4
