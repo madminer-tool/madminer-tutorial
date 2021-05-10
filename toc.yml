@@ -31,7 +31,7 @@
   url: /video
   search: true
   not_numbered: true
-  
+
 ## Adds a searchbar link
 #- title: Search
 #  search: true
@@ -58,14 +58,14 @@
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Morphing 
-    url: /morphing
-    not_numbered: true
-    expand_sections: true
-  - title: Interactive Morphing Demo
-    url: /morphing_basis/interactive_basis_chooser
-    not_numbered: true
-    expand_sections: true
+    - title: Morphing
+      url: /morphing
+      not_numbered: true
+      expand_sections: true
+    - title: Interactive Morphing Demo
+      url: /morphing_basis/interactive_basis_chooser
+      not_numbered: true
+      expand_sections: true
 
   # A chapter w/ a collection of sections beneath it
 - title: Create training data
@@ -73,15 +73,15 @@
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Set MadGraph Directory
-    url: /set_mg_dir
-    not_numbered: true
-  - title: Parton Level *
-    url: /tutorial_particle_physics/2a_parton_level_analysis
-    not_numbered: true
-  - title: With Delphes
-    url: /tutorial_particle_physics/2b_delphes_level_analysis
-    not_numbered: true
+    - title: Set MadGraph Directory
+      url: /set_mg_dir
+      not_numbered: true
+    - title: Parton Level *
+      url: /tutorial_particle_physics/2a_parton_level_analysis
+      not_numbered: true
+    - title: With Delphes
+      url: /tutorial_particle_physics/2b_delphes_level_analysis
+      not_numbered: true
 
 # A chapter w/ a collection of sections beneath it
 - title: Train model
@@ -89,15 +89,15 @@
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Likelihood Ratio *
-    url: /tutorial_particle_physics/3a_likelihood_ratio
-    not_numbered: true
-  - title: Score *
-    url: /tutorial_particle_physics/3b_score
-    not_numbered: true
-  - title: Likelihood 
-    url: /tutorial_particle_physics/3c_likelihood
-    not_numbered: true
+    - title: Likelihood Ratio *
+      url: /tutorial_particle_physics/3a_likelihood_ratio
+      not_numbered: true
+    - title: Score *
+      url: /tutorial_particle_physics/3b_score
+      not_numbered: true
+    - title: Likelihood
+      url: /tutorial_particle_physics/3c_likelihood
+      not_numbered: true
 
 # A chapter w/ a collection of sections beneath it
 - title: Statistical Analysis
@@ -105,18 +105,18 @@
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Limits on EFT parameters *
-    url: /tutorial_particle_physics/4a_limits
-    not_numbered: true
-  - title: Fisher Information
-    url: /tutorial_particle_physics/4b_fisher_information
-    not_numbered: true
-  - title: Information Geometry 
-    url: /tutorial_particle_physics/4c_information_geometry
-    not_numbered: true
+    - title: Limits on EFT parameters *
+      url: /tutorial_particle_physics/4a_limits
+      not_numbered: true
+    - title: Fisher Information
+      url: /tutorial_particle_physics/4b_fisher_information
+      not_numbered: true
+    - title: Information Geometry
+      url: /tutorial_particle_physics/4c_information_geometry
+      not_numbered: true
 
 # A chapter w/ a collection of sections beneath it
-- title: Congratulations 
+- title: Congratulations
   url: /congratulations
   not_numbered: true
 
@@ -127,15 +127,15 @@
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Systematic uncertainties 
-    url: /tutorial_particle_physics/A1_systematic_uncertainties
-    not_numbered: true
-  - title: Ensemble methods 
-    url: /tutorial_particle_physics/A2_ensemble_methods
-    not_numbered: true
-  - title: Reweighting existing samples
-    url: /tutorial_particle_physics/A3_reweighting_existing_samples
-    not_numbered: true
+    - title: Systematic uncertainties
+      url: /tutorial_particle_physics/A1_systematic_uncertainties
+      not_numbered: true
+    - title: Ensemble methods
+      url: /tutorial_particle_physics/A2_ensemble_methods
+      not_numbered: true
+    - title: Reweighting existing samples
+      url: /tutorial_particle_physics/A3_reweighting_existing_samples
+      not_numbered: true
 
 
 - title: MadMiner on REANA
@@ -143,21 +143,21 @@
   not_numbered: true
   expand_sections: true
   sections:
-  - title: Demo video
-    url: /reana/demo_video
-    not_numbered: true
-  - title: Get the Workflow
-    url: /reana/workflow_setup
-    not_numbered: true
-  - title: Parametrize the workflow
-    url: /reana/parametrization
-    not_numbered: true
-  - title: Setup the REANA / MLFlow
-    url: /reana/preliminaries
-    not_numbered: true
-  - title: Remote execution on REANA
-    url: /reana/exec_remotely
-    not_numbered: true
-  - title: Local execution on Yadage
-    url: /reana/exec_locally
-    not_numbered: true
+    - title: Demo video
+      url: /reana/demo_video
+      not_numbered: true
+    - title: Get the Workflow
+      url: /reana/workflow_setup
+      not_numbered: true
+    - title: Parametrize the workflow
+      url: /reana/parametrization
+      not_numbered: true
+    - title: Setup the REANA / MLFlow
+      url: /reana/preliminaries
+      not_numbered: true
+    - title: Remote execution on REANA
+      url: /reana/exec_remotely
+      not_numbered: true
+    - title: Local execution on Yadage
+      url: /reana/exec_locally
+      not_numbered: true
