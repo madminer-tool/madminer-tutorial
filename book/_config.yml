@@ -1,32 +1,78 @@
+#######################################################################################
+# Master list of all allowed keys and values.
+# Ref: https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+
+#######################################################################################
 # Book settings
-# Learn more at https://jupyterbook.org/customize/config.html
+title                       : MadMiner Tutorial
+author                      : Kyle Cranmer
+copyright                   : "2021"
+logo                        : logo.png
+exclude_patterns            : [_build, Thumbs.db, .DS_Store, "**.ipynb_checkpoints"]
+only_build_toc_files        : false # Auto-exclude files not in the toc
 
-title: My sample book
-author: The Jupyter Book Community
-logo: logo.png
-
-# Force re-execution of notebooks on each build.
-# See https://jupyterbook.org/content/execute.html
+#######################################################################################
+# Execution settings
 execute:
-  execute_notebooks: force
+  execute_notebooks         : auto  # Whether to execute notebooks at build time. Must be one of ("auto", "force", "cache", "off")
+  cache                     : ""    # A path to the jupyter cache that will be used to store execution artifacts. Defaults to `_build/.jupyter_cache/`
+  exclude_patterns          : []    # A list of patterns to *skip* in execution (e.g. a notebook that takes a really long time)
+  timeout                   : 30    # The maximum time (in seconds) each notebook cell is allowed to run.
+  run_in_temp               : false # If `True`, then a temporary directory will be created and used as the command working directory (cwd).
+  allow_errors              : false # If `False`, when a code cell raises an error the execution is stopped, otherwise all cells are always run.
+  stderr_output             : show  # One of 'show', 'remove', 'remove-warn', 'warn', 'error', 'severe'
 
-# Define the name of the latex output file for PDF builds
-latex:
-  latex_documents:
-    targetname: book.tex
+#######################################################################################
+# Parse and render settings
+parse:
+  # Default extensions to enable in the myst parser.
+  myst_enable_extensions:
+    - colon_fence
+    - dollarmath
+    - linkify
+    - substitution
 
-# Add a bibtex file so that we can create citations
-bibtex_bibfiles:
-  - references.bib
+  myst_url_schemes          : [mailto, http, https] # URI schemes that will be recognised as external URLs in Markdown links
 
-# Information about where the book exists on the web
-repository:
-  url: https://github.com/executablebooks/jupyter-book  # Online location of your book
-  path_to_book: docs  # Optional path to your book, relative to the repository root
-  branch: master  # Which branch of the repository should be used when creating links (optional)
-
-# Add GitHub buttons to your book
-# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+#######################################################################################
+# HTML-specific settings
 html:
-  use_issues_button: true
-  use_repository_button: true
+  favicon                   : ""     # A path to a favicon image
+  use_edit_page_button      : false  # Whether to add an "edit this page" button to pages.
+  use_repository_button     : false  # Whether to add a link to your repository button
+  use_issues_button         : false  # Whether to add an "open an issue" button
+  extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+  extra_footer              : This page was created by the <a href="https://github.com/diana-hep/madminer">MadMiner Team</a>.
+  google_analytics_id       : ""     # A GA id that can be used to track book views.
+  home_page_in_navbar       : true   # Whether to include your home page in the left Navigation Bar
+  baseurl                   : ""     # The base URL where your book will be hosted. Used for creating image previews.
+  comments:
+    hypothesis              : false
+    utterances              : false
+
+#######################################################################################
+# LaTeX-specific settings
+latex:
+  latex_engine              : pdflatex # one of 'pdflatex', 'xelatex' (recommended for unicode), 'luatex', 'platex', 'uplatex'
+  use_jupyterbook_latex     : true     # use jupyterbook-latex for pdf builds as default
+
+#######################################################################################
+# Launch button settings
+launch_buttons:
+  notebook_interface        : classic  # The interface interactive links will activate ["classic", "jupyterlab"]
+  binderhub_url             : https://mybinder.org  # The URL of the BinderHub (e.g., https://mybinder.org)
+  jupyterhub_url            : ""       # The URL of the JupyterHub (e.g., https://datahub.berkeley.edu)
+  thebe                     : false    # Add a thebe button to pages (requires the repository to run on Binder)
+  colab_url                 : ""       # The URL of Google Colab (https://colab.research.google.com)
+
+repository:
+  url                       : https://github.com/cranmer/madminer-tutorial
+  path_to_book              : book
+  branch                    : master
+
+#######################################################################################
+# Advanced and power-user settings
+sphinx:
+  extra_extensions          :   # A list of extra extensions to load by Sphinx (added to those already used by JB).
+  local_extensions          :   # A list of local extensions to load by sphinx specified by "name: path" items
+  config                    :   # key-value pairs to directly over-ride the Sphinx configuration

@@ -1,8 +1,80 @@
 # Table of content
 # Learn more at https://jupyterbook.org/customize/toc.html
-#
-- file: intro
-- file: content
-  sections:
-    - file: markdown
-    - file: notebooks
+
+- file: chapters/tutorial/0_intro
+
+
+- part: Introduction
+  chapters:
+    - title: "Demo video"
+      file: chapters/tutorial/1_video
+
+
+- part: Tutorial
+  chapters:
+    - title: "Preliminaries"
+      file: chapters/tutorial/2_preliminaries
+    - title: "Overview"
+      file: chapters/tutorial/3_overview
+    - title: "Define process to study"
+      file: notebooks/tutorial/1_setup_process.ipynb
+      sections:
+        - title: "Morphing"
+          file: chapters/tutorial/4_morphing
+        - title: "Morphing demo"
+          file: notebooks/morphing/basis_chooser.ipynb
+    - title: "Create training data"
+      file: chapters/tutorial/5_data_generation
+      sections:
+        - title: "Parton level"
+          file: notebooks/tutorial/2a_parton_analysis
+        - title: "Delphes level"
+          file: notebooks/tutorial/2b_delphes_analysis
+    - title: "Train model"
+      file: chapters/tutorial/6_metric_selection
+      sections:
+        - title: "Likelihood ratio"
+          file: notebooks/tutorial/3a_likelihood_ratio
+        - title: "Score"
+          file: notebooks/tutorial/3b_score
+        - title: "Likelihood"
+          file: notebooks/tutorial/3c_likelihood
+    - title: "Statistical Analysis"
+      file: chapters/tutorial/7_statistics
+      sections:
+        - title: "Limits on EFT parameters"
+          file: notebooks/tutorial/4a_limits
+        - title: "Fisher Information"
+          file: notebooks/tutorial/4b_fisher_information
+        - title: "Information Geometry"
+          file: notebooks/tutorial/4c_information_geometry
+    - title: "Congratulations"
+      file: chapters/tutorial/8_congratulations
+
+
+- part: Appendix
+  chapters:
+    - title: "Systematic uncertainties"
+      file: notebooks/appendix/A1_systematic_uncertainties
+    - title: "Ensemble methods"
+      file: notebooks/appendix/A2_ensemble_methods
+    - title: "Reweighting existing samples"
+      file: notebooks/appendix/A3_reweighting_samples
+
+
+- part: Deploy on REANA
+  chapters:
+    - title: "Introduction"
+      file: chapters/reana/0_introduction
+    - title: "Demo video"
+      file: chapters/reana/1_demo_video
+    - title: "Setup workflow"
+      file: chapters/reana/2_workflow_setup
+    - title: "Parametrization"
+      file: chapters/reana/3_parametrization
+    - title: "Setup REANA / MLFlow"
+      file: chapters/reana/4_reana_setup
+    - title: "Run remotely"
+      file: chapters/reana/5_run_remotely
+    - title: "Run locally"
+      file: chapters/reana/6_run_locally
