@@ -1,80 +1,80 @@
 # Table of content
 # Learn more at https://jupyterbook.org/customize/toc.html
 
-- file: chapters/tutorial/0_intro
+- file: tutorial/0_intro
 
 
 - part: Introduction
   chapters:
     - title: "Demo video"
-      file: chapters/tutorial/1_video
+      file: tutorial/1_video
 
 
 - part: Tutorial
   chapters:
     - title: "Preliminaries"
-      file: chapters/tutorial/2_preliminaries
+      file: tutorial/2_preliminaries
     - title: "Overview"
-      file: chapters/tutorial/3_overview
+      file: tutorial/3_overview
     - title: "Define process to study"
-      file: notebooks/tutorial/1_setup_process.ipynb
+      file: tutorial/notebooks/general/1_setup_process
       sections:
         - title: "Morphing"
-          file: chapters/tutorial/4_morphing
+          file: tutorial/4_morphing
         - title: "Morphing demo"
-          file: notebooks/morphing/basis_chooser.ipynb
+          file: tutorial/notebooks/morphing/basis_chooser
     - title: "Create training data"
-      file: chapters/tutorial/5_data_generation
+      file: tutorial/5_data_generation
       sections:
         - title: "Parton level"
-          file: notebooks/tutorial/2a_parton_analysis
+          file: tutorial/notebooks/general/2a_parton_analysis
         - title: "Delphes level"
-          file: notebooks/tutorial/2b_delphes_analysis
+          file: tutorial/notebooks/general/2b_delphes_analysis
     - title: "Train model"
-      file: chapters/tutorial/6_metric_selection
+      file: tutorial/6_metric_selection
       sections:
         - title: "Likelihood ratio"
-          file: notebooks/tutorial/3a_likelihood_ratio
+          file: tutorial/notebooks/general/3a_likelihood_ratio
         - title: "Score"
-          file: notebooks/tutorial/3b_score
+          file: tutorial/notebooks/general/3b_score
         - title: "Likelihood"
-          file: notebooks/tutorial/3c_likelihood
+          file: tutorial/notebooks/general/3c_likelihood
     - title: "Statistical Analysis"
-      file: chapters/tutorial/7_statistics
+      file: tutorial/7_statistics
       sections:
         - title: "Limits on EFT parameters"
-          file: notebooks/tutorial/4a_limits
+          file: tutorial/notebooks/general/4a_limits
         - title: "Fisher Information"
-          file: notebooks/tutorial/4b_fisher_information
+          file: tutorial/notebooks/general/4b_fisher_information
         - title: "Information Geometry"
-          file: notebooks/tutorial/4c_information_geometry
+          file: tutorial/notebooks/general/4c_information_geometry
     - title: "Congratulations"
-      file: chapters/tutorial/8_congratulations
+      file: tutorial/8_congratulations
 
 
 - part: Appendix
   chapters:
     - title: "Systematic uncertainties"
-      file: notebooks/appendix/A1_systematic_uncertainties
+      file: appendix/notebooks/A1_systematic_uncertainties
     - title: "Ensemble methods"
-      file: notebooks/appendix/A2_ensemble_methods
+      file: appendix/notebooks/A2_ensemble_methods
     - title: "Reweighting existing samples"
-      file: notebooks/appendix/A3_reweighting_samples
+      file: appendix/notebooks/A3_reweighting_samples
 
 
 - part: Deploy on REANA
   chapters:
     - title: "Introduction"
-      file: chapters/reana/0_introduction
+      file: reana/0_introduction
     - title: "Demo video"
-      file: chapters/reana/1_demo_video
+      file: reana/1_demo_video
     - title: "Setup workflow"
-      file: chapters/reana/2_workflow_setup
+      file: reana/2_workflow_setup
     - title: "Parametrization"
-      file: chapters/reana/3_parametrization
+      file: reana/3_parametrization
     - title: "Setup REANA / MLFlow"
-      file: chapters/reana/4_reana_setup
+      file: reana/4_reana_setup
     - title: "Run remotely"
-      file: chapters/reana/5_run_remotely
+      file: reana/5_run_remotely
     - title: "Run locally"
-      file: chapters/reana/6_run_locally
+      file: reana/6_run_locally

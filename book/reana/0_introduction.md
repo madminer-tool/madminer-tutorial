@@ -48,7 +48,7 @@ Below is an image of a full MadMiner workflow (the largest blue box), which incl
 This is the workflow diagram in the `madminer-workflow` repository. In the section titled [Parametrization][reana-guide-param],
 we describe how to modify the workflow's configuration files for your own research purposes.
 
-![Workflow diagram](../../images/reana/workflow-diagram.png)
+![Workflow diagram](images/workflow-diagram.png)
 
 
 [iris-hep-web]: https://iris-hep.org

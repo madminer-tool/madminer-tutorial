@@ -37,7 +37,7 @@ for your own research purposes. You can skip that for now and go straight to the
 
 The image below shows the default workflow structure
 
-![Workflow diagram](../../images/reana/workflow-diagram.png)
+![Workflow diagram](images/workflow-diagram.png)
 
 
 [madminer-workflow-repo]: https://github.com/scailfin/madminer-workflow

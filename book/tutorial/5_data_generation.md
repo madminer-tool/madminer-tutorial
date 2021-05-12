@@ -27,5 +27,5 @@ If you install everything yourself, then you would also need to change this to p
 to the MadGraph installation folder within your system.
 
 
-[tutorial-section-parton]: ../../notebooks/tutorial/2a_parton_analysis.ipynb
-[tutorial-section-delphes]: ../../notebooks/tutorial/2b_delphes_analysis.ipynb
+[tutorial-section-parton]: notebooks/general/2a_parton_analysis.ipynb
+[tutorial-section-delphes]: notebooks/general/2b_delphes_analysis.ipynb

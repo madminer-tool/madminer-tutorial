@@ -51,43 +51,43 @@ ssh -q -L <port>:<REANA_SERVER_URL>:<port> <username>@<institution>
 In the particular case of the _Brookhaven National Lab_, the REANA instance URL is available [here][reana-instance-bnl]
 (IP protected). You can check the progress of your workflow on `https://localhost:30443` using your local browser.
 
-![REANA UI workflows](../../images/reana/reana-ui-workflows.png)
+![REANA UI workflows](images/reana-ui-workflows.png)
 
 
 ## Example screenshots
 The list of REANA workflows that have been submitted and their status:
 
-![REANA UI workflows](../../images/reana/reana-ui-workflows.png)
+![REANA UI workflows](images/reana-ui-workflows.png)
 
 
 The specification for one of the workflows:
 
-![REANA UI specification](../../images/reana/reana-ui-workflow-spec.png)
+![REANA UI specification](images/reana-ui-workflow-spec.png)
 
 
 The files produced in the workflow and stored in the workflow's workspace:
 
-![REANA UI workspace](../../images/reana/reana-ui-workflow-space.png)
+![REANA UI workspace](images/reana-ui-workflow-space.png)
 
 
 You can access individual files either from the web interface or with the `reana-client` CLI:
 
-![REANA UI output zip](../../images/reana/reana-ui-output-zip.png)
+![REANA UI output zip](images/reana-ui-output-zip.png)
 
 
 You can also directly view some files, like this plot:
 
-![REANA UI output plot](../../images/reana/reana-ui-output-plot.png)
+![REANA UI output plot](images/reana-ui-output-plot.png)
 
 
 You can also inspect the logs for different steps in the workflow:
 
-![REANA UI logs](../../images/reana/reana-ui-workflow-logs.png)
+![REANA UI logs](images/reana-ui-workflow-logs.png)
 
 
 In case you have an MLFlow tracking server running, you can view the metrics and artifacts being tracked:
 
-![MLFlow UI experiments](../../images/reana/mlflow-ui-experiments.png)
+![MLFlow UI experiments](images/mlflow-ui-experiments.png)
 
 
 [madminer-workflow-repo]: https://github.com/scailfin/madminer-workflow

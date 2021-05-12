@@ -61,7 +61,7 @@ reana-client ping
 2. Run parameterized experiments on those projects.
 3. Track results, metrics and artifacts from run to run.
 
-![MLFlow UI experiments](../../images/reana/mlflow-ui-experiments.png)
+![MLFlow UI experiments](images/mlflow-ui-experiments.png)
 
 MLFlow has been **integrated into the ML sub-workflow**, in order to provide the third capability: the tracking of results
 and metrics on consecutive (but different) runs. Therefore, the following information applies only to the ML sub-workflow,

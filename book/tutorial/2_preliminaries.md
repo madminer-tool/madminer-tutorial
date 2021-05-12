@@ -142,6 +142,6 @@ Thanks to Ioannis Karkanias, there is a way to run the Jupyter server using Dock
 [docker-toolbox-verify]: https://docs.docker.com/toolbox/toolbox_install_windows/#step-3-verify-your-installation
 [docker-web]: https://www.docker.com
 [dockerhub-madminer]: https://hub.docker.com/u/madminertool
-[jupyter-login-image]: ../../images/notebook.png
+[jupyter-login-image]: images/notebook.png
 [jupyter-server-tutorial]: https://www.dataquest.io/blog/docker-data-science
 [jupyter-server-localhost]: localhost:8888

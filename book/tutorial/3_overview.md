@@ -22,5 +22,5 @@ The MadMiner API is documented as well, just look through the pages linked on th
 If you have any questions, please chat to us in our [Gitter community][madminer-gitter].
 
 
-[madminer-analysis-image]: ../../images/overview_analysis.jpg
+[madminer-analysis-image]: images/overview_analysis.jpg
 [madminer-gitter]: https://gitter.im/madminer/community
