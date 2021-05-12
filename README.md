@@ -1,13 +1,22 @@
+# MadMiner tutorial
 
+[![Binder][madminer-tutorial-binder-logo]][madminer-tutorial-binder-link]
 
-Jupyter book for madminer tutorial [https://cranmer.github.io/madminer-tutorial/intro](https://cranmer.github.io/madminer-tutorial/intro)
+This repository contains the source code for the [MadMiner tutorial website][madminer-tutorial-web].
 
-by Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer. It is built using Jupyter Book.
-Additions to the tutorial from Sinclert Perez.
+MadMiner is a Physics simulation and ML inference tool created by Johann Brehmer, Felix Kling, Irina Espejo,
+and Kyle Cranmer. The tutorial alongside the provided Docker images include contributions from Sinclert Pérez.
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/cranmer/madminer-tutorial/master)
 
 ## Building the site
+To build the website locally:
 
-Kyle is mainly building the site. The first version of Jupyterbooks is no longer being developed. The current environment I'm using is `intro-exp-phys-book`, and the `pip list` output is in [intro-exp-phys-book-pip-list.txt](intro-exp-phys-book-pip-list.txt).
+```shell
+pip3 install -r requirements.txt
+make build
+```
 
+
+[madminer-tutorial-web]: http://theoryandpractice.org/madminer-tutorial
+[madminer-tutorial-binder-link]: https://mybinder.org/v2/gh/cranmer/madminer-tutorial/master
+[madminer-tutorial-binder-logo]: https://mybinder.org/badge_logo.svg
