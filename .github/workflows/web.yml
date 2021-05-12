@@ -1,0 +1,34 @@
+name: Web deployment
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "book"
+
+jobs:
+
+  push:
+    needs: []
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Set up GitHub Actions"
+        uses: actions/checkout@v2
+      - name: "Set up Python 3.7"
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.7
+      - name: "Install Python dependencies"
+        run: |
+          pip install --no-cache-dir --upgrade pip setuptools wheel
+          pip install --no-cache-dir --requirement requirements.txt
+          pip list
+      - name: "Build web page"
+        run: |
+          make build
+      - name: "Push built web to GitHub Pages"
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: _build/html
