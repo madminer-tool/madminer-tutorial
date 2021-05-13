@@ -1,24 +1,23 @@
 # REANA Introduction
 
 Thus far, the tutorial described running the various steps on your local computer. In the interest of time, we did not generate
-much training data, but in case of serious research, we would need to generate more data for both training and evaluation. 
+much training data, but in case of serious research, we would need to generate more data for both training and evaluation.
 For this, you will probably want to run these jobs on a cluster. You may also want to compare various methods or tune
 the hyperparameters for the Machine Learning models and training steps.
 
 Furthermore, the MadMiner tutorial involved several steps (_event generation_, _detector simulation_, _models training_,
 _models evaluation_...). To streamline this, we have integrated MadMiner into the [REANA][reana-web] workflow execution system
-and defined a workflow using the Yadage specification language. 
+and defined a workflow using the Yadage specification language.
 
 Integrating MadMiner into REANA allows us to scale the tutorial to large numbers of events and large parameter scans.
-This work was supported by the [SCAILFIN][scailfin-web] initiative (_Scalable CyberInfrastructure for Artificial Intelligence
-and Likelihood Free Inference_) and [IRIS-HEP][iris-hep-web].
+This work was supported by the [SCAILFIN][scailfin-web] and [IRIS-HEP][iris-hep-web] initiatives.
 
 The workflow contains all the necessary elements to be run either:
 - Locally (making use of the [Yadage][yadage-docs] workflow engine).
 - Remotely (making use of the [REANA][reana-web] platform).
-  
-It also integrates with a metrics tracking system called [MLFlow][mlflow-web], that can, optionally, save certain
-Machine Learning metrics from run to run.
+
+It also integrates with a metrics tracking system called [MLFlow][mlflow-web], that can, optionally,
+save certain Machine Learning metrics from run to run.
 
 
 ## Technologies
@@ -41,7 +40,7 @@ Below is an image of a full MadMiner workflow (the largest blue box), which incl
 
 - **Physics sub-workflow**: responsible for event generation with MadGraph and Delphes simulation running
   at multiple EFT parameter points. It is followed by a combine step that produces a single large data file.
-- **ML sub-workflow**: responsible for the ML portions. It starts with a sampling the combined data file 
+- **ML sub-workflow**: responsible for the ML portions. It starts with a sampling the combined data file
   for training data, follower by three training runs (_SALLY_, _ALICE_, and _ALICES_ methods), the evaluation
   of each of the three trained models, and the results plotting.
 

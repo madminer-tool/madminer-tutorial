@@ -10,25 +10,25 @@ The tutorial has several software dependencies:
 - MadMiner
 
 Installing all of this can take a long time. To avoid that, we will use [Docker][docker-web].
-Sinclert Pérez and Irina Espejo have built Docker images with every dependency installed, making them available on
-the [Madminertool][dockerhub-madminer] DockerHub organization.
+Sinclert Pérez and Irina Espejo have built Docker images with every dependency installed,
+making them available on the [Madminertool][dockerhub-madminer] DockerHub organization.
 
 We will still use our computer's web browser to connect to the server as described in this tutorial:
 [Running a Dockerized Jupyter Server for Data Science][jupyter-server-tutorial].
 
-In addition, the pages with code have an "Interactive" button at the top, and if you click them you should be able to run
-the notebooks in the cloud (instead of on your laptop) thanks to [Binder][binder-web]. However, the working area provided
-by Binder is temporary, and it will not save your files once the session ends.
+In addition, the pages with code have an "Interactive" button at the top, and if you click them
+you should be able to run the notebooks in the cloud (instead of on your laptop) thanks to [Binder][binder-web].
+However, the working area provided by Binder is temporary, and it will not save your files once the session ends.
 
 
 ## Install Docker
-To install Docker, go to the [Download Docker Desktop][docker-download] page. The installation should work for macOS and Windows,
-but in the case of Windows, it requires Windows 10 Professional or Enterprise 64-bit. For old versions of Windows (or Windows Home)
-use [Docker Toolbox][docker-toolbox] (see [these instructions][docker-toolbox-guide]).
-Note there are some other small changes listed at the bottom of this page. 
+To install Docker, go to the [Download Docker Desktop][docker-download] page. The installation should work
+for macOS and Windows, but in the case of Windows, it requires Windows 10 Professional or Enterprise 64-bit.
+For old versions of Windows (or Windows Home) use [Docker Toolbox][docker-toolbox] (see [instructions][docker-toolbox-guide]).
+Note there are some other small changes listed at the bottom of this page.
 
 You may want to go into docker preferences and adjust the resources given to the Docker engine.
-In particular memory and swap space since this will involve machine learning. 
+In particular memory and swap space since this will involve machine learning.
 
 
 ## Make a shared directory

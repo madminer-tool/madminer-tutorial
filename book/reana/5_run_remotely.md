@@ -1,6 +1,6 @@
 # Run remotely
 
-This section describes the execution of the workflow on a REANA instance, being deployed on a remote cluster. 
+This section describes the execution of the workflow on a REANA instance, being deployed on a remote cluster.
 This section assumes that you have installed and configured the REANA client and, **optionally**, the MLFlow
 tracking server as described in the [Setup REANA / MLFlow][reana-section-setup] section.
 
@@ -22,7 +22,7 @@ submitting jobs to a REANA cluster. To launch the workflow on a remote REANA ins
 make reana-run
 ```
 
-You should see an output similar to this 
+You should see an output similar to this:
 
 ```
 Copying sub-workflows...

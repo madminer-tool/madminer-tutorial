@@ -30,10 +30,10 @@ git clone https://github.com/scailfin/madminer-workflow-ph
 
 
 ## The default example
-These repositories define a default workflow as an example, but you could modify the configuration files to change either
-the Physics process that you are interested , or the ML models / inference strategies you would like to use.
-In the section titled [Parametrization][reana-guide-param], we describe how to modify the workflow's configuration files
-for your own research purposes. You can skip that for now and go straight to the following section. 
+These repositories define a default workflow as an example, but you could modify the configuration files to change
+either the Physics process that you are interested, or the ML models / inference strategies you would like to use.
+In the section titled [Parametrization][reana-guide-param], we describe how to modify the workflow's configuration
+files for your own research purposes. You can skip that for now and go straight to the following section.
 
 The image below shows the default workflow structure
 

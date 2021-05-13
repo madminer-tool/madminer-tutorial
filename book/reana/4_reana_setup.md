@@ -1,6 +1,6 @@
 # Setup REANA / MLFlow
 
-The information below describes how to install and configure the software needed to run the workflow on REANA
+The information below describes how to install and configure the software needed to run the workflow on REANA.
 
 
 ## Install REANA client
@@ -29,16 +29,16 @@ You will need access to a REANA server instance. You can find your authenticatio
 There is a [REANA instance at CERN][reana-instance-cern], but it requires a CERN user account. There is also one running at BNL,
 which was used for the [demo video][tutorial-section-demo]. Alternatively, you can also contact the system administrators
 for your university or lab to ask if they can deploy a REANA instance. For instance, we have set up a REANA instance
-on the [NYU Greene][nyu-cluster-greene] cluster, which uses the SLURM backend to submit jobs. 
+on the [NYU Greene][nyu-cluster-greene] cluster, which uses the SLURM backend to submit jobs.
 
 
 ## Configure the client
 Before submitting your workflows, you will  need to set some _environment variables_ in order for the `reana-client` CLI
-to be able to connect with a REANA server instance. 
+to be able to connect with a REANA server instance.
 
-```bash 
-export REANA_ACCESS_TOKEN=“<your access token here>”
-export REANA_SERVER_URL=“<the REANA instance URL here>”
+```bash
+export REANA_ACCESS_TOKEN="<your access token here>"
+export REANA_SERVER_URL=""<the REANA instance URL here>"
 export REANA_WORKON=madminer-workflow
 ```
 
@@ -57,7 +57,7 @@ reana-client ping
 ## Optional: MLFlow
 [MLFlow][mlflow-web] is a framework that offers developers a consistent way of:
 
-1. Defining ML projects. 
+1. Defining ML projects.
 2. Run parameterized experiments on those projects.
 3. Track results, metrics and artifacts from run to run.
 
@@ -78,7 +78,7 @@ To deploy your very own MLFlow tracking server:
 pip3 install mlflow
 
 # Launch the tracking server
-mlflow server \                                                 
+mlflow server \
     --host "0.0.0.0" \
     --port 5000 \
     --workers 2 \
