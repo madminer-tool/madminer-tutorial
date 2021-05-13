@@ -1,13 +1,13 @@
 # Preliminaries
 
 The tutorial has several software dependencies:
-- MadGraph
-- Pythia
-- Delphes (optional)
-- Pytorch
-- Jupyter
-- Scipy 
-- MadMiner
+- MadGraph.
+- Pythia.
+- Delphes (optional).
+- Pytorch.
+- Jupyter.
+- Scipy.
+- MadMiner.
 
 Installing all of this can take a long time. To avoid that, we will use [Docker][docker-web].
 Sinclert Pérez and Irina Espejo have built Docker images with every dependency installed,
@@ -113,19 +113,19 @@ Thanks to Ioannis Karkanias, there is a way to run the Jupyter server using Dock
 1) First, the shared folder needs to be in the `Users` directory, as Docker Toolbox uses VirtualBox,
    which uses `C:/Users` as the root path for all shared folders. Check the Docker Toolbox sharing
    folder [instructions][docker-toolbox-sharing].
-   
+
     ```bash
     docker run --rm \
         -p 8888:8888 \
         -v /C/Users/<USERNAME>/madminer_shared:/home/shared \
         -it madminertool/madminer-jupyter-env \
         /bin/bash
-    ``` 
+    ```
 
 2) Since Docker Toolbox uses a virtual machine and there is no `localhost`, the URL used to reach
    the Jupyter log in interface will not be `localhost:8888`. To check the public IP where you can reach
    the login page, we can use the Docker CLI, as described in [this guide][docker-toolbox-verify].
-   
+
     ```bash
     docker-machine ip default
     ```

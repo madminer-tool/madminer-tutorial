@@ -12,7 +12,7 @@ Particle physics processes are usually modelled with complex Monte-Carlo simulat
 and detector interactions. These simulators typically do not admit a tractable likelihood function: given a (potentially high-dimensional)
 set of observables, it is usually not possible to calculate the probability of these observables for some model parameters.
 Particle physicists usually tackle this problem of “likelihood-free inference” by hand-picking a few “good” observables or
-summary statistics and filling histograms of them. However, this conventional approach discards the information in all 
+summary statistics and filling histograms of them. However, this conventional approach discards the information in all
 other observables and often does not scale well to high-dimensional problems.
 
 In the three publications
@@ -32,7 +32,7 @@ of the neural estimators are implemented.
 
 ## About the tutorial
 This tutorial does not try to explain the theory behind the tool. To understand what MadMiner is doing, please look
-at the papers above for the theory. 
+at the papers above for the theory.
 
 
 ## The paper describing the MadMiner tool:
