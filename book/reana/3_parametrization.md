@@ -22,7 +22,7 @@ These parameters can be found within the `yadage-run` Makefile rule, and they af
 
 In the case of the **PH sub-workflow**:
 - `input_file`: path to the input.yml file to use.
-- `num_generation_jobs`: number of chunks to split the collision event generation.
+- `num_procs_per_job`: number of parallel processes for the collision event generation.
 
 In the case of the **ML sub-workflow**:
 - `data_file`: path to the Physics sub-workflow events generated file.
