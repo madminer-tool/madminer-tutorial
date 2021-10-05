@@ -19,7 +19,7 @@ In tutorial sections:
 The location of the MadGraph installation folder is set. It is listed as:
 
 ```python
-mg_dir = '/madminer/software/MG5_aMC_v2_6_7'
+mg_dir = '/madminer/software/MG5_aMC_v2_9_4'
 ```
 
 If you install everything yourself, then you would also need to change this to point
