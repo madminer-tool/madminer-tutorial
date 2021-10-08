@@ -12,3 +12,9 @@ build:
 clean:
 	@echo "Removing Jupyter book outputs..."
 	@jupyter-book clean --all $(BOOK_OUTPUT_FOLDER)
+
+
+.PHONY: push
+push: build
+	@echo "Updating published Jupyter book..."
+	@ghp-import --no-jekyll --push --force "_build/html"
