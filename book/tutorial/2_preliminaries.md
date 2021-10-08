@@ -47,7 +47,7 @@ The first time we spin it up, the image needs to be pulled from DockerHub, which
 docker run --rm \
     -p 8888:8888 \
     -v ~/madminer_shared:/home/shared \
-    -it madminertool/madminer-jupyter-env \
+    -it madminertool/madminer-jupyter-env:0.3.0 \
     /bin/bash
 ```
 
@@ -95,18 +95,6 @@ paste the token you just copied and log in. Then you will be all set, and will s
 ![Jupyter login page][jupyter-login-image]
 
 
-## Update the Docker image
-While developing and testing this tutorial we may occasionally update the Docker image.
-If you completed the preliminaries some time ago, you might want to get the most updated image by doing:
-
-```bash
-docker pull madminertool/madminer-jupyter-env
-```
-
-This will replace all the internal contents of the Docker image, but not the files in the shared directory.
-You will still want to re-do the steps described above in the **Start Jupyter server in a container** section.
-
-
 ## Special instructions: Docker Toolbox for Windows
 Thanks to Ioannis Karkanias, there is a way to run the Jupyter server using Docker Toolbox
 
@@ -118,7 +106,7 @@ Thanks to Ioannis Karkanias, there is a way to run the Jupyter server using Dock
     docker run --rm \
         -p 8888:8888 \
         -v /C/Users/<USERNAME>/madminer_shared:/home/shared \
-        -it madminertool/madminer-jupyter-env \
+        -it madminertool/madminer-jupyter-env:0.3.0 \
         /bin/bash
     ```
 
