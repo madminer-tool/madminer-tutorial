@@ -1,0 +1,936 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MadMiner physics tutorial (part 4C) &#8212; MadMiner Tutorial</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="End of the tutorial" href="../../8_congratulations.html" />
+    <link rel="prev" title="MadMiner physics tutorial (part 4B)" href="4b_fisher_information.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MadMiner Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../0_intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../1_video.html">
+   Demo video
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorial
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../2_preliminaries.html">
+   Preliminaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../3_overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="1_setup_process.html">
+   Define process to study
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../4_morphing.html">
+     Morphing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../morphing/basis_chooser.html">
+     Morphing demo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../5_data_generation.html">
+   Create training data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2a_parton_analysis.html">
+     Parton level
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2b_delphes_analysis.html">
+     Delphes level
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../6_metric_selection.html">
+   Train model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3a_likelihood_ratio.html">
+     Likelihood ratio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3b_score.html">
+     Score
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3c_likelihood.html">
+     Likelihood
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../7_statistics.html">
+   Statistical Analysis
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="4a_limits.html">
+     Limits on EFT parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4b_fisher_information.html">
+     Fisher Information
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Information Geometry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../8_congratulations.html">
+   Congratulations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../appendix/notebooks/A1_systematic_uncertainties.html">
+   Systematic uncertainties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../appendix/notebooks/A2_ensemble_methods.html">
+   Ensemble methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../appendix/notebooks/A3_reweighting_samples.html">
+   Reweighting existing samples
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Deploy on REANA
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/0_introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/1_demo_video.html">
+   Demo video
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/2_workflow_setup.html">
+   Setup workflow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/3_parametrization.html">
+   Parametrization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/4_reana_setup.html">
+   Setup REANA / MLFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/5_run_remotely.html">
+   Run remotely
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/6_run_locally.html">
+   Run locally
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/tutorial/notebooks/general/4c_information_geometry.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cranmer/madminer-tutorial/master?urlpath=tree/book/tutorial/notebooks/general/4c_information_geometry.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparations">
+   0. Preparations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stand-alone-example">
+   1. Stand Alone Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#information-geometry-bounds-for-example-process">
+   2. Information Geometry Bounds for Example Process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-to-other-results">
+   3. Compare to other results
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="madminer-physics-tutorial-part-4c">
+<h1>MadMiner physics tutorial (part 4C)<a class="headerlink" href="#madminer-physics-tutorial-part-4c" title="Permalink to this headline">¶</a></h1>
+<p>Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer 2018-2019</p>
+<div class="section" id="preparations">
+<h2>0. Preparations<a class="headerlink" href="#preparations" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="n">madminer_src_path</span> <span class="o">=</span> <span class="s2">&quot;/madminer/software/MG5_aMC_v2_9_4/&quot;</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">madminer_src_path</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">from</span> <span class="nn">madminer.fisherinformation</span> <span class="kn">import</span> <span class="n">FisherInformation</span><span class="p">,</span> <span class="n">InformationGeometry</span>
+<span class="kn">from</span> <span class="nn">madminer.plotting</span> <span class="kn">import</span> <span class="n">plot_fisher_information_contours_2d</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MadMiner output</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)-5.5s</span><span class="s1"> </span><span class="si">%(name)-20.20s</span><span class="s1"> </span><span class="si">%(levelname)-7.7s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">datefmt</span><span class="o">=</span><span class="s1">&#39;%H:%M&#39;</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+<span class="p">)</span>
+
+<span class="c1"># Output of all other modules (e.g. matplotlib)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">loggerDict</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">&quot;madminer&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s look at a simple example to unserstand what happens in information geometry. At first we note that the Fisher Information is a symmetric positive definite rank two tensor, and therefore can be seen as a Riemanian metric. It can therefore be used to calculate distances between points in parameter space.</p>
+<p>Previously, in tutorial 4b, we have considered the <strong>local distance</strong> <span class="math notranslate nohighlight">\(d_{local}(\theta,\theta_0)\)</span> between two points <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\theta_0\)</span>. It is defined in the tangent space of <span class="math notranslate nohighlight">\(\theta_0\)</span>, where the metric is constant and hence flat, and can simply be calculated as <span class="math notranslate nohighlight">\(d_{local}(\theta,\theta_0) = I_{ij}(\theta_0) \times (\theta-\theta_0)^i (\theta-\theta_0)^j\)</span>.</p>
+<p>Going beyond this local approximation, we can calculate a <strong>global distance</strong> <span class="math notranslate nohighlight">\(d_{global}(\theta,\theta_0)\)</span> which takes into account the fact that the information is not constant throughout the parameter space. Using our knowledge from general relativity, this distance is defined as
+\begin{equation}
+d(\theta,\theta_0)= \text{min} \int_{\theta_0}^{\theta} ds \sqrt{I_{ij}(\theta(s)) \frac{d\theta^i}{ds}\frac{d\theta^j}{ds}}
+\end{equation}
+where <span class="math notranslate nohighlight">\(\theta(s)\)</span> is the geodesic (the shortest path) connecting <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>. This path is follows the geodesic equation
+\begin{equation}
+\frac{d^2\theta^i}{ds^2} = - \Gamma^i_{jk} \frac{d\theta^j}{ds}\frac{d\theta^k}{ds} \quad \text{with} \quad
+\Gamma^i_{jk} = \frac{1}{2} I^{im} \Big(\frac{\partial I_{mk}}{\partial \theta^j} + \frac{\partial I_{mj}}{\partial \theta^k} - \frac{\partial I_{jk}}{\partial \theta^m}\Big) \quad \text{and} \quad I^{im} I_{mj} = \delta^i_j \ .
+\end{equation}
+In practice, we obtain the geodesics by numerically integrating the geodesic equation, starting at a parameter point <span class="math notranslate nohighlight">\(\theta_0\)</span> with a velocity <span class="math notranslate nohighlight">\(\theta'_0=(\theta/ds)_0\)</span></p>
+</div>
+<div class="section" id="stand-alone-example">
+<h2>1. Stand Alone Example<a class="headerlink" href="#stand-alone-example" title="Permalink to this headline">¶</a></h2>
+<p>In the following, we consider a sample geometry with Fisher Information <span class="math notranslate nohighlight">\(I_{ij}(\theta)= (( 1+\theta_1/4 , 1 ),( 1 ,  2-\theta_2/2))\)</span> and determine the geodesics and distance contours for illistration. At first, we initialize a new class <code class="docutils literal notranslate"><span class="pre">InformationGeometry</span></code> and define the Fisher Information via the function <code class="docutils literal notranslate"><span class="pre">information_from_formula()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;np.array([[1 + 0.25*theta[0] ,1],[1, 2 - 0.5*theta[1]  ]])&quot;</span>
+
+<span class="n">infogeo</span><span class="o">=</span><span class="n">InformationGeometry</span><span class="p">()</span>
+<span class="n">infogeo</span><span class="o">.</span><span class="n">information_from_formula</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">formula</span><span class="p">,</span><span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we obtain one particular geodesic path staring at <span class="math notranslate nohighlight">\(\theta_0\)</span> in the direction of <span class="math notranslate nohighlight">\(\Delta \theta_0\)</span> using the function <code class="docutils literal notranslate"><span class="pre">find_trajectory()</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">thetas</span><span class="p">,</span><span class="n">distances</span><span class="o">=</span><span class="n">infogeo</span><span class="o">.</span><span class="n">find_trajectory</span><span class="p">(</span>
+    <span class="n">theta0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">]),</span>
+    <span class="n">dtheta0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">]),</span>
+    <span class="n">limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">],[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">]]),</span>
+    <span class="n">stepsize</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>For comparisson, let’s do the same for a constant Fisher Information <span class="math notranslate nohighlight">\(I_{ij}(\theta)=I_{ij}(\theta_0)=((1,1),(1,2))\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula_lin</span><span class="o">=</span><span class="s2">&quot;np.array([[1 ,1],[1, 2 ]])&quot;</span>
+<span class="n">infogeo_lin</span><span class="o">=</span><span class="n">InformationGeometry</span><span class="p">()</span>
+<span class="n">infogeo_lin</span><span class="o">.</span><span class="n">information_from_formula</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">formula_lin</span><span class="p">,</span><span class="n">dimension</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">thetas_lin</span><span class="p">,</span><span class="n">distances_lin</span><span class="o">=</span><span class="n">infogeo_lin</span><span class="o">.</span><span class="n">find_trajectory</span><span class="p">(</span>
+    <span class="n">theta0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">]),</span>
+    <span class="n">dtheta0</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">]),</span>
+    <span class="n">limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">],[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">]]),</span>
+    <span class="n">stepsize</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/felixkling/Documents/GitHub/madminer/madminer/fisherinformation.py:1928: RuntimeWarning: divide by zero encountered in double_scalars
+  max_stepsize = 0.05 * np.linalg.norm(dtheta)  / np.linalg.norm(ddtheta)
+</pre></div>
+</div>
+</div>
+</div>
+<p>and plot the results</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cmin</span><span class="p">,</span> <span class="n">cmax</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">thetas_lin</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">thetas_lin</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">distances_lin</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">cmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">cmax</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">thetas</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">thetas</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">distances</span><span class="p">,</span>
+    <span class="n">s</span><span class="o">=</span><span class="mf">10.</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span><span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">cmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">cmax</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span> <span class="p">[</span><span class="mi">0</span><span class="p">],[</span><span class="mi">0</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Distance $d(\theta,\theta_0)$&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_1$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_2$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/4c_information_geometry_13_0.png" src="../../../_images/4c_information_geometry_13_0.png" />
+</div>
+</div>
+<p>We can see that the geodesic trajectory is curved. The colorbar denotes the distance from the origin.</p>
+<p>Let us now see how we can construct the distance contours using the function <code class="docutils literal notranslate"><span class="pre">distance_contours</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_ranges</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)]</span>
+<span class="n">grid_resolutions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+
+<span class="n">theta_grid</span><span class="p">,</span><span class="n">p_values</span><span class="p">,</span><span class="n">distance_grid</span><span class="p">,(</span><span class="n">thetas</span><span class="p">,</span><span class="n">distances</span><span class="p">)</span><span class="o">=</span><span class="n">infogeo</span><span class="o">.</span><span class="n">distance_contours</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">]),</span>
+    <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span> 
+    <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+    <span class="n">stepsize</span><span class="o">=</span><span class="mf">0.08</span><span class="p">,</span>
+    <span class="n">ntrajectories</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span>
+    <span class="n">continous_sampling</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">return_trajectories</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>   
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and plot the results</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Prepare Plot</span>
+<span class="n">cmin</span><span class="p">,</span> <span class="n">cmax</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">15.0</span><span class="p">,</span> <span class="mf">4.0</span> <span class="p">))</span>
+
+<span class="n">bin_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">bin_size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bin_size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1">#Plot</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">thetas</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">thetas</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">distances</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">cmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">cmax</span><span class="p">,)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Distance $d(\theta,\theta_0)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_1$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_2$&#39;</span><span class="p">)</span>
+
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+    <span class="n">edges</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">distance_grid</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">vmin</span><span class="o">=</span><span class="n">cmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">cmax</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+<span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Distance $d(\theta,\theta_0)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_1$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_2$&#39;</span><span class="p">)</span>
+
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+    <span class="n">edges</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">p_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">norm</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+<span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Expected p-value&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_1$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_2$&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/4c_information_geometry_18_0.png" src="../../../_images/4c_information_geometry_18_0.png" />
+</div>
+</div>
+<p>The left plot shows the distance values along generated geodesics. These values are interpolated into a continuous function shown in the middle plot. In the right plot we convert the distances into expected p-values.</p>
+</div>
+<div class="section" id="information-geometry-bounds-for-example-process">
+<h2>2. Information Geometry Bounds for Example Process<a class="headerlink" href="#information-geometry-bounds-for-example-process" title="Permalink to this headline">¶</a></h2>
+<p>Now that we understand how Information Geometry works in principle, let’s apply it to our example process. Let’s first create a grid of theta values</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">make_theta_grid</span><span class="p">(</span><span class="n">theta_ranges</span><span class="p">,</span> <span class="n">resolutions</span><span class="p">):</span>
+        <span class="n">theta_each</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">resolution</span><span class="p">,</span> <span class="p">(</span><span class="n">theta_min</span><span class="p">,</span> <span class="n">theta_max</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">resolutions</span><span class="p">,</span> <span class="n">theta_ranges</span><span class="p">):</span>
+            <span class="n">theta_each</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">theta_min</span><span class="p">,</span> <span class="n">theta_max</span><span class="p">,</span> <span class="n">resolution</span><span class="p">))</span>
+        <span class="n">theta_grid_each</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="o">*</span><span class="n">theta_each</span><span class="p">,</span> <span class="n">indexing</span><span class="o">=</span><span class="s2">&quot;ij&quot;</span><span class="p">)</span>
+        <span class="n">theta_grid_each</span> <span class="o">=</span> <span class="p">[</span><span class="n">theta</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span> <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">theta_grid_each</span><span class="p">]</span>
+        <span class="n">theta_grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">vstack</span><span class="p">(</span><span class="n">theta_grid_each</span><span class="p">)</span><span class="o">.</span><span class="n">T</span>
+        <span class="k">return</span> <span class="n">theta_grid</span>
+    
+<span class="n">grid_ranges</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)]</span>
+<span class="n">grid_resolutions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+<span class="n">theta_grid</span> <span class="o">=</span> <span class="n">make_theta_grid</span><span class="p">(</span><span class="n">grid_ranges</span><span class="p">,</span><span class="n">grid_resolutions</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now we create a grid of Fisher Informations. Since this might take some time, we already prepared the results, which can be loaded directly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">model</span><span class="o">=</span><span class="s1">&#39;alices&#39;</span>
+<span class="n">calculate_fisher_grid</span><span class="o">=</span><span class="kc">False</span>
+<span class="k">if</span> <span class="n">calculate_fisher_grid</span><span class="p">:</span>
+    <span class="n">fisher</span> <span class="o">=</span> <span class="n">FisherInformation</span><span class="p">(</span><span class="s1">&#39;data/lhe_data_shuffled.h5&#39;</span><span class="p">)</span>
+    <span class="n">fisher_grid</span><span class="o">=</span><span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">theta</span> <span class="ow">in</span> <span class="n">theta_grid</span><span class="p">:</span>
+        <span class="n">fisher_info</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">fisher</span><span class="o">.</span><span class="n">full_information</span><span class="p">(</span>
+            <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">,</span>
+            <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/&#39;</span><span class="o">+</span><span class="n">model</span><span class="p">,</span>
+            <span class="n">luminosity</span><span class="o">=</span><span class="mf">300.</span><span class="o">*</span><span class="mf">1000.</span><span class="p">,</span>
+            <span class="n">include_xsec_info</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+        <span class="n">fisher_grid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fisher_info</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;limits/infogeo_thetagrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">,</span> <span class="n">theta_grid</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;limits/infogeo_fishergrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">,</span> <span class="n">fisher_grid</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span> 
+    <span class="n">theta_grid</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;limits/infogeo_thetagrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">)</span>
+    <span class="n">fisher_grid</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;limits/infogeo_fishergrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In the next step, we initialize the <code class="docutils literal notranslate"><span class="pre">InformationGeoemtry</span></code> class using this input data. Using the function <code class="docutils literal notranslate"><span class="pre">information_from_grid()</span></code>, the provided grid is interpolated using a piecewise linear function and the information can be calculated at every point.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">infogeo</span><span class="o">=</span><span class="n">InformationGeometry</span><span class="p">()</span>
+<span class="n">infogeo</span><span class="o">.</span><span class="n">information_from_grid</span><span class="p">(</span>
+    <span class="n">theta_grid</span><span class="o">=</span><span class="s2">&quot;limits/infogeo_thetagrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">,</span> 
+    <span class="n">fisherinformation_grid</span><span class="o">=</span><span class="s2">&quot;limits/infogeo_fishergrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>14:05 madminer.utils.vario INFO      Loading limits/infogeo_thetagrid_alices.npy into RAM
+14:05 madminer.utils.vario INFO      Loading limits/infogeo_fishergrid_alices.npy into RAM
+</pre></div>
+</div>
+</div>
+</div>
+<p>As before, we can now obtain the p-values using the <code class="docutils literal notranslate"><span class="pre">distance_contours()</span></code> function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">theta_grid</span><span class="p">,</span><span class="n">p_values_infogeo</span><span class="p">,</span><span class="n">distance_grid</span><span class="p">,(</span><span class="n">thetas</span><span class="p">,</span><span class="n">distances</span><span class="p">)</span><span class="o">=</span><span class="n">infogeo</span><span class="o">.</span><span class="n">distance_contours</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">]),</span>
+    <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span> 
+    <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+    <span class="n">stepsize</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+    <span class="n">ntrajectories</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
+    <span class="n">return_trajectories</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>   
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/felixkling/anaconda/envs/python2/lib/python2.7/site-packages/scipy/stats/_distn_infrastructure.py:879: RuntimeWarning: invalid value encountered in greater
+  return (self.a &lt; x) &amp; (x &lt; self.b)
+/Users/felixkling/anaconda/envs/python2/lib/python2.7/site-packages/scipy/stats/_distn_infrastructure.py:879: RuntimeWarning: invalid value encountered in less
+  return (self.a &lt; x) &amp; (x &lt; self.b)
+/Users/felixkling/anaconda/envs/python2/lib/python2.7/site-packages/scipy/stats/_distn_infrastructure.py:1821: RuntimeWarning: invalid value encountered in less_equal
+  cond2 = cond0 &amp; (x &lt;= self.a)
+</pre></div>
+</div>
+</div>
+</div>
+<p>and plot it again</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Prepare Plot</span>
+<span class="n">cmin</span><span class="p">,</span> <span class="n">cmax</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span> <span class="mi">6</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">15.0</span><span class="p">,</span> <span class="mf">4.0</span> <span class="p">))</span>
+
+<span class="n">bin_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">bin_size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bin_size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="c1">#Plot</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">sc</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">thetas</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="n">thetas</span><span class="o">.</span><span class="n">T</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span><span class="n">c</span><span class="o">=</span><span class="n">distances</span><span class="p">,</span><span class="n">vmin</span><span class="o">=</span><span class="n">cmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">cmax</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">sc</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Distance $d(\theta,\theta_0)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_1$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_2$&#39;</span><span class="p">)</span>
+
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+    <span class="n">edges</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">distance_grid</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">vmin</span><span class="o">=</span><span class="n">cmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">cmax</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+<span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;Distance $d(\theta,\theta_0)$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_1$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_2$&#39;</span><span class="p">)</span>
+
+
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+    <span class="n">edges</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">p_values</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">norm</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="mf">0.01</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span>
+<span class="p">)</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">cm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">cb</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Expected p-value&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_1$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_2$&#39;</span><span class="p">)</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/felixkling/anaconda/envs/python2/lib/python2.7/site-packages/matplotlib/colors.py:496: RuntimeWarning: invalid value encountered in less
+  cbook._putmask(xa, xa &lt; 0.0, -1)
+</pre></div>
+</div>
+<img alt="../../../_images/4c_information_geometry_30_1.png" src="../../../_images/4c_information_geometry_30_1.png" />
+</div>
+</div>
+</div>
+<div class="section" id="compare-to-other-results">
+<h2>3. Compare to other results<a class="headerlink" href="#compare-to-other-results" title="Permalink to this headline">¶</a></h2>
+<p>Load previous results and add Information Geometry results</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">p_values</span><span class="p">,</span><span class="n">mle</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;limits/limits.npy&quot;</span><span class="p">,</span> <span class="n">allow_pickle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;InfoGeo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_infogeo</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">mle</span><span class="p">[</span><span class="s2">&quot;InfoGeo&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">312</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>and plot them together with the obtained Information Geometry results</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show</span> <span class="o">=</span> <span class="s2">&quot;InfoGeo&quot;</span>
+
+<span class="n">bin_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">bin_size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bin_size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="n">cmin</span><span class="p">,</span> <span class="n">cmax</span> <span class="o">=</span> <span class="mf">1.e-2</span><span class="p">,</span> <span class="mf">1.</span>
+
+<span class="n">pcm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+    <span class="n">edges</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">p_values</span><span class="p">[</span><span class="n">show</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">norm</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">cmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">cmax</span><span class="p">),</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys_r&#39;</span>
+<span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pcm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">p_values</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+        <span class="n">centers</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">p_value</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+        <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">0.32</span><span class="p">],</span>
+        <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;C</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">theta_grid</span><span class="p">[</span><span class="n">mle</span><span class="p">[</span><span class="n">label</span><span class="p">]][</span><span class="mi">0</span><span class="p">],</span> <span class="n">theta_grid</span><span class="p">[</span><span class="n">mle</span><span class="p">[</span><span class="n">label</span><span class="p">]][</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">s</span><span class="o">=</span><span class="mf">80.</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">label</span>
+    <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_1$&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Expected p-value (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">show</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/felixkling/anaconda/envs/python2/lib/python2.7/site-packages/matplotlib/colors.py:927: RuntimeWarning: invalid value encountered in less_equal
+  mask = (resdat &lt;= 0)
+</pre></div>
+</div>
+<img alt="../../../_images/4c_information_geometry_35_1.png" src="../../../_images/4c_information_geometry_35_1.png" />
+</div>
+</div>
+<p>Finally, we compare the obtained distance <span class="math notranslate nohighlight">\(d(\theta,\theta_0)\)</span> with the expected log-likelihood ratio <span class="math notranslate nohighlight">\(q(\theta,\theta_0) = E[-2 \log r(x|\theta,\theta_0)|\theta_0]\)</span>. We can see that there is an approximately linear relationship.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats.distributions</span> <span class="kn">import</span> <span class="n">chi2</span>
+
+<span class="c1">#Prepare Plot</span>
+<span class="n">cmin</span><span class="p">,</span> <span class="n">cmax</span> <span class="o">=</span> <span class="mf">0.</span><span class="p">,</span> <span class="mi">6</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span> <span class="p">))</span>
+
+<span class="c1">#Plot</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">chi2</span><span class="o">.</span><span class="n">ppf</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;ALICES&quot;</span><span class="p">],</span> <span class="n">df</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span><span class="n">distance_grid</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span><span class="o">**</span><span class="mi">2</span><span class="p">,</span><span class="n">c</span><span class="o">=</span><span class="s2">&quot;red&quot;</span><span class="p">,)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$q(\theta,\theta_0)$ (ALICES)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$d^2(\theta,\theta_0)$ &#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/4c_information_geometry_37_0.png" src="../../../_images/4c_information_geometry_37_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorial/notebooks/general"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="4b_fisher_information.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">MadMiner physics tutorial (part 4B)</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../../8_congratulations.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">End of the tutorial</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Kyle Cranmer<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            This page was created by the <a href="https://github.com/madminer-tool/madminer">MadMiner Team</a>.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

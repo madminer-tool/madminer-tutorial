@@ -1,0 +1,680 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MadMiner physics tutorial (part 1) &#8212; MadMiner Tutorial</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Morphing" href="../../4_morphing.html" />
+    <link rel="prev" title="Workflow overview" href="../../3_overview.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MadMiner Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../0_intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../1_video.html">
+   Demo video
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorial
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../2_preliminaries.html">
+   Preliminaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../3_overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   Define process to study
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../4_morphing.html">
+     Morphing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../morphing/basis_chooser.html">
+     Morphing demo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../5_data_generation.html">
+   Create training data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2a_parton_analysis.html">
+     Parton level
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2b_delphes_analysis.html">
+     Delphes level
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../6_metric_selection.html">
+   Train model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3a_likelihood_ratio.html">
+     Likelihood ratio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3b_score.html">
+     Score
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3c_likelihood.html">
+     Likelihood
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../7_statistics.html">
+   Statistical Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4a_limits.html">
+     Limits on EFT parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4b_fisher_information.html">
+     Fisher Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4c_information_geometry.html">
+     Information Geometry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../8_congratulations.html">
+   Congratulations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../appendix/notebooks/A1_systematic_uncertainties.html">
+   Systematic uncertainties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../appendix/notebooks/A2_ensemble_methods.html">
+   Ensemble methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../appendix/notebooks/A3_reweighting_samples.html">
+   Reweighting existing samples
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Deploy on REANA
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/0_introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/1_demo_video.html">
+   Demo video
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/2_workflow_setup.html">
+   Setup workflow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/3_parametrization.html">
+   Parametrization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/4_reana_setup.html">
+   Setup REANA / MLFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/5_run_remotely.html">
+   Run remotely
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/6_run_locally.html">
+   Run locally
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/tutorial/notebooks/general/1_setup_process.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cranmer/madminer-tutorial/master?urlpath=tree/book/tutorial/notebooks/general/1_setup_process.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparations">
+   0. Preparations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#input-data">
+   1. Input data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-parameter-space">
+   2. Define parameter space
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#define-benchmarks-manually">
+   3. Define benchmarks manually
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#morphing">
+   4. Morphing
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#save-setup">
+   5. Save setup
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="madminer-physics-tutorial-part-1">
+<h1>MadMiner physics tutorial (part 1)<a class="headerlink" href="#madminer-physics-tutorial-part-1" title="Permalink to this headline">¶</a></h1>
+<p>Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer 2018-2019</p>
+<p>Welcome to the MadMiner particle-physics tutorial! It consists of six numbered notebooks. They build on each other, so please go through them in the right order, starting with this notebook.</p>
+<p>In this first part, we’ll show how to set up the parameter space and define a morphing setups – typically the first steps in a MadMiner analysis.</p>
+<p>This tutorial does not try to explain the theory behind the tool. To understand what MadMiner is doing, please have a look at some papers first. In
+<a class="reference external" href="https://arxiv.org/abs/1805.00013">“Constraining Effective Field Theories With Machine Learning”</a>
+we explain the basic idea of most of the methods presented here, while <a class="reference external" href="https://arxiv.org/abs/1805.00020">“A Guide to Constraining Effective Field Theories With Machine Learning”</a> is an extensive 65-page handbook going through the details.</p>
+<div class="section" id="preparations">
+<h2>0. Preparations<a class="headerlink" href="#preparations" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+</pre></div>
+</div>
+</div>
+</div>
+<p>MadMiner uses the Python <code class="docutils literal notranslate"><span class="pre">logging</span></code> module to provide additional information and debugging output. You can choose how much of this output you want to see by switching the level in the following lines to <code class="docutils literal notranslate"><span class="pre">logging.DEBUG</span></code> or <code class="docutils literal notranslate"><span class="pre">logging.WARNING</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MadMiner output</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)-5.5s</span><span class="s1"> </span><span class="si">%(name)-20.20s</span><span class="s1"> </span><span class="si">%(levelname)-7.7s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">datefmt</span><span class="o">=</span><span class="s1">&#39;%H:%M&#39;</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+<span class="p">)</span>
+
+<span class="c1"># Output of all other modules (e.g. matplotlib)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">loggerDict</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">&quot;madminer&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">madminer</span> <span class="kn">import</span> <span class="n">MadMiner</span><span class="p">,</span> <span class="n">plot_2d_morphing_basis</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16:25 madminer             INFO    
+16:25 madminer             INFO    ------------------------------------------------------------------------
+16:25 madminer             INFO    |                                                                      |
+16:25 madminer             INFO    |  MadMiner v0.7.4                                                     |
+16:25 madminer             INFO    |                                                                      |
+16:25 madminer             INFO    |         Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer  |
+16:25 madminer             INFO    |                                                                      |
+16:25 madminer             INFO    ------------------------------------------------------------------------
+16:25 madminer             INFO    
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="input-data">
+<h2>1. Input data<a class="headerlink" href="#input-data" title="Permalink to this headline">¶</a></h2>
+<p>As an example process, we’ll simulate VBF Higgs production with a decay into two photons. We’ll try to measure two EFT coefficients that affect this process.</p>
+<p>Have a look at the <code class="docutils literal notranslate"><span class="pre">cards</span></code> folder. You’ll find text files (“cards”) that specify the process simulation in typical MadGraph convention.</p>
+</div>
+<div class="section" id="define-parameter-space">
+<h2>2. Define parameter space<a class="headerlink" href="#define-parameter-space" title="Permalink to this headline">¶</a></h2>
+<p>After creating a <code class="docutils literal notranslate"><span class="pre">MadMiner</span></code> instance, the first important step is the definition of the parameter space. Each model parameter is characterized by a name as well as the LHA block and ID.</p>
+<p>If morphing is used, one also has to specify the maximal power with which the parameter contributes to the squared matrix element. For instance, a parameter that contributes only to one vertex, will typically have <code class="docutils literal notranslate"><span class="pre">morphing_max_power=2</span></code>, while a parameter that contributes to two vertices usually has <code class="docutils literal notranslate"><span class="pre">morphing_max_power=4</span></code>. Exceptions arise for instance when the interference effects between the SM and dimension-six operators are modelled, but the square of the dimension-six amplitude (subleading in 1/Lambda) is not taken into account, in which case <code class="docutils literal notranslate"><span class="pre">morphing_max_power=1</span></code>. The <code class="docutils literal notranslate"><span class="pre">parameter_range</span></code> argument defines the range of parameter values that are used for the automatic optimization of the morphing basis.</p>
+<p>Finally, the parameter values theta used internally by MadMiner and the parameter values written to the param_card (or reweight_card) given to MadGraph do not have to be exactly the same. With the option <code class="docutils literal notranslate"><span class="pre">parm_card_transform</span></code>, the user can supply a one-parameter function that maps a parameter value theta to the value given to MadGraph. This string is a python expression, in which <code class="docutils literal notranslate"><span class="pre">theta</span></code> is parsed as the parameter value. For instance, if the internal parameters are in the range (0, 1), but should be linearly scaled to (0, 100) in the param_card, one would have to use <code class="docutils literal notranslate"><span class="pre">param_card_transform=&quot;100*theta&quot;</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">miner</span> <span class="o">=</span> <span class="n">MadMiner</span><span class="p">()</span>
+
+<span class="n">miner</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span>
+    <span class="n">lha_block</span><span class="o">=</span><span class="s1">&#39;dim6&#39;</span><span class="p">,</span>
+    <span class="n">lha_id</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">parameter_name</span><span class="o">=</span><span class="s1">&#39;CWL2&#39;</span><span class="p">,</span>
+    <span class="n">morphing_max_power</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">param_card_transform</span><span class="o">=</span><span class="s2">&quot;16.52*theta&quot;</span><span class="p">,</span>
+    <span class="n">parameter_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">20.</span><span class="p">,</span><span class="mf">20.</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">miner</span><span class="o">.</span><span class="n">add_parameter</span><span class="p">(</span>
+    <span class="n">lha_block</span><span class="o">=</span><span class="s1">&#39;dim6&#39;</span><span class="p">,</span>
+    <span class="n">lha_id</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span>
+    <span class="n">parameter_name</span><span class="o">=</span><span class="s1">&#39;CPWL2&#39;</span><span class="p">,</span>
+    <span class="n">morphing_max_power</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+    <span class="n">param_card_transform</span><span class="o">=</span><span class="s2">&quot;16.52*theta&quot;</span><span class="p">,</span>
+    <span class="n">parameter_range</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">20.</span><span class="p">,</span><span class="mf">20.0</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16:25 madminer.core.madmin INFO    Added parameter CWL2 (LHA: dim6 2, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+16:25 madminer.core.madmin INFO    Added parameter CPWL2 (LHA: dim6 5, maximal power in squared ME: (2,), range: (-20.0, 20.0))
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="define-benchmarks-manually">
+<h2>3. Define benchmarks manually<a class="headerlink" href="#define-benchmarks-manually" title="Permalink to this headline">¶</a></h2>
+<p>The next step is the definition of all the points at which the weights (squared matrix elements) should be evaluated by MadGraph. We call these points “benchmarks”. One can define benchmarks by hand:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">miner</span><span class="o">.</span><span class="n">add_benchmark</span><span class="p">({</span><span class="s1">&#39;CWL2&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">,</span> <span class="s1">&#39;CPWL2&#39;</span><span class="p">:</span><span class="mf">0.</span><span class="p">},</span> <span class="s1">&#39;sm&#39;</span><span class="p">)</span>
+<span class="n">miner</span><span class="o">.</span><span class="n">add_benchmark</span><span class="p">({</span><span class="s1">&#39;CWL2&#39;</span><span class="p">:</span><span class="mf">15.2</span><span class="p">,</span> <span class="s1">&#39;CPWL2&#39;</span><span class="p">:</span><span class="mf">0.1</span><span class="p">},</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span>
+<span class="n">miner</span><span class="o">.</span><span class="n">add_benchmark</span><span class="p">({</span><span class="s1">&#39;CWL2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">15.4</span><span class="p">,</span> <span class="s1">&#39;CPWL2&#39;</span><span class="p">:</span><span class="mf">0.2</span><span class="p">},</span> <span class="s1">&#39;neg_w&#39;</span><span class="p">)</span>
+<span class="n">miner</span><span class="o">.</span><span class="n">add_benchmark</span><span class="p">({</span><span class="s1">&#39;CWL2&#39;</span><span class="p">:</span><span class="mf">0.3</span><span class="p">,</span> <span class="s1">&#39;CPWL2&#39;</span><span class="p">:</span><span class="mf">15.1</span><span class="p">},</span> <span class="s1">&#39;ww&#39;</span><span class="p">)</span>
+<span class="n">miner</span><span class="o">.</span><span class="n">add_benchmark</span><span class="p">({</span><span class="s1">&#39;CWL2&#39;</span><span class="p">:</span><span class="mf">0.4</span><span class="p">,</span> <span class="s1">&#39;CPWL2&#39;</span><span class="p">:</span><span class="o">-</span><span class="mf">15.3</span><span class="p">},</span> <span class="s1">&#39;neg_ww&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16:25 madminer.core.madmin INFO    Added benchmark sm: CWL2 = 0.00e+00, CPWL2 = 0.00e+00)
+16:25 madminer.core.madmin INFO    Added benchmark w: CWL2 = 15.20, CPWL2 = 0.10)
+16:25 madminer.core.madmin INFO    Added benchmark neg_w: CWL2 = -1.54e+01, CPWL2 = 0.20)
+16:25 madminer.core.madmin INFO    Added benchmark ww: CWL2 = 0.30, CPWL2 = 15.10)
+16:25 madminer.core.madmin INFO    Added benchmark neg_ww: CWL2 = 0.40, CPWL2 = -1.53e+01)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="morphing">
+<h2>4. Morphing<a class="headerlink" href="#morphing" title="Permalink to this headline">¶</a></h2>
+<p>Morphing is a powerful technique that allows for the fast and exact interpolation of event weights (or any derived quantity) from a set of original benchmark points (the “morphing basis”) to anywhere in theory parameter space. This procedure depends on the powers with which the parameters affect the differential cross sections (this is why <code class="docutils literal notranslate"><span class="pre">add_parameter()</span></code> wants to know about this). Please see Sec. II.C.2 of <a class="reference external" href="https://arxiv.org/abs/1805.00020">“A Guide to Constraining Effective Field Theories With Machine Learning”</a> for an explanation of the techniqe.</p>
+<p>Morphing is not strictly necessary to run MadMiner, but it makes life easier in so many ways (and many methods are so far only implemented for morphing-based problems). We strongly recommend to use this wherever possible.</p>
+<p>To activate morphing, the function <code class="docutils literal notranslate"><span class="pre">set_morphing</span></code> has to be called. With the option <code class="docutils literal notranslate"><span class="pre">include_existing_benchmarks=True</span></code>, MadMiner will keep all the benchmark points defined beforehand and run a simple optimization algorithm to fix the remaining ones for the basis (which may be none). Otherwise, MadMiner will optimize the full basis and forget about all previously defined benchmark points.</p>
+<p>The other important keyword is <code class="docutils literal notranslate"><span class="pre">max_overall_power</span></code>. This sets the maximal combined power with which all parameters together contribute to the squared matrix element (cross section). This constraint is in addition to the <code class="docutils literal notranslate"><span class="pre">morphing_max_power</span></code> keyword of <code class="docutils literal notranslate"><span class="pre">add_parameter()</span></code> (see above). For instance, if there are two parameters of interest <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, and it is known that there are contributions proportional to <code class="docutils literal notranslate"><span class="pre">1</span></code> (constant), <code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">a^2</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">b^2</span></code>, and <code class="docutils literal notranslate"><span class="pre">ab</span></code>, then <code class="docutils literal notranslate"><span class="pre">max_overall_power=2</span></code>. If there are also contributions proportional to <code class="docutils literal notranslate"><span class="pre">a^2</span> <span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">b^2</span></code>, and <code class="docutils literal notranslate"><span class="pre">a^2</span> <span class="pre">b^2</span></code>, then <code class="docutils literal notranslate"><span class="pre">max_overall_power=4</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">miner</span><span class="o">.</span><span class="n">set_morphing</span><span class="p">(</span><span class="n">include_existing_benchmarks</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_overall_power</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16:25 madminer.core.madmin INFO    Optimizing basis for morphing
+16:25 madminer.core.madmin INFO    Set up morphing with 2 parameters, 6 morphing components, 5 predefined basis points, and 1 new basis points
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at the resulting morphing basis and the “morphing error”, i.e. the sum of squared morphing weights as a function of the parameter space. The black dots mark the benchmarks at which the squared matrix element will be evaluated when MadGraph is run. In between them, the morphing will interpolate. Since the morphing knows about the functional form of the amplitudes, there is only a small numerical uncertainty in this interpolation, we expect that the color in this plot is indicative of this uncertainty.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plot_2d_morphing_basis</span><span class="p">(</span>
+    <span class="n">miner</span><span class="o">.</span><span class="n">morpher</span><span class="p">,</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$c_</span><span class="si">{W}</span><span class="s1"> v^2 / \Lambda^2$&#39;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$c_{\tilde</span><span class="si">{W}</span><span class="s1">} v^2 / \Lambda^2$&#39;</span><span class="p">,</span>
+    <span class="n">xrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">20.</span><span class="p">,</span><span class="mf">20.</span><span class="p">),</span>
+    <span class="n">yrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">20.</span><span class="p">,</span><span class="mf">20.</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/1_setup_process_19_0.png" src="../../../_images/1_setup_process_19_0.png" />
+</div>
+</div>
+<p>Note that squared weights (the colormap here) up to 1000 or even 10000 can still be perfectly fine and are in fact sometimes unavoidable.</p>
+</div>
+<div class="section" id="save-setup">
+<h2>5. Save setup<a class="headerlink" href="#save-setup" title="Permalink to this headline">¶</a></h2>
+<p>The parameter space, benchmark points, and morphing setup are saved in a HDF5 file:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">miner</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s1">&#39;data/setup.h5&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>16:25 madminer.core.madmin INFO    Saving setup (including morphing) to data/setup.h5
+</pre></div>
+</div>
+</div>
+</div>
+<p>They can now be loaded again with <code class="docutils literal notranslate"><span class="pre">miner.load(filename)</span></code>.</p>
+<p>That’s it for the setup (we’ll only add one step when talking about systematic uncertainties in part 5 of the tutorial). Please continue with part 2a <strong>or</strong> part 2b, depending on whether you want to run the faster parton-level analysis or the more realistic Delphes-level analysis.</p>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorial/notebooks/general"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../../3_overview.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Workflow overview</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="../../4_morphing.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Morphing</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Kyle Cranmer<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            This page was created by the <a href="https://github.com/madminer-tool/madminer">MadMiner Team</a>.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

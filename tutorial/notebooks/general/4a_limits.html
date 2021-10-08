@@ -1,0 +1,994 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MadMiner physics tutorial (part 4A) &#8212; MadMiner Tutorial</title>
+    
+  <link href="../../../_static/css/theme.css" rel="stylesheet" />
+  <link href="../../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+    <script src="../../../_static/jquery.js"></script>
+    <script src="../../../_static/underscore.js"></script>
+    <script src="../../../_static/doctools.js"></script>
+    <script src="../../../_static/togglebutton.js"></script>
+    <script src="../../../_static/clipboard.min.js"></script>
+    <script src="../../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="MadMiner physics tutorial (part 4B)" href="4b_fisher_information.html" />
+    <link rel="prev" title="Choose your adventure" href="../../7_statistics.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../../../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../../../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MadMiner Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../0_intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../1_video.html">
+   Demo video
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorial
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../2_preliminaries.html">
+   Preliminaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../3_overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="1_setup_process.html">
+   Define process to study
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../../4_morphing.html">
+     Morphing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../morphing/basis_chooser.html">
+     Morphing demo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../5_data_generation.html">
+   Create training data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2a_parton_analysis.html">
+     Parton level
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2b_delphes_analysis.html">
+     Delphes level
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../../6_metric_selection.html">
+   Train model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3a_likelihood_ratio.html">
+     Likelihood ratio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3b_score.html">
+     Score
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="3c_likelihood.html">
+     Likelihood
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../../7_statistics.html">
+   Statistical Analysis
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Limits on EFT parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4b_fisher_information.html">
+     Fisher Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4c_information_geometry.html">
+     Information Geometry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../8_congratulations.html">
+   Congratulations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../appendix/notebooks/A1_systematic_uncertainties.html">
+   Systematic uncertainties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../appendix/notebooks/A2_ensemble_methods.html">
+   Ensemble methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../appendix/notebooks/A3_reweighting_samples.html">
+   Reweighting existing samples
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Deploy on REANA
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/0_introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/1_demo_video.html">
+   Demo video
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/2_workflow_setup.html">
+   Setup workflow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/3_parametrization.html">
+   Parametrization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/4_reana_setup.html">
+   Setup REANA / MLFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/5_run_remotely.html">
+   Run remotely
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../../reana/6_run_locally.html">
+   Run locally
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../../_sources/tutorial/notebooks/general/4a_limits.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cranmer/madminer-tutorial/master?urlpath=tree/book/tutorial/notebooks/general/4a_limits.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparations">
+   0. Preparations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   1. Preparations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expected-limits-based-on-histogram">
+   2. Expected limits based on histogram
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expected-limits-based-on-ratio-estimators">
+   3. Expected limits based on ratio estimators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expected-limits-based-on-score-estimators">
+   4. Expected limits based on score estimators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#expected-limits-based-on-likelihood-estimators">
+   5. Expected limits based on likelihood estimators
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#toy-signal">
+   6. Toy signal
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#plot">
+   7. Plot
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#save-results">
+     Save results
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="madminer-physics-tutorial-part-4a">
+<h1>MadMiner physics tutorial (part 4A)<a class="headerlink" href="#madminer-physics-tutorial-part-4a" title="Permalink to this headline">¶</a></h1>
+<p>Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer 2018-2019</p>
+<p>In part 4A of this tutorial we will use the networks trained in step 3A and 3B to calculate the expected limits on our theory parameters.</p>
+<div class="section" id="preparations">
+<h2>0. Preparations<a class="headerlink" href="#preparations" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<span class="o">%</span><span class="k">matplotlib</span> inline
+
+<span class="kn">from</span> <span class="nn">madminer.limits</span> <span class="kn">import</span> <span class="n">AsymptoticLimits</span>
+<span class="kn">from</span> <span class="nn">madminer.sampling</span> <span class="kn">import</span> <span class="n">SampleAugmenter</span>
+<span class="kn">from</span> <span class="nn">madminer</span> <span class="kn">import</span> <span class="n">sampling</span>
+<span class="kn">from</span> <span class="nn">madminer.plotting</span> <span class="kn">import</span> <span class="n">plot_histograms</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># MadMiner output</span>
+<span class="n">logging</span><span class="o">.</span><span class="n">basicConfig</span><span class="p">(</span>
+    <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%(asctime)-5.5s</span><span class="s1"> </span><span class="si">%(name)-20.20s</span><span class="s1"> </span><span class="si">%(levelname)-7.7s</span><span class="s1"> </span><span class="si">%(message)s</span><span class="s1">&#39;</span><span class="p">,</span>
+    <span class="n">datefmt</span><span class="o">=</span><span class="s1">&#39;%H:%M&#39;</span><span class="p">,</span>
+    <span class="n">level</span><span class="o">=</span><span class="n">logging</span><span class="o">.</span><span class="n">INFO</span>
+<span class="p">)</span>
+
+<span class="c1"># Output of all other modules (e.g. matplotlib)</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">logging</span><span class="o">.</span><span class="n">Logger</span><span class="o">.</span><span class="n">manager</span><span class="o">.</span><span class="n">loggerDict</span><span class="p">:</span>
+    <span class="k">if</span> <span class="s2">&quot;madminer&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">key</span><span class="p">:</span>
+        <span class="c1"># print(&quot;Deactivating logging output for&quot;, key)</span>
+        <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">setLevel</span><span class="p">(</span><span class="n">logging</span><span class="o">.</span><span class="n">WARNING</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>1. Preparations<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>In the end, what we care about are not plots of the log likelihood ratio, but limits on parameters. But at least under some asymptotic assumptions, these are directly related. MadMiner makes it easy to calculate p-values in the asymptotic limit with the <code class="docutils literal notranslate"><span class="pre">AsymptoticLimits</span></code> class in the <code class="docutils literal notranslate"><span class="pre">madminer.limits</span></code>:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">limits</span> <span class="o">=</span> <span class="n">AsymptoticLimits</span><span class="p">(</span><span class="s1">&#39;data/lhe_data_shuffled.h5&#39;</span><span class="p">)</span>
+<span class="c1"># limits = AsymptoticLimits(&#39;data/delphes_data_shuffled.h5&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:13 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
+20:13 madminer.analysis    INFO    Found 2 parameters
+20:13 madminer.analysis    INFO    Did not find nuisance parameters
+20:13 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
+20:13 madminer.analysis    INFO    Found 3 observables
+20:13 madminer.analysis    INFO    Found 89991 events
+20:13 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
+20:13 madminer.analysis    INFO      10000 signal events sampled from benchmark w
+20:13 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
+20:13 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
+20:13 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
+20:13 madminer.analysis    INFO    Found morphing setup with 6 components
+20:13 madminer.analysis    INFO    Did not find nuisance morphing setup
+</pre></div>
+</div>
+</div>
+</div>
+<p>This class provids two high-level functions:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">AsymptoticLimits.observed_limits()</span></code> lets us calculate p-values on a parameter grid for some observed events, and</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AsymptoticLimits.expected_limits()</span></code> lets us calculate expected p-values on a parameter grid based on all data in the MadMiner file.</p></li>
+</ul>
+<p>First we have to define the parameter grid on which we evaluate the p-values.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grid_ranges</span> <span class="o">=</span> <span class="p">[(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">),</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)]</span>
+<span class="n">grid_resolutions</span> <span class="o">=</span> <span class="p">[</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>What luminosity (in inverse pb) are we talking about?</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lumi</span> <span class="o">=</span> <span class="mf">300.</span><span class="o">*</span><span class="mf">1000.</span> 
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="expected-limits-based-on-histogram">
+<h2>2. Expected limits based on histogram<a class="headerlink" href="#expected-limits-based-on-histogram" title="Permalink to this headline">¶</a></h2>
+<p>First, as a baseline, let us calculate the expected limits based on a simple jet pT histogram. Right now, there are not a lot of option for this function; MadMiner even calculates the binning automatically. (We will add more functionality!)</p>
+<p>The keyword <code class="docutils literal notranslate"><span class="pre">include_xsec</span></code> determines whether we include information from the total rate or just use the shapes. Since we don’t model backgrounds and systematics in this tutorial, the rate information is unrealistically large, so we leave it out here.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## create dictionaries to store results</span>
+<span class="n">p_values</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">mle</span> <span class="o">=</span> <span class="p">{}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_histo</span><span class="p">,</span> <span class="n">best_fit_expected_histo</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">histos</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">observed_weights</span><span class="p">)</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;histo&quot;</span><span class="p">,</span>
+        <span class="n">hist_vars</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pt_j1&quot;</span><span class="p">],</span>
+        <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+        <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
+        <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+        <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
+        <span class="n">include_xsec</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">return_asimov</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;Histogram&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_histo</span>
+    <span class="n">mle</span><span class="p">[</span><span class="s2">&quot;Histogram&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_histo</span>
+<span class="k">except</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no Histogram&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:13 madminer.limits      INFO    Generating Asimov data
+20:13 madminer.limits      INFO    Expected events: 296.8608606876634
+20:13 madminer.limits      INFO    Calculating p-values for 296.8608606876634 expected events in mode histo without rate information
+20:13 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+20:13 madminer.limits      INFO    Setting up standard summary statistics
+20:13 madminer.limits      INFO    Creating histograms of 1 summary statistics. Using (25,) bins each, or 25 in total.
+20:13 madminer.limits      INFO    Determining fixed adaptive histogram binning for all points on grid
+20:13 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
+20:13 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
+20:13 madminer.limits      INFO    Calculating kinematic log likelihood with histograms
+20:13 madminer.limits      INFO    Calculating p-values
+</pre></div>
+</div>
+</div>
+</div>
+<p>With <code class="docutils literal notranslate"><span class="pre">mode=&quot;rate&quot;</span></code>, we could calculate limits based on only the rate – but again, since the rate is extremely powerful when backgrounds and systematics are not taken into account, we don’t do that in this tutorial.</p>
+<p>Let’s visualize the likelihood estimated with these histograms:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">25</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">15</span><span class="p">,</span><span class="mi">18</span><span class="p">]]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_histograms</span><span class="p">(</span>
+    <span class="n">histos</span><span class="o">=</span><span class="p">[</span><span class="n">histos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">],</span>
+    <span class="n">observed</span><span class="o">=</span><span class="p">[</span><span class="n">observed</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">],</span>
+    <span class="n">observed_weights</span><span class="o">=</span><span class="n">observed_weights</span><span class="p">,</span>
+    <span class="n">histo_labels</span><span class="o">=</span><span class="p">[</span><span class="sa">r</span><span class="s2">&quot;$\theta_0 = </span><span class="si">{:.2f}</span><span class="s2">$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theta_grid</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">],</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="s2">&quot;Jet $p_T$&quot;</span><span class="p">,</span>
+    <span class="n">xrange</span><span class="o">=</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span><span class="mf">500.</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/4a_limits_18_0.png" src="../../../_images/4a_limits_18_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="expected-limits-based-on-ratio-estimators">
+<h2>3. Expected limits based on ratio estimators<a class="headerlink" href="#expected-limits-based-on-ratio-estimators" title="Permalink to this headline">¶</a></h2>
+<p>Next, <code class="docutils literal notranslate"><span class="pre">mode=&quot;ml&quot;</span></code> allows us to calculate limits based on any <code class="docutils literal notranslate"><span class="pre">ParamterizedRatioEstimator</span></code> instance like the ALICES estimator trained above:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_alices</span><span class="p">,</span> <span class="n">best_fit_expected_alices</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;ml&quot;</span><span class="p">,</span>
+        <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/alices&#39;</span><span class="p">,</span>
+        <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+        <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
+        <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+        <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
+        <span class="n">include_xsec</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;ALICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_alices</span>
+    <span class="n">mle</span><span class="p">[</span><span class="s2">&quot;ALICES&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_alices</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no ALICES&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:13 madminer.limits      INFO    Generating Asimov data
+20:13 madminer.limits      INFO    Expected events: 296.8608606876634
+20:13 madminer.limits      INFO    Calculating p-values for 296.8608606876634 expected events in mode ml without rate information
+20:13 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+20:13 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+20:13 madminer.ml          INFO    Loading model from models/alices
+20:13 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
+20:13 madminer.ml          INFO    Loading evaluation data
+20:13 madminer.ml          INFO    Starting ratio evaluation for 6310625 x-theta combinations
+20:16 madminer.ml          INFO    Evaluation done
+20:16 madminer.limits      INFO    Calculating p-values
+</pre></div>
+</div>
+</div>
+</div>
+<p>and the ALICES estimator which only used the observable <code class="docutils literal notranslate"><span class="pre">pt_j1</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_alices_pt</span><span class="p">,</span> <span class="n">best_fit_expected_alices_pt</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;ml&quot;</span><span class="p">,</span>
+        <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/alices_pt&#39;</span><span class="p">,</span>
+        <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+        <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
+        <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+        <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
+        <span class="n">include_xsec</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;ALICES_pt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_alices_pt</span>
+    <span class="n">mle</span><span class="p">[</span><span class="s2">&quot;ALICES_pt&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_alices_pt</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no ALICES_pt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:16 madminer.limits      INFO    Generating Asimov data
+20:16 madminer.limits      INFO    Expected events: 296.8608606876634
+20:16 madminer.limits      INFO    Calculating p-values for 296.8608606876634 expected events in mode ml without rate information
+20:16 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+20:16 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+20:16 madminer.ml          INFO    Loading model from models/alices_pt
+20:16 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
+20:16 madminer.ml          INFO    Loading evaluation data
+20:16 madminer.ml          INFO    Starting ratio evaluation for 6310625 x-theta combinations
+20:18 madminer.ml          INFO    Evaluation done
+20:18 madminer.limits      INFO    Calculating p-values
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="expected-limits-based-on-score-estimators">
+<h2>4. Expected limits based on score estimators<a class="headerlink" href="#expected-limits-based-on-score-estimators" title="Permalink to this headline">¶</a></h2>
+<p>To get p-values from a SALLY estimator, we have to use histograms of the estimated score:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_sally</span><span class="p">,</span> <span class="n">best_fit_expected_sally</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="p">(</span><span class="n">histos</span><span class="p">,</span> <span class="n">observed</span><span class="p">,</span> <span class="n">observed_weights</span><span class="p">)</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;sally&quot;</span><span class="p">,</span>
+        <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/sally&#39;</span><span class="p">,</span>
+        <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+        <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
+        <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+        <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
+        <span class="n">include_xsec</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">return_asimov</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;SALLY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_sally</span>
+    <span class="n">mle</span><span class="p">[</span><span class="s2">&quot;SALLY&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_sally</span>
+<span class="k">except</span><span class="p">:</span> 
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no SALLY&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:18 madminer.limits      INFO    Generating Asimov data
+20:18 madminer.limits      INFO    Expected events: 296.8608606876634
+20:18 madminer.limits      INFO    Calculating p-values for 296.8608606876634 expected events in mode sally without rate information
+20:18 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+20:18 madminer.limits      INFO    Loading score estimator and setting all components up as summary statistics
+20:18 madminer.ml          INFO    Loading model from models/sally
+20:18 madminer.ml          INFO    Starting score evaluation
+20:18 madminer.limits      INFO    Creating histograms of 2 summary statistics. Using (8, 8) bins each, or 64 in total.
+20:18 madminer.limits      INFO    Determining fixed adaptive histogram binning for all points on grid
+20:18 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
+20:18 madminer.ml          INFO    Starting score evaluation
+20:18 madminer.analysis    WARNING Requested 100000 events, but only 71993 available
+20:18 madminer.ml          INFO    Starting score evaluation
+20:19 madminer.limits      INFO    Calculating kinematic log likelihood with histograms
+20:19 madminer.limits      INFO    Calculating p-values
+</pre></div>
+</div>
+</div>
+</div>
+<p>Let’s have a look at the underlying 2D histograms:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">indices</span> <span class="o">=</span> <span class="p">[</span><span class="mi">12</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="mi">25</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">6</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="mi">18</span><span class="p">,</span><span class="mi">24</span><span class="p">]]</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plot_histograms</span><span class="p">(</span>
+    <span class="n">histos</span><span class="o">=</span><span class="p">[</span><span class="n">histos</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">],</span>
+    <span class="n">observed</span><span class="o">=</span><span class="n">observed</span><span class="p">[</span><span class="mi">0</span><span class="p">,:</span><span class="mi">100</span><span class="p">,:],</span>
+    <span class="n">observed_weights</span><span class="o">=</span><span class="n">observed_weights</span><span class="p">[:</span><span class="mi">100</span><span class="p">],</span>
+    <span class="n">histo_labels</span><span class="o">=</span><span class="p">[</span><span class="sa">r</span><span class="s2">&quot;$\theta_0 = </span><span class="si">{:.2f}</span><span class="s2">$&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">theta_grid</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">0</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">],</span>
+    <span class="n">xlabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat</span><span class="si">{t}</span><span class="s1">_0(x)$&#39;</span><span class="p">,</span>
+    <span class="n">ylabel</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\hat</span><span class="si">{t}</span><span class="s1">_1(x)$&#39;</span><span class="p">,</span>
+    <span class="n">xrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="p">,</span><span class="mf">.5</span><span class="p">),</span>
+    <span class="n">yrange</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">3.</span><span class="p">,</span><span class="mf">3.</span><span class="p">),</span>
+    <span class="n">log</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">zrange</span><span class="o">=</span><span class="p">(</span><span class="mf">1.e-3</span><span class="p">,</span><span class="mf">1.</span><span class="p">),</span>
+    <span class="n">markersize</span><span class="o">=</span><span class="mf">10.</span>
+<span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/4a_limits_28_0.png" src="../../../_images/4a_limits_28_0.png" />
+</div>
+</div>
+</div>
+<div class="section" id="expected-limits-based-on-likelihood-estimators">
+<h2>5. Expected limits based on likelihood estimators<a class="headerlink" href="#expected-limits-based-on-likelihood-estimators" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
+    <span class="n">theta_grid</span><span class="p">,</span> <span class="n">p_values_expected_scandal</span><span class="p">,</span> <span class="n">best_fit_expected_scandal</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">expected_limits</span><span class="p">(</span>
+        <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;ml&quot;</span><span class="p">,</span>
+        <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/scandal&#39;</span><span class="p">,</span>
+        <span class="n">theta_true</span><span class="o">=</span><span class="p">[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],</span>
+        <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
+        <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+        <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
+        <span class="n">include_xsec</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;SCANDAL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_expected_scandal</span>
+    <span class="n">mle</span><span class="p">[</span><span class="s2">&quot;SCANDAL&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_expected_scandal</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;no SCANDAL&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:19 madminer.limits      INFO    Generating Asimov data
+20:19 madminer.limits      INFO    Expected events: 296.8608606876634
+20:19 madminer.limits      INFO    Calculating p-values for 296.8608606876634 expected events in mode ml without rate information
+20:19 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+20:19 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>no SCANDAL
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="toy-signal">
+<h2>6. Toy signal<a class="headerlink" href="#toy-signal" title="Permalink to this headline">¶</a></h2>
+<p>In addition to these expected limits (based on the SM), let us inject a mock signal. We first generate the data:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sampler</span> <span class="o">=</span> <span class="n">SampleAugmenter</span><span class="p">(</span><span class="s1">&#39;data/lhe_data_shuffled.h5&#39;</span><span class="p">)</span>
+<span class="n">x_observed</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">sampler</span><span class="o">.</span><span class="n">sample_test</span><span class="p">(</span>
+    <span class="n">theta</span><span class="o">=</span><span class="n">sampling</span><span class="o">.</span><span class="n">morphing_point</span><span class="p">([</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]),</span>
+    <span class="n">n_samples</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+    <span class="n">folder</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+    <span class="n">filename</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:19 madminer.analysis    INFO    Loading data from data/lhe_data_shuffled.h5
+20:19 madminer.analysis    INFO    Found 2 parameters
+20:19 madminer.analysis    INFO    Did not find nuisance parameters
+20:19 madminer.analysis    INFO    Found 6 benchmarks, of which 6 physical
+20:19 madminer.analysis    INFO    Found 3 observables
+20:19 madminer.analysis    INFO    Found 89991 events
+20:19 madminer.analysis    INFO      49991 signal events sampled from benchmark sm
+20:19 madminer.analysis    INFO      10000 signal events sampled from benchmark w
+20:19 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_w
+20:19 madminer.analysis    INFO      10000 signal events sampled from benchmark ww
+20:19 madminer.analysis    INFO      10000 signal events sampled from benchmark neg_ww
+20:19 madminer.analysis    INFO    Found morphing setup with 6 components
+20:19 madminer.analysis    INFO    Did not find nuisance morphing setup
+20:19 madminer.sampling    INFO    Extracting evaluation sample. Sampling according to [0.5 0.5]
+20:19 madminer.sampling    INFO    Starting sampling serially
+20:19 madminer.sampling    INFO    Sampling from parameter point 1 / 1
+20:19 madminer.sampling    INFO    Effective number of samples: mean 195.22279009818115, with individual thetas ranging from 195.22279009818112 to 195.22279009818112
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">_</span><span class="p">,</span> <span class="n">p_values_observed</span><span class="p">,</span> <span class="n">best_fit_observed</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">limits</span><span class="o">.</span><span class="n">observed_limits</span><span class="p">(</span>
+    <span class="n">x_observed</span><span class="o">=</span><span class="n">x_observed</span><span class="p">,</span>
+    <span class="n">mode</span><span class="o">=</span><span class="s2">&quot;ml&quot;</span><span class="p">,</span>
+    <span class="n">model_file</span><span class="o">=</span><span class="s1">&#39;models/alices&#39;</span><span class="p">,</span>
+    <span class="n">grid_ranges</span><span class="o">=</span><span class="n">grid_ranges</span><span class="p">,</span>
+    <span class="n">grid_resolutions</span><span class="o">=</span><span class="n">grid_resolutions</span><span class="p">,</span>
+    <span class="n">luminosity</span><span class="o">=</span><span class="n">lumi</span><span class="p">,</span>
+    <span class="n">include_xsec</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="n">p_values</span><span class="p">[</span><span class="s2">&quot;ALICES (observed)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">p_values_observed</span>
+<span class="n">mle</span><span class="p">[</span><span class="s2">&quot;ALICES (observed)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">best_fit_observed</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20:19 madminer.limits      INFO    Calculating p-values for 100 expected events in mode ml without rate information
+20:19 madminer.limits      INFO    Evaluating likelihood on a regular grid with 625 parameter points
+20:19 madminer.limits      INFO    Loading kinematic likelihood ratio estimator
+20:19 madminer.ml          INFO    Loading model from models/alices
+20:19 madminer.limits      INFO    Calculating kinematic log likelihood ratio with estimator
+20:19 madminer.ml          INFO    Loading evaluation data
+20:19 madminer.ml          INFO    Starting ratio evaluation for 62500 x-theta combinations
+20:19 madminer.ml          INFO    Evaluation done
+20:19 madminer.limits      INFO    Calculating p-values
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="plot">
+<h2>7. Plot<a class="headerlink" href="#plot" title="Permalink to this headline">¶</a></h2>
+<p>Let’s plot the results:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">show</span> <span class="o">=</span> <span class="s2">&quot;ALICES&quot;</span>
+
+<span class="n">bin_size</span> <span class="o">=</span> <span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">edges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">bin_size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">bin_size</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">centers</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_ranges</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+
+<span class="n">cmin</span><span class="p">,</span> <span class="n">cmax</span> <span class="o">=</span> <span class="mf">1.e-2</span><span class="p">,</span> <span class="mf">1.</span>
+
+<span class="n">pcm</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+    <span class="n">edges</span><span class="p">,</span> <span class="n">edges</span><span class="p">,</span> <span class="n">p_values</span><span class="p">[</span><span class="n">show</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">norm</span><span class="o">=</span><span class="n">matplotlib</span><span class="o">.</span><span class="n">colors</span><span class="o">.</span><span class="n">LogNorm</span><span class="p">(</span><span class="n">vmin</span><span class="o">=</span><span class="n">cmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">cmax</span><span class="p">),</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Greys_r&#39;</span>
+<span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">pcm</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="p">(</span><span class="n">label</span><span class="p">,</span> <span class="n">p_value</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">p_values</span><span class="o">.</span><span class="n">items</span><span class="p">()):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span>
+        <span class="n">centers</span><span class="p">,</span> <span class="n">centers</span><span class="p">,</span> <span class="n">p_value</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">grid_resolutions</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+        <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="mf">0.32</span><span class="p">],</span>
+        <span class="n">linestyles</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;C</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+    <span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+        <span class="n">theta_grid</span><span class="p">[</span><span class="n">mle</span><span class="p">[</span><span class="n">label</span><span class="p">]][</span><span class="mi">0</span><span class="p">],</span> <span class="n">theta_grid</span><span class="p">[</span><span class="n">mle</span><span class="p">[</span><span class="n">label</span><span class="p">]][</span><span class="mi">1</span><span class="p">],</span>
+        <span class="n">s</span><span class="o">=</span><span class="mf">80.</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;C</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;*&#39;</span><span class="p">,</span>
+        <span class="n">label</span><span class="o">=</span><span class="n">label</span>
+    <span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\theta_1$&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Expected p-value (</span><span class="si">{}</span><span class="s1">)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">show</span><span class="p">))</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../../../_images/4a_limits_37_0.png" src="../../../_images/4a_limits_37_0.png" />
+</div>
+</div>
+<div class="section" id="save-results">
+<h3>Save results<a class="headerlink" href="#save-results" title="Permalink to this headline">¶</a></h3>
+<p>Let’s save the results to later compare them to results obtained in other notebooks.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;limits/limits.npy&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">p_values</span><span class="p">,</span><span class="n">mle</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorial/notebooks/general"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../../7_statistics.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Choose your adventure</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="4b_fisher_information.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">MadMiner physics tutorial (part 4B)</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Kyle Cranmer<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            This page was created by the <a href="https://github.com/madminer-tool/madminer">MadMiner Team</a>.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

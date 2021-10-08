@@ -1,0 +1,576 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Preliminaries &#8212; MadMiner Tutorial</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Workflow overview" href="3_overview.html" />
+    <link rel="prev" title="Demo video" href="1_video.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">MadMiner Tutorial</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="0_intro.html">
+   Introduction
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Introduction
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="1_video.html">
+   Demo video
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Tutorial
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Preliminaries
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="3_overview.html">
+   Overview
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="notebooks/general/1_setup_process.html">
+   Define process to study
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="4_morphing.html">
+     Morphing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/morphing/basis_chooser.html">
+     Morphing demo
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="5_data_generation.html">
+   Create training data
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/general/2a_parton_analysis.html">
+     Parton level
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/general/2b_delphes_analysis.html">
+     Delphes level
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="6_metric_selection.html">
+   Train model
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/general/3a_likelihood_ratio.html">
+     Likelihood ratio
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/general/3b_score.html">
+     Score
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/general/3c_likelihood.html">
+     Likelihood
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="7_statistics.html">
+   Statistical Analysis
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/general/4a_limits.html">
+     Limits on EFT parameters
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/general/4b_fisher_information.html">
+     Fisher Information
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="notebooks/general/4c_information_geometry.html">
+     Information Geometry
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="8_congratulations.html">
+   Congratulations
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Appendix
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/notebooks/A1_systematic_uncertainties.html">
+   Systematic uncertainties
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/notebooks/A2_ensemble_methods.html">
+   Ensemble methods
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../appendix/notebooks/A3_reweighting_samples.html">
+   Reweighting existing samples
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Deploy on REANA
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reana/0_introduction.html">
+   Introduction
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reana/1_demo_video.html">
+   Demo video
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reana/2_workflow_setup.html">
+   Setup workflow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reana/3_parametrization.html">
+   Parametrization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reana/4_reana_setup.html">
+   Setup REANA / MLFlow
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reana/5_run_remotely.html">
+   Run remotely
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../reana/6_run_locally.html">
+   Run locally
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/tutorial/2_preliminaries.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#install-docker">
+   Install Docker
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#make-a-shared-directory">
+   Make a shared directory
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#start-jupyter-server-in-a-container">
+   Start Jupyter server in a container
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#special-instructions-docker-toolbox-for-windows">
+   Special instructions: Docker Toolbox for Windows
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="preliminaries">
+<h1>Preliminaries<a class="headerlink" href="#preliminaries" title="Permalink to this headline">¶</a></h1>
+<p>The tutorial has several software dependencies:</p>
+<ul class="simple">
+<li><p>MadGraph.</p></li>
+<li><p>Pythia.</p></li>
+<li><p>Delphes (optional).</p></li>
+<li><p>Pytorch.</p></li>
+<li><p>Jupyter.</p></li>
+<li><p>Scipy.</p></li>
+<li><p>MadMiner.</p></li>
+</ul>
+<p>Installing all of this can take a long time. To avoid that, we will use <a class="reference external" href="https://www.docker.com">Docker</a>.
+Sinclert Pérez and Irina Espejo have built Docker images with every dependency installed,
+making them available on the <a class="reference external" href="https://hub.docker.com/u/madminertool">Madminertool</a> DockerHub organization.</p>
+<p>We will still use our computer’s web browser to connect to the server as described in this tutorial:
+<a class="reference external" href="https://www.dataquest.io/blog/docker-data-science">Running a Dockerized Jupyter Server for Data Science</a>.</p>
+<p>In addition, the pages with code have an “Interactive” button at the top, and if you click them
+you should be able to run the notebooks in the cloud (instead of on your laptop) thanks to <a class="reference external" href="https://mybinder.org">Binder</a>.
+However, the working area provided by Binder is temporary, and it will not save your files once the session ends.</p>
+<div class="section" id="install-docker">
+<h2>Install Docker<a class="headerlink" href="#install-docker" title="Permalink to this headline">¶</a></h2>
+<p>To install Docker, go to the <a class="reference external" href="https://www.docker.com/products/docker-desktop">Download Docker Desktop</a> page. The installation should work
+for macOS and Windows, but in the case of Windows, it requires Windows 10 Professional or Enterprise 64-bit.
+For old versions of Windows (or Windows Home) use <a class="reference external" href="https://docs.docker.com/toolbox/overview">Docker Toolbox</a> (see <a class="reference external" href="https://docs.docker.com/toolbox/toolbox_install_windows">instructions</a>).
+Note there are some other small changes listed at the bottom of this page.</p>
+<p>You may want to go into docker preferences and adjust the resources given to the Docker engine.
+In particular memory and swap space since this will involve machine learning.</p>
+</div>
+<div class="section" id="make-a-shared-directory">
+<h2>Make a shared directory<a class="headerlink" href="#make-a-shared-directory" title="Permalink to this headline">¶</a></h2>
+<p>Make a shared directory between your laptop and the Docker container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir ~/madminer_shared
+</pre></div>
+</div>
+</div>
+<div class="section" id="start-jupyter-server-in-a-container">
+<h2>Start Jupyter server in a container<a class="headerlink" href="#start-jupyter-server-in-a-container" title="Permalink to this headline">¶</a></h2>
+<p>In order to start an interaction session from a Docker container, we will spin up the MadMiner Docker image.
+The first time we spin it up, the image needs to be pulled from DockerHub, which will take about a minute.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run --rm <span class="se">\</span>
+    -p <span class="m">8888</span>:8888 <span class="se">\</span>
+    -v ~/madminer_shared:/home/shared <span class="se">\</span>
+    -it madminertool/madminer-jupyter-env:0.3.0 <span class="se">\</span>
+    /bin/bash
+</pre></div>
+</div>
+<p>(If you are using Docker Toolbox on Windows, see section below).</p>
+<p>Now you have a prompt inside the container. See what’s there and then go into the <code class="docutils literal notranslate"><span class="pre">shared</span></code> directory</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /home/shared
+<span class="nb">echo</span> <span class="s1">&#39;hello world&#39;</span> &gt;&gt; test.txt
+</pre></div>
+</div>
+<p>You might want to check that on your computer you see the recently created <code class="docutils literal notranslate"><span class="pre">~/madminer_shared/test.txt</span></code> file. Then:</p>
+<p>Get the MadMiner repository with tutorial notebooks:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone --depth<span class="o">=</span><span class="m">1</span> https://github.com/madminer-tool/madminer.git
+</pre></div>
+</div>
+<p>Move to the directory with the example tutorial:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> madminer/examples/tutorial_particle_physics
+</pre></div>
+</div>
+<p>Start Jupyter inside the container:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter notebook --ip <span class="m">0</span>.0.0.0 --port <span class="m">8888</span> --allow-root
+</pre></div>
+</div>
+<p>At the end of the process, you should see something like this:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>    To access the notebook, open this file <span class="k">in</span> a browser:
+        file:///home/builder/.local/share/jupyter/runtime/nbserver-19-open.html
+    Or copy and paste one of these URLs:
+        http://<span class="o">(</span>b27060a7c9a2 or <span class="m">127</span>.0.0.1<span class="o">)</span>:8888/?token<span class="o">=</span>123copywhatyouseeherexyz
+</pre></div>
+</div>
+<p>You will want to copy the text after the token (in your terminal, this is just an example).
+In the example above, you would copy <code class="docutils literal notranslate"><span class="pre">123copywhatyouseeherexyz</span></code>.</p>
+<p>Now you should be able to connect to the Jupyter notebook server inside the container using your web browser.
+Go to <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">localhost:8888</span></code></span> in a new tab to see the Jupyter interface. At this stage,
+paste the token you just copied and log in. Then you will be all set, and will see something like this:</p>
+<p><img alt="Jupyter login page" src="../_images/notebook.png" /></p>
+</div>
+<div class="section" id="special-instructions-docker-toolbox-for-windows">
+<h2>Special instructions: Docker Toolbox for Windows<a class="headerlink" href="#special-instructions-docker-toolbox-for-windows" title="Permalink to this headline">¶</a></h2>
+<p>Thanks to Ioannis Karkanias, there is a way to run the Jupyter server using Docker Toolbox</p>
+<ol>
+<li><p>First, the shared folder needs to be in the <code class="docutils literal notranslate"><span class="pre">Users</span></code> directory, as Docker Toolbox uses VirtualBox,
+which uses <code class="docutils literal notranslate"><span class="pre">C:/Users</span></code> as the root path for all shared folders. Check the Docker Toolbox sharing
+folder <a class="reference external" href="https://docs.docker.com/toolbox/toolbox_install_windows/#optional-add-shared-directories">instructions</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker run --rm <span class="se">\</span>
+    -p <span class="m">8888</span>:8888 <span class="se">\</span>
+    -v /C/Users/&lt;USERNAME&gt;/madminer_shared:/home/shared <span class="se">\</span>
+    -it madminertool/madminer-jupyter-env:0.3.0 <span class="se">\</span>
+    /bin/bash
+</pre></div>
+</div>
+</li>
+<li><p>Since Docker Toolbox uses a virtual machine and there is no <code class="docutils literal notranslate"><span class="pre">localhost</span></code>, the URL used to reach
+the Jupyter log in interface will not be <code class="docutils literal notranslate"><span class="pre">localhost:8888</span></code>. To check the public IP where you can reach
+the login page, we can use the Docker CLI, as described in <a class="reference external" href="https://docs.docker.com/toolbox/toolbox_install_windows/#step-3-verify-your-installation">this guide</a>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker-machine ip default
+</pre></div>
+</div>
+<p>That command will expose the public IP to use, which must be followed by the Jupyter server default port (<code class="docutils literal notranslate"><span class="pre">:8888</span></code>)
+to build the complete URL needed to access the web interface.</p>
+</li>
+</ol>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tutorial"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="1_video.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Demo video</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="3_overview.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">Workflow overview</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Kyle Cranmer<br/>
+        
+            &copy; Copyright 2021.<br/>
+          <div class="extra_footer">
+            This page was created by the <a href="https://github.com/madminer-tool/madminer">MadMiner Team</a>.
+          </div>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
