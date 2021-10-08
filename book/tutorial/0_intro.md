@@ -47,7 +47,7 @@ Fortunately, MadMiner has an extensive documentation on [read-the-docs][madminer
 
 [jupyter-books-web]: https://jupyterbook.org/intro
 [madminer-docs-web]: https://madminer.readthedocs.io/en/latest/index.html
-[madminer-github]: https://github.com/diana-hep/madminer
+[madminer-github]: https://github.com/madminer-tool/madminer
 [madminer-logo]: https://iris-hep.org/assets/logos/madminer.png
 [madminer-paper-1]: https://arxiv.org/abs/1805.00013
 [madminer-paper-2]: https://arxiv.org/abs/1805.00020
