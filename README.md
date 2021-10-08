@@ -17,6 +17,6 @@ make build
 ```
 
 
-[madminer-tutorial-web]: http://theoryandpractice.org/madminer-tutorial
+[madminer-tutorial-web]: https://madminer-tool.github.io/madminer-tutorial
 [madminer-tutorial-binder-link]: https://mybinder.org/v2/gh/cranmer/madminer-tutorial/master
 [madminer-tutorial-binder-logo]: https://mybinder.org/badge_logo.svg
