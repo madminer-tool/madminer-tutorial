@@ -90,6 +90,6 @@ In case you have an MLFlow tracking server running, you can view the metrics and
 ![MLFlow UI experiments](images/mlflow-ui-experiments.png)
 
 
-[madminer-workflow-repo]: https://github.com/scailfin/madminer-workflow
+[madminer-workflow-repo]: https://github.com/madminer-tool/madminer-workflow
 [reana-instance-bnl]: https://kubmaster01.sdcc.bnl.gov:30443
 [reana-section-setup]: 4_reana_setup.md

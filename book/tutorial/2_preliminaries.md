@@ -64,7 +64,7 @@ You might want to check that on your computer you see the recently created `~/ma
 
 Get the MadMiner repository with tutorial notebooks:
 ```bash
-git clone --depth=1 https://github.com/diana-hep/madminer.git
+git clone --depth=1 https://github.com/madminer-tool/madminer.git
 ```
 
 Move to the directory with the example tutorial:

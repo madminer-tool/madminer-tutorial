@@ -13,4 +13,4 @@ The result of this notebook is the following visualization:
 
 
 [madminer-morphing-image]: images/morphing.gif
-[madminer-morphing-notebook]: https://github.com/diana-hep/madminer/blob/master/examples/morphing_basis/interactive_basis_chooser.ipynb
+[madminer-morphing-notebook]: https://github.com/madminer-tool/madminer/blob/master/examples/morphing_basis/interactive_basis_chooser.ipynb

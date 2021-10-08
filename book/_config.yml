@@ -42,7 +42,7 @@ html:
   use_repository_button     : false  # Whether to add a link to your repository button
   use_issues_button         : false  # Whether to add an "open an issue" button
   extra_navbar              : Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-  extra_footer              : This page was created by the <a href="https://github.com/diana-hep/madminer">MadMiner Team</a>.
+  extra_footer              : This page was created by the <a href="https://github.com/madminer-tool/madminer">MadMiner Team</a>.
   google_analytics_id       : ""     # A GA id that can be used to track book views.
   home_page_in_navbar       : true   # Whether to include your home page in the left Navigation Bar
   baseurl                   : ""     # The base URL where your book will be hosted. Used for creating image previews.

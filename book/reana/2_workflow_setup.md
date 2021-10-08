@@ -17,15 +17,15 @@ In order to set up the complete workflow locally, you can just clone the [madmin
 repository, as long as the two wrapped sub-workflows by running:
 
 ```bash
-git clone --recurse-submodules https://github.com/scailfin/madminer-workflow
+git clone --recurse-submodules https://github.com/madminer-tool/madminer-workflow
 ```
 
 This command will also clone the Physics (PH) and Machine Learning (ML) sub-workflows inside the `modules` folder.
 Optionally, you could install them separately (if you want to interact with them in a separate manner), by running:
 
 ```bash
-git clone https://github.com/scailfin/madminer-workflow-ml
-git clone https://github.com/scailfin/madminer-workflow-ph
+git clone https://github.com/madminer-tool/madminer-workflow-ml
+git clone https://github.com/madminer-tool/madminer-workflow-ph
 ```
 
 
@@ -40,7 +40,7 @@ The image below shows the default workflow structure
 ![Workflow diagram](images/workflow-diagram.png)
 
 
-[madminer-workflow-repo]: https://github.com/scailfin/madminer-workflow
-[madminer-workflow-repo-ml]: https://github.com/scailfin/madminer-workflow-ml
-[madminer-workflow-repo-ph]: https://github.com/scailfin/madminer-workflow-ph
+[madminer-workflow-repo]: https://github.com/madminer-tool/madminer-workflow
+[madminer-workflow-repo-ml]: https://github.com/madminer-tool/madminer-workflow-ml
+[madminer-workflow-repo-ph]: https://github.com/madminer-tool/madminer-workflow-ph
 [reana-guide-param]: 3_parametrization.md
