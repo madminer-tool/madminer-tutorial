@@ -28,7 +28,7 @@ of the tutorial into the [gh-pages][madminer-tutorial-branch-pages] branch.
 
 [github-pages-action]: https://github.com/marketplace/actions/github-pages-action
 [madminer-tutorial-web]: https://madminer-tool.github.io/madminer-tutorial
-[madminer-tutorial-binder-link]: https://mybinder.org/v2/gh/cranmer/madminer-tutorial/master
+[madminer-tutorial-binder-link]: https://mybinder.org/v2/gh/madminer-tool/madminer-tutorial/master
 [madminer-tutorial-binder-logo]: https://mybinder.org/badge_logo.svg
 [madminer-tutorial-branch-pages]: https://github.com/madminer-tool/madminer-tutorial/tree/gh-pages
 [madminer-tutorial-workflow-web]: https://github.com/madminer-tool/madminer-tutorial/blob/master/.github/workflows/web.yml
