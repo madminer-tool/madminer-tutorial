@@ -416,12 +416,7 @@
 <h2>0. Preparations<a class="headerlink" href="#preparations" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="n">madminer_src_path</span> <span class="o">=</span> <span class="s2">&quot;/madminer/software/MG5_aMC_v2_9_4/&quot;</span>
-<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">madminer_src_path</span><span class="p">)</span>
-
-<span class="kn">import</span> <span class="nn">logging</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">logging</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span>
 <span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
@@ -450,7 +445,7 @@
 </div>
 </div>
 </div>
-<p>Let’s look at a simple example to unserstand what happens in information geometry. At first we note that the Fisher Information is a symmetric positive definite rank two tensor, and therefore can be seen as a Riemanian metric. It can therefore be used to calculate distances between points in parameter space.</p>
+<p>Let’s look at a simple example to understand what happens in information geometry. At first we note that the Fisher Information is a symmetric positive definite rank two tensor, and therefore can be seen as a Riemanian metric. It can therefore be used to calculate distances between points in parameter space.</p>
 <p>Previously, in tutorial 4b, we have considered the <strong>local distance</strong> <span class="math notranslate nohighlight">\(d_{local}(\theta,\theta_0)\)</span> between two points <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\theta_0\)</span>. It is defined in the tangent space of <span class="math notranslate nohighlight">\(\theta_0\)</span>, where the metric is constant and hence flat, and can simply be calculated as <span class="math notranslate nohighlight">\(d_{local}(\theta,\theta_0) = I_{ij}(\theta_0) \times (\theta-\theta_0)^i (\theta-\theta_0)^j\)</span>.</p>
 <p>Going beyond this local approximation, we can calculate a <strong>global distance</strong> <span class="math notranslate nohighlight">\(d_{global}(\theta,\theta_0)\)</span> which takes into account the fact that the information is not constant throughout the parameter space. Using our knowledge from general relativity, this distance is defined as
 \begin{equation}
@@ -465,7 +460,7 @@ In practice, we obtain the geodesics by numerically integrating the geodesic equ
 </div>
 <div class="section" id="stand-alone-example">
 <h2>1. Stand Alone Example<a class="headerlink" href="#stand-alone-example" title="Permalink to this headline">¶</a></h2>
-<p>In the following, we consider a sample geometry with Fisher Information <span class="math notranslate nohighlight">\(I_{ij}(\theta)= (( 1+\theta_1/4 , 1 ),( 1 ,  2-\theta_2/2))\)</span> and determine the geodesics and distance contours for illistration. At first, we initialize a new class <code class="docutils literal notranslate"><span class="pre">InformationGeometry</span></code> and define the Fisher Information via the function <code class="docutils literal notranslate"><span class="pre">information_from_formula()</span></code>.</p>
+<p>In the following, we consider a sample geometry with Fisher Information <span class="math notranslate nohighlight">\(I_{ij}(\theta)= (( 1+\theta_1/4 , 1 ),( 1 ,  2-\theta_2/2))\)</span> and determine the geodesics and distance contours for illustration. At first, we initialize a new class <code class="docutils literal notranslate"><span class="pre">InformationGeometry</span></code> and define the Fisher Information via the function <code class="docutils literal notranslate"><span class="pre">information_from_formula()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;np.array([[1 + 0.25*theta[0] ,1],[1, 2 - 0.5*theta[1]  ]])&quot;</span>
@@ -501,12 +496,6 @@ In practice, we obtain the geodesics by numerically integrating the geodesic equ
     <span class="n">limits</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">],[</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">1.</span><span class="p">]]),</span>
     <span class="n">stepsize</span><span class="o">=</span><span class="mf">0.025</span><span class="p">,</span>
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/felixkling/Documents/GitHub/madminer/madminer/fisherinformation.py:1928: RuntimeWarning: divide by zero encountered in double_scalars
-  max_stepsize = 0.05 * np.linalg.norm(dtheta)  / np.linalg.norm(ddtheta)
 </pre></div>
 </div>
 </div>
@@ -654,22 +643,22 @@ In practice, we obtain the geodesics by numerically integrating the geodesic equ
             <span class="n">include_xsec_info</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
         <span class="p">)</span>
         <span class="n">fisher_grid</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">fisher_info</span><span class="p">)</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;limits/infogeo_thetagrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">,</span> <span class="n">theta_grid</span><span class="p">)</span>
-    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;limits/infogeo_fishergrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">,</span> <span class="n">fisher_grid</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;limits/infogeo_thetagrid_</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">.npy&quot;</span><span class="p">,</span> <span class="n">theta_grid</span><span class="p">)</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;limits/infogeo_fishergrid_</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">.npy&quot;</span><span class="p">,</span> <span class="n">fisher_grid</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span> 
-    <span class="n">theta_grid</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;limits/infogeo_thetagrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">)</span>
-    <span class="n">fisher_grid</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s2">&quot;limits/infogeo_fishergrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">)</span>
+    <span class="n">theta_grid</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;limits/infogeo_thetagrid_</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">.npy&quot;</span><span class="p">)</span>
+    <span class="n">fisher_grid</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;limits/infogeo_fishergrid_</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">.npy&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>In the next step, we initialize the <code class="docutils literal notranslate"><span class="pre">InformationGeoemtry</span></code> class using this input data. Using the function <code class="docutils literal notranslate"><span class="pre">information_from_grid()</span></code>, the provided grid is interpolated using a piecewise linear function and the information can be calculated at every point.</p>
+<p>In the next step, we initialize the <code class="docutils literal notranslate"><span class="pre">InformationGeometry</span></code> class using this input data. Using the function <code class="docutils literal notranslate"><span class="pre">information_from_grid()</span></code>, the provided grid is interpolated using a piecewise linear function and the information can be calculated at every point.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">infogeo</span><span class="o">=</span><span class="n">InformationGeometry</span><span class="p">()</span>
 <span class="n">infogeo</span><span class="o">.</span><span class="n">information_from_grid</span><span class="p">(</span>
-    <span class="n">theta_grid</span><span class="o">=</span><span class="s2">&quot;limits/infogeo_thetagrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">,</span> 
-    <span class="n">fisherinformation_grid</span><span class="o">=</span><span class="s2">&quot;limits/infogeo_fishergrid_&quot;</span><span class="o">+</span><span class="n">model</span><span class="o">+</span><span class="s2">&quot;.npy&quot;</span><span class="p">,</span>
+    <span class="n">theta_grid</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;limits/infogeo_thetagrid_</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">.npy&quot;</span><span class="p">,</span>
+    <span class="n">fisherinformation_grid</span><span class="o">=</span><span class="sa">f</span><span class="s2">&quot;limits/infogeo_fishergrid_</span><span class="si">{</span><span class="n">model</span><span class="si">}</span><span class="s2">.npy&quot;</span><span class="p">,</span>
 <span class="p">)</span>
 </pre></div>
 </div>
@@ -692,16 +681,6 @@ In practice, we obtain the geodesics by numerically integrating the geodesic equ
     <span class="n">ntrajectories</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span>
     <span class="n">return_trajectories</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>   
 <span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/felixkling/anaconda/envs/python2/lib/python2.7/site-packages/scipy/stats/_distn_infrastructure.py:879: RuntimeWarning: invalid value encountered in greater
-  return (self.a &lt; x) &amp; (x &lt; self.b)
-/Users/felixkling/anaconda/envs/python2/lib/python2.7/site-packages/scipy/stats/_distn_infrastructure.py:879: RuntimeWarning: invalid value encountered in less
-  return (self.a &lt; x) &amp; (x &lt; self.b)
-/Users/felixkling/anaconda/envs/python2/lib/python2.7/site-packages/scipy/stats/_distn_infrastructure.py:1821: RuntimeWarning: invalid value encountered in less_equal
-  cond2 = cond0 &amp; (x &lt;= self.a)
 </pre></div>
 </div>
 </div>
@@ -756,11 +735,7 @@ In practice, we obtain the geodesics by numerically integrating the geodesic equ
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/felixkling/anaconda/envs/python2/lib/python2.7/site-packages/matplotlib/colors.py:496: RuntimeWarning: invalid value encountered in less
-  cbook._putmask(xa, xa &lt; 0.0, -1)
-</pre></div>
-</div>
-<img alt="../../../_images/4c_information_geometry_30_1.png" src="../../../_images/4c_information_geometry_30_1.png" />
+<img alt="../../../_images/4c_information_geometry_30_0.png" src="../../../_images/4c_information_geometry_30_0.png" />
 </div>
 </div>
 </div>
@@ -822,11 +797,7 @@ In practice, we obtain the geodesics by numerically integrating the geodesic equ
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/felixkling/anaconda/envs/python2/lib/python2.7/site-packages/matplotlib/colors.py:927: RuntimeWarning: invalid value encountered in less_equal
-  mask = (resdat &lt;= 0)
-</pre></div>
-</div>
-<img alt="../../../_images/4c_information_geometry_35_1.png" src="../../../_images/4c_information_geometry_35_1.png" />
+<img alt="../../../_images/4c_information_geometry_35_0.png" src="../../../_images/4c_information_geometry_35_0.png" />
 </div>
 </div>
 <p>Finally, we compare the obtained distance <span class="math notranslate nohighlight">\(d(\theta,\theta_0)\)</span> with the expected log-likelihood ratio <span class="math notranslate nohighlight">\(q(\theta,\theta_0) = E[-2 \log r(x|\theta,\theta_0)|\theta_0]\)</span>. We can see that there is an approximately linear relationship.</p>

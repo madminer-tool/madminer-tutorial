@@ -394,11 +394,11 @@ for what it would look like in a full experimental context.</p>
 <li><p><a class="reference internal" href="notebooks/general/2b_delphes_analysis.html"><span class="doc std std-doc"><strong>Delphes level analysis</strong></span></a></p></li>
 </ul>
 <p>The location of the MadGraph installation folder is set. It is listed as:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mg_dir</span> <span class="o">=</span> <span class="s1">&#39;/madminer/software/MG5_aMC_v2_9_4&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mg_dir</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s1">&#39;MG_FOLDER_PATH&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>If you install everything yourself, then you would also need to change this to point
-to the MadGraph installation folder within your system.</p>
+<p>If you install everything yourself, then you would also need to define your own environment variable
+to point to the MadGraph installation folder within your system.</p>
 <div class="toctree-wrapper compound">
 </div>
 </div>
