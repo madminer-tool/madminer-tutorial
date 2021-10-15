@@ -19,11 +19,11 @@ In tutorial sections:
 The location of the MadGraph installation folder is set. It is listed as:
 
 ```python
-mg_dir = '/madminer/software/MG5_aMC_v2_9_4'
+mg_dir = os.getenv('MG_FOLDER_PATH')
 ```
 
-If you install everything yourself, then you would also need to change this to point
-to the MadGraph installation folder within your system.
+If you install everything yourself, then you would also need to define your own environment variable
+to point to the MadGraph installation folder within your system.
 
 
 [tutorial-section-parton]: notebooks/general/2a_parton_analysis.ipynb
