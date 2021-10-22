@@ -1,80 +1,80 @@
 # Table of content
 # Learn more at https://jupyterbook.org/customize/toc.html
 
-- file: tutorial/0_intro
+format: jb-book
+root: tutorial/0_intro
 
 
-- part: Introduction
+parts:
+
+- caption: "Introduction"
   chapters:
-    - title: "Demo video"
-      file: tutorial/1_video
+  - file: tutorial/1_video
+    title: "Demo video"
 
-
-- part: Tutorial
+- caption: "Tutorial"
   chapters:
-    - title: "Preliminaries"
-      file: tutorial/2_preliminaries
-    - title: "Overview"
-      file: tutorial/3_overview
-    - title: "Define process to study"
-      file: tutorial/notebooks/general/1_setup_process
-      sections:
-        - title: "Morphing"
-          file: tutorial/4_morphing
-        - title: "Morphing demo"
-          file: tutorial/notebooks/morphing/basis_chooser
-    - title: "Create training data"
-      file: tutorial/5_data_generation
-      sections:
-        - title: "Parton level"
-          file: tutorial/notebooks/general/2a_parton_analysis
-        - title: "Delphes level"
-          file: tutorial/notebooks/general/2b_delphes_analysis
-    - title: "Train model"
-      file: tutorial/6_metric_selection
-      sections:
-        - title: "Likelihood ratio"
-          file: tutorial/notebooks/general/3a_likelihood_ratio
-        - title: "Score"
-          file: tutorial/notebooks/general/3b_score
-        - title: "Likelihood"
-          file: tutorial/notebooks/general/3c_likelihood
-    - title: "Statistical Analysis"
-      file: tutorial/7_statistics
-      sections:
-        - title: "Limits on EFT parameters"
-          file: tutorial/notebooks/general/4a_limits
-        - title: "Fisher Information"
-          file: tutorial/notebooks/general/4b_fisher_information
-        - title: "Information Geometry"
-          file: tutorial/notebooks/general/4c_information_geometry
-    - title: "Congratulations"
-      file: tutorial/8_congratulations
+  - title: "Preliminaries"
+    file: tutorial/2_preliminaries
+  - title: "Overview"
+    file: tutorial/3_overview
+  - title: "Define process to study"
+    file: tutorial/notebooks/general/1_setup_process
+    sections:
+    - title: "Morphing"
+      file: tutorial/4_morphing
+    - title: "Morphing demo"
+      file: tutorial/notebooks/morphing/basis_chooser
+  - title: "Create training data"
+    file: tutorial/5_data_generation
+    sections:
+    - title: "Parton level"
+      file: tutorial/notebooks/general/2a_parton_analysis
+    - title: "Delphes level"
+      file: tutorial/notebooks/general/2b_delphes_analysis
+  - title: "Train model"
+    file: tutorial/6_metric_selection
+    sections:
+    - title: "Likelihood ratio"
+      file: tutorial/notebooks/general/3a_likelihood_ratio
+    - title: "Score"
+      file: tutorial/notebooks/general/3b_score
+    - title: "Likelihood"
+      file: tutorial/notebooks/general/3c_likelihood
+  - title: "Statistical Analysis"
+    file: tutorial/7_statistics
+    sections:
+    - title: "Limits on EFT parameters"
+      file: tutorial/notebooks/general/4a_limits
+    - title: "Fisher Information"
+      file: tutorial/notebooks/general/4b_fisher_information
+    - title: "Information Geometry"
+      file: tutorial/notebooks/general/4c_information_geometry
+  - title: "Congratulations"
+    file: tutorial/8_congratulations
 
-
-- part: Appendix
+- caption: "Appendix"
   chapters:
-    - title: "Systematic uncertainties"
-      file: appendix/notebooks/A1_systematic_uncertainties
-    - title: "Ensemble methods"
-      file: appendix/notebooks/A2_ensemble_methods
-    - title: "Reweighting existing samples"
-      file: appendix/notebooks/A3_reweighting_samples
+  - title: "Systematic uncertainties"
+    file: appendix/notebooks/A1_systematic_uncertainties
+  - title: "Ensemble methods"
+    file: appendix/notebooks/A2_ensemble_methods
+  - title: "Reweighting existing samples"
+    file: appendix/notebooks/A3_reweighting_samples
 
-
-- part: Deploy on REANA
+- caption: "Deploy on REANA"
   chapters:
-    - title: "Introduction"
-      file: reana/0_introduction
-    - title: "Demo video"
-      file: reana/1_demo_video
-    - title: "Setup workflow"
-      file: reana/2_workflow_setup
-    - title: "Parametrization"
-      file: reana/3_parametrization
-    - title: "Setup REANA / MLFlow"
-      file: reana/4_reana_setup
-    - title: "Run remotely"
-      file: reana/5_run_remotely
-    - title: "Run locally"
-      file: reana/6_run_locally
+  - title: "Introduction"
+    file: reana/0_introduction
+  - title: "Demo video"
+    file: reana/1_demo_video
+  - title: "Setup workflow"
+    file: reana/2_workflow_setup
+  - title: "Parametrization"
+    file: reana/3_parametrization
+  - title: "Setup REANA / MLFlow"
+    file: reana/4_reana_setup
+  - title: "Run remotely"
+    file: reana/5_run_remotely
+  - title: "Run locally"
+    file: reana/6_run_locally
