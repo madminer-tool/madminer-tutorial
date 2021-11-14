@@ -27,9 +27,10 @@ source /afs/cern.ch/user/r/reana/public/reana/bin/activate
 ## Get access token
 You will need access to a REANA server instance. You can find your authentication **token** within the REANA instance web interface.
 There is a [REANA instance at CERN][reana-instance-cern], but it requires a CERN user account. There is also one running at BNL,
-which was used for the [demo video][tutorial-section-demo]. Alternatively, you can also contact the system administrators
-for your university or lab to ask if they can deploy a REANA instance. For instance, we have set up a REANA instance
-on the [NYU Greene][nyu-cluster-greene] cluster, which uses the SLURM backend to submit jobs.
+which was used for the [demo video][tutorial-section-demo].
+
+Alternatively, you can also contact the system administrators for your university or lab to ask if they can deploy a REANA instance.
+For instance, we have set up a REANA instance on the [NYU Greene][nyu-cluster-greene] cluster, which uses the SLURM backend to submit jobs.
 
 
 ## Configure the client
