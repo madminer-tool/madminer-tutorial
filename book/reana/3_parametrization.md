@@ -20,7 +20,7 @@ please, visit the [MadMiner documentation][madminer-docs].
 When running locally, via Yadage, there is a small set of parameters being defined at the `Makefile` level.
 These parameters can be found within the `yadage-run` Makefile rule, and they affect either one of the sub-workflows:
 
-In the case of the **PH sub-workflow**:
+In the case of the **Physics sub-workflow**:
 - `input_file`: path to the input.yml file to use.
 - `num_procs_per_job`: number of parallel processes for the collision event generation.
 
@@ -31,7 +31,7 @@ In the case of the **ML sub-workflow**:
 - `mlflow_args_t`: arguments to override the default training values.
 - `mlflow_args_e`: arguments to override the default evaluation values.
 
-In order to override the default MLFlow-specific arguments (specified on the[MLproject][madminer-workflow-mlproject] file),
+In order to override the default MLFlow-specific arguments (specified on the [MLproject][madminer-workflow-mlproject] file),
 change the `mlflow_args_` parameters. For example, to override the MLFlow parameters of the _sampling_ step:
 
 ```makefile
