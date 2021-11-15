@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Appendix 2: Ensemble methods &#8212; MadMiner Tutorial</title>
     
-  <link href="../../_static/css/theme.css" rel="stylesheet" />
-  <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+  <link href="../../_static/css/theme.css" rel="stylesheet">
+  <link href="../../_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
 
     
   <link rel="stylesheet"
@@ -31,7 +31,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="../../_static/js/index.1c5a1a01449ed65a7b51.js">
+  <link rel="preload" as="script" href="../../_static/js/index.be7d3bbb2ef33a8344ce.js">
 
     <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
     <script src="../../_static/jquery.js"></script>
@@ -54,7 +54,10 @@
     <link rel="next" title="Appendix 3: reweighting existing samples" href="A3_reweighting_samples.html" />
     <link rel="prev" title="Appendix 1: Adding systematic uncertainties" href="A1_systematic_uncertainties.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="en" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
     
   </head>
   <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
@@ -377,21 +380,14 @@
             <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#under-construction">
-   (UNDER CONSTRUCTION)
+  <a class="reference internal nav-link" href="#training">
+   Training
   </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#training">
-     Training
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#evaluation">
-     Evaluation
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation">
+   Evaluation
+  </a>
  </li>
 </ul>
 
@@ -407,8 +403,6 @@
   <div class="section" id="appendix-2-ensemble-methods">
 <h1>Appendix 2: Ensemble methods<a class="headerlink" href="#appendix-2-ensemble-methods" title="Permalink to this headline">¶</a></h1>
 <p>Johann Brehmer, Felix Kling, Irina Espejo, and Kyle Cranmer 2018-2019</p>
-<div class="section" id="under-construction">
-<h2>(UNDER CONSTRUCTION)<a class="headerlink" href="#under-construction" title="Permalink to this headline">¶</a></h2>
 <p>Instead of using a single neural network to estimate the likelihood ratio, score, or Fisher information, we can use an ensemble of such estimators. That provides us with a more reliable mean prediction as well as a measure of the uncertainty. The class <code class="docutils literal notranslate"><span class="pre">madminer.ml.EnsembleForge</span></code> automates this process. Currently, it only supports SALLY estimators:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -420,7 +414,7 @@
 </div>
 </div>
 <div class="section" id="training">
-<h3>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h3>
+<h2>Training<a class="headerlink" href="#training" title="Permalink to this headline">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">EnsembleForge</span></code> object has very similar functions as <code class="docutils literal notranslate"><span class="pre">MLForge</span></code>. In particular, we can train all estimators simultaneously with <code class="docutils literal notranslate"><span class="pre">train_all()</span></code> and save the ensemble to files:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -438,7 +432,7 @@
 </div>
 </div>
 <div class="section" id="evaluation">
-<h3>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h3>
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">¶</a></h2>
 <p>We can evaluate the ensemble similarly to the individual networks. Let’s stick to the estimation of the Fisher information. There are two different ways to take the ensemble average:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">mode='information'</span></code>: We can calculate the Fisher information for each estimator in the ensemble, and then take the mean and the covariance over the ensemble. This has the advantage that it provides a direct measure of the uncertainty of the prediction.</p></li>
@@ -474,7 +468,6 @@
 </div>
 </div>
 </div>
-</div>
 
     <script type="text/x-thebe-config">
     {
@@ -499,31 +492,22 @@
               </div>
               
         
-            
-
-
-
-<div class='prev-next-bottom'>
-    
-    <div id="prev">
-        <a class="left-prev" href="A1_systematic_uncertainties.html" title="previous page">
-            <i class="prevnext-label fas fa-angle-left"></i>
-            <div class="prevnext-info">
-                <p class="prevnext-label">previous</p>
-                <p class="prevnext-title">Appendix 1: Adding systematic uncertainties</p>
-            </div>
-        </a>
+            <!-- Previous / next buttons -->
+<div class='prev-next-area'> 
+    <a class='left-prev' id="prev-link" href="A1_systematic_uncertainties.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Appendix 1: Adding systematic uncertainties</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="A3_reweighting_samples.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Appendix 3: reweighting existing samples</p>
     </div>
-     <div id="next">
-        <a class="right-next" href="A3_reweighting_samples.html" title="next page">
-            <div class="prevnext-info">
-                <p class="prevnext-label">next</p>
-                <p class="prevnext-title">Appendix 3: reweighting existing samples</p>
-            </div>
-            <i class="prevnext-label fas fa-angle-right"></i>
-        </a>
-     </div>
-
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
         
         </div>
@@ -547,8 +531,7 @@
       </div>
     </div>
   
-  <script src="../../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+  <script src="../../_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
 
-  
   </body>
 </html>
