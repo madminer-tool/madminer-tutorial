@@ -41,7 +41,7 @@
     <script src="../../../_static/clipboard.min.js"></script>
     <script src="../../../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="../../../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script src="../../../_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
     <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
     <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
@@ -339,7 +339,7 @@
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
     </div>
 </div>
 
@@ -374,7 +374,7 @@
         </div>
 
         <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show">
+        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
             
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
@@ -409,7 +409,45 @@
 </div>
     <div id="main-content" class="row">
         <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-        
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>MadMiner physics tutorial (part 4C)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparations">
+   0. Preparations
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stand-alone-example">
+   1. Stand Alone Example
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#information-geometry-bounds-for-example-process">
+   2. Information Geometry Bounds for Example Process
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-to-other-results">
+   3. Compare to other results
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            
               <div>
                 
   <div class="section" id="madminer-physics-tutorial-part-4c">
@@ -450,20 +488,22 @@
 </div>
 <p>Let’s look at a simple example to understand what happens in information geometry. At first we note that the Fisher Information is a symmetric positive definite rank two tensor, and therefore can be seen as a Riemanian metric. It can therefore be used to calculate distances between points in parameter space.</p>
 <p>Previously, in tutorial 4b, we have considered the <strong>local distance</strong> <span class="math notranslate nohighlight">\(d_{local}(\theta,\theta_0)\)</span> between two points <span class="math notranslate nohighlight">\(\theta\)</span> and <span class="math notranslate nohighlight">\(\theta_0\)</span>. It is defined in the tangent space of <span class="math notranslate nohighlight">\(\theta_0\)</span>, where the metric is constant and hence flat, and can simply be calculated as <span class="math notranslate nohighlight">\(d_{local}(\theta,\theta_0) = I_{ij}(\theta_0) \times (\theta-\theta_0)^i (\theta-\theta_0)^j\)</span>.</p>
-<p>Going beyond this local approximation, we can calculate a <strong>global distance</strong> <span class="math notranslate nohighlight">\(d_{global}(\theta,\theta_0)\)</span> which takes into account the fact that the information is not constant throughout the parameter space. Using our knowledge from general relativity, this distance is defined as
-\begin{equation}
-d(\theta,\theta_0)= \text{min} \int_{\theta_0}^{\theta} ds \sqrt{I_{ij}(\theta(s)) \frac{d\theta^i}{ds}\frac{d\theta^j}{ds}}
-\end{equation}
-where <span class="math notranslate nohighlight">\(\theta(s)\)</span> is the geodesic (the shortest path) connecting <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>. This path is follows the geodesic equation
-\begin{equation}
-\frac{d^2\theta^i}{ds^2} = - \Gamma^i_{jk} \frac{d\theta^j}{ds}\frac{d\theta^k}{ds} \quad \text{with} \quad
-\Gamma^i_{jk} = \frac{1}{2} I^{im} \Big(\frac{\partial I_{mk}}{\partial \theta^j} + \frac{\partial I_{mj}}{\partial \theta^k} - \frac{\partial I_{jk}}{\partial \theta^m}\Big) \quad \text{and} \quad I^{im} I_{mj} = \delta^i_j \ .
-\end{equation}
-In practice, we obtain the geodesics by numerically integrating the geodesic equation, starting at a parameter point <span class="math notranslate nohighlight">\(\theta_0\)</span> with a velocity <span class="math notranslate nohighlight">\(\theta'_0=(\theta/ds)_0\)</span></p>
+<p>Going beyond this local approximation, we can calculate a <strong>global distance</strong> <span class="math notranslate nohighlight">\(d_{global}(\theta,\theta_0)\)</span> which takes into account the fact that the information is not constant throughout the parameter space. Using our knowledge from general relativity, this distance is defined as</p>
+<div class="math notranslate nohighlight">
+\[
+    d(\theta,\theta_0)= \text{min} \int_{\theta_0}^{\theta} ds \sqrt{I_{ij}(\theta(s)) \frac{d\theta^i}{ds}\frac{d\theta^j}{ds}} 
+\]</div>
+<p>where <span class="math notranslate nohighlight">\(\theta(s)\)</span> is the geodesic (the shortest path) connecting <span class="math notranslate nohighlight">\(\theta_0\)</span> and <span class="math notranslate nohighlight">\(\theta\)</span>. This path follows the geodesic equation</p>
+<div class="math notranslate nohighlight">
+\[
+    \frac{d^2\theta^i}{ds^2} = - \Gamma^i_{jk} \frac{d\theta^j}{ds}\frac{d\theta^k}{ds} \quad \text{with} \quad
+    \Gamma^i_{jk} = \frac{1}{2} I^{im} \Big(\frac{\partial I_{mk}}{\partial \theta^j} + \frac{\partial I_{mj}}{\partial \theta^k} - \frac{\partial I_{jk}}{\partial \theta^m}\Big) \quad \text{and} \quad I^{im} I_{mj} = \delta^i_j 
+\]</div>
+<p>In practice, we obtain the geodesics by numerically integrating the geodesic equation, starting at a parameter point <span class="math notranslate nohighlight">\(\theta_0\)</span> with a velocity <span class="math notranslate nohighlight">\(\theta'_0=(\frac{\theta}{ds})_0\)</span>.</p>
 </div>
 <div class="section" id="stand-alone-example">
 <h2>1. Stand Alone Example<a class="headerlink" href="#stand-alone-example" title="Permalink to this headline">¶</a></h2>
-<p>In the following, we consider a sample geometry with Fisher Information <span class="math notranslate nohighlight">\(I_{ij}(\theta)= (( 1+\theta_1/4 , 1 ),( 1 ,  2-\theta_2/2))\)</span> and determine the geodesics and distance contours for illustration. At first, we initialize a new class <code class="docutils literal notranslate"><span class="pre">InformationGeometry</span></code> and define the Fisher Information via the function <code class="docutils literal notranslate"><span class="pre">information_from_formula()</span></code>.</p>
+<p>In this example we consider a sample geometry with Fisher Information <span class="math notranslate nohighlight">\(I_{ij}(\theta)= (( 1 + \frac{\theta_1}{4}, 1 ), ( 1, 2 - \frac{\theta_2}{2}))\)</span> and determine the geodesics and distance contours for illustration. At first, we initialize a new instance of class <code class="docutils literal notranslate"><span class="pre">InformationGeometry</span></code> and define the Fisher Information via the function <code class="docutils literal notranslate"><span class="pre">information_from_formula()</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">formula</span><span class="o">=</span><span class="s2">&quot;np.array([[1 + 0.25*theta[0] ,1],[1, 2 - 0.5*theta[1]  ]])&quot;</span>
@@ -854,8 +894,8 @@ In practice, we obtain the geodesics by numerically integrating the geodesic equ
 
               </div>
               
-        
-            <!-- Previous / next buttons -->
+            
+                <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
     <a class='left-prev' id="prev-link" href="4b_fisher_information.html" title="previous page">
         <i class="fas fa-angle-left"></i>
@@ -872,22 +912,20 @@ In practice, we obtain the geodesics by numerically integrating the geodesic equ
     <i class="fas fa-angle-right"></i>
     </a>
 </div>
-        
+            
         </div>
     </div>
     <footer class="footer">
-    <div class="container">
-      <p>
-        
-          By MadMiner team<br/>
-        
-            &copy; Copyright 2021.<br/>
-          <div class="extra_footer">
-            This page was created by the <a href="https://github.com/madminer-tool/madminer">MadMiner Team</a>.
-          </div>
-      </p>
-    </div>
-  </footer>
+  <p>
+    
+      By MadMiner team<br/>
+    
+        &copy; Copyright 2021.<br/>
+      <div class="extra_footer">
+        This page was created by the <a href="https://github.com/madminer-tool/madminer">MadMiner Team</a>.
+      </div>
+  </p>
+</footer>
 </main>
 
 
