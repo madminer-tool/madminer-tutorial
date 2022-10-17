@@ -106,7 +106,7 @@ Thanks to Ioannis Karkanias, there is a way to run the Jupyter server using Dock
     docker run --rm \
         -p 8888:8888 \
         -v /C/Users/<USERNAME>/madminer_shared:/home/shared \
-        -it madminertool/madminer-jupyter-env:0.3.3 \
+        -it madminertool/madminer-jupyter-env:0.3.4 \
         /bin/bash
     ```
 
