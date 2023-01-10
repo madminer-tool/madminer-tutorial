@@ -3,7 +3,7 @@ name: Web deployment
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - "book/**"
 
