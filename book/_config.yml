@@ -68,7 +68,7 @@ launch_buttons:
 repository:
   url                       : https://github.com/madminer-tool/madminer-tutorial
   path_to_book              : book
-  branch                    : master
+  branch                    : main
 
 #######################################################################################
 # Advanced and power-user settings

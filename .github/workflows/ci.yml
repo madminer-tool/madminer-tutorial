@@ -3,12 +3,12 @@ name: Continuous Integration
 on:
   push:
     branches:
-      - master
+      - main
     paths:
       - "book/**"
   pull_request:
     branches:
-      - master
+      - main
     paths:
       - "book/**"
 
