@@ -454,13 +454,13 @@ These parameters can be found within the <code class="docutils literal notransla
 <li><p><code class="docutils literal notranslate"><span class="pre">mlflow_args_t</span></code>: arguments to override the default training values.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">mlflow_args_e</span></code>: arguments to override the default evaluation values.</p></li>
 </ul>
-<p>In order to override the default MLFlow-specific arguments (specified on the <a class="reference external" href="https://github.com/madminer-tool/madminer-workflow-ml/blob/master/MLproject">MLproject</a> file),
+<p>In order to override the default MLFlow-specific arguments (specified on the <a class="reference external" href="https://github.com/madminer-tool/madminer-workflow-ml/blob/main/MLproject">MLproject</a> file),
 change the <code class="docutils literal notranslate"><span class="pre">mlflow_args_</span></code> parameters. For example, to override the MLFlow parameters of the <em>sampling</em> step:</p>
 <div class="highlight-makefile notranslate"><div class="highlight"><pre><span></span><span class="nf">yadage-run</span><span class="o">:</span>
-    @yadage-run ... <span class="se">\</span>
-        -p ... <span class="se">\</span>
-        -p <span class="nv">mlflow_args_s</span><span class="o">=</span><span class="s2">&quot;test_split=0.5 nuisance_flag=0&quot;</span> <span class="se">\</span>
-        -p ...
+<span class="w">    </span>@yadage-run<span class="w"> </span>...<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-p<span class="w"> </span>...<span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-p<span class="w"> </span><span class="nv">mlflow_args_s</span><span class="o">=</span><span class="s2">&quot;test_split=0.5 nuisance_flag=0&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">        </span>-p<span class="w"> </span>...
 </pre></div>
 </div>
 </div>
@@ -468,7 +468,7 @@ change the <code class="docutils literal notranslate"><span class="pre">mlflow_a
 <h2>Reana.yml file<a class="headerlink" href="#reana-yml-file" title="Permalink to this headline">¶</a></h2>
 <p>When running the workflow on REANA (which is only available for the complete workflow), the same parameters that are
 made available over the <code class="docutils literal notranslate"><span class="pre">yadage-run</span></code> Makefile rule, are made available on the <code class="docutils literal notranslate"><span class="pre">reana.yml</span></code> file within the
-<a class="reference external" href="https://github.com/madminer-tool/madminer-workflow/tree/master/reana">reana folder</a>.</p>
+<a class="reference external" href="https://github.com/madminer-tool/madminer-workflow/tree/main/reana">reana folder</a>.</p>
 <p>However, it is important to understand that some of these parameters (i.e. <code class="docutils literal notranslate"><span class="pre">mlflow_server</span></code> and <code class="docutils literal notranslate"><span class="pre">mlflow_user</span></code>),
 are directly provided by the <code class="docutils literal notranslate"><span class="pre">reana-run</span></code> Makefile rule, and must not be filled within the <code class="docutils literal notranslate"><span class="pre">reana.yml</span></code> file.
 In short, they must be left empty.</p>

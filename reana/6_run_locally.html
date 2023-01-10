@@ -431,7 +431,7 @@ includes a Command Line Interface (CLI) tool that coordinates the execution of w
 <div class="section" id="install-yadage">
 <h2>Install Yadage<a class="headerlink" href="#install-yadage" title="Permalink to this headline">¶</a></h2>
 <p>To install Yadage, simply run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install yadage
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3<span class="w"> </span>install<span class="w"> </span>yadage
 </pre></div>
 </div>
 </div>
@@ -444,13 +444,13 @@ as Docker is used to pull the necessary Docker images from DockerHub.</p>
 <h2>Run locally<a class="headerlink" href="#run-locally" title="Permalink to this headline">¶</a></h2>
 <p>All the combined workflow, as well as the Physics and Machine Learning sub-workflow, have a <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> that defines
 runnable high-level commands for convenience. The main command that you would use in this case is called <code class="docutils literal notranslate"><span class="pre">yadage-run</span></code>.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make yadage-run
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>yadage-run
 </pre></div>
 </div>
 <p>This command would run the specified workflow within the <code class="docutils literal notranslate"><span class="pre">workflow</span></code> folder, generating the results within the <code class="docutils literal notranslate"><span class="pre">.yadage</span></code> folder
 (an invisible folder only accessible via terminal or IDE).</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> .yadage
-ls -l
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span><span class="w"> </span>.yadage
+ls<span class="w"> </span>-l
 </pre></div>
 </div>
 </div>

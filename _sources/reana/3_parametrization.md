@@ -54,5 +54,5 @@ In short, they must be left empty.
 
 
 [madminer-docs]: https://madminer.readthedocs.io/en/latest/index.html
-[madminer-workflow-mlproject]: https://github.com/madminer-tool/madminer-workflow-ml/blob/master/MLproject
-[madminer-workflow-reana-dir]: https://github.com/madminer-tool/madminer-workflow/tree/master/reana
+[madminer-workflow-mlproject]: https://github.com/madminer-tool/madminer-workflow-ml/blob/main/MLproject
+[madminer-workflow-reana-dir]: https://github.com/madminer-tool/madminer-workflow/tree/main/reana

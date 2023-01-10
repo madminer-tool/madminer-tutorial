@@ -419,17 +419,17 @@ const thebe_selector_output = ".output, .cell_output"
 This section assumes that you have installed and configured the REANA client and, <strong>optionally</strong>, the MLFlow
 tracking server as described in the <a class="reference internal" href="4_reana_setup.html"><span class="doc std std-doc">Setup REANA / MLFlow</span></a> section.</p>
 <p>To determine if the connection is established check the following output</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>reana-client ping
-&gt; REANA server: &lt;REANA_URL_SERVER&gt;
-&gt; REANA server version: <span class="m">0</span>.7.1
-&gt; REANA client version: <span class="m">0</span>.7.2
-&gt; Authenticated as: &lt;username&gt; &lt;username@institution&gt;
-&gt; Status: Connected
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>reana-client<span class="w"> </span>ping
+&gt;<span class="w"> </span>REANA<span class="w"> </span>server:<span class="w"> </span>&lt;REANA_URL_SERVER&gt;
+&gt;<span class="w"> </span>REANA<span class="w"> </span>server<span class="w"> </span>version:<span class="w"> </span><span class="m">0</span>.7.1
+&gt;<span class="w"> </span>REANA<span class="w"> </span>client<span class="w"> </span>version:<span class="w"> </span><span class="m">0</span>.7.2
+&gt;<span class="w"> </span>Authenticated<span class="w"> </span>as:<span class="w"> </span>&lt;username&gt;<span class="w"> </span>&lt;username@institution&gt;
+&gt;<span class="w"> </span>Status:<span class="w"> </span>Connected
 </pre></div>
 </div>
 <p>The <code class="docutils literal notranslate"><span class="pre">Makefile</span></code> available in the <a class="reference external" href="https://github.com/madminer-tool/madminer-workflow">madminer-workflow</a> repository defines a high-level command for
 submitting jobs to a REANA cluster. To launch the workflow on a remote REANA instance, simply type:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make reana-run
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>reana-run
 </pre></div>
 </div>
 <p>You should see an output similar to this:</p>
@@ -451,7 +451,7 @@ submitting jobs to a REANA cluster. To launch the workflow on a remote REANA ins
 <p>If you have access to a remote REANA server instance, it is more helpful to monitor the workflows and retrieve output files
 from the local browser than from the working directory at the cluster’s institution. Here are the steps to take:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Local terminal, SSH to the institution hosting the REANA server</span>
-ssh -q -L &lt;port&gt;:&lt;REANA_SERVER_URL&gt;:&lt;port&gt; &lt;username&gt;@&lt;institution&gt;
+ssh<span class="w"> </span>-q<span class="w"> </span>-L<span class="w"> </span>&lt;port&gt;:&lt;REANA_SERVER_URL&gt;:&lt;port&gt;<span class="w"> </span>&lt;username&gt;@&lt;institution&gt;
 </pre></div>
 </div>
 <p>In the particular case of the <em>Brookhaven National Lab</em>, the REANA instance URL is available <a class="reference external" href="https://kubmaster01.sdcc.bnl.gov:30443">here</a>

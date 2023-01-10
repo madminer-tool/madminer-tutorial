@@ -476,14 +476,14 @@ const thebe_selector_output = ".output, .cell_output"
 submitting workflows to a REANA cluster. Normally, you would configure the workflow locally on your laptop or
 some interactive node on a cluster and then use the <code class="docutils literal notranslate"><span class="pre">reana-client</span></code> CLI to submit the workflow to the REANA cluster.
 To install <code class="docutils literal notranslate"><span class="pre">reana-client</span></code> simply type:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3 install reana-client
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip3<span class="w"> </span>install<span class="w"> </span>reana-client
 </pre></div>
 </div>
 <p>The official documentation and the README files of REANA repositories recommend creating a Python virtual environment
 to install this package. However, if your interaction with the project is going to be from a user perspective,
 this is not mandatory.</p>
 <p>If you are running at CERN with <code class="docutils literal notranslate"><span class="pre">lxplus</span></code>, you do not even need to install the client, you can just type:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span> /afs/cern.ch/user/r/reana/public/reana/bin/activate
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">source</span><span class="w"> </span>/afs/cern.ch/user/r/reana/public/reana/bin/activate
 </pre></div>
 </div>
 </div>
@@ -499,18 +499,18 @@ For instance, we have set up a REANA instance on the <a class="reference externa
 <h2>Configure the client<a class="headerlink" href="#configure-the-client" title="Permalink to this headline">¶</a></h2>
 <p>Before submitting your workflows, you will  need to set some <em>environment variables</em> in order for the <code class="docutils literal notranslate"><span class="pre">reana-client</span></code> CLI
 to be able to connect with a REANA server instance.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">REANA_ACCESS_TOKEN</span><span class="o">=</span><span class="s2">&quot;&lt;your access token here&gt;&quot;</span>
-<span class="nb">export</span> <span class="nv">REANA_SERVER_URL</span><span class="o">=</span><span class="s2">&quot;&quot;</span>&lt;the REANA instance URL here&gt;<span class="s2">&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">REANA_ACCESS_TOKEN</span><span class="o">=</span><span class="s2">&quot;&lt;your access token here&gt;&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">REANA_SERVER_URL</span><span class="o">=</span><span class="s2">&quot;&quot;</span>&lt;the<span class="w"> </span>REANA<span class="w"> </span>instance<span class="w"> </span>URL<span class="w"> </span>here&gt;<span class="s2">&quot;</span>
 <span class="s2">export REANA_WORKON=madminer-workflow</span>
 </pre></div>
 </div>
 <p>To determine if the connection is established check the following output:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>reana-client ping
-&gt; REANA server: &lt;REANA_URL_SERVER&gt;
-&gt; REANA server version: <span class="m">0</span>.7.1
-&gt; REANA client version: <span class="m">0</span>.7.2
-&gt; Authenticated as: &lt;username&gt; &lt;username@institution&gt;
-&gt; Status: Connected
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>reana-client<span class="w"> </span>ping
+&gt;<span class="w"> </span>REANA<span class="w"> </span>server:<span class="w"> </span>&lt;REANA_URL_SERVER&gt;
+&gt;<span class="w"> </span>REANA<span class="w"> </span>server<span class="w"> </span>version:<span class="w"> </span><span class="m">0</span>.7.1
+&gt;<span class="w"> </span>REANA<span class="w"> </span>client<span class="w"> </span>version:<span class="w"> </span><span class="m">0</span>.7.2
+&gt;<span class="w"> </span>Authenticated<span class="w"> </span>as:<span class="w"> </span>&lt;username&gt;<span class="w"> </span>&lt;username@institution&gt;
+&gt;<span class="w"> </span>Status:<span class="w"> </span>Connected
 </pre></div>
 </div>
 </div>
@@ -532,15 +532,15 @@ leaving the Physics sub-workflow unaffected.</p>
 This could be provided to you (usual case), or deployed by you at a network open address (such as the address <code class="docutils literal notranslate"><span class="pre">0.0.0.0</span></code> on your laptop).
 To deploy your very own MLFlow tracking server:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Install the Python package</span>
-pip3 install mlflow
+pip3<span class="w"> </span>install<span class="w"> </span>mlflow
 
 <span class="c1"># Launch the tracking server</span>
-mlflow server <span class="se">\</span>
-    --host <span class="s2">&quot;0.0.0.0&quot;</span> <span class="se">\</span>
-    --port <span class="m">5000</span> <span class="se">\</span>
-    --workers <span class="m">2</span> <span class="se">\</span>
-    --backend-store-uri <span class="s2">&quot;file:///tmp/mlflow/runs/metadata&quot;</span> <span class="se">\</span>
-    --default-artifact-root <span class="s2">&quot;file:///tmp/mlflow/runs/artifacts&quot;</span>
+mlflow<span class="w"> </span>server<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--host<span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--port<span class="w"> </span><span class="m">5000</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--workers<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--backend-store-uri<span class="w"> </span><span class="s2">&quot;file:///tmp/mlflow/runs/metadata&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--default-artifact-root<span class="w"> </span><span class="s2">&quot;file:///tmp/mlflow/runs/artifacts&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -548,11 +548,11 @@ mlflow server <span class="se">\</span>
 <h3>MLFlow connection setup<a class="headerlink" href="#mlflow-connection-setup" title="Permalink to this headline">¶</a></h3>
 <p>Once you have a MLFlow tracking server instance <em>up and running</em>, you need to create the MLFlow <em>experiments</em> to which
 the workflow ML metrics will be associated to. To do it:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">MLFLOW_TRACKING_URI</span><span class="o">=</span><span class="s2">&quot;&lt;the tracking server URL here&gt;&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">MLFLOW_TRACKING_URI</span><span class="o">=</span><span class="s2">&quot;&lt;the tracking server URL here&gt;&quot;</span>
 
-mlflow experiments create --experiment-name <span class="s2">&quot;madminer-ml-sample&quot;</span>
-mlflow experiments create --experiment-name <span class="s2">&quot;madminer-ml-train&quot;</span>
-mlflow experiments create --experiment-name <span class="s2">&quot;madminer-ml-eval&quot;</span>
+mlflow<span class="w"> </span>experiments<span class="w"> </span>create<span class="w"> </span>--experiment-name<span class="w"> </span><span class="s2">&quot;madminer-ml-sample&quot;</span>
+mlflow<span class="w"> </span>experiments<span class="w"> </span>create<span class="w"> </span>--experiment-name<span class="w"> </span><span class="s2">&quot;madminer-ml-train&quot;</span>
+mlflow<span class="w"> </span>experiments<span class="w"> </span>create<span class="w"> </span>--experiment-name<span class="w"> </span><span class="s2">&quot;madminer-ml-eval&quot;</span>
 </pre></div>
 </div>
 <p>Now, you are ready to run the workflow with a properly configured MLFlow tracking server.</p>
@@ -562,10 +562,10 @@ mlflow experiments create --experiment-name <span class="s2">&quot;madminer-ml-e
 <p>In case the MLFlow tracking server is deployed <strong>locally</strong> in your computer, and you are planning
 to run the ML sub-workflow also <strong>locally</strong> using Yadage, the environment variables to set up are different:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Independent of the OS</span>
-<span class="nb">export</span> <span class="nv">MLFLOW_TRACKING_URI</span><span class="o">=</span><span class="s2">&quot;http://host.docker.internal:5000&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">MLFLOW_TRACKING_URI</span><span class="o">=</span><span class="s2">&quot;http://host.docker.internal:5000&quot;</span>
 
 <span class="c1"># Only when using Linux</span>
-<span class="nb">export</span> <span class="nv">PACKTIVITY_DOCKER_CMD_MOD</span><span class="o">=</span><span class="s2">&quot;--add-host host.docker.internal:host-gateway&quot;</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PACKTIVITY_DOCKER_CMD_MOD</span><span class="o">=</span><span class="s2">&quot;--add-host host.docker.internal:host-gateway&quot;</span>
 </pre></div>
 </div>
 </div>
