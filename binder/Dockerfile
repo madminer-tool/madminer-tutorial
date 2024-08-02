@@ -1,4 +1,4 @@
-FROM madminertool/madminer-jupyter-env:0.3.6
+FROM madminertool/madminer-jupyter-env:0.3.7
 
 USER root
 
