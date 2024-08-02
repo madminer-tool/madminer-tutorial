@@ -6,11 +6,13 @@ on:
       - main
     paths:
       - "book/**"
+      - "requirements.txt"
   pull_request:
     branches:
       - main
     paths:
       - "book/**"
+      - "requirements.txt"
 
 jobs:
 
